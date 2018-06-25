@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Importar csv desde File</title>
+        <meta charset="utf-8" />
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        
+        <div class="container" id="container"><!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
+            <div class="input-group mt-2 mb-2">
+                <div class="custom-file"> <!--ES EL DIV DONDE CARGAREMOS EL ARCHIVO-->
+                  <input type="file" class="custom-file-input" id="inputfile" >
+                  <label class="custom-file-label" for="inputfile">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id="viewfile">Upload</button>
+                </div>
+            </div>
+<!--
+            <div id="buttondiv">
+                <input type="file" id="inputfile" />
+                <input type="button" id="viewfile" value="Import file" />
+                <br><br>
+            </div>-->
+            <table class="table table-hover table-dark" id="tableMain">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Primer Apellido</th>
+                        <th scope="col">Segundo Apellido</th>
+                        <th scope="col">Correo Electronico</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody id="table-data">
+                        
+                </tbody>
+            </table>
+            <input  type="button" value="Mostar" onclick="Mostrar();"/>
+        </div>
+        <script src="js/lectorCsv.js" type="text/javascript"></script>
+        <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    </body>
+</html>
+
