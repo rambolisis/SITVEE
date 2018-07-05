@@ -1,35 +1,56 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
-    <head>
-        <title>Importar csv desde File</title>
-        <meta charset="utf-8" />
-        <script src="js/jquery.min.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
+<head>
+    <title>Importar Empleados</title>
+    <meta charset="utf-8" />
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style type="text/css">
+        body {
+            background: #d2cdcd;
+        }
 
-    <body>
-        
-        <div class="container" id="container"><!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
-            <div class="input-group mt-2 mb-2">
-                <div class="custom-file"> <!--ES EL DIV DONDE CARGAREMOS EL ARCHIVO-->
-                  <input type="file" class="custom-file-input" id="inputfile" >
-                  <label class="custom-file-label" for="inputfile">Choose file</label>
-                </div>
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="viewfile">Upload</button>
+        #header {
+            background: #c33838;
+            padding-top: 45px;
+            padding-bottom: 45px;
+        }
+
+        #content {
+            background: #d2cdcd;
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        #foot {
+            background: #5f5a5a;
+            padding-top: 75px;
+            padding-bottom: 75px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+
+        </div>
+        <div id="content">
+            <div class="container" id="container" style="margin: 3%">
+                <!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
+                <h1>Por Favor adjunte un archivo.csv</h1>
+                </br>
+                <div class="input-group mt-2 mb-2" id="busqueda">
+                    <div class="custom-file">
+                        <input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;">
+                        <button class="btn btn-outline-secondary" type="button" id="viewfile">Cargar</button>
+                    </div>
                 </div>
             </div>
-<!--
-            <div id="buttondiv">
-                <input type="file" id="inputfile" />
-                <input type="button" id="viewfile" value="Import file" />
-                <br><br>
-            </div>-->
             <table class="table table-hover table-dark" id="tableMain">
                 <thead>
-                    <tr>
+                    <tr style="display: none;" id="fila">
                         <th scope="col">Nombre</th>
                         <th scope="col">Primer Apellido</th>
                         <th scope="col">Segundo Apellido</th>
@@ -38,16 +59,19 @@
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
-                <tbody id="table-data">
-                        
-                </tbody>
+                <tbody id="table-data"></tbody>
             </table>
-            <input  type="button" value="Confirmar" onclick="location.href='beneficios.html'""/>
+            <input id="confirmar" type="button" value="Confirmar" onclick="Enviar();" style="display: none;" />
+            <script src="js/lectorCsv.js" type="text/javascript"></script>
+            <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+            <script src="js/bootstrap.min.js" type="text/javascript"></script>
         </div>
-        <script src="js/lectorCsv.js" type="text/javascript"></script>
-        <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    </body>
+        <div id="foot">
+
+        </div>
+    </div>
+</body>
 </html>
+
 
 
