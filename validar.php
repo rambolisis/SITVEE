@@ -2,9 +2,13 @@
 $usuario=$_POST['usuario'];
 $clave=$_POST['clave'];
 if($usuario=="admin" && $clave=="admin"){
-    header("location:importarEmpleados.php");
+    return header("location:prueba.php");
+}else if($usuario=="usuario" && $clave=="usuario"){
+    return header("location:userMenu.php");
 }else{
-    return header("location:login.php");
-    echo "Credenciales invalidas";
+    echo "<script>
+                alert('Credenciales Invalidas');
+                window.location= 'login.php'
+    </script>";
 }
 ?>
