@@ -1,30 +1,35 @@
 $().ready(function () {
     $('#viewfile').click(function () { // en esta parte lo que haremos es que el boton de importar lea el archivo y lo pase a la tabla
-        $("#fila").show();
-        $("#confirmar").show();
-
         var input = $("#inputfile").val();
         $(".custom-file-label").text(input);
         var rdr = new FileReader();
         rdr.onload = function (e) {
             var therows = e.target.result.split("\n");
             var newrow = "";
+            var mostrar;
             ListaEntradas.Clear();
             $('#table-data').empty();
             for (var row = 0; row < therows.length - 1; row++) {
 
-                var columns = therows[row].split(";");// cuando se lea el archivo y vengan ; va a ser una nueva columna
+                var columns = (therows[row].split(";").length !== 5) ? therows[row].split(",") : therows[row].split(";");// cuando se lea el archivo y vengan ; va a ser una nueva columna
 
                 var colcount = columns.length;
-                if (colcount !== 5) {
+                if ((mostrar = (colcount !== 5))) {
                     //si son mas columnas de las que permite la tabla mande el mensaje
-                    newrow += "<tr scope='row'><td>esta insertando mas campos</td><td></td><td></td><td></td></tr>";
+                    newrow += "<tr scope='row'><td>Comprueve el Formato del Documento</td><td></td><td></td><td></td></tr>";
                 } else {
                     GuardarEntrada(columns);
                     //si son las columnas permite la tabla mete los datos
                     newrow += '<tr id="fila_' + row + '"><td>' + columns[0] + "</td><td>" + columns[1] + "</td><td>" + columns[2] + "</td><td>" + columns[3] + "</td><td>" + columns[4] + "</td>";
                     newrow += "<td>" + '<a href="#" onclick="hideRow(event)" class="btn btn-danger">Eliminar</a>' + "</td></tr>";
                 }
+            }
+            if (!mostrar) {
+                $("#confirmar").show();
+                $("#fila").show();
+            }else{
+                $("#confirmar").hide();
+                $("#fila").hide();
             }
             $('#tableMain').append(newrow); // se le agrega una nueva fila a la tabla
         }
@@ -45,8 +50,12 @@ function GuardarEntrada(columns) {
 }
 
 function Enviar() {
-    sessionStorage.setItem("Entradas", ListaEntradas.getJson());
-    window.location.href = "beneficios.php";
+    if (ListaEntradas.get().length > 0) {
+        sessionStorage.setItem("Entradas", ListaEntradas.getJson());
+        window.location.href = "beneficios.php";
+    } else {
+        alert("Tienes que ingresar el archivo para Continuar");
+    }
 }
 
 function ListaEntradas() {
@@ -82,4 +91,4 @@ class Entrada {
     }
 }
 
-ListaEntradas = new ListaEntradas();
+var ListaEntradas = new ListaEntradas();
