@@ -24,7 +24,7 @@
                           <input type="text" name="usuarioEvento" placeholder="Digite el Nombre del usuario del evento" required="">
                           <br>
                           Fecha del Evento:<br>
-                          <input name="fechaEvento" type="date">
+                          <input name="fechaEvento" type="date" required="">
                           <br>
                           Nombre del Evento:<br>
                           <input type="text" name="nombreEvento" placeholder="Digite el nombre del evento" required="">
@@ -65,7 +65,7 @@
                           <input type="text" name="usuarioEventoNuevo"  required="">
                           <br>
                           Fecha del Evento:<br>
-                          <input name="fechaEventoNueva" type="date">
+                          <input name="fechaEventoNueva" type="date" required="">
                           <br>
                           Nombre del Evento:<br>
                           <input type="text" name="nombreEventoNuevo"  required="">
