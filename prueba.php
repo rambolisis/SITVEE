@@ -1,4 +1,5 @@
-<title>Login</title><link rel="stylesheet" href="css/bootstrap.min.css">
+<title>Administrador</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="js/menu.js" type="text/javascript"></script>
 <link rel="stylesheet" href="./css/style.css">
@@ -117,7 +118,7 @@
                           <input type="submit" id="Guardar" value="Guardar">
           </form>
                 </div>
-            </div>	
-        <?php include('template/footer.php'); ?>
+            </div>
+            <?php include('template/footer.php'); ?>
     </body>
 </html>
