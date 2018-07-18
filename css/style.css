@@ -4,6 +4,7 @@
     overflow: auto;
 }
 
+
 .input-group {
     position: relative;
     display: -ms-flexbox;
@@ -74,4 +75,57 @@ table.gridtable {
 
 .notnumeric {
     background-color: yellow;
+}
+
+a {
+  text-align: center;
+}
+
+#NuevoEvento, #NuevoCliente, #ActualizarEvento, #ActualizarCliente, #Administrador, #Inicio{
+    width: 85%; /* Set a width if you like */
+    height: 100%;
+    margin: 0px;
+    float: left;
+    text-align: center;
+    position: relative;
+    display: none;
+    padding-top: 4%;
+}
+input{
+    border: 0px solid red;
+    border-radius: 4px;
+    width:40%;
+}
+.vertical-menu {
+    width: 15%; /* Set a width if you like */
+    height: 100%;
+    margin: 0px;
+    float: left;
+}
+
+.vertical-menu a {
+    background-color: #eee; /* Grey background color */
+    color: black; /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 13.9%; /* Add some padding */
+    text-decoration: none; /* Remove underline from links */
+    border:1px;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc; /* Dark grey background on mouse-over */
+}
+#Guardar{
+    background-color:#707B7C;
+    width:20%;
+}
+#Guardar:hover{
+    width:20%;
+    border: 1px solid black;
+    background-color: #ccc;
+}
+.error {color: #f00;}
+
+input#buscarCliente, input#buscarEvento{
+    width:34%;
 }

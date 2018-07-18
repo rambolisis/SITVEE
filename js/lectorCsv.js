@@ -50,8 +50,12 @@ function GuardarEntrada(columns) {
 }
 
 function Enviar() {
-    sessionStorage.setItem("Entradas", ListaEntradas.getJson());
-    window.location.href = "beneficios.php";
+    if (ListaEntradas.get().length > 0) {
+        sessionStorage.setItem("Entradas", ListaEntradas.getJson());
+        window.location.href = "beneficios.php";
+    } else {
+        alert("Tienes que ingresar el archivo para Continuar");
+    }
 }
 
 function ListaEntradas() {
@@ -87,4 +91,4 @@ class Entrada {
     }
 }
 
-ListaEntradas = new ListaEntradas();
+var ListaEntradas = new ListaEntradas();
