@@ -10,7 +10,7 @@
                 <input type="password" name="clave" placeholder=" Contraseña">
                 <input type="submit" value="Iniciar Sesion">
             </form>         
-        </div> 
+        </div>
         <?php include('template/footer.php'); ?>
     </body>
 </html>
