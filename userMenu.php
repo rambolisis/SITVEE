@@ -7,6 +7,7 @@
 <script src="js/lectorCsv.js" type="text/javascript"></script>
 <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/menu2.js" type="text/javascript"></script>
  </head>
 <?php include('template/header.php'); ?>
             <div style="height: 64%">
@@ -15,12 +16,14 @@
 				  <a id="TutorialSitvee">Tutorial SITVEE</a>
 				  <a id="Event">Eventos</a>
 				  <a id="TutorialCSV">Tutorial CSV</a>
+				  <a id="ImportarCSV">Importar CSV</a>
 			</div>
 			<div class="container" id="container" style="margin: 5.2%">
         <!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
-        <h1>Por Favor adjunte un archivo.csv</h1>
-        </br>
-        <div class="input-group mt-2 mb-2" id="busqueda">
+		<div id="busqueda" style="display: none;">
+		<h1>Por Favor adjunte un archivo.csv</h1>
+        <br>
+        <div class="input-group mt-2 mb-2">
             <div class="custom-file">
                 <input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;">
                 <button class="btn btn-outline-secondary" type="button" id="viewfile">Cargar</button>
@@ -40,6 +43,7 @@
     		</table>
 			<input id="confirmar" type="button" value="Confirmar" onclick="Enviar();" style="display: none;" />
         	</div>
+			</div>
 			</div>
     	    </div>
             <?php include('template/footer.php'); ?>
