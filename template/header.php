@@ -18,7 +18,8 @@
 
         #footer {
             background: #5f5a5a;
-            height: 92px;
+            padding-top: 92px;
+            padding-bottom: 92px;
         }
 
         .error{
