@@ -20,6 +20,23 @@
             background: #5f5a5a;
             height: 92px;
         }
+
+        .error{
+            background-color: #E74F4F;
+            position: absolute;
+            top: 0;
+            padding: 10px 0 ;
+            border-radius:  0 0 5px 5px;
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            display: none;
+        }
+
+        html{
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+        }
     </style>
 </head>
 
