@@ -81,7 +81,7 @@ a {
   text-align: center;
 }
 
-#NuevoEvento, #NuevoCliente, #ActualizarEvento, #ActualizarCliente, #Administrador, #Inicio{
+#NuevoEvento, #NuevoCliente, #ActualizarEvento, #ActualizarCliente, #Administrador, #Inicio, #NuevoStaff, #ActualizarStaff{
     width: 85%; /* Set a width if you like */
     height: 100%;
     margin: 0px;
@@ -107,7 +107,7 @@ input{
     background-color: #eee; /* Grey background color */
     color: black; /* Black text color */
     display: block; /* Make the links appear below each other */
-    padding: 13.9%; /* Add some padding */
+    padding: 9%; /* Add some padding */
     text-decoration: none; /* Remove underline from links */
     border:1px;
 }

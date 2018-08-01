@@ -37,6 +37,11 @@ $(document).ready(function () {
                                             $("#cantidad").css("border-color", "red");                                           
                                             $("#beneficio").attr("placeholder", "Beneficio...");
                                             $("#beneficio").css("border-color", "black");
+                                        }else{
+                                            if(beneficio!="" && cantidad!=""){
+                                                $("#beneficio").css("border-color", "black");
+                                                $("#cantidad").css("border-color", "black");
+                                            }
                                         }
               }
             }

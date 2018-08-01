@@ -12,37 +12,33 @@
 				  <a id="Home">Inicio</a>
 				  <a id="NewEvent">Nuevo Evento</a>
 				  <a id="NewClient">Nuevo Cliente</a>
+                  <a id="NewStaff">Nuevo Staff</a>
 				  <a id="UpdateEvent">Actualizar Evento</a>
-				  <a id="UpdateClient">Actualizar Cliente</a>
+                  <a id="UpdateClient">Actualizar Cliente</a>
+                  <a id="UpdateStaff">Actualizar Staff</a>
 				  <a id="Administrator">Administrador</a>
 				</div>
 				<div id="Inicio">
 					<p> Inicio</p>
 				</div>
 				<div id="NuevoEvento">
-          <form id="formulario" action="" method="post">                  
-                          Usuario del Evento:<br>
-                          <input type="text" name="usuarioEvento" placeholder="Digite el Nombre del usuario del evento" required="">
-                          <br>
-                          Fecha del Evento:<br>
-                          <input name="fechaEvento" type="date" required="">
-                          <br>
-                          Nombre del Evento:<br>
-                          <input type="text" name="nombreEvento" placeholder="Digite el nombre del evento" required="">
-                          <br><br>
-                          <input type="submit" id="Guardar" value="Guardar">
-          </form> 					
+                    <form id="formulario" action="" method="post">                  
+                                    Usuario del Evento:<br>
+                                    <input type="text" name="usuarioEvento" placeholder="Digite el Nombre del usuario del evento" required="">
+                                    <br>
+                                    Fecha del Evento:<br>
+                                    <input name="fechaEvento" type="date" required="">
+                                    <br>
+                                    Nombre del Evento:<br>
+                                    <input type="text" name="nombreEvento" placeholder="Digite el nombre del evento" required="">
+                                    <br><br>
+                                    <input type="submit" id="Guardar" value="Guardar">
+                    </form> 					
 				</div>
                 <div id="NuevoCliente">
                     <form id="formulario" action="" method="post">          
                       Nombre del Cliente:<br>
                       <input type="text" name="nombreCliente" placeholder="Digite el Nombre del Cliente" required="">
-                      <br>
-                      Primer Apellido del Cliente:<br>
-                      <input type="text" name="primerApellido" placeholder="Digite el Primer Apellido" required="">
-                      <br>
-                      Segundo Apellido del Cliente:<br>
-                      <input type="text" name="segundoApellido" placeholder="Digite el Segundo Apellido" required="">
                       <br>
                       Correo del Cliente:<br>
                       <input type="mail" name="correo" id="correo" placeholder="Digite el correo del Cliente" required="">
@@ -56,6 +52,21 @@
                       <input type="submit" id="Guardar" value="Guardar">
                     </form> 
                 </div>
+                <div id="NuevoStaff">
+                    <form id="formulario" action="" method="post">    
+                                    Buscar Evento:<br>
+                                    <input type="search" id="buscarEvento" name="buscarEvento">
+                                    <button>Buscar</button>    
+                                    <br>                         
+                                    Usuario:<br>
+                                    <input type="text" name="usuarioStaff" placeholder="Digite el Nombre del usuario del Staff" required="">
+                                    <br>
+                                    Contraseña:<br>
+                                    <input type="password" name="contraseniaStaff" placeholder="Digite la contraseña" required="">
+                                    <br><br>
+                                    <input type="submit" id="Guardar" value="Guardar">
+                    </form> 					
+				</div>
                 <div id="ActualizarEvento">
                     <form id="formulario" action="" method="post">       
                           Busqueda por Nombre del Evento:<br>
@@ -83,12 +94,6 @@
                       Nombre del Cliente:<br>
                       <input type="text" name="nombreNuevo" required="">
                       <br>
-                      Primer Apellido del Cliente:<br>
-                      <input type="text" name="primerApellidoNuevo"  required="">
-                      <br>
-                      Segundo Apellido del Cliente:<br>
-                      <input type="text" name="segundoApellidoNuevo"  required="">
-                      <br>
                       Correo del Cliente:<br>
                       <input type="mail" name="Correo" id="correoNuevo"  required="">
                       <br>
@@ -101,6 +106,24 @@
                       <input type="submit" id="Guardar" value="Actualizar">
                     </form> 
                 </div>
+                <div id="ActualizarStaff">
+                    <form id="formulario" action="" method="post">    
+                                    Buscar Usuario:<br>
+                                    <input type="search" id="buscarUsuarioStaff" name="buscarUsuarioStaff">
+                                    <button>Buscar</button>    
+                                    <br>                         
+                                    Usuario:<br>
+                                    <input type="text" name="usuarioStaff" placeholder="Digite el Nombre del usuario del Staff" required="">
+                                    <br>
+                                    Contraseña:<br>
+                                    <input type="password" name="contraseniaStaff" placeholder="Digite la contraseña" required="">
+                                    <br>
+                                    Evento:<br>
+                                    <input type="text" name="Evento" placeholder="Digite el Nombre del Evento" required="">
+                                    <br><br>
+                                    <input type="submit" id="Guardar" value="Guardar">
+                    </form> 					
+				</div>
                 <div id="Administrador">
                     <form id="formulario" action="" method="post">                  
                           Administrador:<br>
