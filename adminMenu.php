@@ -27,7 +27,7 @@
 				  <a id="UpdateEvent">Actualizar Evento</a>
                   <a id="UpdateClient">Actualizar Cliente</a>
                   <a id="UpdateStaff">Actualizar Staff</a>
-                  <a id="Administrator">Administrador</a>
+                  <a id="Administrator"> Administrador </a>
                   <a href='salir.php'>Cerrar Sesion</a>
                 </div>
 				<div id="Inicio">
