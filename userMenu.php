@@ -1,3 +1,14 @@
+<?php
+    SESSION_START();
+
+    if(isset($_SESSION['usuario'])){
+            if($_SESSION['usuario']['rol'] != "Usuario"){
+                header("Location: userAdmin.php");
+            }
+        }else{
+            header('Location: login.php');
+        }
+ ?>
 <title>Usuario</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -9,17 +20,6 @@
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script src="js/menu2.js" type="text/javascript"></script>
  </head>
- <?php
-    SESSION_START();
-
-    if(isset($_SESSION['usuario'])){
-            if($_SESSION['usuario']['rol'] != "Usuario"){
-                header("Location: userAdmin.php");
-            }
-        }else{
-            header('Location: login.php');
-        }
- ?>
 <?php include('template/header.php'); ?>
             <div style="height: 64%">
             	<div class="vertical-menu">

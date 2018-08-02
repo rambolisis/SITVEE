@@ -1,12 +1,4 @@
-<title>Administrador</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="js/menu.js" type="text/javascript"></script>
-<link rel="stylesheet" href="./css/style.css">
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
- </head>
- <?php
+<?php
     SESSION_START();
 
     if(isset($_SESSION['usuario'])){
@@ -17,6 +9,14 @@
             header('Location: login.php');
         }
  ?>
+<title>Administrador</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="js/menu.js" type="text/javascript"></script>
+<link rel="stylesheet" href="./css/style.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+ </head>
 <?php include('template/header.php'); ?>
             <div style="height: 73%">
             	<div class="vertical-menu">
