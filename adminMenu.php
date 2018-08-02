@@ -15,18 +15,7 @@
 <script src="js/menu.js" type="text/javascript"></script>
 <link rel="stylesheet" href="./css/style.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
- </head>
- <?php
-    SESSION_START();
-
-    if(isset($_SESSION['usuario'])){
-            if($_SESSION['usuario']['rol'] != "Administrador"){
-                header("Location: userMenu.php");
-            }
-        }else{
-            header('Location: login.php');
-        }
- ?>
+</head>
 <?php include('template/header.php'); ?>
             <div style="height: 73%">
             	<div class="vertical-menu">
