@@ -9,6 +9,17 @@
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script src="js/menu2.js" type="text/javascript"></script>
  </head>
+ <?php
+    SESSION_START();
+
+    if(isset($_SESSION['usuario'])){
+            if($_SESSION['usuario']['rol'] != "Usuario"){
+                header("Location: userAdmin.php");
+            }
+        }else{
+            header('Location: login.php');
+        }
+ ?>
 <?php include('template/header.php'); ?>
             <div style="height: 64%">
             	<div class="vertical-menu">
@@ -17,6 +28,7 @@
 				  <a id="Event">Eventos</a>
 				  <a id="TutorialCSV">Tutorial CSV</a>
 				  <a id="ImportarCSV">Importar CSV</a>
+				  <a href="salir.php">Cerrar Sesion</a>
 			</div>
 			<div class="container" id="container" style="margin: 5.2%">
         <!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->

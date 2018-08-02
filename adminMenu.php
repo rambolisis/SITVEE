@@ -6,6 +6,17 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
  </head>
+ <?php
+    SESSION_START();
+
+    if(isset($_SESSION['usuario'])){
+            if($_SESSION['usuario']['rol'] != "Administrador"){
+                header("Location: userMenu.php");
+            }
+        }else{
+            header('Location: login.php');
+        }
+ ?>
 <?php include('template/header.php'); ?>
             <div style="height: 73%">
             	<div class="vertical-menu">
@@ -16,8 +27,9 @@
 				  <a id="UpdateEvent">Actualizar Evento</a>
                   <a id="UpdateClient">Actualizar Cliente</a>
                   <a id="UpdateStaff">Actualizar Staff</a>
-				  <a id="Administrator">Administrador</a>
-				</div>
+                  <a id="Administrator">Administrador</a>
+                  <a href='salir.php'>Cerrar Sesion</a>
+                </div>
 				<div id="Inicio">
 					<p> Inicio</p>
 				</div>
@@ -139,8 +151,11 @@
                           <input type="password" name="contrasenia" required="">
                           <br><br>
                           <input type="submit" id="Guardar" value="Guardar">
-          </form>
+                    </form>
                 </div>
+                <div id="CerrarSesion">
+					<p> Cerrar Sesion</p>
+				</div>
             </div>
             <?php include('template/footer.php'); ?>
     </body>
