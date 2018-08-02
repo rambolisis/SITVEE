@@ -3,5 +3,5 @@ SESSION_START();
 
 SESSION_DESTROY();
 
-header('Location: login.php');
+header('Location: index.php');
 ?>
