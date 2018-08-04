@@ -94,14 +94,4 @@ $(document).ready(function() {
         $('#ActualizarStaff').css("display" , "none");
     });
 });
-$(document).ready(function() {
-    $('#Cliente').click(function(evento) {
-        alert("Informacion Guardada con Exito");  
-    });
-});
-function validarFormulario(){
-          $("#formulario").validate();
-       }
-$(document).ready(function(){
-          validarFormulario();
-});
+

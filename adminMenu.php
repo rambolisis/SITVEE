@@ -38,7 +38,7 @@
                                     <input type="text" name="usuarioEvento" placeholder="Digite el Nombre del usuario del evento" required="">
                                     <br>
                                     Fecha del Evento:<br>
-                                    <input name="fechaEvento" type="date" required="">
+                                    <input name="fechaEvento" type="date" max="2025-12-31" required="">
                                     <br>
                                     Nombre del Evento:<br>
                                     <input type="text" name="nombreEvento" placeholder="Digite el nombre del evento" required="">
@@ -52,7 +52,7 @@
                       <input type="text" name="nombreCliente" placeholder="Digite el Nombre del Cliente" required="">
                       <br>
                       Correo del Cliente:<br>
-                      <input type="mail" name="correo" id="correo" placeholder="Digite el correo del Cliente" required="">
+                      <input type="email" name="correo" id="correo" placeholder="Digite el correo del Cliente" required="">
                       <br>
                       Nombre de Usuario:<br>
                       <input type="text" name="usuario" placeholder="Digite el Nombre de Usuario" required="">
@@ -88,7 +88,7 @@
                           <input type="text" name="usuarioEventoNuevo"  required="">
                           <br>
                           Fecha del Evento:<br>
-                          <input name="fechaEventoNueva" type="date" required="">
+                          <input name="fechaEventoNueva" type="date" max="2025-12-31" required="">
                           <br>
                           Nombre del Evento:<br>
                           <input type="text" name="nombreEventoNuevo"  required="">
@@ -106,7 +106,7 @@
                       <input type="text" name="nombreNuevo" required="">
                       <br>
                       Correo del Cliente:<br>
-                      <input type="mail" name="Correo" id="correoNuevo"  required="">
+                      <input type="email" name="Correo" id="correoNuevo"  required="">
                       <br>
                       Nombre de Usuario:<br>
                       <input type="text" name="usuarioNuevo"  required="">
@@ -138,7 +138,7 @@
                 <div id="Administrador">
                     <form class="formulario" action="" method="post">                  
                           Correo:<br>
-                          <input type="mail" name="correoAdministrador" required="">
+                          <input type="email" name="correoAdministrador" required="">
                           <br>
                           Nombre:<br>
                           <input type="text" name="nombre" required="">
