@@ -26,7 +26,7 @@
 				  <a id="UpdateEvent">Actualizar Evento</a>
                   <a id="UpdateClient">Actualizar Cliente</a>
                   <a id="UpdateStaff">Actualizar Staff</a>
-                  <a id="Administrator"> Administrador </a>
+                  <a id="Administrator">Nuevo Administrador </a>
                   <a href='salir.php'>Cerrar Sesion</a>
                 </div>
 				<div id="Inicio">
@@ -137,8 +137,8 @@
 				</div>
                 <div id="Administrador">
                     <form class="formulario" action="" method="post">                  
-                          Administrador:<br>
-                          <input type="text" name="administrador" required="">
+                          Correo:<br>
+                          <input type="mail" name="correoAdministrador" required="">
                           <br>
                           Nombre:<br>
                           <input type="text" name="nombre" required="">

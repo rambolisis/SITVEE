@@ -21,31 +21,30 @@ $(document).ready(function () {
         document.getElementById("beneficio").focus();
             }else{
                 if(beneficio=="" && cantidad==""){
-                                 $("#beneficio").attr("placeholder", "Campo Vacio, Ingrese Informacion");
-                                 $("#beneficio").css("border-color", "red");
-                                 $("#cantidad").attr("placeholder", "Campo Vacio, Ingrese la Cantidad");
-                                 $("#cantidad").css("border-color", "red");
-                                }else{
-                                    if(beneficio==""){
-                                        $("#beneficio").attr("placeholder", "Campo Vacio, Ingrese Informacion");
-                                        $("#beneficio").css("border-color", "red");
-                                        $("#cantidad").attr("placeholder", "Cantidad...");
-                                        $("#cantidad").css("border-color", "black");
-                                     }else{
-                                        if(cantidad==""){
-                                            $("#cantidad").attr("placeholder", "Campo Vacio, Ingrese la Cantidad");
-                                            $("#cantidad").css("border-color", "red");                                           
-                                            $("#beneficio").attr("placeholder", "Beneficio...");
-                                            $("#beneficio").css("border-color", "black");
-                                        }else{
-                                            if(beneficio!="" && cantidad!=""){
-                                                $("#beneficio").css("border-color", "black");
-                                                $("#cantidad").css("border-color", "black");
-                                            }
-                                        }
-              }
-            }
-            }
+                    $("#beneficio").attr("placeholder", "Campo Vacio, Ingrese Informacion");
+                    $("#beneficio").css("border-color", "red"); 
+                    $("#cantidad").attr("placeholder", "Campo Vacio, Ingrese la Cantidad");
+                    $("#cantidad").css("border-color", "red");                            
+                                }
+                 if(cantidad!="" && beneficio=="" ){
+                    $("#cantidad").attr("placeholder", "Cantidad...");
+                    $("#cantidad").css("border-color", "black");  
+                    $("#beneficio").attr("placeholder", "Campo Vacio, Ingrese Informacion");
+                    $("#beneficio").css("border-color", "red");                                    
+                                }
+                 if(beneficio!="" && cantidad==""){
+                    $("#beneficio").attr("placeholder", "Beneficio...");
+                    $("#beneficio").css("border-color", "black");
+                    $("#cantidad").attr("placeholder", "Campo Vacio, Ingrese la Cantidad");
+                    $("#cantidad").css("border-color", "red");                                      
+                                  }
+             } 
+             if(cantidad!="" && beneficio!=""){                                         
+                $("#beneficio").attr("placeholder", "Beneficio...");
+                $("#beneficio").css("border-color", "black");
+                $("#cantidad").attr("placeholder", "Cantidad...");
+                $("#cantidad").css("border-color", "black");
+                              }
     });
     
     ListaEntradas = new ListaEntradas();
