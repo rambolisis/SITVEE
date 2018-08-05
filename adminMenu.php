@@ -33,7 +33,7 @@
 					<p> Inicio</p>
 				</div>
 				<div id="NuevoEvento">
-                    <form class="formulario" action="" method="post">                  
+                    <form class="formulario" action="regEvent.php" method="POST">                  
                                     Usuario del Evento:<br>
                                     <input type="text" name="usuarioEvento" placeholder="Digite el Nombre del usuario del evento" required="">
                                     <br>
@@ -47,18 +47,18 @@
                     </form> 					
 				</div>
                 <div id="NuevoCliente">
-                    <form class="formulario" action="" method="post">          
+                    <form class="formulario" action="regClient.php" method="POST">          
                       Nombre del Cliente:<br>
                       <input type="text" name="nombreCliente" placeholder="Digite el Nombre del Cliente" required="">
                       <br>
                       Correo del Cliente:<br>
-                      <input type="email" name="correo" id="correo" placeholder="Digite el correo del Cliente" required="">
+                      <input type="email" name="correoCliente" id="correoCliente" placeholder="Digite el correo del Cliente" required="">
                       <br>
                       Nombre de Usuario:<br>
-                      <input type="text" name="usuario" placeholder="Digite el Nombre de Usuario" required="">
+                      <input type="text" name="usuarioCliente" placeholder="Digite el Nombre de Usuario" required="">
                       <br>
                       Contraseña:<br>
-                      <input type="password" name="contrasenia" placeholder="Digite la contraseña" required="">
+                      <input type="password" name="contraseniaCliente" placeholder="Digite la contraseña" required="">
                       <br><br>
                       <input type="submit" class="Guardar" value="Guardar">
                     </form> 
@@ -136,15 +136,15 @@
                     </form> 					
 				</div>
                 <div id="Administrador">
-                    <form class="formulario" action="" method="post">                  
+                    <form class="formulario" action="regAdmi.php" method="POST">                  
                           Correo:<br>
-                          <input type="email" name="correoAdministrador" required="">
+                          <input type="email" name="correoAdmi" required="">
                           <br>
                           Nombre:<br>
-                          <input type="text" name="nombre" required="">
+                          <input type="text" name="nombreAdmi" required="">
                           <br>
                           Usuario:<br>
-                          <input type="text" name="usuario" required="">
+                          <input type="text" name="usuarioAdmi" required="">
                           <br>
                           Contraseña:<br>
                           <input type="password" name="contrasenia" required="">
