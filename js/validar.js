@@ -19,9 +19,6 @@ jQuery(document).on('submit','#formlg',function(event){
             }
         }else{
             $('.error').slideDown('slow');
-            setTimeout(function(){
-                $('.error').slideUp('slow');               
-            },3000);
         }
     })
     .done(function(resp){

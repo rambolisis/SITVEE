@@ -81,7 +81,7 @@ a {
   text-align: center;
 }
 
-#NuevoEvento, #NuevoCliente, #ActualizarEvento, #ActualizarCliente, #Administrador, #Inicio{
+#NuevoEvento, #NuevoCliente, #ActualizarEvento, #ActualizarCliente, #Administrador, #Inicio, #NuevoStaff, #ActualizarStaff, #CerrarSesion{
     width: 85%; /* Set a width if you like */
     height: 100%;
     margin: 0px;
@@ -107,7 +107,7 @@ input{
     background-color: #eee; /* Grey background color */
     color: black; /* Black text color */
     display: block; /* Make the links appear below each other */
-    padding: 13.9%; /* Add some padding */
+    padding: 8.25%; /* Add some padding */
     text-decoration: none; /* Remove underline from links */
     border:1px;
 }
@@ -115,17 +115,17 @@ input{
 .vertical-menu a:hover {
     background-color: #ccc; /* Dark grey background on mouse-over */
 }
-#Guardar{
+.Guardar{
     background-color:#707B7C;
     width:20%;
 }
-#Guardar:hover{
+.Guardar:hover{
     width:20%;
     border: 1px solid black;
     background-color: #ccc;
 }
 .error {color: #f00;}
 
-input#buscarCliente, input#buscarEvento{
+input#buscarCliente, input.buscarEvento, input#buscarUsuarioStaff{
     width:34%;
 }
