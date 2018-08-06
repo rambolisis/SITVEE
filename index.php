@@ -1,3 +1,14 @@
+<?php
+    SESSION_START();
+
+    if(isset($_SESSION['usuario'])){
+        if($_SESSION['usuario']['rol'] == "Administrador"){
+            header('Location: adminMenu.php');
+        }else if($_SESSION['usuario']['rol'] == "Usuario"){
+            header('Location: userMenu.php');
+        }
+    }
+?>
 <title>Login</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/login.css">
