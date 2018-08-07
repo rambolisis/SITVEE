@@ -47,7 +47,7 @@
                 		<th scope="col">Segundo Apellido</th>
             			<th scope="col">Correo Electronico</th>
             		    <th scope="col">Telefono</th>
-                		<th scope="col">Opciones</th>
+                		<th scope="col">Asistencia</th>
             		</tr>
         		</thead>
         		<tbody id="table-data"></tbody>
