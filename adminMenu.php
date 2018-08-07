@@ -38,7 +38,7 @@
                                     <input type="text" name="usuarioEvento" placeholder="Digite el Nombre del usuario del evento" required="">
                                     <br>
                                     Fecha del Evento:<br>
-                                    <input name="fechaEvento" type="date" max="2025-12-31" required="">
+                                    <input name="fechaEvento" type="date" max="2025-12-31" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> required="">
                                     <br>
                                     Nombre del Evento:<br>
                                     <input type="text" name="nombreEvento" placeholder="Digite el nombre del evento" required="">
@@ -52,7 +52,7 @@
                       <input type="text" name="nombreCliente" placeholder="Digite el Nombre del Cliente" required="">
                       <br>
                       Correo del Cliente:<br>
-                      <input type="email" name="correoCliente" id="correoCliente" placeholder="Digite el correo del Cliente" required="">
+                      <input type="email" name="correoCliente" id="correoCliente" placeholder="Digite el correo del Cliente"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de correo invalido" required="">
                       <br>
                       Nombre de Usuario:<br>
                       <input type="text" name="usuarioCliente" placeholder="Digite el Nombre de Usuario" required="">
@@ -88,7 +88,7 @@
                           <input type="text" name="usuarioEventoNuevo"  required="">
                           <br>
                           Fecha del Evento:<br>
-                          <input name="fechaEventoNueva" type="date" max="2025-12-31" required="">
+                          <input name="fechaEventoNueva" type="date" max="2025-12-31" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> required="">
                           <br>
                           Nombre del Evento:<br>
                           <input type="text" name="nombreEventoNuevo"  required="">
@@ -138,7 +138,7 @@
                 <div id="Administrador">
                     <form class="formulario" action="regAdmi.php" method="POST">                  
                           Correo:<br>
-                          <input type="email" name="correoAdmi" required="">
+                          <input type="email" name="correoAdmi" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de Correo Invalido" required="">
                           <br>
                           Nombre:<br>
                           <input type="text" name="nombreAdmi" required="">
