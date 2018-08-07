@@ -38,7 +38,7 @@
                 <input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;">
                 <button class="btn btn-outline-secondary" type="button" id="viewfile">Cargar</button>
         </div>
-        <div class="input-group mt-2 mb-2" style="height:270px; width:85%">
+        <div class="input-group mt-2 mb-2" id="divTabla" style="height:250px; width:100%; display: none;overflow-y:scroll; ">
 			<table class="table table-hover table-dark" id="tableMain" style="width:100%;">
         		<thead>
             		<tr style="display: none;" id="fila">
@@ -52,9 +52,9 @@
         		</thead>
         		<tbody id="table-data"></tbody>
     		</table>
-			<input id="confirmar" style="width: 150%" type="button" value="Confirmar" onclick="Enviar();" style="display: none;" />
 			<br>
 			</div>
+			<input id="confirmar" style="width: 30%; display: none;" type="button" value="Confirmar" onclick="Enviar();"  />
 			</div>
 			</div>
     	    </div>
