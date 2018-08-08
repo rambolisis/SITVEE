@@ -29,6 +29,7 @@
 				  <a style="height: 16.66%" id="ImportarCSV">Importar CSV</a>
 				  <a style="height: 16.66%" href="salir.php">Cerrar Sesion</a>
 			</div>
+			<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre']?></h1>
 			<div class="container" id="container" style="widht:85%;heigth:97%; padding:1%;">
         <!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
 		<div id="busqueda" style="display: none;">

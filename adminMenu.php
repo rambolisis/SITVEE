@@ -15,8 +15,24 @@
 <script src="js/menu.js" type="text/javascript"></script>
 <link rel="stylesheet" href="./css/style.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+function mostrar()
+{
+    var nom=document.getElementByName('nombreEvento').value;
+    var fech=document.getElementByName('fechaEvento').value;
+    var desc=document.getElementByName('descripcionEvento').value;
+    var idcliente = document.getElementById("clienteEvento");
+    var clie = idcliente.options[idcliente.selectedIndex].value;
+    var clie_valor = document.createTextNode(clie);
+    alert("Nombre: "+nom+"Fecha: "+fech+"Descripcion: "+desc+"Cliente: "+clie_valor+);
+}
+</script>
+<script src="js/validar.js"></script>
 </head>
 <?php include('template/header.php'); ?>
+        <div class="mensaje">
+            <span></span>
+        </div>
             <div style="height: 73%">
             	<div class="vertical-menu">
 				  <a id="Home">Inicio</a>
@@ -29,38 +45,57 @@
                   <a id="Administrator">Nuevo Administrador </a>
                   <a href='salir.php'>Cerrar Sesion</a>
                 </div>
+                <h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre']?></h1>
 				<div id="Inicio">
 					<p> Inicio</p>
 				</div>
 				<div id="NuevoEvento">
-                    <form class="formulario" action="regEvent.php" method="POST">                  
-                                    Usuario del Evento:<br>
-                                    <input type="text" name="usuarioEvento" placeholder="Digite el Nombre del usuario del evento" required="">
+                    <form action="" id="frmNuevoEvento">                  
+                                    Nombre del Evento:<br>
+                                    <input type="text" name="nombreEvento" placeholder="Escriba el nombre del evento" required="">
                                     <br>
                                     Fecha del Evento:<br>
-                                    <input name="fechaEvento" type="date" max="2025-12-31" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> required="">
+                                    <input name="fechaEvento" type="date" max="2025-12-31" min=<?php $hoy=date("Y-m-d");?> required="">
                                     <br>
-                                    Nombre del Evento:<br>
-                                    <input type="text" name="nombreEvento" placeholder="Digite el nombre del evento" required="">
-                                    <br><br>
-                                    <input type="submit" class="Guardar" value="Guardar">
+                                    Descripcion del Evento:<br>
+                                    <input type="text" name="descripcionEvento" placeholder="Escriba una descripción del evento" required="">
+                                    <br>
+                                    Cliente del Evento:<br>
+                                    <select name="clienteEvento" style="width: 250px;">
+                                    <?php 
+                                        require 'conexion.php';
+
+                                        $clientes = $mysqli->query("SELECT id_Cliente, nombre FROM cliente ");
+                                        
+                                        while($datos = $clientes->fetch_assoc()){      
+                                            
+                                            echo "<option value=\"{$datos['id_Cliente']}\">{$datos['nombre']}</option>";
+                                            
+                                            }
+                                            $mysqli->close();                                   
+                                        ?>
+                                    </select>
+                                    <br>
+                                    <br>
+                                    <input type="submit" class="GuardarEvento" value="Guardar">
+                                    
                     </form> 					
 				</div>
                 <div id="NuevoCliente">
-                    <form class="formulario" action="regClient.php" method="POST">          
-                      Nombre del Cliente:<br>
-                      <input type="text" name="nombreCliente" placeholder="Digite el Nombre del Cliente" required="">
+                    <form action="" id="frmNuevoCliente">          
+                      Nombre del cliente:<br>
+                      <input type="text" name="nombreCliente" placeholder="Escriba el nombre" required="">
                       <br>
-                      Correo del Cliente:<br>
-                      <input type="email" name="correoCliente" id="correoCliente" placeholder="Digite el correo del Cliente"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de correo invalido" required="">
+                      Correo del cliente:<br>
+                      <input type="email" name="correoCliente" id="correoCliente" placeholder="Escriba el correo"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de correo invalido" required="">
                       <br>
-                      Nombre de Usuario:<br>
-                      <input type="text" name="usuarioCliente" placeholder="Digite el Nombre de Usuario" required="">
+                      Usuario:<br>
+                      <input type="text" name="usuarioCliente" placeholder="Escriba el usuario" required="">
                       <br>
                       Contraseña:<br>
-                      <input type="password" name="contraseniaCliente" placeholder="Digite la contraseña" required="">
+                      <input type="password" name="contraseniaCliente" placeholder="Escriba la contraseña" required="">
                       <br><br>
-                      <input type="submit" class="Guardar" value="Guardar">
+                      <input type="submit" class="GuardarCliente" value="Guardar">
                     </form> 
                 </div>
                 <div id="NuevoStaff">
@@ -136,20 +171,20 @@
                     </form> 					
 				</div>
                 <div id="Administrador">
-                    <form class="formulario" action="regAdmi.php" method="POST">                  
-                          Correo:<br>
-                          <input type="email" name="correoAdmi" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de Correo Invalido" required="">
+                    <form action="" id="frmNuevoAdministrador">
+                          Nombre del administrador:<br>
+                          <input type="text" name="nombreAdmi" placeholder="Escriba el nombre" required="">
                           <br>
-                          Nombre:<br>
-                          <input type="text" name="nombreAdmi" required="">
+                          Correo del administrador:<br>
+                          <input type="email" name="correoAdmi" placeholder="Escriba el correo" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de Correo Invalido" required="">
                           <br>
                           Usuario:<br>
-                          <input type="text" name="usuarioAdmi" required="">
+                          <input type="text" name="usuarioAdmi" placeholder="Escriba el usuario" required="">
                           <br>
                           Contraseña:<br>
-                          <input type="password" name="contrasenia" required="">
+                          <input type="password" name="contrasenia" placeholder="Escriba la contraseña" required="">
                           <br><br>
-                          <input type="submit" class="Guardar" value="Guardar">
+                          <input type="submit" class="GuardarAdministrador" value="Guardar">
                     </form>
                 </div>
                 <div id="CerrarSesion">
