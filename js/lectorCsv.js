@@ -21,11 +21,13 @@ $().ready(function () {
                     GuardarEntrada(columns);
                     //si son las columnas permite la tabla mete los datos
                     newrow += '<tr id="fila_' + row + '"><td>' + columns[0] + "</td><td>" + columns[1] + "</td><td>" + columns[2] + "</td><td>" + columns[3] + "</td><td>" + columns[4] + "</td>";
-                    newrow += "<td>" + '<a href="#" onclick="hideRow(event)" class="btn btn-danger">Eliminar</a>' + "</td></tr>";
+                     //newrow += "<td>" + '<a href="#" onclick="hideRow(event)" class="btn btn-danger">Eliminar</a>' + "</td></tr>";
+                     newrow += "<td>" + '<input type="checkbox"  id="ocultar'+row+'"/>' + "</td></tr>";
                 }
             }
             if (!mostrar) {
                 $("#confirmar").show();
+                $("#divTabla").show();
                 $("#fila").show();
             }else{
                 $("#confirmar").hide();
@@ -37,11 +39,13 @@ $().ready(function () {
     });
 });
 
-function hideRow(event) {
-    var row = $(event.target || event.srcElement).parents('tr');
-    var indexrow = row.index();
-    row.remove();
-    ListaEntradas.remove(indexrow);
+function hideRow() {
+    var total= ListaEntradas.get().length-1;
+    for (var index = total; index >= 0; index--) {
+        var borrar = document.getElementById("ocultar"+index).checked;
+        if (!borrar)
+            ListaEntradas.remove(index);
+    }
 }
 
 function GuardarEntrada(columns) {
@@ -50,11 +54,16 @@ function GuardarEntrada(columns) {
 }
 
 function Enviar() {
+    hideRow();
     if (ListaEntradas.get().length > 0) {
         sessionStorage.setItem("Entradas", ListaEntradas.getJson());
         window.location.href = "beneficios.php";
     } else {
-        alert("Tienes que ingresar el archivo para Continuar");
+        $('#table-data').empty();
+        ListaEntradas.Clear();
+        $("#confirmar").hide();
+        $("#fila").hide();
+        alert("Tienes que ingresar el archivo para Continuar\nY tienes que seleccionar algún empleado\nIngrese sus datos de nuevo");
     }
 }
 

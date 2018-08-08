@@ -29,6 +29,7 @@
 				  <a style="height: 16.66%" id="ImportarCSV">Importar CSV</a>
 				  <a style="height: 16.66%" href="salir.php">Cerrar Sesion</a>
 			</div>
+			<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre']?></h1>
 			<div class="container" id="container" style="widht:85%;heigth:97%; padding:1%;">
         <!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
 		<div id="busqueda" style="display: none;">
@@ -38,7 +39,7 @@
                 <input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;">
                 <button class="btn btn-outline-secondary" type="button" id="viewfile">Cargar</button>
         </div>
-        <div class="input-group mt-2 mb-2" style="height:270px; width:85%">
+        <div class="input-group mt-2 mb-2" id="divTabla" style="height:250px; width:100%; display: none;overflow-y:scroll; ">
 			<table class="table table-hover table-dark" id="tableMain" style="width:100%;">
         		<thead>
             		<tr style="display: none;" id="fila">
@@ -47,14 +48,14 @@
                 		<th scope="col">Segundo Apellido</th>
             			<th scope="col">Correo Electronico</th>
             		    <th scope="col">Telefono</th>
-                		<th scope="col">Opciones</th>
+                		<th scope="col">Asistencia</th>
             		</tr>
         		</thead>
         		<tbody id="table-data"></tbody>
     		</table>
-			<input id="confirmar" style="width: 150%" type="button" value="Confirmar" onclick="Enviar();" style="display: none;" />
 			<br>
 			</div>
+			<input id="confirmar" style="width: 30%; display: none;" type="button" value="Confirmar" onclick="Enviar();"  />
 			</div>
 			</div>
     	    </div>
