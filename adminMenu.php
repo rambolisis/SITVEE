@@ -16,16 +16,7 @@
 <link rel="stylesheet" href="./css/style.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script type="text/javascript">
-function mostrar()
-{
-    var nom=document.getElementByName('nombreEvento').value;
-    var fech=document.getElementByName('fechaEvento').value;
-    var desc=document.getElementByName('descripcionEvento').value;
-    var idcliente = document.getElementById("clienteEvento");
-    var clie = idcliente.options[idcliente.selectedIndex].value;
-    var clie_valor = document.createTextNode(clie);
-    alert("Nombre: "+nom+"Fecha: "+fech+"Descripcion: "+desc+"Cliente: "+clie_valor+);
-}
+
 </script>
 <script src="js/validar.js"></script>
 </head>
@@ -132,11 +123,24 @@ function mostrar()
           </form>
                 </div>
                 <div id="ActualizarCliente">
-                    <form class="formulario" action="" method="post">    
-                      Busqueda por Nombre de Usuario:<br>
-                      <input type="search" id="buscarCliente" name="buscarCliente">
-                      <button>Buscar</button>    
-                      <br>        
+                <form action="" id="frmActualizaCliente">    
+                      Seleccione un cliente:<br>
+                      <select name="clienteId" style="width: 520px;">
+                                    <option value=""></option>
+                                    <?php 
+                                        require 'conexion.php';
+
+                                        $clientes = $mysqli->query("SELECT * FROM cliente ");
+                                        
+                                        while($datos = $clientes->fetch_assoc()){      
+                                            
+                                            echo "<option value=\"{$datos['id_Cliente']}\">{$datos['nombre']}</option>";
+                                            
+                                            }
+                                            $mysqli->close();                                   
+                                        ?>
+                                    </select>
+                                    <br>      
                       Nombre del Cliente:<br>
                       <input type="text" name="nombreNuevo" required="">
                       <br>
