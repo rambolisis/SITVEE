@@ -107,7 +107,6 @@ input{
     background-color: #eee; /* Grey background color */
     color: black; /* Black text color */
     display: block; /* Make the links appear below each other */
-    padding: 8.25%; /* Add some padding */
     text-decoration: none; /* Remove underline from links */
     border:1px;
 }

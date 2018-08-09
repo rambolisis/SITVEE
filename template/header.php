@@ -11,14 +11,12 @@
 
         #header {
             background: #c33838;
-            padding-top: 45px;
-            padding-bottom: 45px;
+            height:18%;
         }
 
         #footer {
             background: #5f5a5a;
-            padding-top: 92px;
-            padding-bottom: 92px;
+            height:18%;
         }
 
         .error{

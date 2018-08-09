@@ -3,18 +3,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="js/beneficios.js" type="text/javascript"></script>
 <?php include('template/header.php'); ?>
-    <div class="container" style="margin: 3%">
+    <div class="container" style="margin: 2%; height:%;">
                 <form>
                     <div class="form-group">
-                        <p>
+                        <p style="float:left;">
                             <label>Digite sus Beneficios:</label>
-                            <input id="beneficio" class="form-control" type="text" placeholder="Beneficio..." style="width: 30%" required="" />
-                            <br>
+                            <input id="beneficio" class="form-control" type="text" placeholder="Beneficio..." style="width: 90%" required="" />
                         </p>
-                        <p>
+                        <p style="float:left; ">
                             <label>Digite la cantidad por persona:</label>
-                            <input type="number" id="cantidad" class="form-control" type="text" placeholder="Cantidad..." style="width: 30%" style="float: left;">
-                            <br>
+                            <input type="number" id="cantidad" class="form-control" type="text" placeholder="Cantidad..." style="width: 90%">
                         </p>
                         <button id="adicionar" class="btn btn-success" type="button">Añadir</button>
                     </div>

@@ -3,3 +3,10 @@ $(document).ready(function() {
         $('#busqueda').show();   
     });
 });
+
+$(document).ready(function() {
+    $('#confirmar').click(function(evento) {
+        $('#busqueda').hide();
+        $('#beneficiosUser').show();    
+    });
+});
