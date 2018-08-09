@@ -45,7 +45,7 @@ function mostrar()
                   <a id="Administrator">Nuevo Administrador </a>
                   <a href='salir.php'>Cerrar Sesion</a>
                 </div>
-                <h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre']?></h1>
+                <!--<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre']?></h1>-->
 				<div id="Inicio">
 					<p> Inicio</p>
 				</div>
