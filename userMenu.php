@@ -23,12 +23,12 @@
 <?php include('template/header.php'); ?>
             <div style="height: 64%">
             	<div class="vertical-menu">
-				  <a style="height: 16.66%" id="Home">Inicio</a>
-				  <a style="height: 16.66%" id="TutorialSitvee">Tutorial SITVEE</a>
-				  <a style="height: 16.66%" id="Event">Eventos</a>
-				  <a style="height: 16.66%" id="TutorialCSV">Tutorial CSV</a>
-				  <a style="height: 16.66%" id="ImportarCSV">Importar CSV</a>
-				  <a style="height: 16.66%" href="salir.php">Cerrar Sesion</a>
+				  <a style="height: 16.66%; padding: 10%;" id="Home">Inicio</a>
+				  <a style="height: 16.66%; padding: 10%;" id="TutorialSitvee">Tutorial SITVEE</a>
+				  <a style="height: 16.66%; padding: 10%;" id="Event">Eventos</a>
+				  <a style="height: 16.66%; padding: 10%;" id="TutorialCSV">Tutorial CSV</a>
+				  <a style="height: 16.66%; padding: 10%;" id="ImportarCSV">Importar CSV</a>
+				  <a style="height: 16.66%; padding: 10%;" href="salir.php">Cerrar Sesion</a>
 			</div>
 			<!--<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre']?></h1>-->
 			<div class="container" id="container" style="widht:85%;heigth:97%; padding:1%;">

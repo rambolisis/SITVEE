@@ -57,7 +57,6 @@ function Enviar() {
     hideRow();
     if (ListaEntradas.get().length > 0) {
         sessionStorage.setItem("Entradas", ListaEntradas.getJson());
-        window.location.href = "beneficios.php";
     } else {
         $('#table-data').empty();
         ListaEntradas.Clear();
