@@ -106,10 +106,23 @@
 				</div>
                 <div id="ActualizarEvento">
                     <form class="formulario" action="" method="post">       
-                          Busqueda por Nombre del Evento:<br>
-                          <input type="search" class="buscarEvento" name="buscarEvento">
-                          <button>Buscar</button>    
-                          <br>                   
+                    Seleccione un Evento:<br>
+                      <select name="eventoId" style="width: 520px;">
+                                    <option value=""></option>
+                                    <?php 
+                                        require 'conexion.php';
+
+                                        $clientes = $mysqli->query("SELECT * FROM evento ");
+                                        
+                                        while($datos = $clientes->fetch_assoc()){      
+                                            
+                                            echo "<option value=\"{$datos['id_Evento']}\">{$datos['nombre']}</option>";
+                                            
+                                            }
+                                            $mysqli->close();                                   
+                                        ?>
+                                    </select>
+                                    <br>                   
                           Usuario del Evento:<br>
                           <input type="text" name="usuarioEventoNuevo"  required="">
                           <br>
