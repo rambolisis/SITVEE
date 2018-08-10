@@ -40,11 +40,23 @@ function listarEvento() {
     document.getElementById("descripcionEventoNuevo").value = descripcion;
     document.getElementById("clienteEventoNuevo").value = nombreCliente;
 }
+function listarStaff() {
+    var cadena = document.getElementById("staffId").value;
+    var lista = cadena.split(",");
+    var usuario = lista[3];
+    var clave = lista[4];
+    document.getElementById("usuarioStaff").value = usuario;
+    document.getElementById("contraseniaStaff").value = clave;
+
+}
 </script>
 <script src="js/validar.js"></script>
 </head>
 <?php include('template/header.php'); ?>
         <div class="mensaje">
+            <span></span>
+        </div>
+        <div class="error">
             <span></span>
         </div>
             <div style="height: 73%">
@@ -210,19 +222,22 @@ function listarEvento() {
                     </form> 
                 </div>
                 <div id="ActualizarStaff">
-                    <form class="formulario" action="" method="post">    
-                                    Seleccione un Usuario:<br>
-                                    <select name="staffId" style="width: 250px;">
+                    <form action="" id="frmActualizaStaff"> 
+                                    Seleccione un Evento:<br>
+                                    <select onchange="listarStaff();" name="staffId" id="staffId" style="width: 250px;">
                                     <?php 
                                         require 'conexion.php';
 
                                         $staff = $mysqli->query("SELECT * FROM staff ");
                                         
                                         while($datosS = $staff->fetch_assoc()){      
-                                            $id = $datosS['id_Usuario'];
-                                            $usuarioS = $mysqli->query("SELECT usuario,clave FROM usuario WHERE id_Usuario = '$id' ");
+                                            $idU = $datosS['id_Usuario'];
+                                            $idE = $datosS['id_Evento'];
+                                            $usuarioS = $mysqli->query("SELECT id_Usuario,usuario,clave FROM usuario WHERE id_Usuario = '$idU' ");
                                             $datosU = $usuarioS->fetch_assoc();
-                                            echo "<option value=\"{$datosU['id_Usuario']}\">{$datosU['usuario']}</option>";
+                                            $EventoS = $mysqli->query("SELECT id_Evento,nombre FROM evento WHERE id_Evento = '$idE' ");
+                                            $datosE = $EventoS->fetch_assoc();
+                                            echo "<option value=\"{$datosS['id_Staff']},{$datosS['id_Usuario']},{$datosS['id_Evento']},{$datosU['usuario']},{$datosU['clave']}\">{$datosE['nombre']}</option>";
                                             
                                             }
                                             $mysqli->close();                                   
@@ -230,15 +245,12 @@ function listarEvento() {
                                     </select>
                                     <br>                        
                                     Usuario:<br>
-                                    <input type="text" name="usuarioStaff" required="">
+                                    <input type="text" name="usuarioStaff" id="usuarioStaff" required="">
                                     <br>
                                     Contraseña:<br>
-                                    <input type="password" name="contraseniaStaff" required="">
-                                    <br>
-                                    Evento:<br>
-                                    <input type="text" name="Evento" required="">
+                                    <input type="text" name="contraseniaStaff" id="contraseniaStaff" required="">
                                     <br><br>
-                                    <input type="submit" class="ActualizaStaff" value="Guardar">
+                                    <input type="submit" class="ActualizaStaff" value="Actualizar">
                     </form> 					
 				</div>
                 <div id="Administrador">

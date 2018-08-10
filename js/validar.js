@@ -47,6 +47,7 @@ jQuery(document).on('submit','#frmNuevoCliente',function(event){
         if(!respuesta.mensaje){
             $('#frmNuevoCliente').trigger("reset");
             $("span").text("Cliente guardado exitosamente");
+            $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
                 $('.mensaje').slideUp('slow');
@@ -78,6 +79,7 @@ jQuery(document).on('submit','#frmActualizaCliente',function(event){
         if(!respuesta.mensaje){
             $('#frmActualizaCliente').trigger("reset");
             $("span").text("Cliente actualizado exitosamente");
+            $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
                 $('.mensaje').slideUp('slow');
@@ -111,6 +113,7 @@ jQuery(document).on('submit','#frmNuevoAdministrador',function(event){
         if(!respuesta.mensaje){
             $('#frmNuevoAdministrador').trigger("reset");
             $("span").text("Administrador guardado exitosamente");
+            $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
                 $('.mensaje').slideUp('slow');
@@ -142,6 +145,7 @@ jQuery(document).on('submit','#frmNuevoEvento',function(event){
         if(!respuesta.mensaje){
             $('#frmNuevoEvento').trigger("reset");
             $("span").text("Evento guardado exitosamente");
+            $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
                 $('.mensaje').slideUp('slow');
@@ -173,6 +177,7 @@ jQuery(document).on('submit','#frmActualizaEvento',function(event){
         if(!respuesta.mensaje){
             $('#frmActualizaEvento').trigger("reset");
             $("span").text("Evento actualizado exitosamente");
+            $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
                 $('.mensaje').slideUp('slow');
@@ -203,12 +208,52 @@ jQuery(document).on('submit','#frmNuevoStaff',function(event){
     .done(function(respuesta){
         console.log(respuesta);
         if(!respuesta.mensaje){
-            $('#frmNuevoStaff').trigger("reset");
             $("span").text("Staff guardado exitosamente");
+            $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
                 $('.mensaje').slideUp('slow');
             },3000);
+        }else{
+            $("span").text("El evento seleccionado ya esta siendo utilizado por otro staff");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
+        }
+        $('#frmNuevoStaff').trigger("reset");
+    })
+    .fail(function(resp){
+        console.log(resp.responseText);
+    })
+    .always(function(){
+        console.log("complete");
+    });
+});
+
+//Ajax para el mensaje de actualizar staff
+jQuery(document).on('submit','#frmActualizaStaff',function(event){
+    event.preventDefault();
+
+    jQuery.ajax({
+        url: 'actualizaStaff.php',
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        beforeSend: function(){           
+        }
+    })
+    .done(function(respuesta){
+        console.log(respuesta);
+        if(!respuesta.mensaje){
+            $('#frmActualizaStaff').trigger("reset");
+            $("span").text("Staff actualizado exitosamente");
+            $('.mensaje').css('background-color', '#14BD2F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000); 
         }
     })
     .fail(function(resp){
