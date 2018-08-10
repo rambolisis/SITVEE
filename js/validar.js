@@ -187,3 +187,34 @@ jQuery(document).on('submit','#frmActualizaEvento',function(event){
         console.log("complete");
     });
 });
+
+//Ajax para el mensaje de crear staff
+jQuery(document).on('submit','#frmNuevoStaff',function(event){
+    event.preventDefault();
+
+    jQuery.ajax({
+        url: 'insertaStaff.php',
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        beforeSend: function(){           
+        }
+    })
+    .done(function(respuesta){
+        console.log(respuesta);
+        if(!respuesta.mensaje){
+            $('#frmNuevoStaff').trigger("reset");
+            $("span").text("Staff guardado exitosamente");
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
+        }
+    })
+    .fail(function(resp){
+        console.log(resp.responseText);
+    })
+    .always(function(){
+        console.log("complete");
+    });
+});

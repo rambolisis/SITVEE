@@ -15,7 +15,7 @@
         echo json_encode(array('mensaje' => false));
     }else{
         echo "<script>
-                alert('A ocurrido un error al actualizar el cliente');
+                alert('A ocurrido un error al actualizar el evento');
             </script>";
     }
 
