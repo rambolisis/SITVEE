@@ -113,24 +113,36 @@ function listarEvento() {
                     </form> 
                 </div>
                 <div id="NuevoStaff">
-                    <form class="formulario" action="" method="post">    
-                                    Buscar Evento:<br>
-                                    <input type="search" class="buscarEvento" name="buscarEvento">
-                                    <button>Buscar</button>    
+                    <form action="" id="frmNuevoStaff">    
+                                    Seleccione un Evento:<br>
+                                    <select name="staffEvento" style="width: 250px;">
+                                    <?php 
+                                        require 'conexion.php';
+
+                                        $eventoS = $mysqli->query("SELECT id_Evento, nombre FROM evento ");
+                                        
+                                        while($datosS = $eventoS->fetch_assoc()){      
+                                            
+                                            echo "<option value=\"{$datosS['id_Evento']}\">{$datosS['nombre']}</option>";
+                                            
+                                            }
+                                            $mysqli->close();                                   
+                                        ?>
+                                    </select>
                                     <br>                         
                                     Usuario:<br>
-                                    <input type="text" name="usuarioStaff" placeholder="Digite el Nombre del usuario del Staff" required="">
+                                    <input type="text" name="usuarioStaff" placeholder="Escriba el usuario" required="">
                                     <br>
                                     Contraseña:<br>
-                                    <input type="password" name="contraseniaStaff" placeholder="Digite la contraseña" required="">
+                                    <input type="password" name="contraseniaStaff" placeholder="Escriba la contraseña" required="">
                                     <br><br>
-                                    <input type="submit" class="Guardar" value="Guardar">
+                                    <input type="submit" class="GuardarStaff" value="Guardar">
                     </form> 					
 				</div>
                 <div id="ActualizarEvento">
                     <form action="" id="frmActualizaEvento">       
                     Seleccione un Evento:<br>
-                      <select onchange="listarEvento();" name="eventoId" id="eventoId" style="width: 520px;">
+                      <select onchange="listarEvento();" name="eventoId" id="eventoId" style="width: 250px;">
                                     <?php
                                         require 'conexion.php';
 
@@ -165,7 +177,7 @@ function listarEvento() {
                 <div id="ActualizarCliente">
                 <form action="" id="frmActualizaCliente">
                       Seleccione un cliente:<br>
-                      <select onchange="listarCliente();" name="clienteId" id="clienteId" style="width: 520px;">
+                      <select onchange="listarCliente();" name="clienteId" id="clienteId" style="width: 250px;">
                                     <?php 
                                         require 'conexion.php';
 
