@@ -76,11 +76,11 @@ function listarStaff() {
                                     Nombre del Evento:<br>
                                     <input type="text" name="nombreEvento" placeholder="Escriba el nombre del evento" required="">
                                     <br>
-                                    Fecha del Evento:<br>
-                                    <input name="fechaEvento" type="date" max="2025-12-31" min=<?php $hoy=date("Y-m-d");?> required="">
-                                    <br>
                                     Descripcion del Evento:<br>
                                     <input type="text" name="descripcionEvento" placeholder="Escriba una descripción del evento" required="">
+                                    <br>
+                                    Fecha del Evento:<br>
+                                    <input style="width: 22%;" required="" name="fechaEvento" type="date" max="2025-12-31" min=<?php $hoy=date("Y-m-d");?>/>
                                     <br>
                                     Cliente del Evento:<br>
                                     <select name="clienteEvento" style="width: 250px;">
@@ -170,14 +170,14 @@ function listarStaff() {
                           Cliente del Evento:<br>
                           <input type="text" disabled="disabled" name="clienteEventoNuevo" id="clienteEventoNuevo" required="">
                           <br>
-                          Fecha del Evento:<br>
-                          <input name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" max="2025-12-31" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> required="">
-                          <br>
                           Nombre del Evento:<br>
                           <input type="text" name="nombreEventoNuevo" id="nombreEventoNuevo"  required="">
                           <br>
                           Descripcion del Evento:<br>
                           <input type="text" name="descripcionEventoNuevo" id="descripcionEventoNuevo"  required="">
+                          <br>
+                          Fecha del Evento:<br>
+                          <input style="width: 22%;" name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" required="" max="2025-12-31" min=<?php $hoy=date("Y-m-d"); echo $hoy;?>/>
                           <br><br>
                           <input type="submit" class="ActualizaEvento" value="Actualizar">
                 </form>
