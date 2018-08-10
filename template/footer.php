@@ -1,3 +1,3 @@
 <div id="footer">
-<img src="imagenes/Footer.jpg" style="width:80%;margin-left:9%;margin-right:9%; height:90%; padding:1%;"/>
+<img src="imagenes/Footer.jpg" style="width:70%;margin-left:14%;margin-right:14%; height:90%; padding:1%;"/>
 </div>
