@@ -34,7 +34,6 @@
         }
 
         .mensaje{
-            background-color: #14BD2F;
             position: absolute;
             top: 0;
             padding: 10px 0 ;
