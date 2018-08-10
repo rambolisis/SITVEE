@@ -59,5 +59,5 @@
 
 <body>
     <div id="header">
-    <img src="imagenes/Logo.png" style="width:30%; height:90%; padding:1%; float:left;"/>
+    <img src="imagenes/Logo.png" style="width:30%; height:90%; padding:1%; float:right;"/>
     </div>
