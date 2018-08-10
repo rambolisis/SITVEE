@@ -16,7 +16,18 @@
 <link rel="stylesheet" href="./css/style.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script type="text/javascript">
-
+function listarCliente() {
+    var cadena = document.getElementById("clienteId").value;
+    var lista = cadena.split(",");
+    var nombre = lista[1];
+    var correo = lista[2];
+    var usuario = lista[3];
+    var clave = lista[4];
+    document.getElementById("nombreNuevo").value = nombre;
+    document.getElementById("correoNuevo").value = correo;
+    document.getElementById("usuarioNuevo").value = usuario;
+    document.getElementById("contraseniaNueva").value = clave;
+}
 </script>
 <script src="js/validar.js"></script>
 </head>
@@ -78,7 +89,7 @@
                       <input type="text" name="nombreCliente" placeholder="Escriba el nombre" required="">
                       <br>
                       Correo del cliente:<br>
-                      <input type="email" name="correoCliente" id="correoCliente" placeholder="Escriba el correo"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de correo invalido" required="">
+                      <input type="email" name="correoCliente" placeholder="Escriba el correo"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de correo invalido" required="">
                       <br>
                       Usuario:<br>
                       <input type="text" name="usuarioCliente" placeholder="Escriba el usuario" required="">
@@ -114,8 +125,8 @@
 
                                         $clientes = $mysqli->query("SELECT * FROM evento ");
                                         
-                                        while($datos = $clientes->fetch_assoc()){      
-                                            
+
+                                        while($datos = $clientes->fetch_assoc()){
                                             echo "<option value=\"{$datos['id_Evento']}\">{$datos['nombre']}</option>";
                                             
                                             }
@@ -124,7 +135,7 @@
                                     </select>
                                     <br>                   
                           Usuario del Evento:<br>
-                          <input type="text" name="usuarioEventoNuevo"  required="">
+                          <input type="text" name="usuarioEventoNuevo" required="">
                           <br>
                           Fecha del Evento:<br>
                           <input name="fechaEventoNueva" type="date" max="2025-12-31" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> required="">
@@ -136,18 +147,20 @@
           </form>
                 </div>
                 <div id="ActualizarCliente">
-                <form action="" id="frmActualizaCliente">    
+                <form action="" id="frmActualizaCliente">
                       Seleccione un cliente:<br>
-                      <select name="clienteId" style="width: 520px;">
+                      <select onchange="listarCliente();" name="clienteId" id="clienteId" style="width: 520px;">
                                     <option value=""></option>
                                     <?php 
                                         require 'conexion.php';
 
-                                        $clientes = $mysqli->query("SELECT * FROM cliente ");
+                                        $Actualizaclientes = $mysqli->query("SELECT * FROM cliente ");
                                         
-                                        while($datos = $clientes->fetch_assoc()){      
-                                            
-                                            echo "<option value=\"{$datos['id_Cliente']}\">{$datos['nombre']}</option>";
+                                        while($datosC = $Actualizaclientes->fetch_assoc()){
+                                            $id = $datosC['id_Usuario'];
+                                            $usuario = $mysqli->query("SELECT usuario,clave FROM usuario WHERE id_Usuario = '$id' ");
+                                            $datosU = $usuario->fetch_assoc();
+                                            echo "<option value=\"{$datosC['id_Cliente']},{$datosC['nombre']},{$datosC['correo']},{$datosU['usuario']},{$datosU['clave']}\">{$datosC['nombre']}</option>";
                                             
                                             }
                                             $mysqli->close();                                   
@@ -155,18 +168,18 @@
                                     </select>
                                     <br>      
                       Nombre del Cliente:<br>
-                      <input type="text" name="nombreNuevo" required="">
+                      <input  type="text" name="nombreNuevo" id="nombreNuevo" required="">
                       <br>
                       Correo del Cliente:<br>
-                      <input type="email" name="Correo" id="correoNuevo"  required="">
+                      <input  type="email" name="correoNuevo" id="correoNuevo" required="">
                       <br>
-                      Nombre de Usuario:<br>
-                      <input type="text" name="usuarioNuevo"  required="">
+                      Usuario:<br>
+                      <input  type="text" name="usuarioNuevo" id="usuarioNuevo"  required="">
                       <br>
                       Contraseña:<br>
-                      <input type="password" name="contraseniaNueva" required="">
+                      <input  type="text" name="contraseniaNueva" id="contraseniaNueva" required="">
                       <br><br>
-                      <input type="submit" class="Guardar" value="Actualizar">
+                      <input type="submit" class="ActualizarCliente" value="Actualizar">
                     </form> 
                 </div>
                 <div id="ActualizarStaff">
