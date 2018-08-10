@@ -17,7 +17,7 @@
         }
 
         #footer {
-            background: #5f5a5a;
+            background: #7F7F7F;
             position: absolute;
             width:100%;
             height:18%;
@@ -59,4 +59,5 @@
 
 <body>
     <div id="header">
+    <img src="imagenes/Logo.png" style="width:30%; height:90%; padding:1%; float:left;"/>
     </div>
