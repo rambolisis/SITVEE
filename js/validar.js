@@ -155,3 +155,35 @@ jQuery(document).on('submit','#frmNuevoEvento',function(event){
         console.log("complete");
     });
 });
+
+//Ajax para el mensaje de actualizar evento
+jQuery(document).on('submit','#frmActualizaEvento',function(event){
+    event.preventDefault();
+
+    jQuery.ajax({
+        url: 'actualizaEvento.php',
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        beforeSend: function(){           
+        }
+    })
+    .done(function(respuesta){
+        console.log(respuesta);
+        if(!respuesta.mensaje){
+            $('#frmActualizaEvento').trigger("reset");
+            $("span").text("Evento actualizado exitosamente");
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
+            
+        }
+    })
+    .fail(function(resp){
+        console.log(resp.responseText);
+    })
+    .always(function(){
+        console.log("complete");
+    });
+});

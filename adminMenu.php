@@ -28,6 +28,18 @@ function listarCliente() {
     document.getElementById("usuarioNuevo").value = usuario;
     document.getElementById("contraseniaNueva").value = clave;
 }
+function listarEvento() {
+    var cadena = document.getElementById("eventoId").value;
+    var lista = cadena.split(",");
+    var nombreEvento = lista[1];
+    var fecha = lista[2];
+    var descripcion = lista[3];
+    var nombreCliente = lista[4];
+    document.getElementById("nombreEventoNuevo").value = nombreEvento;
+    document.getElementById("fechaEventoNuevo").value = fecha;
+    document.getElementById("descripcionEventoNuevo").value = descripcion;
+    document.getElementById("clienteEventoNuevo").value = nombreCliente;
+}
 </script>
 <script src="js/validar.js"></script>
 </head>
@@ -116,41 +128,44 @@ function listarCliente() {
                     </form> 					
 				</div>
                 <div id="ActualizarEvento">
-                    <form class="formulario" action="" method="post">       
+                    <form action="" id="frmActualizaEvento">       
                     Seleccione un Evento:<br>
-                      <select name="eventoId" style="width: 520px;">
-                                    <option value=""></option>
-                                    <?php 
+                      <select onchange="listarEvento();" name="eventoId" id="eventoId" style="width: 520px;">
+                                    <?php
                                         require 'conexion.php';
 
-                                        $clientes = $mysqli->query("SELECT * FROM evento ");
+                                        $Actualizaeventos = $mysqli->query("SELECT * FROM evento ");
                                         
-
-                                        while($datos = $clientes->fetch_assoc()){
-                                            echo "<option value=\"{$datos['id_Evento']}\">{$datos['nombre']}</option>";
+                                        while($datosE = $Actualizaeventos->fetch_assoc()){
+                                            $id = $datosE['id_Cliente'];
+                                            $cliente = $mysqli->query("SELECT nombre FROM cliente WHERE id_Cliente = '$id' ");
+                                            $datosC = $cliente->fetch_assoc();
+                                            echo "<option value=\"{$datosE['id_Evento']},{$datosE['nombre']},{$datosE['fecha']},{$datosE['descripcion']},{$datosC['nombre']}\">{$datosE['nombre']}</option>";
                                             
                                             }
-                                            $mysqli->close();                                   
+                                            $mysqli->close();                               
                                         ?>
                                     </select>
                                     <br>                   
-                          Usuario del Evento:<br>
-                          <input type="text" name="usuarioEventoNuevo" required="">
+                          Cliente del Evento:<br>
+                          <input type="text" disabled="disabled" name="clienteEventoNuevo" id="clienteEventoNuevo" required="">
                           <br>
                           Fecha del Evento:<br>
-                          <input name="fechaEventoNueva" type="date" max="2025-12-31" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> required="">
+                          <input name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" max="2025-12-31" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> required="">
                           <br>
                           Nombre del Evento:<br>
-                          <input type="text" name="nombreEventoNuevo"  required="">
+                          <input type="text" name="nombreEventoNuevo" id="nombreEventoNuevo"  required="">
+                          <br>
+                          Descripcion del Evento:<br>
+                          <input type="text" name="descripcionEventoNuevo" id="descripcionEventoNuevo"  required="">
                           <br><br>
-                          <input type="submit" class="Guardar" value="Actualizar">
-          </form>
+                          <input type="submit" class="ActualizaEvento" value="Actualizar">
+                </form>
                 </div>
                 <div id="ActualizarCliente">
                 <form action="" id="frmActualizaCliente">
                       Seleccione un cliente:<br>
                       <select onchange="listarCliente();" name="clienteId" id="clienteId" style="width: 520px;">
-                                    <option value=""></option>
                                     <?php 
                                         require 'conexion.php';
 
