@@ -12,16 +12,15 @@
 
         #header {
             background: #c33838;
-            padding: 45px;
-            padding-left: 1491px;
+            width:100%;
+            height:18%;
         }
 
         #footer {
             background: #5f5a5a;
             position: absolute;
-            top: 668px;
-            padding: 45px;
-            padding-left: 1491px;
+            width:100%;
+            height:18%;
         }
 
         .error{
