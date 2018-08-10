@@ -7,22 +7,28 @@
     <style type="text/css">
         body {
             background: #d2cdcd;
+            
         }
 
         #header {
             background: #c33838;
-            height:18%;
+            padding: 45px;
+            padding-left: 1491px;
         }
 
         #footer {
             background: #5f5a5a;
-            height:18%;
+            position: absolute;
+            top: 668px;
+            padding: 45px;
+            padding-left: 1491px;
         }
 
         .error{
             background-color: #E74F4F;
             position: absolute;
-            top: 0;
+            top: 90;
+            left: 0px;
             padding: 10px 0 ;
             border-radius:  0 0 5px 5px;
             color: #fff;
@@ -32,9 +38,10 @@
         }
 
         .mensaje{
-            background-color: #14BD2F;
+            float:left;
             position: absolute;
-            top: 0;
+            top: 90;
+            left: 0px;
             padding: 10px 0 ;
             border-radius:  0 0 5px 5px;
             color: #fff;
@@ -48,6 +55,7 @@
             font-size: 16px;
         }
     </style>
+
 </head>
 
 <body>
