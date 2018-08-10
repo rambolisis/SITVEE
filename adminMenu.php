@@ -211,20 +211,34 @@ function listarEvento() {
                 </div>
                 <div id="ActualizarStaff">
                     <form class="formulario" action="" method="post">    
-                                    Buscar Usuario:<br>
-                                    <input type="search" id="buscarUsuarioStaff" name="buscarUsuarioStaff">
-                                    <button>Buscar</button>    
-                                    <br>                         
+                                    Seleccione un Usuario:<br>
+                                    <select name="staffId" style="width: 250px;">
+                                    <?php 
+                                        require 'conexion.php';
+
+                                        $staff = $mysqli->query("SELECT * FROM staff ");
+                                        
+                                        while($datosS = $staff->fetch_assoc()){      
+                                            $id = $datosS['id_Usuario'];
+                                            $usuarioS = $mysqli->query("SELECT usuario,clave FROM usuario WHERE id_Usuario = '$id' ");
+                                            $datosU = $usuarioS->fetch_assoc();
+                                            echo "<option value=\"{$datosU['id_Usuario']}\">{$datosU['usuario']}</option>";
+                                            
+                                            }
+                                            $mysqli->close();                                   
+                                        ?>
+                                    </select>
+                                    <br>                        
                                     Usuario:<br>
-                                    <input type="text" name="usuarioStaff" placeholder="Digite el Nombre del usuario del Staff" required="">
+                                    <input type="text" name="usuarioStaff" required="">
                                     <br>
                                     Contraseña:<br>
-                                    <input type="password" name="contraseniaStaff" placeholder="Digite la contraseña" required="">
+                                    <input type="password" name="contraseniaStaff" required="">
                                     <br>
                                     Evento:<br>
-                                    <input type="text" name="Evento" placeholder="Digite el Nombre del Evento" required="">
+                                    <input type="text" name="Evento" required="">
                                     <br><br>
-                                    <input type="submit" class="Guardar" value="Guardar">
+                                    <input type="submit" class="ActualizaStaff" value="Guardar">
                     </form> 					
 				</div>
                 <div id="Administrador">
