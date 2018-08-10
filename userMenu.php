@@ -10,15 +10,10 @@
         }
  ?>
 <title>Usuario</title>
+
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link rel="stylesheet" href="./css/style.css">
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<script src="js/lectorCsv.js" type="text/javascript"></script>
-<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="js/beneficios.js" type="text/javascript"></script>
-<script src="js/menu2.js" type="text/javascript"></script>
+
  </head>
 <?php include('template/header.php'); ?>
             <div style="height: 64%">
@@ -55,7 +50,7 @@
                     </tr>
                 </table>
                 <hr />
-            <button onclick="Enviar();" class="btn btn-success" type="button">Enviar</button>
+            <button onclick="Enviar2();" class="btn btn-success" type="button">Enviar</button>
 		</div>
 		<div id="busqueda" style="display: none;">
 			<h1>Por Favor adjunte un archivo.csv</h1>
@@ -85,5 +80,10 @@
 			</div>
     	    </div>
             <?php include('template/footer.php'); ?>
+			
+			<script src="js/jquery-3.3.1.min.js"></script>
+			<script src="js/entradasBeneficios.js" type="text/javascript"></script>
+			<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+			<script src="js/bootstrap.min.js" type="text/javascript"></script>
     </body>
 </html>
