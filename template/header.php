@@ -7,24 +7,28 @@
     <style type="text/css">
         body {
             background: #d2cdcd;
+            
         }
 
         #header {
             background: #c33838;
-            padding-top: 45px;
-            padding-bottom: 45px;
+            padding: 45px;
+            padding-left: 1491px;
         }
 
         #footer {
             background: #5f5a5a;
-            padding-top: 92px;
-            padding-bottom: 92px;
+            position: absolute;
+            top: 668px;
+            padding: 45px;
+            padding-left: 1491px;
         }
 
         .error{
             background-color: #E74F4F;
             position: absolute;
-            top: 0;
+            top: 90;
+            left: 0px;
             padding: 10px 0 ;
             border-radius:  0 0 5px 5px;
             color: #fff;
@@ -34,8 +38,10 @@
         }
 
         .mensaje{
+            float:left;
             position: absolute;
-            top: 0;
+            top: 90;
+            left: 0px;
             padding: 10px 0 ;
             border-radius:  0 0 5px 5px;
             color: #fff;
@@ -49,6 +55,7 @@
             font-size: 16px;
         }
     </style>
+
 </head>
 
 <body>
