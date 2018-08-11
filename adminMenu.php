@@ -80,7 +80,7 @@ function listarStaff() {
                                     <input type="text" name="descripcionEvento" placeholder="Escriba una descripción del evento" required="">
                                     <br>
                                     Fecha del Evento:<br>
-                                    <input style="width: 22%;" required="" name="fechaEvento" type="date" max="2025-12-31" min=<?php $hoy=date("Y-m-d");?>/>
+                                    <input style="width: 13%;" required="" name="fechaEvento" type="date" max="2025-12-31" min=<?php $hoy=date("Y-m-d");?>/>
                                     <br>
                                     Cliente del Evento:<br>
                                     <select name="clienteEvento" style="width: 250px;">
@@ -99,7 +99,7 @@ function listarStaff() {
                                     </select>
                                     <br>
                                     <br>
-                                    <input type="submit" class="GuardarEvento" value="Guardar">
+                                    <input style="width: 13%;" type="submit" class="GuardarEvento" value="Guardar">
                                     
                     </form> 					
 				</div>
@@ -117,7 +117,7 @@ function listarStaff() {
                       Contraseña:<br>
                       <input type="password" name="contraseniaCliente" placeholder="Escriba la contraseña" required="">
                       <br><br>
-                      <input type="submit" class="GuardarCliente" value="Guardar">
+                      <input style="width: 13%;" type="submit" class="GuardarCliente" value="Guardar">
                     </form> 
                 </div>
                 <div id="NuevoStaff">
@@ -144,7 +144,7 @@ function listarStaff() {
                                     Contraseña:<br>
                                     <input type="password" name="contraseniaStaff" placeholder="Escriba la contraseña" required="">
                                     <br><br>
-                                    <input type="submit" class="GuardarStaff" value="Guardar">
+                                    <input style="width: 13%;" type="submit" class="GuardarStaff" value="Guardar">
                     </form> 					
 				</div>
                 <div id="ActualizarEvento">
@@ -177,9 +177,9 @@ function listarStaff() {
                           <input type="text" name="descripcionEventoNuevo" id="descripcionEventoNuevo"  required="">
                           <br>
                           Fecha del Evento:<br>
-                          <input style="width: 22%;" name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" required="" max="2025-12-31" min=<?php $hoy=date("Y-m-d"); echo $hoy;?>/>
+                          <input style="width: 13%;" name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" required="" max="2025-12-31" min=<?php $hoy=date("Y-m-d"); echo $hoy;?>/>
                           <br><br>
-                          <input type="submit" class="ActualizaEvento" value="Actualizar">
+                          <input style="width: 13%;" type="submit" class="ActualizaEvento" value="Actualizar">
                 </form>
                 </div>
                 <div id="ActualizarCliente">
@@ -214,7 +214,7 @@ function listarStaff() {
                       Contraseña:<br>
                       <input  type="text" name="contraseniaNueva" id="contraseniaNueva" required="">
                       <br><br>
-                      <input type="submit" class="ActualizarCliente" value="Actualizar">
+                      <input style="width: 13%;" type="submit" class="ActualizarCliente" value="Actualizar">
                     </form> 
                 </div>
                 <div id="ActualizarStaff">
@@ -246,7 +246,7 @@ function listarStaff() {
                                     Contraseña:<br>
                                     <input type="text" name="contraseniaStaff" id="contraseniaStaff" required="">
                                     <br><br>
-                                    <input type="submit" class="ActualizaStaff" value="Actualizar">
+                                    <input style="width: 13%;" type="submit" class="ActualizaStaff" value="Actualizar">
                     </form> 					
 				</div>
                 <div id="Administrador">
@@ -263,7 +263,7 @@ function listarStaff() {
                           Contraseña:<br>
                           <input type="password" name="contrasenia" placeholder="Escriba la contraseña" required="">
                           <br><br>
-                          <input type="submit" class="GuardarAdministrador" value="Guardar">
+                          <input style="width: 13%;" type="submit" class="GuardarAdministrador" value="Guardar">
                     </form>
                 </div>
                 <div id="CerrarSesion">

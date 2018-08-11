@@ -39,7 +39,7 @@
                             <label>Digite la cantidad por persona:</label>
                             <input type="number" id="cantidad" class="form-control" type="text" placeholder="Cantidad..." style="width: 90%">
                         </p>
-                        <button id="adicionar" class="btn btn-success" type="button">Añadir</button>
+                        <button style="width: 13%;" id="adicionar" class="btn btn-success" type="button">Añadir</button>
                     </div>
                 </form>
                 <table id="mytable" class="table table-bordered table-hover ">
@@ -50,7 +50,7 @@
                     </tr>
                 </table>
                 <hr />
-            <button onclick="Enviar2();" class="btn btn-success" type="button">Enviar</button>
+            <button style="width: 13%;" onclick="Enviar2();" class="btn btn-success" type="button">Enviar</button>
 		</div>
 		<div id="busqueda" style="display: none;">
 			<h1>Por Favor adjunte un archivo.csv</h1>
@@ -75,7 +75,7 @@
     		</table>
 			<br>
 			</div>
-			<input id="confirmar" style="width: 30%; display: none;" type="button" value="Confirmar" onclick="Enviar();"  />
+			<input id="confirmar" style="width: 13%; display: none;" type="button" value="Confirmar" onclick="Enviar();"  />
 			</div>
 			</div>
     	    </div>
