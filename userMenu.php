@@ -41,6 +41,7 @@ if (isset($_SESSION['usuario'])) {
                         <button style="width: 13%;" id="adicionar" class="btn btn-success" type="button">Añadir</button>
                     </div>
                 </form>
+				<div id="tablaBeneficios" style="height:250px; width:100%; overflow-y:scroll;">
                 <table id="mytable" class="table table-bordered table-hover ">
                     <tr>
                         <th>Beneficios</th>
@@ -49,6 +50,7 @@ if (isset($_SESSION['usuario'])) {
                     </tr>
                 </table>
                 <hr />
+				</div>
             <button style="width: 13%;margin:1%;" onclick="Enviar2();" class="btn btn-success" type="button">Enviar</button>
 			<button style="width: 13%;float:left;margin:1%;" id="regresar" class="btn btn-success" type="button">Regresar</button>
 		</div>
