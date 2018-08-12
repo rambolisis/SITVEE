@@ -91,26 +91,30 @@ $().ready(function () {
 
     $('#ImportarCSV').click(function (evento) {
         $('#busqueda').show();
+        $('#table-data').empty();
+        $('#divTabla').hide();
+        ListaEntradas.Clear();
+        $("#confirmar").hide();
+        $("#fila").hide();
         $('#beneficiosUser').hide();
     });
 
-    $('#confirmar').click(function (evento) {
-        if (ListaEntradas.get().length > 0) {
-            $('#busqueda').hide();
-            $('#beneficiosUser').show();
-        } else {
-            $("#divTabla").hide();
-        }
-    });
+    
 });
 
 function hideRow() {
+    var Temp = ListaEntradas.getJson();
     var total = ListaEntradas.get().length - 1;
     for (var index = total; index >= 0; index--) {
         var borrar = document.getElementById("ocultar" + index).checked;
         if (!borrar)
             ListaEntradas.remove(index);
     }
+    if (ListaEntradas.get().length < 1) {
+        ListaEntradas.setEntradas(JSON.parse(Temp));
+        return false;
+    }
+    return true;
 }
 
 function GuardarEntrada(columns) {
@@ -119,13 +123,13 @@ function GuardarEntrada(columns) {
 }
 
 function Enviar() {
-    hideRow();
-    if (ListaEntradas.get().length < 0) {
-        $('#table-data').empty();
-        ListaEntradas.Clear();
-        $("#confirmar").hide();
-        $("#fila").hide();
+    var estado = hideRow();
+    if (!estado) {
         alert("Tienes que ingresar el archivo para Continuar\nY tienes que seleccionar algún empleado\nIngrese sus datos de nuevo");
+    }
+    else{
+        $('#busqueda').hide();
+        $('#beneficiosUser').show();
     }
 }
 
