@@ -26,7 +26,7 @@
         .error{
             background-color: #E74F4F;
             position: absolute;
-            top: 90;
+            top: 135px;
             left: 0px;
             padding: 10px 0 ;
             border-radius:  0 0 5px 5px;
@@ -39,7 +39,7 @@
         .mensaje{
             float:left;
             position: absolute;
-            top: 90;
+            top: 135px;
             left: 0px;
             padding: 10px 0 ;
             border-radius:  0 0 5px 5px;
