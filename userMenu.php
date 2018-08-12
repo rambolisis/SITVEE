@@ -1,21 +1,21 @@
 <?php
-    SESSION_START();
+SESSION_START();
 
-    if(isset($_SESSION['usuario'])){
-            if($_SESSION['usuario']['rol'] != "Usuario"){
-                header("Location: adminMenu.php");
-            }
-        }else{
-            header('Location: index.php');
-        }
- ?>
+if (isset($_SESSION['usuario'])) {
+    if ($_SESSION['usuario']['rol'] != "Usuario") {
+        header("Location: adminMenu.php");
+    }
+} else {
+    header('Location: index.php');
+}
+?>
 <title>Usuario</title>
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="./css/style.css">
 
  </head>
-<?php include('template/header.php'); ?>
+<?php include 'template/header.php';?>
             <div style="height: 64%">
             	<div class="vertical-menu">
 				  <a style="height: 16.66%; padding: 10%;" id="Home">Inicio</a>
@@ -25,7 +25,7 @@
 				  <a style="height: 16.66%; padding: 10%;" id="ImportarCSV">Importar CSV</a>
 				  <a style="height: 16.66%; padding: 10%;" href="salir.php">Cerrar Sesion</a>
 			</div>
-			<!--<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre']?></h1>-->
+			<!--<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre'] ?></h1>-->
 			<div class="container" id="container" style="widht:85%;heigth:97%; padding:1%;">
 		<!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
 		<div id="beneficiosUser" style="display: none;">
@@ -56,7 +56,7 @@
 			<h1>Por Favor adjunte un archivo.csv</h1>
 			<br>
 			<div class="custom-file">
-					<input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;">
+					<input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;" name="Buscar">
 					<button class="btn btn-outline-secondary" type="button" id="viewfile">Cargar</button>
 			</div>
         <div class="input-group mt-2 mb-2" id="divTabla" style="height:250px; width:100%; display: none;overflow-y:scroll; ">
@@ -79,8 +79,8 @@
 			</div>
 			</div>
     	    </div>
-            <?php include('template/footer.php'); ?>
-			
+            <?php include 'template/footer.php';?>
+
 			<script src="js/jquery-3.3.1.min.js"></script>
 			<script src="js/entradasBeneficios.js" type="text/javascript"></script>
 			<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
