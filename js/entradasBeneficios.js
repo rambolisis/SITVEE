@@ -217,3 +217,7 @@ function ListaBeneficios() {
         proto.prototypemethodsset = true;
     }
 }
+$('#regresar').click(function (evento) {
+    $('#beneficiosUser').hide();
+    $('#busqueda').show();
+});

@@ -31,13 +31,12 @@ if (isset($_SESSION['usuario'])) {
 		<div id="beneficiosUser" style="display: none;">
 			<form>
                     <div class="form-group">
-                        <p style="float:left;">
-                            <label>Digite sus Beneficios:</label>
-                            <input id="beneficio" class="form-control" type="text" placeholder="Beneficio..." style="width: 90%" required="" />
+                        <p style="float:left;width:40%;">
+                            <label>Digite sus Beneficios:<input id="beneficio" class="form-control" type="text" placeholder="Beneficio..." style="width: 50%;float:right" required="" /></label>
                         </p>
-                        <p style="float:left; ">
-                            <label>Digite la cantidad por persona:</label>
-                            <input type="number" id="cantidad" class="form-control" type="text" placeholder="Cantidad..." style="width: 90%">
+                        <p style="float:left;width:40%; ">
+                            <label>Digite la cantidad por persona:<input type="number" id="cantidad" class="form-control" type="text" placeholder="Cantidad..." style="width: 40%;float:right"/></label>
+                            
                         </p>
                         <button style="width: 13%;" id="adicionar" class="btn btn-success" type="button">Añadir</button>
                     </div>
@@ -50,7 +49,8 @@ if (isset($_SESSION['usuario'])) {
                     </tr>
                 </table>
                 <hr />
-            <button style="width: 13%;" onclick="Enviar2();" class="btn btn-success" type="button">Enviar</button>
+            <button style="width: 13%;margin:1%;" onclick="Enviar2();" class="btn btn-success" type="button">Enviar</button>
+			<button style="width: 13%;float:left;margin:1%;" id="regresar" class="btn btn-success" type="button">Regresar</button>
 		</div>
 		<div id="busqueda" style="display: none;">
 			<h1>Por Favor adjunte un archivo.csv</h1>
