@@ -65,19 +65,30 @@ For using the enviroment to see the code running:
 
 * **Setting up the database**
 
-This process will provide you the steps for setting up a copy of the database needed for SITVEE to work
+This process will provide you the steps for setting up a local copy of the database needed for SITVEE to work
 
 ```
 1-In the setting up of the PHP enviroment you already have the MySQL server running
 2-Open the web browser
-3-Type in the url 'http://localhost/phpmyadmin/'
+3-Type in the url 'http://localhost/phpmyadmin/', this will open the data base administrator
+4-In the administration page create a new database named 'sitvee'
+5-When the data base is created, go to the 'Import' option in the menu bar
+6-Select the 'Choose file' option in the opening window
+7-Search for the sitveeBackup.sql backup file included in the repository (if you cloned it to the xampp folder, the backup file will be in C:/xampp/htdocs/SITVEE) and import it
+8-Go back to phpMyAdmin home page
+9-In the menu bar select the 'User accounts' option
+10-In this page select the 'Add user account' option
+11-Put a user name and a password, it is important to put this information into the 'conexion.php' file you have in your local repository
+12-Put the host name as 'Local'
+13-Select the 'Select All' option in the 'Global permmisions' field
+14-Press the 'Continue' button and now you have your local database for working with the enviroment
 ```
 
 ## Deployment
 
 For deploying this project on a live system you will need to add the files that are into the master branch into the [File Manager](https://files.000webhost.com/) of the host application
 
-The database is already created into the host and the installing steps includes making a data base that is equals to the one in production for not havin the conections changing
+The database is already created into the host just make sure to change the user and password values in the conexion.php file to ensure access to this database
 
 ## Built With
 
