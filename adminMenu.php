@@ -58,11 +58,11 @@ function listarStaff() {
         </div>
             <div style="height: 64%;">
             	<div class="vertical-menu" >
+                  <a id="NewClient" style="height: 12.5%;">Nuevo Cliente</a>
 				  <a style="height: 12.5%;" id="NewEvent">Nuevo Evento</a>
-				  <a id="NewClient" style="height: 12.5%;">Nuevo Cliente</a>
                   <a id="NewStaff" style="height: 12.5%;">Nuevo Staff</a>
-				  <a id="UpdateEvent" style="height: 12.5%;">Actualizar Evento</a>
                   <a id="UpdateClient" style="height: 12.5%;">Actualizar Cliente</a>
+				  <a id="UpdateEvent" style="height: 12.5%;">Actualizar Evento</a>
                   <a id="UpdateStaff" style="height: 12.5%;">Actualizar Staff</a>
                   <a id="Administrator"style="height: 12.5%;">Nuevo Administrador </a>
                   <a href='salir.php' style="height: 12.5%;">Cerrar Sesion</a>
