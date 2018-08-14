@@ -19,7 +19,7 @@ if (isset($_SESSION['usuario'])) {
             <div style="height: 64%">
             	<div class="vertical-menu">
 				  <a style="height: 33.33%; padding: 23%;" id="TutorialSitvee">Tutorial SITVEE</a>
-				  <a style="height: 33.33%; padding: 23%;" id="ImportarCSV">Importar CSV</a>
+				  <a style="height: 33.33%; padding: 23%;" id="ImportarCSV">Eventos</a>
 				  <a style="height: 33.33%; padding: 23%;" href="salir.php">Cerrar Sesion</a>
 			</div>
 			<!--<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre'] ?></h1>-->
@@ -58,7 +58,7 @@ if (isset($_SESSION['usuario'])) {
 					<input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;" name="Buscar">
 					<button class="btn btn-outline-secondary" type="button" id="viewfile">Cargar</button>
 			</div>
-        <div class="input-group mt-2 mb-2" id="divTabla" style="height:250px; width:100%; display: none;overflow-y:scroll; ">
+        <div class="input-group mt-2 mb-2" id="divTabla" style="height:240px; width:100%; display: none;overflow-y:scroll; ">
 			<table class="table table-hover table-dark" id="tableMain" style="width:100%;">
         		<thead>
             		<tr style="display: none;" id="fila">
@@ -72,7 +72,6 @@ if (isset($_SESSION['usuario'])) {
         		</thead>
         		<tbody id="table-data"></tbody>
     		</table>
-			<br>
 			</div>
 			<input id="confirmar" style="width: 13%; display: none;" type="button" value="Confirmar" onclick="Enviar();"  />
 			</div>

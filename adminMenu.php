@@ -80,7 +80,7 @@ function listarStaff() {
                                     <input type="text" name="descripcionEvento" placeholder="Escriba una descripción del evento" required="">
                                     <br>
                                     Fecha del Evento:<br>
-                                    <input style="width: 13%;" required="" name="fechaEvento" type="date" max="2025-12-31" min=<?php $hoy = date("Y-m-d");?>/>
+                                    <input style="width: 13%;" required="" name="fechaEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
                                     <br>
                                     Cliente del Evento:<br>
                                     <select name="clienteEvento" style="width: 250px;">
@@ -177,8 +177,7 @@ $mysqli->close();
                           <input type="text" name="descripcionEventoNuevo" id="descripcionEventoNuevo"  required="">
                           <br>
                           Fecha del Evento:<br>
-                          <input style="width: 13%;" name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" required="" max="2025-12-31" min=<?php $hoy = date("Y-m-d");
-echo $hoy;?>/>
+                          <input style="width: 13%;" name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" required="" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2025-12-31"/>
                           <br><br>
                           <input style="width: 13%;" type="submit" class="ActualizaEvento" value="Actualizar">
                 </form>

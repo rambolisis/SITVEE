@@ -142,26 +142,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     background: url(https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/calendar-16.png) center/80% no-repeat;
     opacity: 0.8
 }
-input[type="submit"]{
-background-color: #28a745;
-border-color: #28a745;
-display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-input[type="submit"]{
+input[type="submit"],#viewfile,#confirmar{
 background-color: #28a745;
 border-color: #28a745;
 display: inline-block;
@@ -181,7 +162,9 @@ display: inline-block;
     opacity:0.9;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-input[type="submit"]:hover{
+input[type="submit"]:hover,#viewfile:hover,#confirmar:hover{
     opacity:1;
-    
     }
+#viewfile,#confirmar{
+    color: white;
+}
