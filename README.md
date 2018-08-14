@@ -92,8 +92,8 @@ The database is already created into the host just make sure to change the user 
 
 ## Built With
 
-* [PHP](http://www.php.net/) - The web language used
-* [Javascript](https://www.javascript.com/) - The web language used
+* [PHP](http://www.php.net/)
+* [Javascript](https://www.javascript.com/)
 * [000webhost](https://www.000webhost.com/cpanel-login) - The hosting for the aplication
 
 
