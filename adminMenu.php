@@ -23,10 +23,18 @@ function listarCliente() {
     var correo = lista[2];
     var usuario = lista[3];
     var clave = lista[4];
+    if(cadena === "null"){
+    document.getElementById("nombreNuevo").value = "";
+    document.getElementById("correoNuevo").value = "";
+    document.getElementById("usuarioNuevo").value = "";
+    document.getElementById("contraseniaNueva").value = "";
+    }else{
     document.getElementById("nombreNuevo").value = nombre;
     document.getElementById("correoNuevo").value = correo;
     document.getElementById("usuarioNuevo").value = usuario;
     document.getElementById("contraseniaNueva").value = clave;
+    }
+    
 }
 function listarEvento() {
     var cadena = document.getElementById("eventoId").value;
@@ -85,17 +93,17 @@ function listarStaff() {
                                     Cliente del Evento:<br>
                                     <select name="clienteEvento" style="width: 250px;">
                                     <?php
-require 'conexion.php';
+                                        require 'conexion.php';
 
-$clientes = $mysqli->query("SELECT id_Cliente, nombre FROM cliente ");
+                                        $clientes = $mysqli->query("SELECT id_Cliente, nombre FROM cliente ");
 
-while ($datos = $clientes->fetch_assoc()) {
+                                        while ($datos = $clientes->fetch_assoc()) {
 
-    echo "<option value=\"{$datos['id_Cliente']}\">{$datos['nombre']}</option>";
+                                            echo "<option value=\"{$datos['id_Cliente']}\">{$datos['nombre']}</option>";
 
-}
-$mysqli->close();
-?>
+                                        }
+                                        $mysqli->close();
+                                        ?>
                                     </select>
                                     <br>
                                     <br>
@@ -125,17 +133,17 @@ $mysqli->close();
                                     Seleccione un Evento:<br>
                                     <select name="staffEvento" style="width: 250px;">
                                     <?php
-require 'conexion.php';
+                                        require 'conexion.php';
 
-$eventoS = $mysqli->query("SELECT id_Evento, nombre FROM evento ");
+                                        $eventoS = $mysqli->query("SELECT id_Evento, nombre FROM evento ");
 
-while ($datosS = $eventoS->fetch_assoc()) {
+                                        while ($datosS = $eventoS->fetch_assoc()) {
 
-    echo "<option value=\"{$datosS['id_Evento']}\">{$datosS['nombre']}</option>";
+                                            echo "<option value=\"{$datosS['id_Evento']}\">{$datosS['nombre']}</option>";
 
-}
-$mysqli->close();
-?>
+                                        }
+                                        $mysqli->close();
+                                        ?>
                                     </select>
                                     <br>
                                     Usuario:<br>
@@ -152,19 +160,19 @@ $mysqli->close();
                     Seleccione un Evento:<br>
                       <select onchange="listarEvento();" name="eventoId" id="eventoId" style="width: 250px;">
                                     <?php
-require 'conexion.php';
+                                        require 'conexion.php';
 
-$Actualizaeventos = $mysqli->query("SELECT * FROM evento ");
+                                        $Actualizaeventos = $mysqli->query("SELECT * FROM evento ");
 
-while ($datosE = $Actualizaeventos->fetch_assoc()) {
-    $id = $datosE['id_Cliente'];
-    $cliente = $mysqli->query("SELECT nombre FROM cliente WHERE id_Cliente = '$id' ");
-    $datosC = $cliente->fetch_assoc();
-    echo "<option value=\"{$datosE['id_Evento']},{$datosE['nombre']},{$datosE['fecha']},{$datosE['descripcion']},{$datosC['nombre']}\">{$datosE['nombre']}</option>";
+                                        while ($datosE = $Actualizaeventos->fetch_assoc()) {
+                                            $id = $datosE['id_Cliente'];
+                                            $cliente = $mysqli->query("SELECT nombre FROM cliente WHERE id_Cliente = '$id' ");
+                                            $datosC = $cliente->fetch_assoc();
+                                            echo "<option value=\"{$datosE['id_Evento']},{$datosE['nombre']},{$datosE['fecha']},{$datosE['descripcion']},{$datosC['nombre']}\">{$datosE['nombre']}</option>";
 
-}
-$mysqli->close();
-?>
+                                        }
+                                        $mysqli->close();
+                                        ?>
                                     </select>
                                     <br>
                           Cliente del Evento:<br>
@@ -186,20 +194,20 @@ $mysqli->close();
                 <form action="" id="frmActualizaCliente">
                       Seleccione un cliente:<br>
                       <select onchange="listarCliente();" name="clienteId" id="clienteId" style="width: 250px;">
+                                    <option value="null"></option>
                                     <?php
-require 'conexion.php';
+                                        require 'conexion.php';
+                                        $Actualizaclientes = $mysqli->query("SELECT * FROM cliente ");
 
-$Actualizaclientes = $mysqli->query("SELECT * FROM cliente ");
+                                        while ($datosC = $Actualizaclientes->fetch_assoc()) {
+                                            $id = $datosC['id_Usuario'];
+                                            $usuario = $mysqli->query("SELECT usuario,clave FROM usuario WHERE id_Usuario = '$id' ");
+                                            $datosU = $usuario->fetch_assoc();
+                                            echo "<option value=\"{$datosC['id_Cliente']},{$datosC['nombre']},{$datosC['correo']},{$datosU['usuario']},{$datosU['clave']}\">{$datosC['nombre']}</option>";
 
-while ($datosC = $Actualizaclientes->fetch_assoc()) {
-    $id = $datosC['id_Usuario'];
-    $usuario = $mysqli->query("SELECT usuario,clave FROM usuario WHERE id_Usuario = '$id' ");
-    $datosU = $usuario->fetch_assoc();
-    echo "<option value=\"{$datosC['id_Cliente']},{$datosC['nombre']},{$datosC['correo']},{$datosU['usuario']},{$datosU['clave']}\">{$datosC['nombre']}</option>";
-
-}
-$mysqli->close();
-?>
+                                        }
+                                        $mysqli->close();
+                                        ?>
                                     </select>
                                     <br>
                       Nombre del Cliente:<br>
@@ -222,22 +230,22 @@ $mysqli->close();
                                     Seleccione un Evento:<br>
                                     <select onchange="listarStaff();" name="staffId" id="staffId" style="width: 250px;">
                                     <?php
-require 'conexion.php';
+                                        require 'conexion.php';
 
-$staff = $mysqli->query("SELECT * FROM staff ");
+                                        $staff = $mysqli->query("SELECT * FROM staff ");
 
-while ($datosS = $staff->fetch_assoc()) {
-    $idU = $datosS['id_Usuario'];
-    $idE = $datosS['id_Evento'];
-    $usuarioS = $mysqli->query("SELECT id_Usuario,usuario,clave FROM usuario WHERE id_Usuario = '$idU' ");
-    $datosU = $usuarioS->fetch_assoc();
-    $EventoS = $mysqli->query("SELECT id_Evento,nombre FROM evento WHERE id_Evento = '$idE' ");
-    $datosE = $EventoS->fetch_assoc();
-    echo "<option value=\"{$datosS['id_Staff']},{$datosS['id_Usuario']},{$datosS['id_Evento']},{$datosU['usuario']},{$datosU['clave']}\">{$datosE['nombre']}</option>";
+                                        while ($datosS = $staff->fetch_assoc()) {
+                                            $idU = $datosS['id_Usuario'];
+                                            $idE = $datosS['id_Evento'];
+                                            $usuarioS = $mysqli->query("SELECT id_Usuario,usuario,clave FROM usuario WHERE id_Usuario = '$idU' ");
+                                            $datosU = $usuarioS->fetch_assoc();
+                                            $EventoS = $mysqli->query("SELECT id_Evento,nombre FROM evento WHERE id_Evento = '$idE' ");
+                                            $datosE = $EventoS->fetch_assoc();
+                                            echo "<option value=\"{$datosS['id_Staff']},{$datosS['id_Usuario']},{$datosS['id_Evento']},{$datosU['usuario']},{$datosU['clave']}\">{$datosE['nombre']}</option>";
 
-}
-$mysqli->close();
-?>
+                                        }
+                                        $mysqli->close();
+                                        ?>
                                     </select>
                                     <br>
                                     Usuario:<br>

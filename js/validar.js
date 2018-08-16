@@ -77,15 +77,21 @@ jQuery(document).on('submit','#frmActualizaCliente',function(event){
     .done(function(respuesta){
         console.log(respuesta);
         if(!respuesta.mensaje){
-            $('#frmActualizaCliente').trigger("reset");
             $("span").text("Cliente actualizado exitosamente");
             $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
                 $('.mensaje').slideUp('slow');
             },3000);
-            
+        }else{
+            $("span").text("Porfavor seleccione un cliente");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
         }
+        $('#frmActualizaCliente').trigger("reset");
     })
     .fail(function(resp){
         console.log(resp.responseText);
