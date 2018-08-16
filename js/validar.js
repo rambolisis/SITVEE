@@ -181,15 +181,21 @@ jQuery(document).on('submit','#frmActualizaEvento',function(event){
     .done(function(respuesta){
         console.log(respuesta);
         if(!respuesta.mensaje){
-            $('#frmActualizaEvento').trigger("reset");
             $("span").text("Evento actualizado exitosamente");
             $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
                 $('.mensaje').slideUp('slow');
             },3000);
-            
+        }else{
+            $("span").text("Porfavor seleccione un evento");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
         }
+        $('#frmActualizaEvento').trigger("reset");
     })
     .fail(function(resp){
         console.log(resp.responseText);
@@ -253,14 +259,21 @@ jQuery(document).on('submit','#frmActualizaStaff',function(event){
     .done(function(respuesta){
         console.log(respuesta);
         if(!respuesta.mensaje){
-            $('#frmActualizaStaff').trigger("reset");
             $("span").text("Staff actualizado exitosamente");
             $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
                 $('.mensaje').slideUp('slow');
             },3000); 
+        }else{
+            $("span").text("Porfavor seleccione un evento");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
         }
+        $('#frmActualizaStaff').trigger("reset");
     })
     .fail(function(resp){
         console.log(resp.responseText);

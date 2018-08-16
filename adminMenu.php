@@ -43,19 +43,30 @@ function listarEvento() {
     var fecha = lista[2];
     var descripcion = lista[3];
     var nombreCliente = lista[4];
+    if(cadena === "null"){
+    document.getElementById("nombreEventoNuevo").value = "";
+    document.getElementById("fechaEventoNuevo").value = "";
+    document.getElementById("descripcionEventoNuevo").value = "";
+    document.getElementById("clienteEventoNuevo").value = "";
+    }else{
     document.getElementById("nombreEventoNuevo").value = nombreEvento;
     document.getElementById("fechaEventoNuevo").value = fecha;
     document.getElementById("descripcionEventoNuevo").value = descripcion;
     document.getElementById("clienteEventoNuevo").value = nombreCliente;
+    }
 }
 function listarStaff() {
     var cadena = document.getElementById("staffId").value;
     var lista = cadena.split(",");
     var usuario = lista[3];
     var clave = lista[4];
+    if(cadena === "null"){
+    document.getElementById("usuarioStaff").value = "";
+    document.getElementById("contraseniaStaff").value = "";
+    }else{
     document.getElementById("usuarioStaff").value = usuario;
     document.getElementById("contraseniaStaff").value = clave;
-
+    }
 }
 </script>
 <script src="js/validar.js"></script>
@@ -159,6 +170,7 @@ function listarStaff() {
                     <form action="" id="frmActualizaEvento">
                     Seleccione un Evento:<br>
                       <select onchange="listarEvento();" name="eventoId" id="eventoId" style="width: 250px;">
+                                    <option value="null"></option>
                                     <?php
                                         require 'conexion.php';
 
@@ -229,6 +241,7 @@ function listarStaff() {
                     <form action="" id="frmActualizaStaff">
                                     Seleccione un Evento:<br>
                                     <select onchange="listarStaff();" name="staffId" id="staffId" style="width: 250px;">
+                                    <option value="null"></option>                                    
                                     <?php
                                         require 'conexion.php';
 
