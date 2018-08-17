@@ -83,6 +83,7 @@ jQuery(document).on('submit','#frmActualizaCliente',function(event){
             setTimeout(function(){
                 $('.mensaje').slideUp('slow');
             },3000);
+            setTimeout("location.href = 'adminMenu.php'",100);
         }else{
             $("span").text("Porfavor seleccione un cliente");
             $('.mensaje').css('background-color', '#E74F4F');

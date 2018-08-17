@@ -87,9 +87,6 @@ function listarStaff() {
                   <a href='salir.php' style="height: 12.5%;">Cerrar Sesion</a>
                 </div>
                 <!--<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre'] ?></h1>-->
-				<div id="Inicio">
-					<p> Inicio</p>
-				</div>
 				<div id="NuevoEvento">
                     <form action="" id="frmNuevoEvento">
                                     Nombre del Evento:<br>
@@ -100,9 +97,10 @@ function listarStaff() {
                                     <br>
                                     Fecha del Evento:<br>
                                     <input style="width: 13%;" required="" name="fechaEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
+                                    <br>                                    
                                     <br>
-                                    Cliente del Evento:<br>
                                     <select name="clienteEvento" style="width: 250px;">
+                                    <option value="null">Seleccione un cliente</option>
                                     <?php
                                         require 'conexion.php';
 
@@ -141,36 +139,35 @@ function listarStaff() {
                 </div>
                 <div id="NuevoStaff">
                     <form action="" id="frmNuevoStaff">
-                                    Seleccione un Evento:<br>
-                                    <select name="staffEvento" style="width: 250px;">
-                                    <?php
-                                        require 'conexion.php';
+                        <select name="staffEvento" style="width: 250px;">
+                            <option value="null">Seleccione un evento</option>
+                            <?php
+                                require 'conexion.php';
 
-                                        $eventoS = $mysqli->query("SELECT id_Evento, nombre FROM evento ");
+                                $eventoS = $mysqli->query("SELECT id_Evento, nombre FROM evento ");
 
-                                        while ($datosS = $eventoS->fetch_assoc()) {
+                                while ($datosS = $eventoS->fetch_assoc()) {
 
-                                            echo "<option value=\"{$datosS['id_Evento']}\">{$datosS['nombre']}</option>";
+                                    echo "<option value=\"{$datosS['id_Evento']}\">{$datosS['nombre']}</option>";
 
-                                        }
-                                        $mysqli->close();
-                                        ?>
-                                    </select>
-                                    <br>
-                                    Usuario:<br>
-                                    <input type="text" name="usuarioStaff" placeholder="Escriba el usuario" required="">
-                                    <br>
-                                    Contraseña:<br>
-                                    <input type="password" name="contraseniaStaff" placeholder="Escriba la contraseña" required="">
-                                    <br><br>
-                                    <input style="width: 13%;" type="submit" class="GuardarStaff" value="Guardar">
+                                }
+                                $mysqli->close();
+                                ?>
+                        </select>
+                        <br>
+                        Usuario:<br>
+                        <input type="text" name="usuarioStaff" placeholder="Escriba el usuario" required="">
+                        <br>
+                        Contraseña:<br>
+                        <input type="password" name="contraseniaStaff" placeholder="Escriba la contraseña" required="">
+                        <br><br>
+                        <input style="width: 13%;" type="submit" class="GuardarStaff" value="Guardar">
                     </form>
 				</div>
                 <div id="ActualizarEvento">
                     <form action="" id="frmActualizaEvento">
-                    Seleccione un Evento:<br>
                       <select onchange="listarEvento();" name="eventoId" id="eventoId" style="width: 250px;">
-                                    <option value="null"></option>
+                                    <option value="null">Seleccione un evento</option>
                                     <?php
                                         require 'conexion.php';
 
@@ -204,13 +201,11 @@ function listarStaff() {
                 </div>
                 <div id="ActualizarCliente">
                 <form action="" id="frmActualizaCliente">
-                      Seleccione un cliente:<br>
-                      <select onchange="listarCliente();" name="clienteId" id="clienteId" style="width: 250px;">
-                                    <option value="null"></option>
+                        <select onchange="listarCliente();" name="clienteId" id="clienteId" style="width: 250px;">
+                                    <option value="null">Seleccione un cliente</option>
                                     <?php
                                         require 'conexion.php';
                                         $Actualizaclientes = $mysqli->query("SELECT * FROM cliente ");
-
                                         while ($datosC = $Actualizaclientes->fetch_assoc()) {
                                             $id = $datosC['id_Usuario'];
                                             $usuario = $mysqli->query("SELECT usuario,clave FROM usuario WHERE id_Usuario = '$id' ");
@@ -219,7 +214,7 @@ function listarStaff() {
 
                                         }
                                         $mysqli->close();
-                                        ?>
+                                    ?>
                                     </select>
                                     <br>
                       Nombre del Cliente:<br>
@@ -239,14 +234,11 @@ function listarStaff() {
                 </div>
                 <div id="ActualizarStaff">
                     <form action="" id="frmActualizaStaff">
-                                    Seleccione un Evento:<br>
                                     <select onchange="listarStaff();" name="staffId" id="staffId" style="width: 250px;">
-                                    <option value="null"></option>                                    
+                                    <option value="null">Seleccione un evento</option>                                    
                                     <?php
                                         require 'conexion.php';
-
                                         $staff = $mysqli->query("SELECT * FROM staff ");
-
                                         while ($datosS = $staff->fetch_assoc()) {
                                             $idU = $datosS['id_Usuario'];
                                             $idE = $datosS['id_Evento'];
@@ -255,7 +247,6 @@ function listarStaff() {
                                             $EventoS = $mysqli->query("SELECT id_Evento,nombre FROM evento WHERE id_Evento = '$idE' ");
                                             $datosE = $EventoS->fetch_assoc();
                                             echo "<option value=\"{$datosS['id_Staff']},{$datosS['id_Usuario']},{$datosS['id_Evento']},{$datosU['usuario']},{$datosU['clave']}\">{$datosE['nombre']}</option>";
-
                                         }
                                         $mysqli->close();
                                         ?>
