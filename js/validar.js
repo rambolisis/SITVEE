@@ -49,9 +49,8 @@ jQuery(document).on('submit','#frmNuevoCliente',function(event){
             $("span").text("Cliente guardado exitosamente");
             $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
+            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+            setTimeout("location.href = 'adminMenu.php'",3000);
         }
     })
     .fail(function(resp){
@@ -80,10 +79,8 @@ jQuery(document).on('submit','#frmActualizaCliente',function(event){
             $("span").text("Cliente actualizado exitosamente");
             $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
-            setTimeout("location.href = 'adminMenu.php'",100);
+            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+            setTimeout("location.href = 'adminMenu.php'",3000);
         }else{
             $("span").text("Porfavor seleccione un cliente");
             $('.mensaje').css('background-color', '#E74F4F');
@@ -122,9 +119,8 @@ jQuery(document).on('submit','#frmNuevoAdministrador',function(event){
             $("span").text("Administrador guardado exitosamente");
             $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
+            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+            setTimeout("location.href = 'adminMenu.php'",3000);
         }
     })
     .fail(function(resp){
@@ -154,9 +150,8 @@ jQuery(document).on('submit','#frmNuevoEvento',function(event){
             $("span").text("Evento guardado exitosamente");
             $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
+            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+            setTimeout("location.href = 'adminMenu.php'",3000);
         }
     })
     .fail(function(resp){
@@ -185,9 +180,8 @@ jQuery(document).on('submit','#frmActualizaEvento',function(event){
             $("span").text("Evento actualizado exitosamente");
             $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
+            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+            setTimeout("location.href = 'adminMenu.php'",3000);
         }else{
             $("span").text("Porfavor seleccione un evento");
             $('.mensaje').css('background-color', '#E74F4F');
@@ -224,9 +218,8 @@ jQuery(document).on('submit','#frmNuevoStaff',function(event){
             $("span").text("Staff guardado exitosamente");
             $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
+            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+            setTimeout("location.href = 'adminMenu.php'",3000);
         }else{
             $("span").text("El evento seleccionado ya esta siendo utilizado por otro staff");
             $('.mensaje').css('background-color', '#E74F4F');
@@ -263,9 +256,8 @@ jQuery(document).on('submit','#frmActualizaStaff',function(event){
             $("span").text("Staff actualizado exitosamente");
             $('.mensaje').css('background-color', '#14BD2F');
             $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000); 
+            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+            setTimeout("location.href = 'adminMenu.php'",3000);
         }else{
             $("span").text("Porfavor seleccione un evento");
             $('.mensaje').css('background-color', '#E74F4F');
