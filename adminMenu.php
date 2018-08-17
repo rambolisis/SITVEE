@@ -89,35 +89,34 @@ function listarStaff() {
                 <!--<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre'] ?></h1>-->
 				<div id="NuevoEvento">
                     <form action="" id="frmNuevoEvento">
-                                    Nombre del Evento:<br>
-                                    <input type="text" name="nombreEvento" placeholder="Escriba el nombre del evento" required="">
-                                    <br>
-                                    Descripcion del Evento:<br>
-                                    <input type="text" name="descripcionEvento" placeholder="Escriba una descripción del evento" required="">
-                                    <br>
-                                    Fecha del Evento:<br>
-                                    <input style="width: 13%;" required="" name="fechaEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
-                                    <br>                                    
-                                    <br>
-                                    <select name="clienteEvento" style="width: 250px;">
-                                    <option value="null">Seleccione un cliente</option>
-                                    <?php
-                                        require 'conexion.php';
+                        Nombre del Evento:<br>
+                        <input type="text" name="nombreEvento" placeholder="Escriba el nombre del evento" required="">
+                        <br>
+                        Descripcion del Evento:<br>
+                        <input type="text" name="descripcionEvento" placeholder="Escriba una descripción del evento" required="">
+                        <br>
+                        Fecha del Evento:<br>
+                        <input style="width: 13%;" required="" name="fechaEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
+                        <br>                                    
+                        <br>
+                        <select name="clienteEvento" style="width: 250px;">
+                        <option value="null">Seleccione un cliente</option>
+                        <?php
+                            require 'conexion.php';
 
-                                        $clientes = $mysqli->query("SELECT id_Cliente, nombre FROM cliente ");
+                            $clientes = $mysqli->query("SELECT id_Cliente, nombre FROM cliente ");
 
-                                        while ($datos = $clientes->fetch_assoc()) {
+                            while ($datos = $clientes->fetch_assoc()) {
 
-                                            echo "<option value=\"{$datos['id_Cliente']}\">{$datos['nombre']}</option>";
+                                echo "<option value=\"{$datos['id_Cliente']}\">{$datos['nombre']}</option>";
 
-                                        }
-                                        $mysqli->close();
-                                        ?>
-                                    </select>
-                                    <br>
-                                    <br>
-                                    <input style="width: 13%;" type="submit" class="GuardarEvento" value="Guardar">
-
+                            }
+                            $mysqli->close();
+                            ?>
+                        </select>
+                        <br>
+                        <br>
+                        <input style="width: 13%;" type="submit" class="GuardarEvento" value="Guardar">
                     </form>
 				</div>
                 <div id="NuevoCliente">
