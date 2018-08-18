@@ -183,10 +183,14 @@ function hideRow2(event) {
 }
 
 function Enviar2() {
-    ListaEntradas.get().forEach(element => {
-        element.Beneficios = ListaBeneficios.get();
-    });
-    alert(ListaEntradas.getJson());
+    if(ListaBeneficios.getJson()=="[]"){
+        alert("Inserte sus Beneficios");
+    }else{
+        ListaEntradas.get().forEach(element => {
+            element.Beneficios = ListaBeneficios.get();
+        });
+        alert(ListaBeneficios.getJson());
+    }
 }
 
 
