@@ -47,7 +47,7 @@ $().ready(function () {
     $('#adicionar').click(function () {
         var beneficio = document.getElementById("beneficio").value;
         var cantidad = document.getElementById("cantidad").value;
-        if (beneficio != "" && cantidad >= 1 && cantidad <= 100 && cantidad != "") {
+        if (beneficio != "" && cantidad >= 1 && cantidad < 100 && cantidad != "") {
             ListaBeneficios.add(new Beneficio(beneficio, cantidad));
             var fila = '<tr id="row' + i + '"><td>' + beneficio + '</td><td>' + cantidad + '</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove" onclick="hideRow2(event)">Quitar</button></td></tr>'; //esto seria lo que contendria la fila
             var i = ListaBeneficios.get().length; //contador para asignar id al boton que borrara la fila
@@ -79,6 +79,9 @@ $().ready(function () {
                 $("#beneficio").css("border-color", "black");
                 $("#cantidad").attr("placeholder", "Campo Vacio, Ingrese la Cantidad");
                 $("#cantidad").css("border-color", "red");
+            }
+            if (cantidad <= 1 && cantidad >= 100){
+                alert("Solo se pueden utilizar cantidades de 1 a 99");
             }
         }
         if (cantidad != "" && beneficio != "") {
@@ -179,6 +182,9 @@ function hideRow2(event) {
 }
 
 function Enviar2() {
+    if(ListaBeneficios.getJson()=="[]"){
+        alert("Inserte sus Beneficios");
+    }else{
     ListaEntradas.get().forEach(element => {
         element.Beneficios = ListaBeneficios.get();
     });

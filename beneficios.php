@@ -1,7 +1,6 @@
 ﻿<title>Beneficios</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="js/beneficios.js" type="text/javascript"></script>
 <?php include('template/header.php'); ?>
     <div class="container" style="margin: 2%; height:%;">
                 <form>
@@ -12,7 +11,7 @@
                         </p>
                         <p style="float:left; ">
                             <label>Digite la cantidad por persona:</label>
-                            <input type="number" id="cantidad" class="form-control" type="text" placeholder="Cantidad..." style="width: 90%">
+                            <input type="number" id="cantidad" class="form-control" placeholder="Cantidad..." style="width: 90%" min="1" max="99">
                         </p>
                         <button id="adicionar" class="btn btn-success" type="button">Añadir</button>
                     </div>
