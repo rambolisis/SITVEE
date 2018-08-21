@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-08-2018 a las 18:36:20
+-- Tiempo de generación: 21-08-2018 a las 22:10:08
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.7
 
@@ -30,10 +30,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `administrador` (
   `id_Administrador` int(11) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `nombreAdministrador` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `correo` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `id_Usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `administrador`
+--
+
+INSERT INTO `administrador` (`id_Administrador`, `nombreAdministrador`, `correo`, `id_Usuario`) VALUES
+(1, 'Andrey Palma Jimenez', 'andreypj98@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -45,18 +52,8 @@ CREATE TABLE `beneficio` (
   `id_Beneficio` int(11) NOT NULL,
   `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `id_Evento` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `beneficiodeinvitado`
---
-
-CREATE TABLE `beneficiodeinvitado` (
-  `id_Invitado` int(11) NOT NULL,
-  `id_Beneficio` int(11) NOT NULL
+  `id_Evento` int(11) NOT NULL,
+  `id_Invitado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -67,7 +64,7 @@ CREATE TABLE `beneficiodeinvitado` (
 
 CREATE TABLE `cliente` (
   `id_Cliente` int(11) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `nombreCliente` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `correo` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `id_Usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -80,7 +77,7 @@ CREATE TABLE `cliente` (
 
 CREATE TABLE `evento` (
   `id_Evento` int(11) NOT NULL,
-  `nombre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `nombreEvento` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `fecha` date NOT NULL,
   `descripcion` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `id_Cliente` int(11) NOT NULL
@@ -94,9 +91,11 @@ CREATE TABLE `evento` (
 
 CREATE TABLE `invitado` (
   `id_Invitado` int(11) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `nombreInvitado` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `correo` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `id_Evento` int(11) NOT NULL
+  `telefono` int(20) NOT NULL,
+  `id_Evento` int(11) NOT NULL,
+  `codigoQR` longblob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -125,6 +124,13 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_Usuario`, `usuario`, `clave`, `rol`) VALUES
+(1, 'admin', 'admin', 'Administrador');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -140,14 +146,8 @@ ALTER TABLE `administrador`
 --
 ALTER TABLE `beneficio`
   ADD PRIMARY KEY (`id_Beneficio`),
-  ADD KEY `id_Evento` (`id_Evento`);
-
---
--- Indices de la tabla `beneficiodeinvitado`
---
-ALTER TABLE `beneficiodeinvitado`
-  ADD PRIMARY KEY (`id_Invitado`,`id_Beneficio`),
-  ADD KEY `id_Beneficio` (`id_Beneficio`);
+  ADD KEY `id_Evento` (`id_Evento`),
+  ADD KEY `id_Invitado` (`id_Invitado`);
 
 --
 -- Indices de la tabla `cliente`
@@ -192,7 +192,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `id_Administrador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `beneficio`
@@ -228,7 +228,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -244,14 +244,8 @@ ALTER TABLE `administrador`
 -- Filtros para la tabla `beneficio`
 --
 ALTER TABLE `beneficio`
-  ADD CONSTRAINT `beneficio_ibfk_1` FOREIGN KEY (`id_Evento`) REFERENCES `evento` (`id_Evento`);
-
---
--- Filtros para la tabla `beneficiodeinvitado`
---
-ALTER TABLE `beneficiodeinvitado`
-  ADD CONSTRAINT `BeneficioDeInvitado_ibfk_1` FOREIGN KEY (`id_Beneficio`) REFERENCES `beneficio` (`id_Beneficio`),
-  ADD CONSTRAINT `BeneficioDeInvitado_ibfk_2` FOREIGN KEY (`id_Invitado`) REFERENCES `invitado` (`id_Invitado`);
+  ADD CONSTRAINT `beneficio_ibfk_1` FOREIGN KEY (`id_Evento`) REFERENCES `evento` (`id_Evento`),
+  ADD CONSTRAINT `beneficio_ibfk_2` FOREIGN KEY (`id_Invitado`) REFERENCES `invitado` (`id_Invitado`);
 
 --
 -- Filtros para la tabla `cliente`
