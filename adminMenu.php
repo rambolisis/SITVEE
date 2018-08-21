@@ -108,7 +108,7 @@ function listarStaff() {
 
                             while ($datos = $clientes->fetch_assoc()) {
 
-                                echo "<option value=\"{$datos['id_Cliente']}\">{$datos['nombre']}</option>";
+                                echo "<option value=\"{$datos['id_Cliente']}\">{$datos['nombreCliente']}</option>";
 
                             }
                             $mysqli->close();
@@ -147,7 +147,7 @@ function listarStaff() {
 
                                 while ($datosS = $eventoS->fetch_assoc()) {
 
-                                    echo "<option value=\"{$datosS['id_Evento']}\">{$datosS['nombre']}</option>";
+                                    echo "<option value=\"{$datosS['id_Evento']}\">{$datosS['nombreEvento']}</option>";
 
                                 }
                                 $mysqli->close();
@@ -174,9 +174,9 @@ function listarStaff() {
 
                                         while ($datosE = $Actualizaeventos->fetch_assoc()) {
                                             $id = $datosE['id_Cliente'];
-                                            $cliente = $mysqli->query("SELECT nombre FROM cliente WHERE id_Cliente = '$id' ");
+                                            $cliente = $mysqli->query("SELECT nombreCliente FROM cliente WHERE id_Cliente = '$id' ");
                                             $datosC = $cliente->fetch_assoc();
-                                            echo "<option value=\"{$datosE['id_Evento']},{$datosE['nombre']},{$datosE['fecha']},{$datosE['descripcion']},{$datosC['nombre']}\">{$datosE['nombre']}</option>";
+                                            echo "<option value=\"{$datosE['id_Evento']},{$datosE['nombreEvento']},{$datosE['fecha']},{$datosE['descripcion']},{$datosC['nombreCliente']}\">{$datosE['nombreEvento']}</option>";
 
                                         }
                                         $mysqli->close();
@@ -209,7 +209,7 @@ function listarStaff() {
                                             $id = $datosC['id_Usuario'];
                                             $usuario = $mysqli->query("SELECT usuario,clave FROM usuario WHERE id_Usuario = '$id' ");
                                             $datosU = $usuario->fetch_assoc();
-                                            echo "<option value=\"{$datosC['id_Cliente']},{$datosC['nombre']},{$datosC['correo']},{$datosU['usuario']},{$datosU['clave']}\">{$datosC['nombre']}</option>";
+                                            echo "<option value=\"{$datosC['id_Cliente']},{$datosC['nombreCliente']},{$datosC['correo']},{$datosU['usuario']},{$datosU['clave']}\">{$datosC['nombreCliente']}</option>";
 
                                         }
                                         $mysqli->close();
@@ -243,9 +243,9 @@ function listarStaff() {
                                             $idE = $datosS['id_Evento'];
                                             $usuarioS = $mysqli->query("SELECT id_Usuario,usuario,clave FROM usuario WHERE id_Usuario = '$idU' ");
                                             $datosU = $usuarioS->fetch_assoc();
-                                            $EventoS = $mysqli->query("SELECT id_Evento,nombre FROM evento WHERE id_Evento = '$idE' ");
+                                            $EventoS = $mysqli->query("SELECT id_Evento,nombreEvento FROM evento WHERE id_Evento = '$idE' ");
                                             $datosE = $EventoS->fetch_assoc();
-                                            echo "<option value=\"{$datosS['id_Staff']},{$datosS['id_Usuario']},{$datosS['id_Evento']},{$datosU['usuario']},{$datosU['clave']}\">{$datosE['nombre']}</option>";
+                                            echo "<option value=\"{$datosS['id_Staff']},{$datosS['id_Usuario']},{$datosS['id_Evento']},{$datosU['usuario']},{$datosU['clave']}\">{$datosE['nombreEvento']}</option>";
                                         }
                                         $mysqli->close();
                                         ?>

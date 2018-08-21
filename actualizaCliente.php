@@ -11,7 +11,7 @@
 	if($lista != 'null'){
         $array = explode(',', $lista);
         $id = $array[0];
-        $cliente = $mysqli->query("UPDATE cliente SET nombre = '$nombreCliente', correo = '$emailCliente' WHERE id_Cliente = '$id' ");
+        $cliente = $mysqli->query("UPDATE cliente SET nombreCliente = '$nombreCliente', correo = '$emailCliente' WHERE id_Cliente = '$id' ");
         $IdUsuarioCliente = $mysqli->query("SELECT id_Usuario FROM cliente WHERE id_Cliente = '$id' ");     
         $datos = $IdUsuarioCliente->fetch_assoc();
         $idUsuario = $datos['id_Usuario'];

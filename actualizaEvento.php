@@ -10,7 +10,7 @@
 	if($lista != 'null'){
         $array = explode(',', $lista);
         $id = $array[0];
-        $evento = $mysqli->query("UPDATE evento SET nombre = '$nombreEvento', fecha = '$fechaEvento', descripcion = '$descripcionEvento'
+        $evento = $mysqli->query("UPDATE evento SET nombreEvento = '$nombreEvento', fecha = '$fechaEvento', descripcion = '$descripcionEvento'
                              WHERE id_Evento = '$id' ");
         echo json_encode(array('mensaje' => false));
     }else{

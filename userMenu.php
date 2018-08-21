@@ -66,7 +66,7 @@ if (isset($_SESSION['usuario'])) {
 					$Actualizaeventos = $mysqli->query("SELECT * FROM evento WHERE id_Cliente = '$eventoCliente' ");
 
 					while ($datosE = $Actualizaeventos->fetch_assoc()) {
-						echo "<option value=\"{$datosE['id_Evento']}\">{$datosE['nombre']}</option>";
+						echo "<option value=\"{$datosE['id_Evento']}\">{$datosE['nombreEvento']}</option>";
 					}
 					$mysqli->close();
 					?>

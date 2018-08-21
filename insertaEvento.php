@@ -8,7 +8,7 @@
     $id = $_POST['clienteEvento'];
 
 
-    $evento = $mysqli->query("INSERT INTO evento(id_Evento, nombre, fecha, descripcion, id_Cliente) VALUES ('','$nombreEvento','$fechaEvento','$descripcionEvento','$id')");
+    $evento = $mysqli->query("INSERT INTO evento(id_Evento, nombreEvento, fecha, descripcion, id_Cliente) VALUES ('','$nombreEvento','$fechaEvento','$descripcionEvento','$id')");
 
 	if($evento===TRUE){
         echo json_encode(array('mensaje' => false));
