@@ -19,7 +19,7 @@ $().ready(function () {
                 var colcount = columns.length;
                 if ((mostrar = (colcount !== 5))) {
                     //si son mas columnas de las que permite la tabla mande el mensaje
-                    newrow += "<tr scope='row'><td>Comprueve el Formato del Documento</td><td></td><td></td><td></td></tr>";
+                    newrow += "<tr scope='row'><td>Compruebe el Formato del Documento</td><td></td><td></td><td></td></tr>";
                 } else {
                     GuardarEntrada(columns);
                     //si son las columnas permite la tabla mete los datos
