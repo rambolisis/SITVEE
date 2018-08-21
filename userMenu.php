@@ -13,16 +13,22 @@ if (isset($_SESSION['usuario'])) {
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="./css/style.css">
-
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/entradasBeneficios.js" type="text/javascript"></script>
+<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
  </head>
 <?php include 'template/header.php';?>
+<div class="mensaje">
+            <span></span>
+        </div>
             <div style="height: 64%">
             	<div class="vertical-menu">
 				  <a style="height: 33.33%; padding: 23%;" id="TutorialSitvee">Tutorial SITVEE</a>
 				  <a style="height: 33.33%; padding: 23%;" id="ImportarCSV">Eventos</a>
 				  <a style="height: 33.33%; padding: 23%;" href="salir.php">Cerrar Sesion</a>
 			</div>
-			<!--<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre'] ?></h1>-->
+			<!--<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['id_Cliente']; ?></h1>-->
 			<div class="container" id="container" style="widht:85%;heigth:97%; padding:1%;">
 		<!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
 		<div id="beneficiosUser" style="display: none;">
@@ -48,10 +54,24 @@ if (isset($_SESSION['usuario'])) {
                 </table>
                 <hr />
 				</div>
-            <button style="width: 13%;margin:1%;" onclick="Enviar2();" class="btn btn-success" type="button">Enviar</button>
+            <button style="width: 13%;margin:1%;" onclick="Enviar2(); this.disabled=true;" class="btn btn-success" id="enviar2" type="button">Enviar</button>
 			<button style="width: 13%;float:left;margin:1%;" id="regresar" class="btn btn-success" type="button">Regresar</button>
 		</div>
 		<div id="busqueda" style="display: none;">
+			<select name="eventoId" id="eventoId" style="width: 250px;">
+				<option value="null">Seleccione un evento</option>
+				<?php
+					require 'conexion.php';
+					$eventoCliente = $_SESSION['usuario']['id_Cliente'];
+					$Actualizaeventos = $mysqli->query("SELECT * FROM evento WHERE id_Cliente = '$eventoCliente' ");
+
+					while ($datosE = $Actualizaeventos->fetch_assoc()) {
+						echo "<option value=\"{$datosE['id_Evento']}\">{$datosE['nombre']}</option>";
+					}
+					$mysqli->close();
+					?>
+			</select>
+			<br><br>
 			<h1>Por Favor adjunte un archivo.csv</h1>
 			<br>
 			<div class="custom-file">
@@ -78,10 +98,5 @@ if (isset($_SESSION['usuario'])) {
 			</div>
     	    </div>
             <?php include 'template/footer.php';?>
-
-			<script src="js/jquery-3.3.1.min.js"></script>
-			<script src="js/entradasBeneficios.js" type="text/javascript"></script>
-			<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
-			<script src="js/bootstrap.min.js" type="text/javascript"></script>
     </body>
 </html>

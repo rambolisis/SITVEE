@@ -39,7 +39,7 @@
         .mensaje{
             float:left;
             position: absolute;
-            top: 130px;
+            top: 150px;
             left: 0px;
             padding: 10px 0 ;
             border-radius:  0 0 5px 5px;
@@ -54,7 +54,7 @@
             font-size: 16px;
         }
     </style>
-
+    
 </head>
 
 <body>

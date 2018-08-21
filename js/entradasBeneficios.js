@@ -170,7 +170,6 @@ class Entrada {
         this.Segundo_Apellido = Segundo_Apellido;
         this.Correo = Correo;
         this.Telefono = Telefono;
-        this.Beneficios = [];
     }
 }
 
@@ -186,18 +185,61 @@ function Enviar2() {
     if(ListaBeneficios.getJson()=="[]"){
         alert("Inserte sus Beneficios");
     }else{
-        ListaEntradas.get().forEach(element => {
-            element.Beneficios = ListaBeneficios.get();
-        });
-        alert(ListaBeneficios.getJson());
+    ListaEntradas.get().forEach(element => {
+        element.Beneficios = ListaBeneficios.get();
+    });
+    'use strict';
+
+    const READY_STATE_COMPLETE = 4, STATUS_OK = 200;
+
+    var myNavigator = () => {
+        let nav = (window.XMLHttpRequest) ? new XMLHttpRequest() :  new ActiveXObject('Microsft.XMLHTTP');
+        return nav;
     }
+
+    var setRequest = (callback, route, data) => {
+        var req = myNavigator();
+        data = data;
+
+        req.onreadystatechange = callback;
+        req.open('POST', route, true);
+        req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        req.send('data=' + data);
+    }
+
+    var eventoId = document.getElementById("eventoId").value;
+	let route = 'InsertarUserMenu.php?idEvento='+eventoId,
+    data = ListaEntradas.getJson();
+
+	setRequest(function(){
+
+		if (this.readyState == READY_STATE_COMPLETE) {
+
+			if (this.status == STATUS_OK) {
+                console.log(this.responseText);
+				$("span").text("Datos guardados exitosamente");
+                $('.mensaje').css('background-color', '#14BD2F');
+                $('.mensaje').slideDown('slow');
+                setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+                setTimeout("location.href = 'userMenu.php'",3000);
+                
+			}else{
+                $("span").text("Debe seleccionar un evento");
+                $('.mensaje').css('background-color', '#E74F4F');
+                $('.mensaje').slideDown('slow');
+                setTimeout(function(){
+                    $('.mensaje').slideUp('slow');
+                },3000);
+			}
+
+		}
+    }, route, data);
 }
 
 
-
 class Beneficio {
-    constructor(Nombre, Cantidad) {
-        this.Nombre = Nombre;
+    constructor(Nombre_Beneficio, Cantidad) {
+        this.Nombre_Beneficio = Nombre_Beneficio;
         this.Cantidad = Cantidad;
     }
 }
