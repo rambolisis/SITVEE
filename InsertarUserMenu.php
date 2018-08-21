@@ -30,7 +30,7 @@
             $insertaInvitado->bind_param("ssii",$nombreCompleto,$correo,$telefono,$idEvento);
             $respuesta = $insertaInvitado->execute();//Ejecutar el insertarInvitado
             $idInvitado = $mysqli->insert_id;//Agarrar id invitado creado
-            $filename = 'QRimage/'.$nombreCompleto.'.png';//Crear el codigo QR
+            $filename = 'QRimage/'.$nombreCompleto.'-'.$idInvitado.'.png';//Crear el codigo QR
             $size = 10;
             $level = 'H';
             $frameSize = 1;
@@ -49,10 +49,6 @@
             } 
         }
         $zip->close();
-        header("Content-type: application/octet-stream");
-        header("Content-disposition: attachment; filename=QR-Invitados.zip");
-        readfile('QR-Invitados.zip');
-        unlink('QR-Invitados.zip');
         echo "Invitados guardados: ".$respuesta;
         echo "Beneficios guardados: ".$respuesta2;
         echo "QR insertado: ".$respuesta3;

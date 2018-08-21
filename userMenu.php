@@ -8,6 +8,13 @@ if (isset($_SESSION['usuario'])) {
 } else {
     header('Location: index.php');
 }
+
+if(file_exists("QR-Invitados.zip")){
+	header("Content-type: application/octet-stream");
+	header("Content-disposition: attachment; filename=QR-Invitados.zip");
+	readfile('QR-Invitados.zip');
+	unlink('QR-Invitados.zip');
+}
 ?>
 <title>Usuario</title>
 
