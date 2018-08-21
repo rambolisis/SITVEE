@@ -250,7 +250,7 @@ function Enviar2() {
                     $('.mensaje').css('background-color', '#14BD2F');
                     $('.mensaje').slideDown('slow');
                     setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
-                    /*setTimeout("location.href = 'userMenu.php'",3000);*/
+                    setTimeout("location.href = 'userMenu.php'",3000);
                     
                 }else{
                     $('#enviar2').attr("disabled", false);
