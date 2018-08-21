@@ -38,7 +38,18 @@ $().ready(function () {
             }
             $('#tableMain').append(newrow); // se le agrega una nueva fila a la tabla
         }
-        rdr.readAsText($("#inputfile")[0].files[0]); // si el texto no tiene nada vuelve a pedir que inserte el documuento
+        try {
+            rdr.readAsText($("#inputfile")[0].files[0]);
+        }
+        catch(err) {
+            $("span").text("Porfavor inserte un documento csv");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);// si el texto no tiene nada vuelve a pedir que inserte el documuento
+        }
+        
     });
 
 
@@ -127,10 +138,22 @@ function GuardarEntrada(columns) {
 
 function Enviar() {
     var estado = hideRow();
+    var eventoId = document.getElementById("eventoId").value;
     if (!estado) {
-        alert("Tienes que ingresar el archivo para Continuar\nY tienes que seleccionar algún empleado\nIngrese sus datos de nuevo");
-    }
-    else{
+        $("span").text("Porfavor seleccione al menos un invitado");
+        $('.mensaje').css('background-color', '#E74F4F');
+        $('.mensaje').slideDown('slow');
+        setTimeout(function(){
+            $('.mensaje').slideUp('slow');
+        },3000);
+    }else if(eventoId == "null"){
+        $("span").text("Debe seleccionar un evento");
+        $('.mensaje').css('background-color', '#E74F4F');
+        $('.mensaje').slideDown('slow');
+        setTimeout(function(){
+            $('.mensaje').slideUp('slow');
+        },3000);
+    }else{
         $('#busqueda').hide();
         $('#beneficiosUser').show();
     }
@@ -182,58 +205,65 @@ function hideRow2(event) {
 }
 
 function Enviar2() {
-    if(ListaBeneficios.getJson()=="[]"){
-        alert("Inserte sus Beneficios");
-    }else{
-    ListaEntradas.get().forEach(element => {
-        element.Beneficios = ListaBeneficios.get();
-    });
-    'use strict';
+        if(ListaBeneficios.getJson()=="[]"){
+            $("span").text("Porfavor agregue al menos un beneficio");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
+        }else{
+        ListaEntradas.get().forEach(element => {
+            element.Beneficios = ListaBeneficios.get();
+        });
+        'use strict';
 
-    const READY_STATE_COMPLETE = 4, STATUS_OK = 200;
+        const READY_STATE_COMPLETE = 4, STATUS_OK = 200;
 
-    var myNavigator = () => {
-        let nav = (window.XMLHttpRequest) ? new XMLHttpRequest() :  new ActiveXObject('Microsft.XMLHTTP');
-        return nav;
+        var myNavigator = () => {
+            let nav = (window.XMLHttpRequest) ? new XMLHttpRequest() :  new ActiveXObject('Microsft.XMLHTTP');
+            return nav;
+        }
+
+        var setRequest = (callback, route, data) => {
+            var req = myNavigator();
+            data = data;
+
+            req.onreadystatechange = callback;
+            req.open('POST', route, true);
+            req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            req.send('data=' + data);
+        }
+
+        var eventoId = document.getElementById("eventoId").value;
+        let route = 'InsertarUserMenu.php?idEvento='+eventoId,
+        data = ListaEntradas.getJson();
+
+        setRequest(function(){
+
+            if (this.readyState == READY_STATE_COMPLETE) {
+
+                if (this.status == STATUS_OK) {
+                    console.log(this.responseText);
+                    $('#enviar2').attr("disabled", true);
+                    $("span").text("Datos guardados exitosamente");
+                    $('.mensaje').css('background-color', '#14BD2F');
+                    $('.mensaje').slideDown('slow');
+                    setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+                    setTimeout("location.href = 'userMenu.php'",3000);
+                    
+                }else{
+                    $('#enviar2').attr("disabled", false);
+                    $("span").text("Error de conexion");
+                    $('.mensaje').css('background-color', '#E74F4F');
+                    $('.mensaje').slideDown('slow');
+                    setTimeout(function(){
+                        $('.mensaje').slideUp('slow');
+                    },3000);
+                }
+            }
+        }, route, data);
     }
-
-    var setRequest = (callback, route, data) => {
-        var req = myNavigator();
-        data = data;
-
-        req.onreadystatechange = callback;
-        req.open('POST', route, true);
-        req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-        req.send('data=' + data);
-    }
-
-    var eventoId = document.getElementById("eventoId").value;
-	let route = 'InsertarUserMenu.php?idEvento='+eventoId,
-    data = ListaEntradas.getJson();
-
-	setRequest(function(){
-
-		if (this.readyState == READY_STATE_COMPLETE) {
-
-			if (this.status == STATUS_OK) {
-                console.log(this.responseText);
-				$("span").text("Datos guardados exitosamente");
-                $('.mensaje').css('background-color', '#14BD2F');
-                $('.mensaje').slideDown('slow');
-                setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
-                setTimeout("location.href = 'userMenu.php'",3000);
-                
-			}else{
-                $("span").text("Debe seleccionar un evento");
-                $('.mensaje').css('background-color', '#E74F4F');
-                $('.mensaje').slideDown('slow');
-                setTimeout(function(){
-                    $('.mensaje').slideUp('slow');
-                },3000);
-			}
-
-		}
-    }, route, data);
 }
 
 
@@ -266,7 +296,8 @@ function ListaBeneficios() {
         proto.prototypemethodsset = true;
     }
 }
-$('#regresar').click(function (evento) {
+
+function Ocultar(){
     $('#beneficiosUser').hide();
     $('#busqueda').show();
-});
+}

@@ -54,8 +54,8 @@ if (isset($_SESSION['usuario'])) {
                 </table>
                 <hr />
 				</div>
-            <button style="width: 13%;margin:1%;" onclick="Enviar2(); this.disabled=true;" class="btn btn-success" id="enviar2" type="button">Enviar</button>
-			<button style="width: 13%;float:left;margin:1%;" id="regresar" class="btn btn-success" type="button">Regresar</button>
+            <button style="width: 13%;margin:1%;" onclick="Enviar2();" class="btn btn-success" id="enviar2" type="button">Enviar</button>
+			<button style="width: 13%;float:left;margin:1%;" onclick="Ocultar();" id="regresar" class="btn btn-success" type="button">Regresar</button>
 		</div>
 		<div id="busqueda" style="display: none;">
 			<select name="eventoId" id="eventoId" style="width: 250px;">
