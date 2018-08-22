@@ -86,7 +86,6 @@ function listarStaff() {
                   <a id="Administrator"style="height: 12.5%;">Nuevo Administrador </a>
                   <a href='salir.php' style="height: 12.5%;">Cerrar Sesion</a>
                 </div>
-                <!--<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['nombre'] ?></h1>-->
 				<div id="NuevoEvento">
                     <form action="" id="frmNuevoEvento">
                         Nombre del Evento:<br>
@@ -104,7 +103,7 @@ function listarStaff() {
                         <?php
                             require 'conexion.php';
 
-                            $clientes = $mysqli->query("SELECT id_Cliente, nombre FROM cliente ");
+                            $clientes = $mysqli->query("SELECT id_Cliente, nombreCliente FROM cliente ");
 
                             while ($datos = $clientes->fetch_assoc()) {
 
@@ -143,7 +142,7 @@ function listarStaff() {
                             <?php
                                 require 'conexion.php';
 
-                                $eventoS = $mysqli->query("SELECT id_Evento, nombre FROM evento ");
+                                $eventoS = $mysqli->query("SELECT id_Evento, nombreEvento FROM evento ");
 
                                 while ($datosS = $eventoS->fetch_assoc()) {
 

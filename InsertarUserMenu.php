@@ -36,11 +36,10 @@
             $frameSize = 1;
             $contenido = $idInvitado.",".$idEvento;
             QRcode::png($contenido, $filename, $level, $size, $frameSize);
-            $zip->addFile($filename,$nombreCompleto.'.png');
+            $zip->addFile($filename,$nombreCompleto.'-'.$idInvitado.'.png');
             /*$imagenQR = file_get_contents($filename);
             $insertaQR->bind_param("bi",$imagenQR,$idInvitado);
             $respuesta3 = $insertaQR->execute();*/
-            /*unlink('QRimage/qr.png');*/
             foreach($invitados->{"Beneficios"} as $beneficio){
                 $nombreBeneficio = $beneficio->{"Nombre_Beneficio"};
                 $cantidad = $beneficio->{"Cantidad"};
@@ -49,9 +48,7 @@
             } 
         }
         $zip->close();
-        echo "Invitados guardados: ".$respuesta;
-        echo "Beneficios guardados: ".$respuesta2;
-        echo "QR insertado: ".$respuesta3;
+        unlink('QRimage');
     }else{
         echo "ERROR";
     }

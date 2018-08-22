@@ -2,12 +2,12 @@
 require 'conexion.php';
 SESSION_START();
 
-$usuarios = $mysqli->query("SELECT u.rol, a.nombreAdministrador FROM usuario AS u INNER JOIN administrador
-AS a ON u.id_Usuario = a.id_Usuario
-WHERE u.usuario = '".$_POST['usuario']."'
+$administrador = $mysqli->query("SELECT u.rol, a.nombreAdministrador FROM usuario AS u INNER JOIN administrador
+AS a ON u.id_Usuario = a.id_Usuario WHERE 
+u.usuario = '".$_POST['usuario']."' 
 AND u.clave = '".$_POST['clave']."' ");
 
-$administrador = $mysqli->query("SELECT u.rol, c.nombreCliente, c.id_Cliente FROM usuario AS u INNER JOIN cliente
+$usuarios = $mysqli->query("SELECT u.rol, c.nombreCliente, c.id_Cliente FROM usuario AS u INNER JOIN cliente
 AS c ON u.id_Usuario = c.id_Usuario
 WHERE u.usuario = '".$_POST['usuario']."'
 AND u.clave = '".$_POST['clave']."' ");

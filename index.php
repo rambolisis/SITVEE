@@ -12,7 +12,8 @@
 <title>Login</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/login.css">
-
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/validar.js"></script>
 <?php include('template/header.php'); ?>
         <div class="error">
             <span>Credenciales invalidas, Por favor inténtelo de nuevo</span>
@@ -26,8 +27,5 @@
             </form>         
         </div>
         <?php include('template/footer.php'); ?>
-
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/validar.js"></script>
     </body>
 </html>

@@ -14,6 +14,11 @@ if(file_exists("QR-Invitados.zip")){
 	header("Content-disposition: attachment; filename=QR-Invitados.zip");
 	readfile('QR-Invitados.zip');
 	unlink('QR-Invitados.zip');
+	$files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
+    foreach($files as $file){
+    if(is_file($file))
+    unlink($file); //elimino el fichero
+}
 }
 ?>
 <title>Usuario</title>
@@ -35,7 +40,6 @@ if(file_exists("QR-Invitados.zip")){
 				  <a style="height: 33.33%; padding: 23%;" id="ImportarCSV">Eventos</a>
 				  <a style="height: 33.33%; padding: 23%;" href="salir.php">Cerrar Sesion</a>
 			</div>
-			<!--<h1 style="padding-left: 240px;"> Bienvenido <?php echo $_SESSION['usuario']['id_Cliente']; ?></h1>-->
 			<div class="container" id="container" style="widht:85%;heigth:97%; padding:1%;">
 		<!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
 		<div id="beneficiosUser" style="display: none;">
