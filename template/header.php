@@ -1,31 +1,31 @@
-<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
     <style type="text/css">
         body {
             background: #d2cdcd;
+            
         }
 
         #header {
             background: #c33838;
-            padding-top: 45px;
-            padding-bottom: 45px;
+            width:100%;
+            height:18%;
         }
 
         #footer {
-            background: #5f5a5a;
-            padding-top: 92px;
-            padding-bottom: 92px;
+            background: #7F7F7F;
+            position: absolute;
+            width:100%;
+            height:18%;
         }
 
         .error{
             background-color: #E74F4F;
             position: absolute;
-            top: 0;
+            top: 130px;
+            left: 0px;
             padding: 10px 0 ;
             border-radius:  0 0 5px 5px;
             color: #fff;
@@ -35,9 +35,10 @@
         }
 
         .mensaje{
-            background-color: #14BD2F;
+            float:left;
             position: absolute;
-            top: 0;
+            top: 150px;
+            left: 0px;
             padding: 10px 0 ;
             border-radius:  0 0 5px 5px;
             color: #fff;
@@ -51,8 +52,10 @@
             font-size: 16px;
         }
     </style>
+    
 </head>
 
 <body>
-    <div id="header" >
+    <div id="header">
+    <img src="imagenes/Logo.png" style="width:30%; height:90%; padding:1%; float:right;"/>
     </div>
