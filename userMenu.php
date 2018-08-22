@@ -49,13 +49,13 @@ if(file_exists("QR-Invitados.zip")){
                             <label>Digite sus Beneficios:<input id="beneficio" class="form-control" type="text" placeholder="Beneficio..." style="width: 50%;float:right" required="" /></label>
                         </p>
                         <p style="float:left;width:40%; ">
-                            <label>Digite la cantidad por persona:<input type="number" id="cantidad" class="form-control" type="text" placeholder="Cantidad..." style="width: 40%;float:right"/></label>
+                            <label style="width:90%;">Digite la cantidad por persona:<input type="number" id="cantidad" min="1" max="100" class="form-control" type="text" placeholder="Cantidad..." style="width: 35%;float:right"/></label>
                             
                         </p>
                         <button style="width: 13%;" id="adicionar" class="btn btn-success" type="button">Añadir</button>
                     </div>
                 </form>
-				<div id="tablaBeneficios" style="height:250px; width:100%; overflow-y:scroll;">
+				<div id="tablaBeneficios" style="height:180px; width:100%; overflow-y:scroll;">
                 <table id="mytable" class="table table-bordered table-hover ">
                     <tr>
                         <th>Beneficios</th>
@@ -89,7 +89,7 @@ if(file_exists("QR-Invitados.zip")){
 					<input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;" name="Buscar">
 					<button class="btn btn-outline-secondary" type="button" id="viewfile">Cargar</button>
 			</div>
-        <div class="input-group mt-2 mb-2" id="divTabla" style="height:240px; width:100%; display: none;overflow-y:scroll; ">
+        <div class="input-group mt-2 mb-2" id="divTabla" style="height:180px; width:100%; display: none;overflow-y:scroll; ">
 			<table class="table table-hover table-dark" id="tableMain" style="width:100%;">
         		<thead>
             		<tr style="display: none;" id="fila">
