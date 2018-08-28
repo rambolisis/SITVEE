@@ -7,7 +7,7 @@ $json = array();
         $idInvitado = $_GET["idInvitado"];
         $idEvento = $_GET["idEvento"];
 
-        $consultaInfo = $mysqli->query("SELECT i.nombreInvitado, e.nombreEvento, c.nombreCliente 
+        $consultaInfo = $mysqli->query("SELECT i.nombreInvitado, e.nombreEvento, e.fecha, c.nombreCliente 
         FROM invitado AS i INNER JOIN evento AS e INNER JOIN cliente
         AS c ON i.id_Evento = e.id_Evento AND e.id_Cliente = c.id_Cliente 
         WHERE i.id_Invitado = '$idInvitado' AND i.id_Evento = '$idEvento' ");
@@ -22,6 +22,7 @@ $json = array();
         }else{
             $results["i.nombreInvitado"]='';
             $results["e.nombreEvento"]='';
+            $results["e.fecha"]='';
             $results["c.nombreCliente"]='';
             $json['info'][]=$results;
             echo json_encode($json);
