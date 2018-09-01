@@ -18,7 +18,7 @@
         <div class="error">
             <span>Credenciales invalidas, Por favor inténtelo de nuevo</span>
         </div>
-        <div class="main">
+        <div class="main" style="height:64%; width:100%; padding:3%;">
             <form action="" id="formlg">
                 <h2>Bienvenido a Sitvee</h2>
                 <input type="text" name="usuario" placeholder=" Usuario" pattern="[A-Za-z0-9_-]{1,15}" required/>
