@@ -1,6 +1,23 @@
 <?php
     require 'conexion.php';
     require 'phpqrcode/qrlib.php';
+    require 'vendor/autoload.php';
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+    try {
+        //Server settings
+        $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'mx1.hostinger.com';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'invitacion@sitvee.com';                 // SMTP username
+        $mail->Password = 'sitvee123Admin';                           // SMTP password
+        $mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;
+    } catch (Exception $e) {
+        echo 'Error a conectarse al servidor de correo', $mail->ErrorInfo;
+    }                                 // TCP port to connect to
     
     $ListaInvitados = json_decode($_POST["data"]);
     $idEvento = $_GET["idEvento"];
@@ -37,6 +54,22 @@
             $contenido = $idInvitado.",".$idEvento;
             QRcode::png($contenido, $filename, $level, $size, $frameSize);
             $zip->addFile($filename,$nombreCompleto.'-'.$idInvitado.'.png');
+            try{
+                //Recipients
+                $mail->setFrom('invitacion@sitvee.com', 'SITVEE');
+                $mail->addAddress($correo);   // Add a recipient
+                //Attachments
+                $mail->addAttachment($filename);         // Add attachments
+                //Content
+                $mail->isHTML(true);                                // Set email format to HTML
+                $mail->Subject = 'Beneficios invitacion';
+                $mail->Body    = 'El siguiente codigo QR adjunto se debe utilizar para canjear los beneficios que tenga disponibles<br><br>
+                <center><img src="'.$filename.'"/></center>';
+                $mail->send();
+                echo 'Correo enviado exitosamente a: '.$nombreCompleto;
+            } catch (Exception $e) {
+                echo 'Correo no enviado. Mailer Error: ', $mail->ErrorInfo;
+            }
             /*$imagenQR = file_get_contents($filename);
             $insertaQR->bind_param("bi",$imagenQR,$idInvitado);
             $respuesta3 = $insertaQR->execute();*/

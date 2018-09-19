@@ -205,7 +205,7 @@ jQuery(document).on('submit','#frmNuevoStaff',function(event){
     event.preventDefault();
 
     jQuery.ajax({
-        url: 'insertaStaff.php',
+        url: 'InsertaStaff.php',
         type: 'POST',
         dataType: 'json',
         data: $(this).serialize(),

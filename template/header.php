@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -37,7 +39,7 @@
         .mensaje{
             float:left;
             position: absolute;
-            top: 150px;
+            top: 135px;
             left: 0px;
             padding: 10px 0 ;
             border-radius:  0 0 5px 5px;
