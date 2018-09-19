@@ -213,6 +213,7 @@ function Enviar2() {
                 $('.mensaje').slideUp('slow');
             },3000);
         }else{
+        $('#loading-screen').fadeIn();
         ListaEntradas.get().forEach(element => {
             element.Beneficios = ListaBeneficios.get();
         });
@@ -245,14 +246,15 @@ function Enviar2() {
 
                 if (this.status == STATUS_OK) {
                     console.log(this.responseText);
+                    $('#loading-screen').fadeOut();
                     $('#enviar2').attr("disabled", true);
                     $("span").text("Datos guardados exitosamente");
                     $('.mensaje').css('background-color', '#14BD2F');
                     $('.mensaje').slideDown('slow');
                     setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
                     setTimeout("location.href = 'userMenu.php'",3000);
-                    
                 }else{
+                    $('#loading-screen').fadeOut();
                     $('#enviar2').attr("disabled", false);
                     $("span").text("Error de conexion");
                     $('.mensaje').css('background-color', '#E74F4F');

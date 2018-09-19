@@ -31,9 +31,12 @@ if(file_exists("QR-Invitados.zip")){
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
  </head>
 <?php include 'template/header.php';?>
-<div class="mensaje">
-            <span></span>
-        </div>
+	<div class="mensaje">
+		<span></span>
+	</div>
+	<div id="loading-screen" style="display:none">
+    	<img src="imagenes/spinning-circles.svg">
+	</div>
             <div style="height: 64%">
             	<div class="vertical-menu">
 				  <a style="height: 33.33%; padding: 23%;" id="TutorialSitvee">Tutorial SITVEE</a>
