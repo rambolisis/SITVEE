@@ -101,20 +101,45 @@ input{
     height: 100%;
     margin: 0px;
     float: left;
+    background: #acaeae;
 }
 
-.vertical-menu a {
-    background-color: #eee; /* Grey background color */
-    color: black; /* Black text color */
-    display: block; /* Make the links appear below each other */
-    text-decoration: none; /* Remove underline from links */
-    padding: 4%;
-    border:1px;
-}
+.menu{ 
+    list-style: none;
+    line-height: 42px;
+    margin: 2em auto;
+    padding-left: 0;
+    width: 15em;
+} 
 
-.vertical-menu a:hover {
-    background-color: #ccc; /* Dark grey background on mouse-over */
-}
+.menu a { 
+    color:black;
+    text-decoration: none;
+    text-transform: uppercase;
+} 
+
+.menu li { 
+    box-shadow: 3px 0 rgba(51, 48, 48) inset;
+    margin-bottom: 5px;
+    padding-left: 1.5em;
+} 
+.menu li:hover{ 
+    color: #333333;
+    box-shadow: 12.7em 0 rgba(51, 48, 48) inset;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+    color:white;
+} 
+.menu{ 
+    color:black;
+    list-style: none;
+    line-height: 42px;
+    margin: 2em auto;
+    padding-left: 0;
+    width: 15em;
+} 
+
 .Guardar{
     background-color:#707B7C;
     width:20%;
@@ -167,7 +192,7 @@ input[type="submit"]:hover,#viewfile:hover,#confirmar:hover{
     }
 #viewfile,#confirmar{
     color: white;
-}
+} 
 
 #loading-screen {
   background-color: rgba(25,25,25,0.7);

@@ -76,15 +76,17 @@ function listarStaff() {
             <span></span>
         </div>
             <div style="height: 64%;">
-            	<div class="vertical-menu" >
-                  <a id="NewClient" style="height: 12.5%;">Nuevo Cliente</a>
-				  <a style="height: 12.5%;" id="NewEvent">Nuevo Evento</a>
-                  <a id="NewStaff" style="height: 12.5%;">Nuevo Staff</a>
-                  <a id="UpdateClient" style="height: 12.5%;">Actualizar Cliente</a>
-				  <a id="UpdateEvent" style="height: 12.5%;">Actualizar Evento</a>
-                  <a id="UpdateStaff" style="height: 12.5%;">Actualizar Staff</a>
-                  <a id="Administrator"style="height: 12.5%;">Nuevo Administrador </a>
-                  <a href='salir.php' style="height: 12.5%;">Cerrar Sesion</a>
+            <div class="vertical-menu" >
+                <ul class="menu" style="margin-top:0px;">
+                    <li style="height: 11.5%;"><a id="NewClient" >Nuevo Cliente</a></li>
+                    <li style="height: 11.5%;"><a  id="NewEvent">Nuevo Evento</a></li>
+                    <li style="height: 11.5%;"><a id="NewStaff" >Nuevo Staff</a></li>
+                    <li style="height: 11.5%;"><a id="UpdateClient">Actualizar Cliente</a></li>
+                    <li style="height: 11.5%;"><a id="UpdateEvent" >Actualizar Evento</a></li>
+                    <li style="height: 11.5%;"><a id="UpdateStaff" >Actualizar Staff</a></li>
+                    <li style="height: 11.5%;"><a id="Administrator" >Administrador</a></li>
+                    <li style="height: 11.5%;"><a href='salir.php' >Cerrar Sesion</a></li>
+                 </ul>
                 </div>
 				<div id="NuevoEvento">
                     <form action="" id="frmNuevoEvento">
