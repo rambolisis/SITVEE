@@ -40,7 +40,7 @@ class Encabezado{
 					.error{
 						background-color: #E74F4F;
 						position: absolute;
-						top: 130px;
+						top: 150px;
 						left: 0px;
 						padding: 10px 0 ;
 						border-radius:  0 0 5px 5px;
@@ -72,6 +72,9 @@ class Encabezado{
 		echo "<body>
 				<div id='header'>
 					<img src='imagenes/Logo.png' style='width:30%; height:90%; padding:1%; float:right;'/>
+				</div>
+				<div id='loading-screen' style='display:none'>
+					<img src='imagenes/spinning-circles.svg'>
 				</div>";
 	}
 }

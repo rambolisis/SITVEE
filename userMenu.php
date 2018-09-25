@@ -28,9 +28,6 @@ $Encabezado->generarHTML();
 <div class="mensaje">
 	<span></span>
 </div>
-<div id="loading-screen" style="display:none">
-	<img src="imagenes/spinning-circles.svg">
-</div>
 <div class="vertical-menu" style="padding:0px;  height:64%">
 			<ul class="menu" style="margin-top:0px;">
 				<li style="height: 33%; padding: 15%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>

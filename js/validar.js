@@ -1,6 +1,7 @@
 //Ajax para el mensaje de inicio de sesion redireccion de pagina por tipo de usuario
 jQuery(document).on('submit','#formlg',function(event){
     event.preventDefault();
+    $('#loading-screen').fadeIn();
 
     jQuery.ajax({
         url: 'loginConsulta.php',
@@ -14,12 +15,13 @@ jQuery(document).on('submit','#formlg',function(event){
         console.log(respuesta);
         if(!respuesta.error){
             if(respuesta.tipo == 'Administrador'){
-                location.href = 'adminMenu.php';
+                setTimeout("location.href = 'adminMenu.php'",1000);
             }else if(respuesta.tipo == 'Usuario'){
-                location.href = 'userMenu.php';
+                setTimeout("location.href = 'userMenu.php'",1000);
             }
         }else{
-            $('.error').slideDown('slow');
+            $('#loading-screen').fadeOut();
+            setTimeout(function(){$('.error').slideDown('slow');},500);   
         }
     })
     .fail(function(resp){
@@ -278,7 +280,7 @@ jQuery(document).on('submit','#frmActualizaStaff',function(event){
 
 function salir() {
     setTimeout(function(){ $('#loading-screen').fadeIn(); },0);
-    setTimeout("location.href = 'salir.php'",2000);
+    setTimeout("location.href = 'salir.php'",1000);
 }
 
 //Listar

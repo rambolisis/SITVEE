@@ -16,9 +16,6 @@ $Encabezado->generarHTML();
 <div class="mensaje">
     <span></span>
 </div>
-<div id="loading-screen" style="display:none">
-	<img src="imagenes/spinning-circles.svg">
-</div>
     <div style="height: 64%;">
     <div class="vertical-menu" >
         <ul class="menu" style="margin-top:0px;">
