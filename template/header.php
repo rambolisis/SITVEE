@@ -11,7 +11,7 @@
         }
 
         #header {
-            background: #c33838;
+            background: #DF5C10;
             width:100%;
             height:18%;
         }
