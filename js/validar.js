@@ -1,6 +1,7 @@
 //Ajax para el mensaje de inicio de sesion redireccion de pagina por tipo de usuario
 jQuery(document).on('submit','#formlg',function(event){
     event.preventDefault();
+    $('#loading-screen').fadeIn();
 
     jQuery.ajax({
         url: 'loginConsulta.php',
@@ -14,12 +15,13 @@ jQuery(document).on('submit','#formlg',function(event){
         console.log(respuesta);
         if(!respuesta.error){
             if(respuesta.tipo == 'Administrador'){
-                location.href = 'adminMenu.php';
+                setTimeout("location.href = 'adminMenu.php'",1000);
             }else if(respuesta.tipo == 'Usuario'){
-                location.href = 'userMenu.php';
+                setTimeout("location.href = 'userMenu.php'",1000);
             }
         }else{
-            $('.error').slideDown('slow');
+            $('#loading-screen').fadeOut();
+            setTimeout(function(){$('.error').slideDown('slow');},500);   
         }
     })
     .fail(function(resp){
@@ -275,3 +277,62 @@ jQuery(document).on('submit','#frmActualizaStaff',function(event){
         console.log("complete");
     });
 });
+
+function salir() {
+    setTimeout(function(){ $('#loading-screen').fadeIn(); },0);
+    setTimeout("location.href = 'salir.php'",1000);
+}
+
+//Listar
+function listarCliente() {
+    var cadena = document.getElementById("clienteId").value;
+    var lista = cadena.split(",");
+    var nombre = lista[1];
+    var correo = lista[2];
+    var usuario = lista[3];
+    var clave = lista[4];
+    if(cadena === "null"){
+    document.getElementById("nombreNuevo").value = "";
+    document.getElementById("correoNuevo").value = "";
+    document.getElementById("usuarioNuevo").value = "";
+    document.getElementById("contraseniaNueva").value = "";
+    }else{
+    document.getElementById("nombreNuevo").value = nombre;
+    document.getElementById("correoNuevo").value = correo;
+    document.getElementById("usuarioNuevo").value = usuario;
+    document.getElementById("contraseniaNueva").value = clave;
+    }
+    
+}
+function listarEvento() {
+    var cadena = document.getElementById("eventoId").value;
+    var lista = cadena.split(",");
+    var nombreEvento = lista[1];
+    var fecha = lista[2];
+    var descripcion = lista[3];
+    var nombreCliente = lista[4];
+    if(cadena === "null"){
+    document.getElementById("nombreEventoNuevo").value = "";
+    document.getElementById("fechaEventoNuevo").value = "";
+    document.getElementById("descripcionEventoNuevo").value = "";
+    document.getElementById("clienteEventoNuevo").value = "";
+    }else{
+    document.getElementById("nombreEventoNuevo").value = nombreEvento;
+    document.getElementById("fechaEventoNuevo").value = fecha;
+    document.getElementById("descripcionEventoNuevo").value = descripcion;
+    document.getElementById("clienteEventoNuevo").value = nombreCliente;
+    }
+}
+function listarStaff() {
+    var cadena = document.getElementById("staffId").value;
+    var lista = cadena.split(",");
+    var usuario = lista[3];
+    var clave = lista[4];
+    if(cadena === "null"){
+    document.getElementById("usuarioStaff").value = "";
+    document.getElementById("contraseniaStaff").value = "";
+    }else{
+    document.getElementById("usuarioStaff").value = usuario;
+    document.getElementById("contraseniaStaff").value = clave;
+    }
+}
