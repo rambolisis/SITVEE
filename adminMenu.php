@@ -78,14 +78,14 @@ function listarStaff() {
             <div style="height: 64%;">
             <div class="vertical-menu" >
                 <ul class="menu" style="margin-top:0px;">
-                    <li style="height: 11.5%;"><a id="NewClient" >Nuevo Cliente</a></li>
-                    <li style="height: 11.5%;"><a  id="NewEvent">Nuevo Evento</a></li>
-                    <li style="height: 11.5%;"><a id="NewStaff" >Nuevo Staff</a></li>
-                    <li style="height: 11.5%;"><a id="UpdateClient">Actualizar Cliente</a></li>
-                    <li style="height: 11.5%;"><a id="UpdateEvent" >Actualizar Evento</a></li>
-                    <li style="height: 11.5%;"><a id="UpdateStaff" >Actualizar Staff</a></li>
-                    <li style="height: 11.5%;"><a id="Administrator" >Administrador</a></li>
-                    <li style="height: 11.5%;"><a href='salir.php' >Cerrar Sesion</a></li>
+                    <li style="height: 11.5%;" id="NewClient"><a>Nuevo Cliente</a></li>
+                    <li style="height: 11.5%;" id="NewEvent"><a>Nuevo Evento</a></li>
+                    <li style="height: 11.5%;" id="NewStaff"><a>Nuevo Staff</a></li>
+                    <li style="height: 11.5%;" id="UpdateClient"><a>Actualizar Cliente</a></li>
+                    <li style="height: 11.5%;" id="UpdateEvent"><a>Actualizar Evento</a></li>
+                    <li style="height: 11.5%;" id="UpdateStaff"><a>Actualizar Staff</a></li>
+                    <li style="height: 11.5%;" id="Administrator"><a>Administrador</a></li>
+                    <li style="height: 11.5%;" ><a href='salir.php'>Cerrar Sesion</a></li>
                  </ul>
                 </div>
 				<div id="NuevoEvento">

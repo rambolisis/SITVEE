@@ -37,14 +37,14 @@ if(file_exists("QR-Invitados.zip")){
 	<div id="loading-screen" style="display:none">
     	<img src="imagenes/spinning-circles.svg">
 	</div>
-	<div class="vertical-menu" style="padding:0px;">
+	<div class="vertical-menu" style="padding:0px;  height:64%">
 				<ul class="menu" style="margin-top:0px;">
-				  <li style="height: 33%; padding: 15%;"><a id="TutorialSitvee">Tutorial SITVEE</a></li>
-				  <li style="height: 33%; padding: 15%;"><a  id="ImportarCSV">Eventos</a></li>
-				  <li style="height: 33%; padding: 15%;"><a href="salir.php">Cerrar Sesion</a></li>
+				  <li style="height: 33%; padding: 15%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>
+				  <li style="height: 33%; padding: 15%;" id="ImportarCSV"><a>Eventos</a></li>
+				  <li style="height: 33%; padding: 15%;" ><a href="salir.php">Cerrar Sesion</a></li>
 				</ul>
 			</div>
-			<div class="container" id="container" style="widht:85%;heigth:97%; padding:1%;">
+			<div class="container" id="container" style="width:85%; height:64%; padding:1%;">
 		<!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
 		<div id="beneficiosUser" style="display: none;">
 			<form>

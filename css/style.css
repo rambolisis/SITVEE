@@ -125,10 +125,10 @@ input{
 } 
 .menu li:hover{ 
     color: #333333;
-    box-shadow: 12.7em 0 rgba(51, 48, 48) inset;
-    -webkit-transition: all .4s;
-    -o-transition: all .4s;
-    transition: all .4s;
+    box-shadow: 12.77em 0 rgba(51, 48, 48) inset;
+    -webkit-transition: all .7s;
+    -o-transition: all .7s;
+    transition: all .7s;
     color:white;
 } 
 .menu{ 
