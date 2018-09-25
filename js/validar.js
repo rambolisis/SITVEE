@@ -276,6 +276,11 @@ jQuery(document).on('submit','#frmActualizaStaff',function(event){
     });
 });
 
+function salir() {
+    setTimeout(function(){ $('#loading-screen').fadeIn(); },0);
+    setTimeout("location.href = 'salir.php'",2000);
+}
+
 //Listar
 function listarCliente() {
     var cadena = document.getElementById("clienteId").value;

@@ -15,7 +15,7 @@ $Encabezado->generarHTML();
 
 		if(file_exists("QR-Invitados.zip")){
 			header("Content-type: application/octet-stream");
-			header("Content-disposition: attachment; filename=QR-Invitados.zip");
+			header("Content-disposition: attachment; filename = QR-Invitados.zip");
 			readfile('QR-Invitados.zip');
 			unlink('QR-Invitados.zip');
 			$files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
@@ -23,7 +23,7 @@ $Encabezado->generarHTML();
 			if(is_file($file))
 			unlink($file); //elimino el fichero
 		}
-	}
+		}
 ?>
 <div class="mensaje">
 	<span></span>
@@ -35,7 +35,7 @@ $Encabezado->generarHTML();
 			<ul class="menu" style="margin-top:0px;">
 				<li style="height: 33%; padding: 15%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>
 				<li style="height: 33%; padding: 15%;" id="ImportarCSV"><a>Eventos</a></li>
-				<li style="height: 33%; padding: 15%;" ><a href="salir.php">Cerrar Sesion</a></li>
+				<li style="height: 33%; padding: 15%;" onclick="salir();"><a>Cerrar Sesion</a></li>
 			</ul>
 		</div>
 		<div class="container" id="container" style="width:85%; height:64%; padding:1%;">

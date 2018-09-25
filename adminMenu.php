@@ -16,6 +16,9 @@ $Encabezado->generarHTML();
 <div class="mensaje">
     <span></span>
 </div>
+<div id="loading-screen" style="display:none">
+	<img src="imagenes/spinning-circles.svg">
+</div>
     <div style="height: 64%;">
     <div class="vertical-menu" >
         <ul class="menu" style="margin-top:0px;">
@@ -26,7 +29,7 @@ $Encabezado->generarHTML();
             <li style="height: 11.5%;" id="UpdateEvent"><a>Actualizar Evento</a></li>
             <li style="height: 11.5%;" id="UpdateStaff"><a>Actualizar Staff</a></li>
             <li style="height: 11.5%;" id="Administrator"><a>Administrador</a></li>
-            <li style="height: 11.5%;" ><a href='salir.php'>Cerrar Sesion</a></li>
+            <li style="height: 11.5%;" onclick="salir();"><a>Cerrar Sesion</a></li>
             </ul>
         </div>
         <div id="NuevoEvento">
