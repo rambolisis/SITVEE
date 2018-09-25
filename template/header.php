@@ -14,6 +14,7 @@
             background: #DF5C10;
             width:100%;
             height:18%;
+            border-radius:15px 0px 15px 0px;
         }
 
         #footer {
@@ -21,6 +22,7 @@
             position: absolute;
             width:100%;
             height:18%;
+            border-radius:0px 15px 0px 15px;
         }
 
         .error{

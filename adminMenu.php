@@ -77,7 +77,7 @@ function listarStaff() {
         </div>
             <div style="height: 64%;">
             <div class="vertical-menu" >
-                <ul class="menu" style="margin-top:0px;">
+                <ul class="menu" style="margin-top:0px; width:100%;">
                     <li style="height: 11.5%;" id="NewClient"><a>Nuevo Cliente</a></li>
                     <li style="height: 11.5%;" id="NewEvent"><a>Nuevo Evento</a></li>
                     <li style="height: 11.5%;" id="NewStaff"><a>Nuevo Staff</a></li>
