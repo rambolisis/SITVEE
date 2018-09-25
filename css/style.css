@@ -212,3 +212,55 @@ input[type="submit"]:hover,#viewfile:hover,#confirmar:hover{
   margin-left: -50px;
   top: 50%;
 }
+
+/*---------------------LOGIN---------------------*/
+form#formlg{
+    margin: auto;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    max-width: 450px;
+    background: #F3F3F3;
+    padding: 30px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+#formlg h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgba(0,0,0,0.5);
+}
+
+#formlg input {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    margin: 30px 0;
+    font-size: 20px;
+}
+
+#formlg input {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    margin: 30px 0;
+    font-size: 20px;
+}
+
+#formlg input[type="submit"]{
+    background: linear-gradient(#FFDA63, #FFB940);
+    border: 0;
+    color: brown;
+    opacity: 0.8;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-bottom: 0;
+}
+
+#formlg input[type="submit"]:hover {
+    opacity: 1;
+}
+
+#formlg input[type="submit"]:active {
+    transform: scale(0.95);
+}

@@ -1,31 +1,27 @@
 <?php
+require("template/plantilla.php");
+$Encabezado=new Encabezado("SITVEE");
+$Pie=new Pie();
+$Encabezado->generarHTML();
     SESSION_START();
 
-    if(isset($_SESSION['usuario'])){
-        if($_SESSION['usuario']['rol'] == "Administrador"){
-            header('Location: adminMenu.php');
-        }else if($_SESSION['usuario']['rol'] == "Usuario"){
-            header('Location: userMenu.php');
+        if(isset($_SESSION['usuario'])){
+            if($_SESSION['usuario']['rol'] == "Administrador"){
+                header('Location: adminMenu.php');
+            }else if($_SESSION['usuario']['rol'] == "Usuario"){
+                header('Location: userMenu.php');
+            }
         }
-    }
 ?>
-<title>Login</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/login.css">
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/validar.js"></script>
-<?php include('template/header.php'); ?>
-        <div class="error">
-            <span>Credenciales invalidas, Por favor inténtelo de nuevo</span>
-        </div>
-        <div class="main" style="height:64%; width:100%; padding:3%;">
-            <form action="" id="formlg">
-                <h2>Bienvenido a Sitvee</h2>
-                <input type="text" name="usuario" placeholder=" Usuario" pattern="[A-Za-z0-9_-]{1,15}" required/>
-                <input type="password" name="clave" placeholder=" Contraseña" pattern="[A-Za-z0-9_-]{1,15}" required/>
-                <input type="submit" class="botonLogin" value="Iniciar Sesion"/>
-            </form>         
-        </div>
-        <?php include('template/footer.php'); ?>
-    </body>
-</html>
+<div class="error">
+    <span>Credenciales invalidas, Por favor inténtelo de nuevo</span>
+</div>
+    <div class="main" style="height:64%; width:100%; padding:3%;">
+        <form id="formlg">
+            <h2>Bienvenido a Sitvee</h2>
+                <input type="text" id="user" name="usuario" placeholder=" Usuario" pattern="[A-Za-z0-9_-]{1,15}" required/>
+                <input type="password" id="pass" name="clave" placeholder=" Contraseña" pattern="[A-Za-z0-9_-]{1,15}" required/>
+                <input type="submit" id="botonLogin" value="Iniciar Sesion"/>
+        </form>         
+    </div>
+<?php $Pie->generarHTML(); ?>

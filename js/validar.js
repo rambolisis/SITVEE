@@ -275,3 +275,57 @@ jQuery(document).on('submit','#frmActualizaStaff',function(event){
         console.log("complete");
     });
 });
+
+//Listar
+function listarCliente() {
+    var cadena = document.getElementById("clienteId").value;
+    var lista = cadena.split(",");
+    var nombre = lista[1];
+    var correo = lista[2];
+    var usuario = lista[3];
+    var clave = lista[4];
+    if(cadena === "null"){
+    document.getElementById("nombreNuevo").value = "";
+    document.getElementById("correoNuevo").value = "";
+    document.getElementById("usuarioNuevo").value = "";
+    document.getElementById("contraseniaNueva").value = "";
+    }else{
+    document.getElementById("nombreNuevo").value = nombre;
+    document.getElementById("correoNuevo").value = correo;
+    document.getElementById("usuarioNuevo").value = usuario;
+    document.getElementById("contraseniaNueva").value = clave;
+    }
+    
+}
+function listarEvento() {
+    var cadena = document.getElementById("eventoId").value;
+    var lista = cadena.split(",");
+    var nombreEvento = lista[1];
+    var fecha = lista[2];
+    var descripcion = lista[3];
+    var nombreCliente = lista[4];
+    if(cadena === "null"){
+    document.getElementById("nombreEventoNuevo").value = "";
+    document.getElementById("fechaEventoNuevo").value = "";
+    document.getElementById("descripcionEventoNuevo").value = "";
+    document.getElementById("clienteEventoNuevo").value = "";
+    }else{
+    document.getElementById("nombreEventoNuevo").value = nombreEvento;
+    document.getElementById("fechaEventoNuevo").value = fecha;
+    document.getElementById("descripcionEventoNuevo").value = descripcion;
+    document.getElementById("clienteEventoNuevo").value = nombreCliente;
+    }
+}
+function listarStaff() {
+    var cadena = document.getElementById("staffId").value;
+    var lista = cadena.split(",");
+    var usuario = lista[3];
+    var clave = lista[4];
+    if(cadena === "null"){
+    document.getElementById("usuarioStaff").value = "";
+    document.getElementById("contraseniaStaff").value = "";
+    }else{
+    document.getElementById("usuarioStaff").value = usuario;
+    document.getElementById("contraseniaStaff").value = clave;
+    }
+}
