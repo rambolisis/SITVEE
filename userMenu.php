@@ -28,13 +28,13 @@ $Encabezado->generarHTML();
 <div class="mensaje">
 	<span></span>
 </div>
-<div class="vertical-menu" style="padding:0px;  height:64%">
-			<ul class="menu" style="margin-top:0px;">
-				<li style="height: 33%; padding: 15%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>
-				<li style="height: 33%; padding: 15%;" id="ImportarCSV"><a>Eventos</a></li>
-				<li style="height: 33%; padding: 15%;" onclick="salir();"><a>Cerrar Sesion</a></li>
-			</ul>
-		</div>
+<div class="vertical-menu" style="padding:0px;  height:64%;">
+				<ul class="menu" style="margin-top:0px; width:100%;">
+				  <li style="height: 33%; padding: 15%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>
+				  <li style="height: 33%; padding: 15%;" id="ImportarCSV"><a>Eventos</a></li>
+				  <li style="height: 33%; padding: 15%;" onclick="salir();"><a>Cerrar Sesion</a></li>
+				</ul>
+			</div>
 		<div class="container" id="container" style="width:85%; height:64%; padding:1%;">
 	<!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
 	<div id="beneficiosUser" style="display: none;">

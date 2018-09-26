@@ -18,18 +18,18 @@ $Encabezado->generarHTML();
     <span></span>
 </div>
     <div style="height: 64%;">
-    <div class="vertical-menu" >
-        <ul class="menu" style="margin-top:0px;">
-            <li style="height: 11.5%;" id="NewClient"><a>Nuevo Cliente</a></li>
-            <li style="height: 11.5%;" id="NewEvent"><a>Nuevo Evento</a></li>
-            <li style="height: 11.5%;" id="NewStaff"><a>Nuevo Staff</a></li>
-            <li style="height: 11.5%;" id="UpdateClient"><a>Actualizar Cliente</a></li>
-            <li style="height: 11.5%;" id="UpdateEvent"><a>Actualizar Evento</a></li>
-            <li style="height: 11.5%;" id="UpdateStaff"><a>Actualizar Staff</a></li>
-            <li style="height: 11.5%;" id="Administrator"><a>Administrador</a></li>
-            <li style="height: 11.5%;" onclick="salir();"><a>Cerrar Sesion</a></li>
-            </ul>
-        </div>
+            <div class="vertical-menu" >
+                <ul class="menu" style="margin-top:0px; width:100%;">
+                    <li style="height: 11.5%;" id="NewClient"><a>Nuevo Cliente</a></li>
+                    <li style="height: 11.5%;" id="NewEvent"><a>Nuevo Evento</a></li>
+                    <li style="height: 11.5%;" id="NewStaff"><a>Nuevo Staff</a></li>
+                    <li style="height: 11.5%;" id="UpdateClient"><a>Actualizar Cliente</a></li>
+                    <li style="height: 11.5%;" id="UpdateEvent"><a>Actualizar Evento</a></li>
+                    <li style="height: 11.5%;" id="UpdateStaff"><a>Actualizar Staff</a></li>
+                    <li style="height: 11.5%;" id="Administrator"><a>Administrador</a></li>
+                    <li style="height: 11.5%;" onclick="salir();"><a>Cerrar Sesion</a></li>
+                 </ul>
+                </div>
         <div id="NuevoEvento">
             <form action="" id="frmNuevoEvento">
                 Nombre del Evento:<br>
