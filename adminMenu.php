@@ -1,7 +1,7 @@
 
 <?php
 require("template/plantilla.php");
-$Encabezado=new Encabezado("Administracion");
+$Encabezado=new Encabezado("Administración");
 $Pie=new Pie();
 $Encabezado->generarHTML();
     SESSION_START();
