@@ -20,15 +20,19 @@ class Encabezado{
                 <script src='js/bootstrap.min.js' type='text/javascript'></script>
 				<style type='text/css'>
 					body {
-						background: #d2cdcd;
-						
+						background-image: linear-gradient(to top, #d2cdcd, #d9d5d6, #dfdddf, #e6e6e7, #eeeeee);
 					}
 			
 					#header {
 						background: #DF5C10;
+						position: relative;
 						width:100%;
 						height:18%;
 						border-radius:15px 0px 15px 0px;
+						
+						-webkit-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
+						-moz-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
+						box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
 					}
 			
 					#footer {
@@ -37,6 +41,10 @@ class Encabezado{
 						width:100%;
 						height:18%;
 						border-radius:0px 15px 0px 15px;
+
+						-webkit-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
+						-moz-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
+						box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
 					}
 			
 			
