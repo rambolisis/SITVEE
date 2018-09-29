@@ -6,14 +6,26 @@ $Pie=new Pie();
 $Encabezado->generarHTML();
     SESSION_START();
 
-    if (isset($_SESSION['usuario'])) {
-        if ($_SESSION['usuario']['rol'] != "Administrador") {
+    $time = 10;
+
+    if(isset($_SESSION["usuario"])){ 
+        if ($_SESSION['usuario']['rol'] != "Administrador"){
             header("Location: userMenu.php");
         }
-    } else {
+        if(isset($_SESSION["expire"]) && time() > $_SESSION["expire"] + $time){
+            unset($_SESSION["expire"]); 
+            unset($_SESSION["usuario"]);
+            header('Location: salir.php');
+        }else{ 
+            $_SESSION["expire"] = time(); 
+        } 
+    }else{
         header('Location: index.php');
-    }
+}
 ?>
+<script type="text/javascript">
+    session();
+</script>
 <div class="mensaje">
     <span></span>
 </div>

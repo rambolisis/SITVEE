@@ -5,26 +5,38 @@ $Pie=new Pie();
 $Encabezado->generarHTML();
 	SESSION_START();
 
-		if (isset($_SESSION['usuario'])) {
-			if ($_SESSION['usuario']['rol'] != "Usuario") {
-				header("Location: adminMenu.php");
-			}
-		} else {
-			header('Location: index.php');
-		}
+	$time = 10;
 
-		if(file_exists("QR-Invitados.zip")){
-			header("Content-type: application/octet-stream");
-			header("Content-disposition: attachment; filename = QR-Invitados.zip");
-			readfile('QR-Invitados.zip');
-			unlink('QR-Invitados.zip');
-			$files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
+    if(isset($_SESSION["usuario"])){ 
+        if ($_SESSION['usuario']['rol'] != "Usuario") {
+			header("Location: adminMenu.php");
+		}
+        if(isset($_SESSION["expire"]) && time() > $_SESSION["expire"] + $time){
+            unset($_SESSION["expire"]); 
+            unset($_SESSION["usuario"]);
+            header('Location: salir.php');
+        }else{ 
+            $_SESSION["expire"] = time(); 
+        } 
+    }else{
+        header('Location: index.php');
+}
+
+	if(file_exists("QR-Invitados.zip")){
+		header("Content-type: application/octet-stream");
+		header("Content-disposition: attachment; filename = QR-Invitados.zip");
+		readfile('QR-Invitados.zip');
+		unlink('QR-Invitados.zip');
+		$files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 			foreach($files as $file){
-			if(is_file($file))
-			unlink($file); //elimino el fichero
-		}
-		}
+				if(is_file($file))
+					unlink($file); //elimino el fichero
+			}
+}
 ?>
+<script type="text/javascript">
+    session();
+</script>
 <div class="mensaje">
 	<span></span>
 </div>

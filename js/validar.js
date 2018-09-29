@@ -299,6 +299,35 @@ function salir() {
     setTimeout("location.href = 'salir.php'",1000);
 }
 
+function session() {
+    var t;
+    window.onload = resetTimer;
+    // DOM Events
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+    document.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onmousedown = resetTimer; 
+    document.ontouchstart = resetTimer;
+    document.onclick = resetTimer;     
+    document.onscroll = resetTimer;
+    document.onkeypress = resetTimer;
+
+    function logout() {
+        $("span").text("Se cerrará la sesión por inactividad");
+            $('.mensaje').css('background-color', '#2F5EB7');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+            setTimeout(function(){ $('#loading-screen').fadeIn(); },3000);
+            setTimeout("location.href = 'adminMenu.php'",5000);
+    }
+
+    function resetTimer() {
+        clearTimeout(t);
+        t = setTimeout(logout, 10000)
+    };
+}
+
 //Listar
 function listarCliente() {
     var cadena = document.getElementById("clienteId").value;
