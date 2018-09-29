@@ -53,7 +53,15 @@ jQuery(document).on('submit','#frmNuevoCliente',function(event){
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
+        }else{
+            $("span").text("El nombre de usuario ya está en uso");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
         }
+        $('#frmNuevoCliente').trigger("reset");
     })
     .fail(function(resp){
         console.log(resp.responseText);
@@ -123,7 +131,15 @@ jQuery(document).on('submit','#frmNuevoAdministrador',function(event){
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
+        }else{
+            $("span").text("El nombre de usuario ya está en uso");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
         }
+        $('#frmNuevoAdministrador').trigger("reset");
     })
     .fail(function(resp){
         console.log(resp.responseText);
