@@ -49,7 +49,7 @@ jQuery(document).on('submit','#frmNuevoCliente',function(event){
         if(!respuesta.mensaje){
             $('#frmNuevoCliente').trigger("reset");
             $("span").text("Cliente guardado exitosamente");
-            $('.mensaje').css('background-color', '#14BD2F');
+            $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
@@ -79,7 +79,7 @@ jQuery(document).on('submit','#frmActualizaCliente',function(event){
         console.log(respuesta);
         if(!respuesta.mensaje){
             $("span").text("Cliente actualizado exitosamente");
-            $('.mensaje').css('background-color', '#14BD2F');
+            $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
@@ -119,7 +119,7 @@ jQuery(document).on('submit','#frmNuevoAdministrador',function(event){
         if(!respuesta.mensaje){
             $('#frmNuevoAdministrador').trigger("reset");
             $("span").text("Administrador guardado exitosamente");
-            $('.mensaje').css('background-color', '#14BD2F');
+            $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
@@ -150,7 +150,7 @@ jQuery(document).on('submit','#frmNuevoEvento',function(event){
         if(!respuesta.mensaje){
             $('#frmNuevoEvento').trigger("reset");
             $("span").text("Evento guardado exitosamente");
-            $('.mensaje').css('background-color', '#14BD2F');
+            $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
@@ -180,7 +180,7 @@ jQuery(document).on('submit','#frmActualizaEvento',function(event){
         console.log(respuesta);
         if(!respuesta.mensaje){
             $("span").text("Evento actualizado exitosamente");
-            $('.mensaje').css('background-color', '#14BD2F');
+            $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
@@ -218,7 +218,7 @@ jQuery(document).on('submit','#frmNuevoStaff',function(event){
         console.log(respuesta);
         if(!respuesta.mensaje){
             $("span").text("Staff guardado exitosamente");
-            $('.mensaje').css('background-color', '#14BD2F');
+            $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
@@ -256,7 +256,7 @@ jQuery(document).on('submit','#frmActualizaStaff',function(event){
         console.log(respuesta);
         if(!respuesta.mensaje){
             $("span").text("Staff actualizado exitosamente");
-            $('.mensaje').css('background-color', '#14BD2F');
+            $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);

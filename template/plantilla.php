@@ -11,6 +11,7 @@ class Encabezado{
 				<title>$tit</title>
 				<meta http-equiv='Content-Type' content='text/html; charset='utf-8'/>
 				<link rel='shortcut icon' href='imagenes/favicon.png' />
+				<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 				<link rel='stylesheet' href='css/bootstrap.min.css'>
 				<link rel='stylesheet' href='css/style.css'>
 				<script src='js/jquery-3.3.1.min.js' type='text/javascript'></script>
@@ -21,6 +22,7 @@ class Encabezado{
                 <script src='js/bootstrap.min.js' type='text/javascript'></script>
 				<style type='text/css'>
 					body {
+						font-family: 'Montserrat', sans-serif;
 						background-image: linear-gradient(to top, #d2cdcd, #d9d5d6, #dfdddf, #e6e6e7, #eeeeee);
 					}
 			

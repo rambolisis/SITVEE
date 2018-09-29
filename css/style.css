@@ -195,9 +195,9 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     opacity: 0.8
 }
 input[type="submit"],#viewfile,#confirmar{
-    background-color: #28a745;
+    background-color: #388742;
     border-radius:20px 0px 20px 0px;
-    border-color: #28a745;
+    border-color: #388742;
     display: inline-block;
         font-weight: 400;
         text-align: center;
