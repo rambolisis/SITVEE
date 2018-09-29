@@ -54,7 +54,6 @@ class Encabezado{
 					.error{
 						background-color: #E74F4F;
 						position: absolute;
-						top: 150px;
 						left: 0px;
 						padding: 10px 0 ;
 						border-radius:  0 0 5px 5px;
