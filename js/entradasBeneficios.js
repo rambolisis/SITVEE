@@ -106,6 +106,7 @@ $().ready(function () {
 
     $('#ImportarCSV').click(function (evento) {
         $('#busqueda').show();
+        $("#solicitud").hide();
         $('#table-data').empty();
         $('#divTabla').hide();
         ListaEntradas.Clear();
@@ -113,6 +114,12 @@ $().ready(function () {
         $("#fila").hide();
         $('#beneficiosUser').hide();
     });
+
+    $('#SolicitarEvento').click(function (evento) {
+        $('#solicitud').show();
+        $("#busqueda").hide();
+    });
+
 
     
 });

@@ -42,12 +42,29 @@ $Encabezado->generarHTML();
 </div>
 <div class="vertical-menu" style="padding:0px;  height:64%;">
 				<ul class="menu" style="margin-top:0px; width:100%;">
-				  <li style="height: 33%; padding: 15%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>
-				  <li style="height: 33%; padding: 15%;" id="ImportarCSV"><a>Eventos</a></li>
-				  <li style="height: 33%; padding: 15%;" onclick="salir();"><a>Cerrar Sesion</a></li>
+				  <li style="height: 25%; padding: 15%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>
+				  <li style="height: 25%; padding: 15%;" id="ImportarCSV"><a>Eventos</a></li>
+				  <li style="height: 25%; padding: 12%;" id="SolicitarEvento"><a>SolicitarEvento</a></li>
+				  <li style="height: 25%; padding: 15%;" onclick="salir();"><a>Cerrar Sesion</a></li>
 				</ul>
 			</div>
 		<div class="container" id="container" style="width:85%; height:64%; padding:1%;">
+		<div id="solicitud" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
+				<form action="" id="frmActualizaEventoUser">
+						<h1>Nuevo Evento</h1>
+								<br>
+						Fecha del Evento:<br>
+						<input style="width: 30%;" name="fechaEventoNuevoUserser" id="fechaEventoNuevoUser" type="date" required="" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2025-12-31"/>
+						<br>
+						Nombre del Evento:<br>
+						<input type="text" name="nombreEventoNuevo" id="nombreEventoNuevoUser"  required="">
+						<br>
+						Descripcion del Evento:<br>
+						<textarea name="comentariosEventoNuevoUser" id="comentariosEventoNuevoUser" rows="5" cols="40" placeholder="Escribe aquí tus comentarios"></textarea>
+						<br><br>
+						<input style="width: 30%;" type="submit" class="ActualizaEventoUser" value="Solicitar Evento">
+				</form>
+		 </div>
 	<!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
 	<div id="beneficiosUser" style="display: none;">
 		<form>
