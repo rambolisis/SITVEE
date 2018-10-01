@@ -145,6 +145,7 @@ $().ready(function () {
         $('#solicitud').show();
         $("#busqueda").hide();
         $('#gestionEvento').hide();
+        $("#actualizacionEventoUser").hide();
     });
     
 });
