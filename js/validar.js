@@ -324,7 +324,7 @@ function session() {
 
     function resetTimer() {
         clearTimeout(t);
-        t = setTimeout(logout, 10000)
+        t = setTimeout(logout, 600000)
     };
 }
 

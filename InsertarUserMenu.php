@@ -30,8 +30,8 @@
     $insertaInvitado = $mysqli->prepare("INSERT INTO invitado(nombreInvitado, correo, telefono, id_Evento)
     VALUES (?,?,?,?)");
     $insertaQR = $mysqli->prepare("UPDATE invitado SET codigoQR = ? WHERE id_Invitado = ?");
-    $insertaBeneficio = $mysqli->prepare("INSERT INTO beneficio(nombre, cantidad, id_Evento, id_Invitado)
-    VALUES (?,?,?,?)");
+    $insertaBeneficio = $mysqli->prepare("INSERT INTO beneficio(nombre, cantidad, id_Evento, id_Invitado, codigo)
+    VALUES (?,?,?,?,?)");
     $respuesta = false;
     $respuesta2 = false;
     $respuesta3 = false;
@@ -65,7 +65,7 @@
                 $mail->Subject = 'Beneficios invitacion';
                 $mail->Body    = 'El siguiente codigo QR adjunto se debe utilizar para canjear los beneficios que tenga disponibles<br><br>
                 <center><img src="'.$filename.'"/></center>';
-                $mail->send();
+                /*$mail->send();*/
                 echo 'Correo enviado exitosamente a: '.$nombreCompleto;
             } catch (Exception $e) {
                 echo 'Correo no enviado. Mailer Error: ', $mail->ErrorInfo;
@@ -76,7 +76,7 @@
             foreach($invitados->{"Beneficios"} as $beneficio){
                 $nombreBeneficio = $beneficio->{"Nombre_Beneficio"};
                 $cantidad = $beneficio->{"Cantidad"};
-                $insertaBeneficio->bind_param("siii",$nombreBeneficio,$cantidad,$idEvento,$idInvitado);
+                $insertaBeneficio->bind_param("siiii",$nombreBeneficio,$cantidad,$idEvento,$idInvitado,$id);
                 $respuesta2 = $insertaBeneficio->execute();
             } 
         }

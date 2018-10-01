@@ -5,7 +5,7 @@ $Pie=new Pie();
 $Encabezado->generarHTML();
 	SESSION_START();
 
-	$time = 10;
+	$time = 600;
 
     if(isset($_SESSION["usuario"])){ 
         if ($_SESSION['usuario']['rol'] != "Usuario") {
@@ -62,7 +62,7 @@ $Encabezado->generarHTML();
 					<button style="width: 13%;" id="adicionar" class="btn btn-success" type="button">Añadir</button>
 				</div>
 			</form>
-			<div id="tablaBeneficios" style="height:180px; width:100%; overflow-y:scroll;">
+			<div id="tablaBeneficios" style="height:180px; width:100%; overflow-y:scroll; ">
 			<table id="mytable" class="table table-bordered table-hover ">
 				<tr>
 					<th>Beneficios</th>
