@@ -5,7 +5,7 @@ $Pie=new Pie();
 $Encabezado->generarHTML();
 	SESSION_START();
 
-	$time = 10;
+	$time = 60;
 
     if(isset($_SESSION["usuario"])){ 
         if ($_SESSION['usuario']['rol'] != "Usuario") {
@@ -90,6 +90,44 @@ $Encabezado->generarHTML();
 				</form>
 			</div>
 		 </div>
+		 <div id="busqueda" style="display: none;">
+		<select name="eventoId" id="eventoId" style="width: 250px;">
+			<option value="null">Seleccione un evento</option>
+			<?php
+				require 'conexion.php';
+				$eventoCliente = $_SESSION['usuario']['id_Cliente'];
+				$Actualizaeventos = $mysqli->query("SELECT * FROM evento WHERE id_Cliente = '$eventoCliente' ");
+
+				while ($datosE = $Actualizaeventos->fetch_assoc()) {
+					echo "<option value=\"{$datosE['id_Evento']}\">{$datosE['nombreEvento']}</option>";
+				}
+				$mysqli->close();
+				?>
+		</select>
+		<br><br>
+		<h1>Por Favor adjunte un archivo.csv</h1>
+		<br>
+		<div class="custom-file">
+				<input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;" name="Buscar">
+				<button class="btn btn-outline-secondary" type="button" id="viewfile">Cargar</button>
+		</div>
+	<div class="input-group mt-2 mb-2" id="divTabla" style="height:180px; width:100%; display: none;overflow-y:scroll; ">
+		<table class="table table-hover table-dark" id="tableMain" style="width:100%;">
+			<thead>
+				<tr style="display: none;" id="fila">
+					<th scope="col">Nombre</th>
+					<th scope="col">Primer Apellido</th>
+					<th scope="col">Segundo Apellido</th>
+					<th scope="col">Correo Electronico</th>
+					<th scope="col">Telefono</th>
+					<th scope="col">Asistencia</th>
+				</tr>
+			</thead>
+			<tbody id="table-data"></tbody>
+		</table>
+		</div>
+		<input id="confirmar" style="width: 13%; display: none;" type="button" value="Confirmar" onclick="Enviar();"  />
+		</div>
 		 <div id="gestionEvento" style="height:98%; width:100%;padding-left:5%; text-align:center;display:none;"> 
 				<table class="table table-hover table-dark" id="tablaEventos" style="width:100%;">
 					<thead>
@@ -145,44 +183,6 @@ $Encabezado->generarHTML();
 		<button style="width: 13%;margin:1%;" onclick="Enviar2();" class="btn btn-success" id="enviar2" type="button">Enviar</button>
 		<button style="width: 13%;float:left;margin:1%;" onclick="Ocultar();" id="regresar" class="btn btn-success" type="button">Regresar</button>
 	</div>
-	<div id="busqueda" style="display: none;">
-		<select name="eventoId" id="eventoId" style="width: 250px;">
-			<option value="null">Seleccione un evento</option>
-			<?php
-				require 'conexion.php';
-				$eventoCliente = $_SESSION['usuario']['id_Cliente'];
-				$Actualizaeventos = $mysqli->query("SELECT * FROM evento WHERE id_Cliente = '$eventoCliente' ");
-
-				while ($datosE = $Actualizaeventos->fetch_assoc()) {
-					echo "<option value=\"{$datosE['id_Evento']}\">{$datosE['nombreEvento']}</option>";
-				}
-				$mysqli->close();
-				?>
-		</select>
-		<br><br>
-		<h1>Por Favor adjunte un archivo.csv</h1>
-		<br>
-		<div class="custom-file">
-				<input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;" name="Buscar">
-				<button class="btn btn-outline-secondary" type="button" id="viewfile">Cargar</button>
-		</div>
-	<div class="input-group mt-2 mb-2" id="divTabla" style="height:180px; width:100%; display: none;overflow-y:scroll; ">
-		<table class="table table-hover table-dark" id="tableMain" style="width:100%;">
-			<thead>
-				<tr style="display: none;" id="fila">
-					<th scope="col">Nombre</th>
-					<th scope="col">Primer Apellido</th>
-					<th scope="col">Segundo Apellido</th>
-					<th scope="col">Correo Electronico</th>
-					<th scope="col">Telefono</th>
-					<th scope="col">Asistencia</th>
-				</tr>
-			</thead>
-			<tbody id="table-data"></tbody>
-		</table>
-		</div>
-		<input id="confirmar" style="width: 13%; display: none;" type="button" value="Confirmar" onclick="Enviar();"  />
-		</div>
 	</div>
 </div>
 <?php $Pie->generarHTML(); ?>

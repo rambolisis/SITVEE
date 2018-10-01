@@ -107,6 +107,19 @@ $().ready(function () {
     $('#ImportarCSV').click(function (evento) {
         $('#gestionEvento').show();
         $("#solicitud").hide();
+        $('#busqueda').hide();
+        $("#actualizacionEventoUser").hide();
+        $('#table-data').empty();
+        $('#divTabla').hide();
+        ListaEntradas.Clear();
+        $("#confirmar").hide();
+        $("#fila").hide();
+        $('#beneficiosUser').hide();
+    });
+    $('#cargarCSV').click(function (evento) {
+        $('#busqueda').show();
+        $("#gestionEvento").hide();
+        $("#solicitud").hide();
         $("#actualizacionEventoUser").hide();
         $('#table-data').empty();
         $('#divTabla').hide();
@@ -118,6 +131,7 @@ $().ready(function () {
     $('.btn-primary').click(function (evento) {
         $('#actualizacionEventoUser').show();
         $("#solicitud").hide();
+        $('#busqueda').hide();
         $("#gestionEvento").hide();
         $('#table-data').empty();
         $('#divTabla').hide();
