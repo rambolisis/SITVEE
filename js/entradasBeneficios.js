@@ -115,7 +115,7 @@ $().ready(function () {
         $("#fila").hide();
         $('#beneficiosUser').hide();
     });
-    $('#verEvento').click(function (evento) {
+    $('.btn-primary').click(function (evento) {
         $('#actualizacionEventoUser').show();
         $("#solicitud").hide();
         $("#gestionEvento").hide();
