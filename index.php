@@ -16,7 +16,7 @@ $Encabezado->generarHTML();
 <div class="error">
     <span>Credenciales invalidas, Por favor inténtelo de nuevo</span>
 </div>
-    <div class="main" style="height:64%; width:100%; padding:3%;" >
+    <div class="main" style="height:64%; width:100%; padding:1%;" >
         <form id="formlg" >
             <h2><strong>Inicia sesión en SITVEE</strong></h2>
                 <input type="text" id="user" name="usuario" placeholder=" Usuario" pattern="[A-Za-z0-9_-]{1,15}" required/>

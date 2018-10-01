@@ -155,9 +155,7 @@ $Encabezado->generarHTML();
 					<tbody id="table-data-evento"></tbody>
 				</table>
 			</div>
-		 </div>
-	<!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
-	<div id="beneficiosUser" style="display: none;">
+			<div id="beneficiosUser" style="display: none;">
 		<form>
 				<div class="form-group">
 					<p style="float:left;width:40%;">
@@ -183,6 +181,8 @@ $Encabezado->generarHTML();
 		<button style="width: 13%;margin:1%;" onclick="Enviar2();" class="btn btn-success" id="enviar2" type="button">Enviar</button>
 		<button style="width: 13%;float:left;margin:1%;" onclick="Ocultar();" id="regresar" class="btn btn-success" type="button">Regresar</button>
 	</div>
+		 </div>
+	<!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
 	</div>
 </div>
 <?php $Pie->generarHTML(); ?>
