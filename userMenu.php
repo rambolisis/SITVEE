@@ -65,6 +65,9 @@ $Encabezado->generarHTML();
 						<input style="width: 30%;" type="submit" class="ActualizaEventoUser" value="Solicitar Evento">
 				</form>
 		 </div>
+		 <div id="gestionEvento" style="height:98%; width:100%;padding-left:5%; text-align:center;display:none;"> 
+				<h1>meta las varas aqui<h1>
+		 </div>
 	<!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
 	<div id="beneficiosUser" style="display: none;">
 		<form>

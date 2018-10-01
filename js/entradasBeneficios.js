@@ -105,7 +105,7 @@ $().ready(function () {
     });
 
     $('#ImportarCSV').click(function (evento) {
-        $('#busqueda').show();
+        $('#gestionEvento').show();
         $("#solicitud").hide();
         $('#table-data').empty();
         $('#divTabla').hide();
