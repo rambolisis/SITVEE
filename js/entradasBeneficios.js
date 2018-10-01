@@ -146,6 +146,7 @@ $().ready(function () {
         $("#busqueda").hide();
         $('#gestionEvento').hide();
         $("#actualizacionEventoUser").hide();
+        $('#beneficiosUser').hide();
     });
     
 });
