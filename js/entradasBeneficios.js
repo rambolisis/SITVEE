@@ -130,6 +130,7 @@ $().ready(function () {
     $('#SolicitarEvento').click(function (evento) {
         $('#solicitud').show();
         $("#busqueda").hide();
+        $('#gestionEvento').hide();
     });
     
 });
