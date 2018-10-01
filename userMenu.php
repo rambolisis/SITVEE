@@ -66,7 +66,29 @@ $Encabezado->generarHTML();
 				</form>
 		 </div>
 		 <div id="actualizacionEventoUser" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
-				<h1>meta lo que falta<h1>
+			<div class="info" style="height:64%; padding:1%; text-align:center"> 
+				<form id="frmInfoEvento">
+					<h1>Informacion Evento </h1>
+						<label>Nombre:</label> 
+							<input type="text" name="nombreInfoEvento" id="nombreClienteSolicitud"  required="">
+								<button type="button" class="btn btn-primary">Editar</button>
+								<button type="button" class="btn btn-success">Guardar</button>
+								<br>
+						<label>Fecha:</label> 
+							<input style="width: 13%;" required="" name="fechaInfoEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
+							<br>
+						<label>Descripción:</label> 
+							<input type="text" name="descripcionInfoEvento" required="">
+							<br>
+						<span>Estado:  </span><span id="estado"> Nuevo / Invitación Enviada / Finalizado </span>
+							<br>
+							<br>
+								<button id="cargarCSV" type="button" class="btn btn-success">Cargar CSV</button>
+								<!--Este boton debe mostrar el form de cargar CSV-->
+								<button id="verInvitaciones" type="button" class="btn btn-success">Ver Invitaciones</button>
+								<button id="informeEvento" type="button" class="btn btn-success">Informe Evento</button>
+				</form>
+			</div>
 		 </div>
 		 <div id="gestionEvento" style="height:98%; width:100%;padding-left:5%; text-align:center;display:none;"> 
 				<table class="table table-hover table-dark" id="tablaEventos" style="width:100%;">
