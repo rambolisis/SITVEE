@@ -66,7 +66,32 @@ $Encabezado->generarHTML();
 				</form>
 		 </div>
 		 <div id="gestionEvento" style="height:98%; width:100%;padding-left:5%; text-align:center;display:none;"> 
-				<h1>meta las varas aqui<h1>
+				<table class="table table-hover table-dark" id="tablaEventos" style="width:100%;">
+					<thead>
+						<tr id="fila">
+							<th scope="col">Nombre</th>
+							<th scope="col">Gestionar</th>
+						</tr>
+						<?php
+							require 'conexion.php';
+							$Actualizaeventos = $mysqli->query("SELECT * FROM evento WHERE id_Cliente = 1 ");
+			
+							while ($datosE = $Actualizaeventos->fetch_assoc()) {
+						?>
+						<tr>
+							<td><?php echo $datosE['nombreEvento'] ?></td>
+							<td><button value="<?php echo $datosE['id_Evento'] ?>" type="button"
+							name="ver" id="verEvento" class="btn btn-primary">Ver Evento</button></td>
+							<!-- En este button al hacer click debe mostrar el segundo formulario -->
+						</tr>
+						<?php
+							}
+							$mysqli->close();
+						?>
+					</thead>
+					<tbody id="table-data-evento"></tbody>
+				</table>
+			</div>
 		 </div>
 	<!--ESTE ES EL DIV DONDE VAMOS A MOSTRAR LA TABLA-->
 	<div id="beneficiosUser" style="display: none;">
