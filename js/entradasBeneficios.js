@@ -114,13 +114,22 @@ $().ready(function () {
         $("#fila").hide();
         $('#beneficiosUser').hide();
     });
+    $('#verEvento').click(function (evento) {
+        $('#actualizacionEventoUser').show();
+        $("#solicitud").hide();
+        $("#gestionEvento").hide();
+        $('#table-data').empty();
+        $('#divTabla').hide();
+        ListaEntradas.Clear();
+        $("#confirmar").hide();
+        $("#fila").hide();
+        $('#beneficiosUser').hide();
+    });
 
     $('#SolicitarEvento').click(function (evento) {
         $('#solicitud').show();
         $("#busqueda").hide();
     });
-
-
     
 });
 

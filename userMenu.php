@@ -65,6 +65,9 @@ $Encabezado->generarHTML();
 						<input style="width: 30%;" type="submit" class="ActualizaEventoUser" value="Solicitar Evento">
 				</form>
 		 </div>
+		 <div id="actualizacionEventoUser" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
+				<h1>meta lo que falta<h1>
+		 </div>
 		 <div id="gestionEvento" style="height:98%; width:100%;padding-left:5%; text-align:center;display:none;"> 
 				<table class="table table-hover table-dark" id="tablaEventos" style="width:100%;">
 					<thead>
