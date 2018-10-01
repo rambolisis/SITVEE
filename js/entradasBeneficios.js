@@ -107,6 +107,7 @@ $().ready(function () {
     $('#ImportarCSV').click(function (evento) {
         $('#gestionEvento').show();
         $("#solicitud").hide();
+        $("#actualizacionEventoUser").hide();
         $('#table-data').empty();
         $('#divTabla').hide();
         ListaEntradas.Clear();
