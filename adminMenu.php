@@ -6,7 +6,7 @@ $Pie=new Pie();
 $Encabezado->generarHTML();
     SESSION_START();
 
-    $time = 10;
+    $time = 600;
 
     if(isset($_SESSION["usuario"])){ 
         if ($_SESSION['usuario']['rol'] != "Administrador"){

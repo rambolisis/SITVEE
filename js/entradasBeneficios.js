@@ -105,7 +105,34 @@ $().ready(function () {
     });
 
     $('#ImportarCSV').click(function (evento) {
+        $('#gestionEvento').show();
+        $("#solicitud").hide();
+        $('#busqueda').hide();
+        $("#actualizacionEventoUser").hide();
+        $('#table-data').empty();
+        $('#divTabla').hide();
+        ListaEntradas.Clear();
+        $("#confirmar").hide();
+        $("#fila").hide();
+        $('#beneficiosUser').hide();
+    });
+    $('#cargarCSV').click(function (evento) {
         $('#busqueda').show();
+        $("#gestionEvento").hide();
+        $("#solicitud").hide();
+        $("#actualizacionEventoUser").hide();
+        $('#table-data').empty();
+        $('#divTabla').hide();
+        ListaEntradas.Clear();
+        $("#confirmar").hide();
+        $("#fila").hide();
+        $('#beneficiosUser').hide();
+    });
+    $('.btn-primary').click(function (evento) {
+        $('#actualizacionEventoUser').show();
+        $("#solicitud").hide();
+        $('#busqueda').hide();
+        $("#gestionEvento").hide();
         $('#table-data').empty();
         $('#divTabla').hide();
         ListaEntradas.Clear();
@@ -114,6 +141,13 @@ $().ready(function () {
         $('#beneficiosUser').hide();
     });
 
+    $('#SolicitarEvento').click(function (evento) {
+        $('#solicitud').show();
+        $("#busqueda").hide();
+        $('#gestionEvento').hide();
+        $("#actualizacionEventoUser").hide();
+        $('#beneficiosUser').hide();
+    });
     
 });
 
