@@ -310,3 +310,18 @@ form#formlg{
 #formlg input[type="submit"]:active {
     transform: scale(0.95);
 }
+
+/*--FORM INFO EVENTOS--*/
+form#frmInfoEvento{
+    margin: auto;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    max-width: 600px;
+    background: #F3F3F3;
+    padding: 40px;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 0px solid #000000;
+ }
