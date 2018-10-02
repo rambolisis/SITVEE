@@ -75,7 +75,7 @@ $Encabezado->generarHTML();
 								<button type="button" class="btn btn-success">Guardar</button>
 								<br>
 						<label>Fecha:</label> 
-							<input style="width: 13%;" required="" name="fechaInfoEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
+							<input style="width: 50%;text-align:rigth;margin-top:1%;padding-left:13%;" required="" name="fechaInfoEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
 							<br>
 						<label>Descripción:</label> 
 							<input type="text" name="descripcionInfoEvento" required="">
@@ -128,12 +128,12 @@ $Encabezado->generarHTML();
 		</div>
 		<input id="confirmar" style="width: 13%; display: none;" type="button" value="Confirmar" onclick="Enviar();"  />
 		</div>
-		 <div id="gestionEvento" style="height:98%; width:100%;padding-left:5%; text-align:center;display:none;"> 
-				<table class="table table-hover table-dark" id="tablaEventos" style="width:100%;">
+		 <div id="gestionEvento" style="height:98%; width:100%;padding-left:5%; text-align:center;display:none;padding-left:25%;padding-top:3%;"> 
+				<table class="table table-hover table-dark" id="tablaEventos" style="width:70%;text-align:center;">
 					<thead>
-						<tr id="fila">
-							<th scope="col">Nombre</th>
-							<th scope="col">Gestionar</th>
+						<tr id="fila" >
+							<th scope="col" style="width:50%">Nombre</th>
+							<th scope="col" style="width:20%">Gestionar</th>
 						</tr>
 						<?php
 							require 'conexion.php';
