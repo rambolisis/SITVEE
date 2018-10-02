@@ -52,7 +52,7 @@ $Encabezado->generarHTML();
 		<div id="solicitud" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
 				<form action="" id="frmActualizaEventoUser">
 						<h1>Nuevo Evento</h1>
-								<br>
+						<br>
 						Fecha del Evento:<br>
 						<input style="width: 30%;" name="fechaEventoNuevoUserser" id="fechaEventoNuevoUser" type="date" required="" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2025-12-31"/>
 						<br>
@@ -70,15 +70,17 @@ $Encabezado->generarHTML();
 				<form id="frmInfoEvento">
 					<h1>Informacion Evento </h1>
 						<label>Nombre:</label> 
-							<input type="text" name="nombreInfoEvento" id="nombreClienteSolicitud"  required="">
-								<button type="button" class="btn btn-primary">Editar</button>
-								<button type="button" class="btn btn-success">Guardar</button>
-								<br>
-						<label>Fecha:</label> 
-							<input style="width: 50%;text-align:rigth;margin-top:1%;padding-left:13%;" required="" name="fechaInfoEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
+							<input type="text" name="nombreInfoEvento" required="">
+							<br>
+						<label>Fecha:</label>
+							<input style="width: 30.8%;" required="" name="fechaInfoEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
 							<br>
 						<label>Descripción:</label> 
 							<input type="text" name="descripcionInfoEvento" required="">
+							<br>
+							<button type="button" class="btn btn-primary">Editar</button>
+							<button type="button" class="btn btn-success">Guardar</button>
+							<br>
 							<br>
 						<span>Estado:  </span><span id="estado"> Nuevo / Invitación Enviada / Finalizado </span>
 							<br>
