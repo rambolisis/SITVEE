@@ -36,9 +36,22 @@
     border-color: #6c757d;
 }
 
-h1 {
-    font-family: helvetica,arial,sans-serif;
-    font-size: 30px;
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgba(0,0,0,0.5);
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgba(0,0,0,0.5);
+}
+
+h2#izquierda {
+    text-align: left;
+    margin-bottom: 20px;
+    color: rgba(0,0,0,0.5);
 }
 
 table.gridtable {

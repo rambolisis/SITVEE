@@ -4,7 +4,7 @@ jQuery(document).on('submit','#formlg',function(event){
     $('#loading-screen').fadeIn();
 
     jQuery.ajax({
-        url: 'loginConsulta.php',
+        url: 'consultar/loginConsulta.php',
         type: 'POST',
         dataType: 'json',
         data: $(this).serialize(),
@@ -37,7 +37,7 @@ jQuery(document).on('submit','#frmNuevoCliente',function(event){
     event.preventDefault();
 
     jQuery.ajax({
-        url: 'insertaCliente.php',
+        url: 'insertar/insertaCliente.php',
         type: 'POST',
         dataType: 'json',
         data: $(this).serialize(),
@@ -48,13 +48,13 @@ jQuery(document).on('submit','#frmNuevoCliente',function(event){
         console.log(respuesta);
         if(!respuesta.mensaje){
             $('#frmNuevoCliente').trigger("reset");
-            $("span").text("Cliente guardado exitosamente");
+            $("#mensaje").text("Cliente guardado exitosamente");
             $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
         }else{
-            $("span").text("El nombre de usuario ya está en uso");
+            $("#mensaje").text("El nombre de usuario ya está en uso");
             $('.mensaje').css('background-color', '#E74F4F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
@@ -76,7 +76,7 @@ jQuery(document).on('submit','#frmActualizaCliente',function(event){
     event.preventDefault();
 
     jQuery.ajax({
-        url: 'actualizaCliente.php',
+        url: 'actualizar/actualizaCliente.php',
         type: 'POST',
         dataType: 'json',
         data: $(this).serialize(),
@@ -86,13 +86,13 @@ jQuery(document).on('submit','#frmActualizaCliente',function(event){
     .done(function(respuesta){
         console.log(respuesta);
         if(!respuesta.mensaje){
-            $("span").text("Cliente actualizado exitosamente");
+            $("#mensaje").text("Cliente actualizado exitosamente");
             $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
         }else{
-            $("span").text("Porfavor seleccione un cliente");
+            $("#mensaje").text("Porfavor seleccione un cliente");
             $('.mensaje').css('background-color', '#E74F4F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
@@ -115,7 +115,7 @@ jQuery(document).on('submit','#frmNuevoAdministrador',function(event){
     event.preventDefault();
 
     jQuery.ajax({
-        url: 'insertaAdministrador.php',
+        url: 'insertar/insertaAdministrador.php',
         type: 'POST',
         dataType: 'json',
         data: $(this).serialize(),
@@ -126,20 +126,20 @@ jQuery(document).on('submit','#frmNuevoAdministrador',function(event){
         console.log(respuesta);
         if(!respuesta.mensaje){
             $('#frmNuevoAdministrador').trigger("reset");
-            $("span").text("Administrador guardado exitosamente");
+            $("#mensaje").text("Administrador guardado exitosamente");
             $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
         }else{
-            $("span").text("El nombre de usuario ya está en uso");
+            $("#mensaje").text("El nombre de usuario ya está en uso");
             $('.mensaje').css('background-color', '#E74F4F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
                 $('.mensaje').slideUp('slow');
             },3000);
         }
-        $('#frmNuevoAdministrador').trigger("reset");
+        $("#ajaxStart").attr("disabled", false);
     })
     .fail(function(resp){
         console.log(resp.responseText);
@@ -154,7 +154,7 @@ jQuery(document).on('submit','#frmNuevoEvento',function(event){
     event.preventDefault();
 
     jQuery.ajax({
-        url: 'insertaEvento.php',
+        url: 'insertar/insertaEvento.php',
         type: 'POST',
         dataType: 'json',
         data: $(this).serialize(),
@@ -165,7 +165,7 @@ jQuery(document).on('submit','#frmNuevoEvento',function(event){
         console.log(respuesta);
         if(!respuesta.mensaje){
             $('#frmNuevoEvento').trigger("reset");
-            $("span").text("Evento guardado exitosamente");
+            $("#mensaje").text("Evento guardado exitosamente");
             $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
@@ -185,7 +185,7 @@ jQuery(document).on('submit','#frmActualizaEvento',function(event){
     event.preventDefault();
 
     jQuery.ajax({
-        url: 'actualizaEvento.php',
+        url: 'actualizar/actualizaEvento.php',
         type: 'POST',
         dataType: 'json',
         data: $(this).serialize(),
@@ -195,13 +195,13 @@ jQuery(document).on('submit','#frmActualizaEvento',function(event){
     .done(function(respuesta){
         console.log(respuesta);
         if(!respuesta.mensaje){
-            $("span").text("Evento actualizado exitosamente");
+            $("#mensaje").text("Evento actualizado exitosamente");
             $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
         }else{
-            $("span").text("Porfavor seleccione un evento");
+            $("#mensaje").text("Porfavor seleccione un evento");
             $('.mensaje').css('background-color', '#E74F4F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
@@ -218,12 +218,13 @@ jQuery(document).on('submit','#frmActualizaEvento',function(event){
     });
 });
 
-//Ajax para el mensaje de crear staff
-jQuery(document).on('submit','#frmNuevoStaff',function(event){
+//Ajax para el mensaje de actualizar evento desde cliente
+jQuery(document).on('submit','#frmInfoEvento',function(event){
     event.preventDefault();
+    var id = $('#idInfoEvento').text();
 
     jQuery.ajax({
-        url: 'InsertaStaff.php',
+        url: 'actualizar/actualizaEvento.php?idInfoEvento='+id,
         type: 'POST',
         dataType: 'json',
         data: $(this).serialize(),
@@ -233,13 +234,54 @@ jQuery(document).on('submit','#frmNuevoStaff',function(event){
     .done(function(respuesta){
         console.log(respuesta);
         if(!respuesta.mensaje){
-            $("span").text("Staff guardado exitosamente");
+            $("#mensaje").text("Evento actualizado exitosamente");
+            $('.mensaje').css('background-color', '#388742');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+            setTimeout("location.href = 'userMenu.php'",3000);
+        }else{
+            $("#mensaje").text("Error al actualizar el evento");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
+        }
+        $('#nombreInfoEvento').attr("disabled", true);
+        $('#fechaInfoEvento').attr("disabled", true);
+        $('#descripcionInfoEvento').attr("disabled", true);
+        $('#btnGuardar').attr("disabled", true);
+    })
+    .fail(function(resp){
+        console.log(resp.responseText);
+    })
+    .always(function(){
+        console.log("complete");
+    });
+});
+
+//Ajax para el mensaje de crear staff
+jQuery(document).on('submit','#frmNuevoStaff',function(event){
+    event.preventDefault();
+
+    jQuery.ajax({
+        url: 'insertar/InsertaStaff.php',
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        beforeSend: function(){           
+        }
+    })
+    .done(function(respuesta){
+        console.log(respuesta);
+        if(!respuesta.mensaje){
+            $("#mensaje").text("Staff guardado exitosamente");
             $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
         }else{
-            $("span").text("El evento seleccionado ya esta siendo utilizado por otro staff");
+            $("#mensaje").text("El evento seleccionado ya esta siendo utilizado por otro staff");
             $('.mensaje').css('background-color', '#E74F4F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
@@ -261,7 +303,7 @@ jQuery(document).on('submit','#frmActualizaStaff',function(event){
     event.preventDefault();
 
     jQuery.ajax({
-        url: 'actualizaStaff.php',
+        url: 'actualizar/actualizaStaff.php',
         type: 'POST',
         dataType: 'json',
         data: $(this).serialize(),
@@ -271,13 +313,13 @@ jQuery(document).on('submit','#frmActualizaStaff',function(event){
     .done(function(respuesta){
         console.log(respuesta);
         if(!respuesta.mensaje){
-            $("span").text("Staff actualizado exitosamente");
+            $("#mensaje").text("Staff actualizado exitosamente");
             $('.mensaje').css('background-color', '#388742');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
             setTimeout("location.href = 'adminMenu.php'",3000);
         }else{
-            $("span").text("Porfavor seleccione un evento");
+            $("#mensaje").text("Porfavor seleccione un evento");
             $('.mensaje').css('background-color', '#E74F4F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
@@ -299,6 +341,18 @@ function salir() {
     setTimeout("location.href = 'salir.php'",1000);
 }
 
+function reporteInvitacionPDF() {
+    var idCliente = $('#idInfoCliente').text();
+    var idEvento = $('#idInfoEvento').text();
+    location.href="pdf.php?idInfoCliente="+idCliente+"&&idInfoEvento="+idEvento;
+            $("#mensaje").text("Reporte generado exitosamente");
+            $('.mensaje').css('background-color', '#388742');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);    
+}
+
 function session() {
     var t;
     window.onload = resetTimer;
@@ -314,7 +368,7 @@ function session() {
     document.onkeypress = resetTimer;
 
     function logout() {
-        $("span").text("Se cerrará la sesión por inactividad");
+        $("#mensaje").text("Se cerrará la sesión por inactividad");
             $('.mensaje').css('background-color', '#2F5EB7');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
@@ -368,6 +422,25 @@ function listarEvento() {
     document.getElementById("clienteEventoNuevo").value = nombreCliente;
     }
 }
+function listarEventoGestion(array) {
+    var lista = array.split(",");
+    var idEvento = lista[0];
+    var nombreEvento = lista[1];
+    var fecha = lista[2];
+    var descripcion = lista[3];
+    var estado = lista[4];
+    if(array === "null"){
+        document.getElementById("nombreInfoEvento").value = "";
+        document.getElementById("fechaInfoEvento").value = "";
+        document.getElementById("descripcionInfoEvento").value = "";
+    }else{
+        document.getElementById("idInfoEvento").innerHTML = idEvento;
+        document.getElementById("nombreInfoEvento").value = nombreEvento;
+        document.getElementById("fechaInfoEvento").value = fecha;
+        document.getElementById("descripcionInfoEvento").value = descripcion;
+        document.getElementById("estado").innerHTML = estado;
+    }
+}
 function listarStaff() {
     var cadena = document.getElementById("staffId").value;
     var lista = cadena.split(",");
@@ -380,4 +453,11 @@ function listarStaff() {
     document.getElementById("usuarioStaff").value = usuario;
     document.getElementById("contraseniaStaff").value = clave;
     }
+}
+
+function editarBoton(){
+    document.getElementById("btnGuardar").disabled = false;
+    document.getElementById("nombreInfoEvento").disabled = false;
+    document.getElementById("fechaInfoEvento").disabled = false;
+    document.getElementById("descripcionInfoEvento").disabled = false;
 }

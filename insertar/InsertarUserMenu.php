@@ -1,7 +1,7 @@
 <?php
-    require 'conexion.php';
-    require 'phpqrcode/qrlib.php';
-    require 'vendor/autoload.php';
+    require '../conexion.php';
+    require '../phpqrcode/qrlib.php';
+    require '../vendor/autoload.php';
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
     $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
@@ -21,21 +21,23 @@
     
     $ListaInvitados = json_decode($_POST["data"]);
     $idEvento = $_GET["idEvento"];
-    $zip = new ZipArchive();
-    $filenameZip = 'QR-Invitados.zip';
+    //$zip = new ZipArchive();
 
     if($idEvento == "null"){
         var_dump(http_response_code(404));
     }
+    $updateEstado = $mysqli->query("UPDATE evento SET estado='Invitacion Enviada' WHERE id_Evento='$idEvento'");
+    //$nombreEvento = $mysqli->query("SELECT nombreEvento FROM evento WHERE id_Evento='$idEvento'");
+    //$datos = $nombreEvento->fetch_assoc();
+    //$filenameZip = 'QR-Invitados-'.$datos["nombreEvento"].'.zip';
     $insertaInvitado = $mysqli->prepare("INSERT INTO invitado(nombreInvitado, correo, telefono, id_Evento)
     VALUES (?,?,?,?)");
-    $insertaQR = $mysqli->prepare("UPDATE invitado SET codigoQR = ? WHERE id_Invitado = ?");
-    $insertaBeneficio = $mysqli->prepare("INSERT INTO beneficio(nombre, cantidad, id_Evento, id_Invitado, codigo)
-    VALUES (?,?,?,?,?)");
+    $insertaBeneficio = $mysqli->prepare("INSERT INTO beneficio(nombre, cantidad, id_Evento, id_Invitado)
+    VALUES (?,?,?,?)");
     $respuesta = false;
     $respuesta2 = false;
     $respuesta3 = false;
-    if($zip->open($filenameZip, ZipArchive::CREATE)===true){
+    /*if($zip->open($filenameZip, ZipArchive::CREATE)===true){*/
 
         foreach($ListaInvitados as $invitados){
             $nombre = $invitados->{"Nombre"};
@@ -53,7 +55,7 @@
             $frameSize = 1;
             $contenido = $idInvitado.",".$idEvento;
             QRcode::png($contenido, $filename, $level, $size, $frameSize);
-            $zip->addFile($filename,$nombreCompleto.'-'.$idInvitado.'.png');
+            //$zip->addFile($filename,$nombreCompleto.'-'.$idInvitado.'.png');
             try{
                 //Recipients
                 $mail->setFrom('invitacion@sitvee.com', 'SITVEE');
@@ -70,21 +72,18 @@
             } catch (Exception $e) {
                 echo 'Correo no enviado. Mailer Error: ', $mail->ErrorInfo;
             }
-            /*$imagenQR = file_get_contents($filename);
-            $insertaQR->bind_param("bi",$imagenQR,$idInvitado);
-            $respuesta3 = $insertaQR->execute();*/
             foreach($invitados->{"Beneficios"} as $beneficio){
                 $nombreBeneficio = $beneficio->{"Nombre_Beneficio"};
                 $cantidad = $beneficio->{"Cantidad"};
-                $insertaBeneficio->bind_param("siiii",$nombreBeneficio,$cantidad,$idEvento,$idInvitado,$id);
+                $insertaBeneficio->bind_param("siii",$nombreBeneficio,$cantidad,$idEvento,$idInvitado);
                 $respuesta2 = $insertaBeneficio->execute();
             } 
         }
-        $zip->close();
+       /* $zip->close();
         unlink('QRimage');
     }else{
         echo "ERROR";
-    }
+    }*/
     
     
     $mysqli->close();

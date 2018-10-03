@@ -21,43 +21,46 @@ $Encabezado->generarHTML();
     }else{
         header('Location: index.php');
 }
-
-	if(file_exists("QR-Invitados.zip")){
-		header("Content-type: application/octet-stream");
-		header("Content-disposition: attachment; filename = QR-Invitados.zip");
-		readfile('QR-Invitados.zip');
-		unlink('QR-Invitados.zip');
-		$files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
-			foreach($files as $file){
-				if(is_file($file))
-					unlink($file); //elimino el fichero
-			}
-}
+/*if(file_exists("QR-Invitados.zip")){
+	header("Content-type: application/octet-stream");
+	header("Content-disposition: attachment; filename = QR-Invitados.zip");
+	readfile('QR-Invitados.zip');
+	unlink('QR-Invitados.zip');
+	$files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
+		foreach($files as $file){
+			if(is_file($file))
+				unlink($file); //elimino el fichero
+		}*/
+$files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
+	foreach($files as $file){
+		if(is_file($file))
+			unlink($file); //elimino el fichero
+	}
 ?>
 <script type="text/javascript">
     session();
 </script>
 <div class="mensaje">
-	<span></span>
+	<span id="mensaje"></span>
 </div>
 <div class="vertical-menu" style="padding:0px;  height:64%;">
 				<ul class="menu" style="margin-top:0px; width:100%;">
 				  <li style="height: 25%; padding: 15%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>
 				  <li style="height: 25%; padding: 15%;" id="ImportarCSV"><a>Eventos</a></li>
-				  <li style="height: 25%; padding: 12%;" id="SolicitarEvento"><a>SolicitarEvento</a></li>
+				  <li style="height: 25%; padding: 12%;" id="SolicitarEvento"><a>Solicitar Evento</a></li>
 				  <li style="height: 25%; padding: 15%;" onclick="salir();"><a>Cerrar Sesion</a></li>
 				</ul>
 			</div>
 		<div class="container" id="container" style="width:85%; height:64%; padding:1%;">
 		<div id="solicitud" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
-				<form action="" id="frmActualizaEventoUser">
-						<h1>Nuevo Evento</h1>
+				<form id="frmActualizaEventoUser">
+					<h2><strong>Nuevo Evento</strong></h2>
 						<br>
 						Fecha del Evento:<br>
 						<input style="width: 30%;" name="fechaEventoNuevoUserser" id="fechaEventoNuevoUser" type="date" required="" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2025-12-31"/>
 						<br>
 						Nombre del Evento:<br>
-						<input type="text" name="nombreEventoNuevo" id="nombreEventoNuevoUser"  required="">
+						<input type="text" name="nombreEventoNuevo" id="nombreEventoNuevoUser" placeholder="Escriba el nombre del evento" required="">
 						<br>
 						Descripcion del Evento:<br>
 						<textarea name="comentariosEventoNuevoUser" id="comentariosEventoNuevoUser" rows="5" cols="40" placeholder="Escribe aquí tus comentarios"></textarea>
@@ -68,46 +71,33 @@ $Encabezado->generarHTML();
 		 <div id="actualizacionEventoUser" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
 			<div class="info" style="height:64%; padding:1%; text-align:center"> 
 				<form id="frmInfoEvento">
-					<h1>Informacion Evento </h1>
-						<label>Nombre:</label> 
-							<input type="text" name="nombreInfoEvento" required="">
+					<h2><strong>Informacion Evento</strong></h2>
+						<span id="idInfoEvento" style="display:none;">null</span>
+						<span id="idInfoCliente" style="display:none;"><?php echo $_SESSION['usuario']['id_Cliente']; ?>null</span>
+						<label>Nombre:</label>
+							<input disabled="disabled" type="text" id="nombreInfoEvento" name="nombreInfoEvento" required="">
 							<br>
 						<label>Fecha:</label>
-							<input style="width: 30.8%;" required="" name="fechaInfoEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
+							<input disabled="disabled" style="width: 30.8%;" required="" id="fechaInfoEvento" name="fechaInfoEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
 							<br>
 						<label>Descripción:</label> 
-							<input type="text" name="descripcionInfoEvento" required="">
+							<input disabled="disabled" type="text" id="descripcionInfoEvento" name="descripcionInfoEvento" required="">
 							<br>
-							<button type="button" class="btn btn-primary">Editar</button>
-							<button type="button" class="btn btn-success">Guardar</button>
-							<br>
-							<br>
-						<span>Estado:  </span><span id="estado"> Nuevo / Invitación Enviada / Finalizado </span>
+							<button type="button" id="btnEditar" name="btnEditar" class="btn btn-primary" onclick="editarBoton();">Editar</button>
+							<button disabled="disabled" id="btnGuardar" name="btnGuardar" type="submit" class="btn btn-success">Guardar</button>
 							<br>
 							<br>
-								<button id="cargarCSV" type="button" class="btn btn-success">Cargar CSV</button>
-								<!--Este boton debe mostrar el form de cargar CSV-->
-								<button id="verInvitaciones" type="button" class="btn btn-success">Ver Invitaciones</button>
-								<button id="informeEvento" type="button" class="btn btn-success">Informe Evento</button>
+							<span>Estado: </span><strong><span id="estado"></span></strong>
+							<br>
+							<br>
+								<button style="display:none;" id="cargarCSV" type="button" class="btn btn-success">Cargar CSV</button>
+								<button style="display:none;" id="verInvitaciones" type="button" class="btn btn-success" onclick="reporteInvitacionPDF();">Ver Invitaciones</button>
+								<button style="display:none;" id="informeEvento" type="button" class="btn btn-success">Informe Evento</button>
 				</form>
 			</div>
 		 </div>
 		 <div id="busqueda" style="display: none;">
-		<select name="eventoId" id="eventoId" style="width: 250px;">
-			<option value="null">Seleccione un evento</option>
-			<?php
-				require 'conexion.php';
-				$eventoCliente = $_SESSION['usuario']['id_Cliente'];
-				$Actualizaeventos = $mysqli->query("SELECT * FROM evento WHERE id_Cliente = '$eventoCliente' ");
-
-				while ($datosE = $Actualizaeventos->fetch_assoc()) {
-					echo "<option value=\"{$datosE['id_Evento']}\">{$datosE['nombreEvento']}</option>";
-				}
-				$mysqli->close();
-				?>
-		</select>
-		<br><br>
-		<h1>Por Favor adjunte un archivo.csv</h1>
+		 <h2 id="izquierda"><strong>Por Favor adjunte un archivo.csv</strong></h2>
 		<br>
 		<div class="custom-file">
 				<input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;" name="Buscar">
@@ -139,14 +129,20 @@ $Encabezado->generarHTML();
 						</tr>
 						<?php
 							require 'conexion.php';
-							$Actualizaeventos = $mysqli->query("SELECT * FROM evento WHERE id_Cliente = 1 ");
+							$eventoCliente = $_SESSION['usuario']['id_Cliente'];
+							$Infoeventos = $mysqli->query("SELECT * FROM evento WHERE id_Cliente = '$eventoCliente' ");
 			
-							while ($datosE = $Actualizaeventos->fetch_assoc()) {
+							while ($datosE = $Infoeventos->fetch_assoc()) {
+								$array = $datosE['id_Evento'].",".
+										$datosE['nombreEvento'].",".
+										$datosE['fecha'].",".
+										$datosE['descripcion'].",".
+										$datosE['estado'];
 						?>
 						<tr>
 							<td><?php echo $datosE['nombreEvento'] ?></td>
-							<td><button value="<?php echo $datosE['id_Evento'] ?>" type="button"
-							name="ver" id="verEvento" class="btn btn-primary">Ver Evento</button></td>
+							<td><button type="button" name="eventoIdgestion" id="eventoIdgestion" 
+							class="btn btn-primary" onclick="listarEventoGestion('<?php echo $array ?>');">Ver Evento</button></td>
 							<!-- En este button al hacer click debe mostrar el segundo formulario -->
 						</tr>
 						<?php
@@ -156,6 +152,10 @@ $Encabezado->generarHTML();
 					</thead>
 					<tbody id="table-data-evento"></tbody>
 				</table>
+			</div>
+			<div id="noEventos" style="display: none;"> 
+				<h3><strong>No tiene eventos disponibles en este momento</strong></h2>
+				<h3><strong>Vaya a la sección de solicitar evento</strong></h2>
 			</div>
 			<div id="beneficiosUser" style="display: none;">
 		<form>
