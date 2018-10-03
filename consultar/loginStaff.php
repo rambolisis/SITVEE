@@ -1,5 +1,5 @@
 <?php
-require 'conexion.php';
+require '../conexion.php';
 
     if(isset($_POST["user"]) && isset($_POST["pass"])){
         $usuario = $_POST["user"];

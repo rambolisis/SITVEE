@@ -1,5 +1,5 @@
 <?php
-    require 'conexion.php';
+    require '../conexion.php';
 
 	//obtenemos los valores del formulario
 	$nombreCliente = $_POST['nombreNuevo'];

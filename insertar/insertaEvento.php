@@ -1,5 +1,5 @@
 <?php
-    require 'conexion.php';
+    require '../conexion.php';
 
 	//obtenemos los valores del formulario
 	$nombreEvento = $_POST['nombreEvento'];
@@ -8,7 +8,7 @@
     $id = $_POST['clienteEvento'];
 
 
-    $evento = $mysqli->query("INSERT INTO evento(id_Evento, nombreEvento, fecha, descripcion, id_Cliente) VALUES ('','$nombreEvento','$fechaEvento','$descripcionEvento','$id')");
+    $evento = $mysqli->query("INSERT INTO evento(id_Evento, nombreEvento, fecha, descripcion, id_Cliente, estado) VALUES ('','$nombreEvento','$fechaEvento','$descripcionEvento','$id','Nuevo')");
 
 	if($evento===TRUE){
         echo json_encode(array('mensaje' => false));

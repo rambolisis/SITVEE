@@ -42,7 +42,7 @@ $().ready(function () {
             rdr.readAsText($("#inputfile")[0].files[0]);
         }
         catch(err) {
-            $("span").text("Porfavor inserte un documento csv");
+            $("#mensaje").text("Porfavor inserte un documento csv");
             $('.mensaje').css('background-color', '#E74F4F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
@@ -105,16 +105,39 @@ $().ready(function () {
     });
 
     $('#ImportarCSV').click(function (evento) {
-        $('#gestionEvento').show();
-        $("#solicitud").hide();
-        $('#busqueda').hide();
-        $("#actualizacionEventoUser").hide();
-        $('#table-data').empty();
-        $('#divTabla').hide();
-        ListaEntradas.Clear();
-        $("#confirmar").hide();
-        $("#fila").hide();
-        $('#beneficiosUser').hide();
+        var nFilas = $("#tablaEventos tr").length;
+        if(nFilas == 1){
+            $('#noEventos').show();
+            $("#solicitud").hide();
+            $('#busqueda').hide();
+            $("#actualizacionEventoUser").hide();
+            $('#table-data').empty();
+            $('#divTabla').hide();
+            ListaEntradas.Clear();
+            $("#confirmar").hide();
+            $("#fila").hide();
+            $('#beneficiosUser').hide();
+            $('#nombreInfoEvento').attr("disabled", true);
+            $('#fechaInfoEvento').attr("disabled", true);
+            $('#descripcionInfoEvento').attr("disabled", true);
+            $('#btnGuardar').attr("disabled", true);
+        }else{
+            $('#gestionEvento').show();
+            $("#solicitud").hide();
+            $('#busqueda').hide();
+            $("#actualizacionEventoUser").hide();
+            $('#table-data').empty();
+            $('#divTabla').hide();
+            ListaEntradas.Clear();
+            $("#confirmar").hide();
+            $("#fila").hide();
+            $('#beneficiosUser').hide();
+            $('#noEventos').hide();
+            $('#nombreInfoEvento').attr("disabled", true);
+            $('#fechaInfoEvento').attr("disabled", true);
+            $('#descripcionInfoEvento').attr("disabled", true);
+            $('#btnGuardar').attr("disabled", true);
+        }
     });
     $('#cargarCSV').click(function (evento) {
         $('#busqueda').show();
@@ -127,8 +150,31 @@ $().ready(function () {
         $("#confirmar").hide();
         $("#fila").hide();
         $('#beneficiosUser').hide();
+        $('#noEventos').hide();
+        $('#nombreInfoEvento').attr("disabled", true);
+        $('#fechaInfoEvento').attr("disabled", true);
+        $('#descripcionInfoEvento').attr("disabled", true);
+        $('#btnGuardar').attr("disabled", true);
     });
     $('.btn-primary').click(function (evento) {
+        var estado = document.getElementById("estado").innerHTML;
+        if(estado == "Nuevo"){
+            $('#cargarCSV').show();
+            $('#verInvitaciones').hide();
+            $('#informeEvento').hide();
+        }else if(estado == "Invitacion Enviada"){
+            $('#cargarCSV').hide();
+            $('#verInvitaciones').show();
+            $('#informeEvento').hide();
+        }else if(estado == "Finalizado"){
+            $('#cargarCSV').hide();
+            $('#verInvitaciones').hide();
+            $('#informeEvento').show();
+        }else{
+            $('#cargarCSV').hide();
+            $('#verInvitaciones').hide();
+            $('#informeEvento').hide();
+        }
         $('#actualizacionEventoUser').show();
         $("#solicitud").hide();
         $('#busqueda').hide();
@@ -139,6 +185,7 @@ $().ready(function () {
         $("#confirmar").hide();
         $("#fila").hide();
         $('#beneficiosUser').hide();
+        $('#noEventos').hide();
     });
 
     $('#SolicitarEvento').click(function (evento) {
@@ -147,6 +194,11 @@ $().ready(function () {
         $('#gestionEvento').hide();
         $("#actualizacionEventoUser").hide();
         $('#beneficiosUser').hide();
+        $('#noEventos').hide();
+        $('#nombreInfoEvento').attr("disabled", true);
+        $('#fechaInfoEvento').attr("disabled", true);
+        $('#descripcionInfoEvento').attr("disabled", true);
+        $('#btnGuardar').attr("disabled", true);
     });
     
 });
@@ -173,16 +225,16 @@ function GuardarEntrada(columns) {
 
 function Enviar() {
     var estado = hideRow();
-    var eventoId = document.getElementById("eventoId").value;
+    var eventoId = document.getElementById("idInfoEvento").innerText;
     if (!estado) {
-        $("span").text("Porfavor seleccione al menos un invitado");
+        $("#mensaje").text("Porfavor seleccione al menos un invitado");
         $('.mensaje').css('background-color', '#E74F4F');
         $('.mensaje').slideDown('slow');
         setTimeout(function(){
             $('.mensaje').slideUp('slow');
         },3000);
     }else if(eventoId == "null"){
-        $("span").text("Debe seleccionar un evento");
+        $("#mensaje").text("Debe seleccionar un evento");
         $('.mensaje').css('background-color', '#E74F4F');
         $('.mensaje').slideDown('slow');
         setTimeout(function(){
@@ -241,7 +293,7 @@ function hideRow2(event) {
 
 function Enviar2() {
         if(ListaBeneficios.getJson()=="[]"){
-            $("span").text("Porfavor agregue al menos un beneficio");
+            $("#mensaje").text("Porfavor agregue al menos un beneficio");
             $('.mensaje').css('background-color', '#E74F4F');
             $('.mensaje').slideDown('slow');
             setTimeout(function(){
@@ -271,8 +323,8 @@ function Enviar2() {
             req.send('data=' + data);
         }
 
-        var eventoId = document.getElementById("eventoId").value;
-        let route = 'InsertarUserMenu.php?idEvento='+eventoId,
+        var eventoId = document.getElementById("idInfoEvento").innerText;
+        let route = 'insertar/InsertarUserMenu.php?idEvento='+eventoId,
         data = ListaEntradas.getJson();
 
         setRequest(function(){
@@ -283,15 +335,15 @@ function Enviar2() {
                     console.log(this.responseText);
                     $('#loading-screen').fadeOut();
                     $('#enviar2').attr("disabled", true);
-                    $("span").text("Datos guardados exitosamente");
-                    $('.mensaje').css('background-color', '#14BD2F');
+                    $("#mensaje").text("Invitación enviada exitosamente");
+                    $('.mensaje').css('background-color', '#388742');
                     $('.mensaje').slideDown('slow');
                     setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
-                    setTimeout("location.href = 'userMenu.php'",3000);
+                    setTimeout("location.reload();",3000);
                 }else{
                     $('#loading-screen').fadeOut();
                     $('#enviar2').attr("disabled", false);
-                    $("span").text("Error de conexion");
+                    $("#mensaje").text("Error de conexion");
                     $('.mensaje').css('background-color', '#E74F4F');
                     $('.mensaje').slideDown('slow');
                     setTimeout(function(){

@@ -27,7 +27,7 @@ $Encabezado->generarHTML();
     session();
 </script>
 <div class="mensaje">
-    <span></span>
+    <span id="mensaje"></span>
 </div>
     <div style="height: 64%;">
             <div class="vertical-menu" >
