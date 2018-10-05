@@ -30,8 +30,8 @@
     //$nombreEvento = $mysqli->query("SELECT nombreEvento FROM evento WHERE id_Evento='$idEvento'");
     //$datos = $nombreEvento->fetch_assoc();
     //$filenameZip = 'QR-Invitados-'.$datos["nombreEvento"].'.zip';
-    $insertaInvitado = $mysqli->prepare("INSERT INTO invitado(nombreInvitado, correo, telefono, id_Evento)
-    VALUES (?,?,?,?)");
+    $insertaInvitado = $mysqli->prepare("INSERT INTO invitado(nombreInvitado, correo, telefono, id_Evento, asistencia)
+    VALUES (?,?,?,?,?)");
     $insertaBeneficio = $mysqli->prepare("INSERT INTO beneficio(nombre, cantidad, id_Evento, id_Invitado)
     VALUES (?,?,?,?)");
     $respuesta = false;
@@ -45,11 +45,12 @@
             $ape2 = $invitados->{"Segundo_Apellido"};
             $correo = $invitados->{"Correo"};
             $telefono = $invitados->{"Telefono"};
+            $asistencia = "NO";
             $nombreCompleto = $nombre." ".$ape1." ".$ape2;
-            $insertaInvitado->bind_param("ssii",$nombreCompleto,$correo,$telefono,$idEvento);
+            $insertaInvitado->bind_param("ssiis",$nombreCompleto,$correo,$telefono,$idEvento,$asistencia);
             $respuesta = $insertaInvitado->execute();//Ejecutar el insertarInvitado
             $idInvitado = $mysqli->insert_id;//Agarrar id invitado creado
-            $filename = 'QRimage/'.$nombreCompleto.'-'.$idInvitado.'.png';//Crear el codigo QR
+            $filename = '../QRimage/'.$nombreCompleto.'-'.$idInvitado.'.png';//Crear el codigo QR
             $size = 10;
             $level = 'H';
             $frameSize = 1;
@@ -79,6 +80,9 @@
                 $respuesta2 = $insertaBeneficio->execute();
             } 
         }
+        $beneficioControl = $mysqli->query("INSERT INTO beneficiocontrol (nombreBeneficio, cantidadCanjeada, id_Evento) 
+        SELECT DISTINCT beneficio.nombre,0,$idEvento FROM 
+        beneficio INNER JOIN evento ON beneficio.id_Evento = evento.id_Evento WHERE evento.id_Evento = $idEvento");
        /* $zip->close();
         unlink('QRimage');
     }else{

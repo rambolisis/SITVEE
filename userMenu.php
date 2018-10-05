@@ -4,7 +4,8 @@ $Encabezado=new Encabezado("Eventos");
 $Pie=new Pie();
 $Encabezado->generarHTML();
 	SESSION_START();
-
+	require 'conexion.php';
+	
 	$time = 600;
 
     if(isset($_SESSION["usuario"])){ 
@@ -21,6 +22,12 @@ $Encabezado->generarHTML();
     }else{
         header('Location: index.php');
 }
+
+$verificaFecha = $mysqli->query("SELECT estado FROM evento WHERE fecha < CURDATE()");
+	while ($datos = $verificaFecha->fetch_assoc())
+		if($datos['estado'] != "Finalizado"){
+			$actualizaEstado = $mysqli->query("UPDATE evento SET estado='Finalizado' WHERE fecha < CURDATE()");
+		}
 /*if(file_exists("QR-Invitados.zip")){
 	header("Content-type: application/octet-stream");
 	header("Content-disposition: attachment; filename = QR-Invitados.zip");
@@ -92,7 +99,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 							<br>
 								<button style="display:none;" id="cargarCSV" type="button" class="btn btn-success">Cargar CSV</button>
 								<button style="display:none;" id="verInvitaciones" type="button" class="btn btn-success" onclick="reporteInvitacionPDF();">Ver Invitaciones</button>
-								<button style="display:none;" id="informeEvento" type="button" class="btn btn-success">Informe Evento</button>
+								<button style="display:none;" id="informeEvento" type="button" class="btn btn-success" onclick="reporteInformeEventoPDF();">Informe Evento</button>
 				</form>
 			</div>
 		 </div>

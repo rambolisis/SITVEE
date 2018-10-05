@@ -353,6 +353,18 @@ function reporteInvitacionPDF() {
             },3000);    
 }
 
+function reporteInformeEventoPDF() {
+    var idCliente = $('#idInfoCliente').text();
+    var idEvento = $('#idInfoEvento').text();
+    location.href="pdfInforme.php?idInfoCliente="+idCliente+"&&idInfoEvento="+idEvento;
+            $("#mensaje").text("Reporte generado exitosamente");
+            $('.mensaje').css('background-color', '#388742');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);    
+}
+
 function session() {
     var t;
     window.onload = resetTimer;

@@ -12,17 +12,11 @@
         cliente INNER JOIN evento ON cliente.id_Cliente = evento.id_Cliente 
         WHERE evento.id_Cliente = '$clienteIdGestion' AND evento.id_Evento = '$eventoIdGestion' ");
 
-        $beneficios = $mysqli->query("SELECT DISTINCT
-        beneficio.nombre AS Beneficio
-        FROM 
-        beneficio INNER JOIN evento ON beneficio.id_Evento = evento.id_Evento 
-        WHERE evento.id_Evento = '$eventoIdGestion' ");
+        $beneficios = $mysqli->query("SELECT DISTINCT nombre AS Beneficio, SUM(cantidad) AS CantidadTotal 
+        FROM beneficio WHERE id_Evento = '$eventoIdGestion' GROUP BY beneficio");
 
-        $invitados = $mysqli->query("SELECT DISTINCT
-        invitado.nombreInvitado AS Invitado
-        FROM 
-        invitado INNER JOIN evento ON invitado.id_Evento = evento.id_Evento 
-        WHERE evento.id_Evento = '$eventoIdGestion' ");
+        $invitados = $mysqli->query("SELECT DISTINCT invitado.nombreInvitado AS Invitado
+        FROM invitado WHERE invitado.id_Evento = '$eventoIdGestion' ");
         $datos = $info->fetch_assoc();
 ?>
 <!DOCTYPE html>
@@ -43,7 +37,18 @@
         <span>Descripcion:</span><span style="font-weight: bold;"> <?php echo $datos['Descripcion']; ?> </span><br>
     </fieldset>
     <fieldset>
-        <legend><strong>Lista Invitados</strong></legend>
+        <legend><strong>Lista de Beneficios</strong></legend>
+        <?php
+        while ($datos3 = $beneficios->fetch_assoc()) {
+
+        echo "<span>$datos3[Beneficio] | Cantidad total: $datos3[CantidadTotal]</span><br>";
+
+        }
+        
+        ?>
+    </fieldset>
+    <fieldset>
+        <legend><strong>Lista de Invitados</strong></legend>
         <?php
         while ($datos2 = $invitados->fetch_assoc()) {
 
@@ -52,17 +57,7 @@
         }
         
         ?>
-    </fieldset>
-    <fieldset>
-        <legend><strong>Lista Beneficios</strong></legend>
-        <?php
-        while ($datos3 = $beneficios->fetch_assoc()) {
-
-        echo "<span>$datos3[Beneficio]</span><br>";
-
-        }
         
-        ?>
     </fieldset>
 </body>
 <?php $mysqli->close(); ?>

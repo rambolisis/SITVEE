@@ -12,17 +12,14 @@
         cliente INNER JOIN evento ON cliente.id_Cliente = evento.id_Cliente 
         WHERE evento.id_Cliente = '$clienteIdGestion' AND evento.id_Evento = '$eventoIdGestion' ");
 
-        $beneficios = $mysqli->query("SELECT DISTINCT
-        beneficio.nombre AS Beneficio
-        FROM 
-        beneficio INNER JOIN evento ON beneficio.id_Evento = evento.id_Evento 
-        WHERE evento.id_Evento = '$eventoIdGestion' ");
+        $beneficiosControl = $mysqli->query("SELECT DISTINCT
+        beneficioControl.nombreBeneficio AS Beneficio,
+        beneficioControl.cantidadCanjeada AS Cantidad
+        FROM beneficioControl WHERE beneficioControl.id_Evento = '$eventoIdGestion' ");
 
-        $invitados = $mysqli->query("SELECT DISTINCT
+        $invitadosAsistidos = $mysqli->query("SELECT DISTINCT
         invitado.nombreInvitado AS Invitado
-        FROM 
-        invitado INNER JOIN evento ON invitado.id_Evento = evento.id_Evento 
-        WHERE evento.id_Evento = '$eventoIdGestion' ");
+        FROM invitado WHERE invitado.id_Evento = '$eventoIdGestion' AND invitado.asistencia = 'SI'");
         $datos = $info->fetch_assoc();
 ?>
 <!DOCTYPE html>
@@ -43,22 +40,22 @@
         <span>Descripcion:</span><span style="font-weight: bold;"> <?php echo $datos['Descripcion']; ?> </span><br>
     </fieldset>
     <fieldset>
-        <legend><strong>Lista Invitados</strong></legend>
+        <legend><strong>Lista de Beneficios</strong></legend>
         <?php
-        while ($datos2 = $invitados->fetch_assoc()) {
+        while ($datos3 = $beneficiosControl->fetch_assoc()) {
 
-        echo "<span>$datos2[Invitado]</span><br>";
+        echo "<span>$datos3[Beneficio] | Cantidad canjeada: $datos3[Cantidad]</span><br>";
 
         }
         
         ?>
     </fieldset>
     <fieldset>
-        <legend><strong>Lista Beneficios</strong></legend>
+        <legend><strong>Asistencia de Invitados</strong></legend>
         <?php
-        while ($datos3 = $beneficios->fetch_assoc()) {
+        while ($datos2 = $invitadosAsistidos->fetch_assoc()) {
 
-        echo "<span>$datos3[Beneficio]</span><br>";
+        echo "<span>$datos2[Invitado]</span><br>";
 
         }
         
