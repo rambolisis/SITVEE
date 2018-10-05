@@ -52,10 +52,11 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 </div>
 <div class="vertical-menu" style="padding:0px;  height:64%;">
 				<ul class="menu" style="margin-top:0px; width:100%;">
-				  <li style="height: 25%; padding: 15%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>
-				  <li style="height: 25%; padding: 15%;" id="ImportarCSV"><a>Eventos</a></li>
-				  <li style="height: 25%; padding: 12%;" id="SolicitarEvento"><a>Solicitar Evento</a></li>
-				  <li style="height: 25%; padding: 15%;" onclick="salir();"><a>Cerrar Sesion</a></li>
+				  <li style="height: 19%; padding: 5%;" id="MiPerfil"><a>Mi Perfil</a></li>	
+				  <li style="height: 19%; padding: 5%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>
+				  <li style="height: 19%; padding: 5%;" id="ImportarCSV"><a>Eventos</a></li>
+				  <li style="height: 19%; padding: 5%;" id="SolicitarEvento"><a>Solicitar Evento</a></li>
+				  <li style="height: 19%; padding: 5%;" onclick="salir();"><a>Cerrar Sesion</a></li>
 				</ul>
 			</div>
 		<div class="container" id="container" style="width:85%; height:64%; padding:1%;">
@@ -70,14 +71,32 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 						<input type="text" name="nombreEventoNuevo" id="nombreEventoNuevoUser" placeholder="Escriba el nombre del evento" required="">
 						<br>
 						Descripcion del Evento:<br>
-						<textarea name="comentariosEventoNuevoUser" id="comentariosEventoNuevoUser" rows="5" cols="40" placeholder="Escribe aquí tus comentarios"></textarea>
+						<textarea name="comentariosEventoNuevoUser" style="resize:none;" id="comentariosEventoNuevoUser" rows="5" cols="40" placeholder="Escribe aquí tus comentarios"></textarea>
 						<br><br>
 						<input style="width: 30%;" type="submit" class="ActualizaEventoUser" value="Solicitar Evento">
 				</form>
-		 </div>
+		</div>
+		<div id="Perfil" style="text-align:center;padding:2.5%;display:none;">
+			<h1>Mi Perfil</h1>
+            <form action="" id="frmPerfil">
+                Nombre:<br>
+                <input type="text" name="nombreClientePerfil" placeholder="Escriba el nombre" required="">
+                <br>
+				Contraseña:<br>
+                <input type="password" name="contraseniaClientePerfil" placeholder="Escriba la contraseña" required="">
+                <br>
+                Usuario:<br>
+                <input type="text" name="usuarioClientePerfil" placeholder="Escriba el usuario" required="">
+                <br>
+                Correo:<br>
+                <input type="email" name="correoClientePerfil" placeholder="Escriba el correo"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de correo invalido" required="">
+                <br><br>
+                <input style="width: 13%;" type="submit" class="GuardarClientePerfil" value="Guardar">
+            </form>
+        </div>
 		 <div id="actualizacionEventoUser" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
 			<div class="info" style="height:64%; padding:1%; text-align:center"> 
-				<form id="frmInfoEvento">
+				<form id="frmInfoEvento" style="padding:2%; resize:none;">
 					<h2><strong>Informacion Evento</strong></h2>
 						<span id="idInfoEvento" style="display:none;">null</span>
 						<span id="idInfoCliente" style="display:none;"><?php echo $_SESSION['usuario']['id_Cliente']; ?>null</span>
@@ -85,17 +104,16 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 							<input disabled="disabled" type="text" id="nombreInfoEvento" name="nombreInfoEvento" required="">
 							<br>
 						<label>Fecha:</label>
-							<input disabled="disabled" style="width: 30.8%;" required="" id="fechaInfoEvento" name="fechaInfoEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
+							<input disabled="disabled" style="width: 36.5%;" required="" id="fechaInfoEvento" name="fechaInfoEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
 							<br>
 						<label>Descripción:</label> 
-							<input disabled="disabled" type="text" id="descripcionInfoEvento" name="descripcionInfoEvento" required="">
+							<br>
+							<textarea disabled="disabled" style="resize:none;" name="descripcionInfoEvento" id="descripcionInfoEvento" rows="3" max-rows="3" cols="40" placeholder="Escribe aquí tus comentarios"></textarea>
 							<br>
 							<button type="button" id="btnEditar" name="btnEditar" class="btn btn-primary" onclick="editarBoton();">Editar</button>
 							<button disabled="disabled" id="btnGuardar" name="btnGuardar" type="submit" class="btn btn-success">Guardar</button>
 							<br>
-							<br>
 							<span>Estado: </span><strong><span id="estado"></span></strong>
-							<br>
 							<br>
 								<button style="display:none;" id="cargarCSV" type="button" class="btn btn-success">Cargar CSV</button>
 								<button style="display:none;" id="verInvitaciones" type="button" class="btn btn-success" onclick="reporteInvitacionPDF();">Ver Invitaciones</button>

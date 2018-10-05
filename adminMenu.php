@@ -42,13 +42,13 @@ $Encabezado->generarHTML();
                     <li style="height: 11.5%;" onclick="salir();"><a>Cerrar Sesion</a></li>
                  </ul>
                 </div>
-        <div id="NuevoEvento">
+        <div id="NuevoEvento" style="padding:1%;">
             <form action="" id="frmNuevoEvento">
                 Nombre del Evento:<br>
                 <input type="text" name="nombreEvento" placeholder="Escriba el nombre del evento" required="">
                 <br>
                 Descripcion del Evento:<br>
-                <input type="text" name="descripcionEvento" placeholder="Escriba una descripción del evento" required="">
+                <textarea name="descripcionEvento" style="resize:none;" id="descripcionEvento" rows="5" cols="40" placeholder="Escribe una descripcion"></textarea>
                 <br>
                 Fecha del Evento:<br>
                 <input style="width: 13%;" required="" name="fechaEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
@@ -118,7 +118,7 @@ $Encabezado->generarHTML();
                 <input style="width: 13%;" type="submit" class="GuardarStaff" value="Guardar">
             </form>
         </div>
-        <div id="ActualizarEvento">
+        <div id="ActualizarEvento" style="padding:1%;">
             <form action="" id="frmActualizaEvento">
                 <select onchange="listarEvento();" name="eventoId" id="eventoId" style="width: 250px;">
                             <option value="null">Seleccione un evento</option>
@@ -145,7 +145,7 @@ $Encabezado->generarHTML();
                     <input type="text" name="nombreEventoNuevo" id="nombreEventoNuevo"  required="">
                     <br>
                     Descripcion del Evento:<br>
-                    <input type="text" name="descripcionEventoNuevo" id="descripcionEventoNuevo"  required="">
+                    <textarea name="descripcionEventoNuevo" style="resize:none;" id="descripcionEventoNuevo" rows="5" cols="40" placeholder="Escribe una descripcion"></textarea>
                     <br>
                     Fecha del Evento:<br>
                     <input style="width: 13%;" name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" required="" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2025-12-31"/>
