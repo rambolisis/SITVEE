@@ -91,7 +91,8 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
                 Correo:<br>
                 <input type="email" name="correoClientePerfil" placeholder="Escriba el correo"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de correo invalido" required="">
                 <br><br>
-                <input style="width: 13%;" type="submit" class="GuardarClientePerfil" value="Guardar">
+                <button type="button" id="btnEditarPerfil" name="btnEditarPerfil" class="btn btn-primary" onclick="">Editar</button>
+				<button disabled="disabled" id="btnGuardarPerfil" name="btnGuardarPerfil" type="submit" class="btn btn-success">Guardar</button>
             </form>
         </div>
 		 <div id="actualizacionEventoUser" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
