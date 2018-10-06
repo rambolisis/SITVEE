@@ -94,7 +94,7 @@ a {
   text-align: center;
 }
 
-#NuevoEvento, #NuevoCliente, #ActualizarEvento, #ActualizarCliente, #Administrador, #Inicio, #NuevoStaff, #ActualizarStaff, #CerrarSesion{
+#NuevoEvento, #NuevoCliente, #ActualizarEvento, #ActualizaraCliente, #Administrador, #Inicio, #NuevoStaff, #ActualizarStaff, #CerrarSesion{
     width: 85%; /* Set a width if you like */
     height: 100%;
     margin: 0px;

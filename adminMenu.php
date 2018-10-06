@@ -71,7 +71,7 @@ $Encabezado->generarHTML();
                 </select>
                 <br>
                 <br>
-                <input style="width: 13%;" type="submit" class="GuardarEvento" value="Guardar">
+                <button type="submit" id="GuardarEvento" name="GuardarEvento" class="btn btn-success" onclick="">Guardar</button>
             </form>
         </div>
         <div id="NuevoCliente">
@@ -88,7 +88,7 @@ $Encabezado->generarHTML();
                 Contraseña:<br>
                 <input type="password" name="contraseniaCliente" placeholder="Escriba la contraseña" required="">
                 <br><br>
-                <input style="width: 13%;" type="submit" class="GuardarCliente" value="Guardar">
+                <button type="submit" id="GuardarCliente" name="GuardarCliente" class="btn btn-success" onclick="">Guardar</button>
             </form>
         </div>
         <div id="NuevoStaff">
@@ -115,7 +115,7 @@ $Encabezado->generarHTML();
                 Contraseña:<br>
                 <input type="password" name="contraseniaStaff" placeholder="Escriba la contraseña" required="">
                 <br><br>
-                <input style="width: 13%;" type="submit" class="GuardarStaff" value="Guardar">
+                <button type="submit" id="GuardarStaff" name="GuardarStaff" class="btn btn-success" onclick="">Guardar</button>
             </form>
         </div>
         <div id="ActualizarEvento" style="padding:1%;">
@@ -150,10 +150,10 @@ $Encabezado->generarHTML();
                     Fecha del Evento:<br>
                     <input style="width: 13%;" name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" required="" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2025-12-31"/>
                     <br><br>
-                    <input style="width: 13%;" type="submit" class="ActualizaEvento" value="Actualizar">
+                    <button  type="submit" id="ActualizaEvento" name="ActualizaEvento" class="btn btn-success" onclick="">Actualizar</button>
         </form>
         </div>
-        <div id="ActualizarCliente">
+        <div id="ActualizaraCliente">
         <form action="" id="frmActualizaCliente">
                 <select onchange="listarCliente();" name="clienteId" id="clienteId" style="width: 250px;">
                             <option value="null">Seleccione un cliente</option>
@@ -183,7 +183,7 @@ $Encabezado->generarHTML();
                 Contraseña:<br>
                 <input  type="text" name="contraseniaNueva" id="contraseniaNueva" required="">
                 <br><br>
-                <input style="width: 13%;" type="submit" class="ActualizarCliente" value="Actualizar">
+                <button  type="submit" id="ActualizarCliente" name="ActualizarCliente" class="btn btn-success" onclick="">Actualizar</button>
             </form>
         </div>
         <div id="ActualizarStaff">
@@ -212,7 +212,7 @@ $Encabezado->generarHTML();
                             Contraseña:<br>
                             <input type="text" name="contraseniaStaff" id="contraseniaStaff" required="">
                             <br><br>
-                            <input style="width: 13%;" type="submit" class="ActualizaStaff" value="Actualizar">
+                            <button  type="submit" id="ActualizaStaff" name="ActualizaStaff" class="btn btn-success" onclick="">Actualizar</button>
             </form>
         </div>
         <div id="Administrador">
@@ -229,7 +229,7 @@ $Encabezado->generarHTML();
                     Contraseña:<br>
                     <input type="password" name="contrasenia" placeholder="Escriba la contraseña" required="">
                     <br><br>
-                    <input style="width: 13%;" type="submit" class="GuardarAdministrador" value="Guardar">
+                    <button  type="submit" id="GuardarAdministrador" name="GuardarAdministrador" class="btn btn-success" onclick="">Guardar</button>
             </form>
         </div>
         <div id="CerrarSesion">

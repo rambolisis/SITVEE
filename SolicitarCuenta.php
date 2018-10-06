@@ -20,7 +20,7 @@ $Encabezado->generarHTML();
                         <input type="tel" name="telefonoClienteSolicitud" placeholder="Digite su numero telefonico" required="" title="Digite su numero para contactarlo">
 						<br>
                         Comentarios:<br>
-						<textarea name="comentariosClienteSolicitud" id="comentariosClienteSolicitud" rows="5" cols="60" placeholder="Escribe aquí tus comentarios"></textarea>
+						<textarea name="comentariosClienteSolicitud" id="comentariosClienteSolicitud" style="resize:none;" rows="5" cols="60" placeholder="Escribe aquí tus comentarios"></textarea>
 						<br>
 						<input style="width: 30%;" type="submit" class="ActualizaEventoUser" value="Solicitar Evento">
 				</form>

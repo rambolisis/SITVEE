@@ -63,7 +63,6 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 		<div id="solicitud" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
 				<form id="frmActualizaEventoUser">
 					<h2><strong>Nuevo Evento</strong></h2>
-						<br>
 						Fecha del Evento:<br>
 						<input style="width: 30%;" name="fechaEventoNuevoUserser" id="fechaEventoNuevoUser" type="date" required="" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2025-12-31"/>
 						<br>
@@ -73,7 +72,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 						Descripcion del Evento:<br>
 						<textarea name="comentariosEventoNuevoUser" style="resize:none;" id="comentariosEventoNuevoUser" rows="5" cols="40" placeholder="Escribe aquí tus comentarios"></textarea>
 						<br><br>
-						<input style="width: 30%;" type="submit" class="ActualizaEventoUser" value="Solicitar Evento">
+						<button id="ActualizaEventoUser" name="ActualizaEventoUser" type="submit" class="btn btn-success">Solicitar Evento</button>
 				</form>
 		</div>
 		<div id="Perfil" style="text-align:center;padding:2.5%;display:none;">
