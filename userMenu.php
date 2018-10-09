@@ -61,18 +61,21 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 			</div>
 		<div class="container" id="container" style="width:85%; height:64%; padding:1%;">
 		<div id="solicitud" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
-				<form id="frmActualizaEventoUser">
-					<h2><strong>Nuevo Evento</strong></h2>
-						Fecha del Evento:<br>
-						<input style="width: 30%;" name="fechaEventoNuevoUserser" id="fechaEventoNuevoUser" type="date" required="" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2025-12-31"/>
+				<form id="frmSolicitudEvento">
+					<h2><strong>Solicitar Evento</strong></h2>
+						<span id="nombreCliente" style="display:none;"><?php echo $_SESSION['usuario']['nombreCliente']; ?></span>
+						<span id="correoCliente" style="display:none;"><?php echo $_SESSION['usuario']['correo']; ?></span>
 						<br>
 						Nombre del Evento:<br>
-						<input type="text" name="nombreEventoNuevo" id="nombreEventoNuevoUser" placeholder="Escriba el nombre del evento" required="">
+						<input type="text" name="nombreEventoNuevo" id="nombreEventoNuevo" placeholder="Escriba el nombre del evento" required="">
+						<br>
+						Fecha del Evento:<br>
+						<input style="width: 30%;" name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" required="" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2025-12-31"/>
 						<br>
 						Descripcion del Evento:<br>
-						<textarea name="comentariosEventoNuevoUser" style="resize:none;" id="comentariosEventoNuevoUser" rows="5" cols="40" placeholder="Escribe aquí tus comentarios"></textarea>
+						<textarea name="descripcionEventoNuevo" id="descripcionEventoNuevo" rows="5" cols="40" placeholder="Escribe aquí tus comentarios"></textarea>
 						<br><br>
-						<button id="ActualizaEventoUser" name="ActualizaEventoUser" type="submit" class="btn btn-success">Solicitar Evento</button>
+						<input style="width: 30%;" type="submit" class="solicitarEventoNuevo" value="Solicitar Evento">
 				</form>
 		</div>
 		<div id="Perfil" style="text-align:center;padding:2.5%;display:none;">
