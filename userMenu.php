@@ -65,7 +65,6 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 					<h2><strong>Solicitar Evento</strong></h2>
 						<span id="nombreCliente" style="display:none;"><?php echo $_SESSION['usuario']['nombreCliente']; ?></span>
 						<span id="correoCliente" style="display:none;"><?php echo $_SESSION['usuario']['correo']; ?></span>
-						<br>
 						Nombre del Evento:<br>
 						<input type="text" name="nombreEventoNuevo" id="nombreEventoNuevo" placeholder="Escriba el nombre del evento" required="">
 						<br>
@@ -75,7 +74,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 						Descripcion del Evento:<br>
 						<textarea name="descripcionEventoNuevo" id="descripcionEventoNuevo" style="resize:none;" rows="5" cols="40" placeholder="Escribe aquí tus comentarios"></textarea>
 						<br><br>
-						<input style="width: 30%;" type="submit" class="solicitarEventoNuevo" value="Solicitar Evento">
+						<button id="solicitarEventoNuevo" name="solicitarEventoNuevo" type="submit" class="btn btn-success">Solicitar Evento</button>
 				</form>
 		</div>
 		<div id="Perfil" style="text-align:center;padding:2.5%;display:none;">
