@@ -14,10 +14,11 @@ $Encabezado->generarHTML();
             }
         }
         $verificaFecha = $mysqli->query("SELECT estado FROM evento WHERE fecha < CURDATE()");
-        while ($datos = $verificaFecha->fetch_assoc())
+        while ($datos = $verificaFecha->fetch_assoc()){
             if($datos['estado'] != "Finalizado"){
                 $actualizaEstado = $mysqli->query("UPDATE evento SET estado='Finalizado' WHERE fecha < CURDATE()");
-            }   
+            }
+        }      
 ?>
 <div class="error">
     <span>Credenciales invalidas, Por favor inténtelo de nuevo</span>
