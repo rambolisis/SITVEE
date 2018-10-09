@@ -93,6 +93,15 @@ $(document).ready(function() {
         $('#NuevoStaff').css("display" , "none");
         $('#ActualizarStaff').css("display" , "none");
     });
+
 });
+function myFunction() {
+    var x = document.getElementById("pass");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
 
 
