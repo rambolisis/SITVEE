@@ -31,7 +31,7 @@ $Encabezado->generarHTML();
                 <input type="submit" id="botonLogin" value="Iniciar Sesion" style="font-weight:bold;"/>
                 <br>
                 <a href=""> Olvide mi contraseña </a>
-                <a href="solicitarCuenta.php" style="float:right;"> Solicitar Cuenta </a>
+                <a href="solicitudCuenta.php" style="float:right;"> Solicitar Cuenta </a>
         </form>         
     </div>
 <?php $Pie->generarHTML(); ?>
