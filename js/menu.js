@@ -4,7 +4,7 @@ $(document).ready(function() {
         $('#NuevoEvento').css("display" , "none");
         $('#NuevoCliente').css("display" , "none");
         $('#ActualizarEvento').css("display" , "none");
-        $('#ActualizarCliente').css("display" , "none");
+        $('#ActualizaraCliente').css("display" , "none");
         $('#Administrador').css("display" , "none");   
         $('#NuevoStaff').css("display" , "none");
         $('#ActualizarStaff').css("display" , "none");
@@ -16,7 +16,7 @@ $(document).ready(function() {
         $('#Inicio').css("display" , "none");
         $('#NuevoCliente').css("display" , "none");
         $('#ActualizarEvento').css("display" , "none");
-        $('#ActualizarCliente').css("display" , "none");
+        $('#ActualizaraCliente').css("display" , "none");
         $('#Administrador').css("display" , "none");  
         $('#NuevoStaff').css("display" , "none"); 
         $('#ActualizarStaff').css("display" , "none");
@@ -28,7 +28,7 @@ $(document).ready(function() {
         $('#Inicio').css("display" , "none");
         $('#NuevoCliente').css("display" , "none");
         $('#ActualizarEvento').css("display" , "none");
-        $('#ActualizarCliente').css("display" , "none");
+        $('#ActualizaraCliente').css("display" , "none");
         $('#Administrador').css("display" , "none");   
         $('#NuevoEvento').css("display" , "none");
         $('#ActualizarStaff').css("display" , "none");
@@ -40,7 +40,7 @@ $(document).ready(function() {
         $('#Inicio').css("display" , "none");
         $('#NuevoCliente').css("display" , "none");
         $('#ActualizarEvento').css("display" , "none");
-        $('#ActualizarCliente').css("display" , "none");
+        $('#ActualizaraCliente').css("display" , "none");
         $('#Administrador').css("display" , "none");   
         $('#NuevoEvento').css("display" , "none");
         $('#NuevoStaff').css("display" , "none"); 
@@ -52,7 +52,7 @@ $(document).ready(function() {
         $('#NuevoEvento').css("display" , "none");
         $('#Inicio').css("display" , "none");
         $('#ActualizarEvento').css("display" , "none");
-        $('#ActualizarCliente').css("display" , "none");
+        $('#ActualizaraCliente').css("display" , "none");
         $('#Administrador').css("display" , "none");   
         $('#NuevoStaff').css("display" , "none");
         $('#ActualizarStaff').css("display" , "none");
@@ -64,7 +64,7 @@ $(document).ready(function() {
         $('#NuevoEvento').css("display" , "none");
         $('#NuevoCliente').css("display" , "none");
         $('#Inicio').css("display" , "none");
-        $('#ActualizarCliente').css("display" , "none");
+        $('#ActualizaraCliente').css("display" , "none");
         $('#Administrador').css("display" , "none");   
         $('#NuevoStaff').css("display" , "none");
         $('#ActualizarStaff').css("display" , "none");
@@ -72,7 +72,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#UpdateClient').click(function(evento) {
-        $('#ActualizarCliente').show();
+        $('#ActualizaraCliente').show();
         $('#NuevoEvento').css("display" , "none");
         $('#NuevoCliente').css("display" , "none");
         $('#ActualizarEvento').css("display" , "none");
@@ -88,7 +88,7 @@ $(document).ready(function() {
         $('#NuevoEvento').css("display" , "none");
         $('#NuevoCliente').css("display" , "none");
         $('#ActualizarEvento').css("display" , "none");
-        $('#ActualizarCliente').css("display" , "none");
+        $('#ActualizaraCliente').css("display" , "none");
         $('#Inicio').css("display" , "none");   
         $('#NuevoStaff').css("display" , "none");
         $('#ActualizarStaff').css("display" , "none");

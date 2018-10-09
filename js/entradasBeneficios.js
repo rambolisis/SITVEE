@@ -110,6 +110,7 @@ $().ready(function () {
             $('#noEventos').show();
             $("#solicitud").hide();
             $('#busqueda').hide();
+            $("#Perfil").hide();
             $("#actualizacionEventoUser").hide();
             $('#table-data').empty();
             $('#divTabla').hide();
@@ -124,6 +125,7 @@ $().ready(function () {
         }else{
             $('#gestionEvento').show();
             $("#solicitud").hide();
+            $("#Perfil").hide();
             $('#busqueda').hide();
             $("#actualizacionEventoUser").hide();
             $('#table-data').empty();
@@ -155,7 +157,10 @@ $().ready(function () {
         $('#fechaInfoEvento').attr("disabled", true);
         $('#descripcionInfoEvento').attr("disabled", true);
         $('#btnGuardar').attr("disabled", true);
+        $("#Perfil").hide();
     });
+
+
     $('.btn-primary').click(function (evento) {
         var estado = document.getElementById("estado").innerHTML;
         if(estado == "Nuevo"){
@@ -186,10 +191,25 @@ $().ready(function () {
         $("#fila").hide();
         $('#beneficiosUser').hide();
         $('#noEventos').hide();
+        $("#Perfil").hide();
     });
 
     $('#SolicitarEvento').click(function (evento) {
         $('#solicitud').show();
+        $("#Perfil").hide();
+        $("#busqueda").hide();
+        $('#gestionEvento').hide();
+        $("#actualizacionEventoUser").hide();
+        $('#beneficiosUser').hide();
+        $('#noEventos').hide();
+        $('#nombreInfoEvento').attr("disabled", true);
+        $('#fechaInfoEvento').attr("disabled", true);
+        $('#descripcionInfoEvento').attr("disabled", true);
+        $('#btnGuardar').attr("disabled", true);
+    });
+    $('#MiPerfil').click(function (evento) {
+        $('#Perfil').show();
+        $("#solicitud").hide();
         $("#busqueda").hide();
         $('#gestionEvento').hide();
         $("#actualizacionEventoUser").hide();
