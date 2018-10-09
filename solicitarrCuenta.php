@@ -21,5 +21,5 @@
     if (mail($para, $asunto, utf8_decode($mensaje), $header)){
         echo json_encode(array('error' => false));
     }
-    echo json_encode(array('error' => true));
+    echo json_encode(array('error' => true));s
 ?>
