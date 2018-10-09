@@ -14,10 +14,11 @@ $Encabezado->generarHTML();
             }
         }
         $verificaFecha = $mysqli->query("SELECT estado FROM evento WHERE fecha < CURDATE()");
-        while ($datos = $verificaFecha->fetch_assoc())
+        while ($datos = $verificaFecha->fetch_assoc()){
             if($datos['estado'] != "Finalizado"){
                 $actualizaEstado = $mysqli->query("UPDATE evento SET estado='Finalizado' WHERE fecha < CURDATE()");
-            }   
+            }
+        }      
 ?>
 <div class="error">
     <span>Credenciales invalidas, Por favor inténtelo de nuevo</span>
@@ -30,7 +31,7 @@ $Encabezado->generarHTML();
                 <input type="submit" id="botonLogin" value="Iniciar Sesion" style="font-weight:bold;"/>
                 <br>
                 <a href=""> Olvide mi contraseña </a>
-                <a href="solicitarCuenta.php" style="float:right;"> Solicitar Cuenta </a>
+                <a href="solicitudCuenta.php" style="float:right;"> Solicitar Cuenta </a>
         </form>         
     </div>
 <?php $Pie->generarHTML(); ?>

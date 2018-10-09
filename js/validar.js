@@ -365,6 +365,84 @@ function reporteInformeEventoPDF() {
             },3000);    
 }
 
+//Ajax para el enviar mensaje solicitud evento
+jQuery(document).on('submit','#frmSolicitudEvento',function(event){
+    event.preventDefault();
+
+    jQuery.ajax({
+        url: '../solicitarEvento.php',
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        beforeSend: function(){           
+        }
+    })
+    .done(function(respuesta){
+        console.log(respuesta);
+        if(!respuesta.mensaje){
+            $("#mensaje").text("Solicitud de evento enviada");
+            $('.mensaje').css('background-color', '#2F5EB7');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
+        }else{
+            $("#mensaje").text("Error de la solicitud");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
+        }
+        $('#frmSolicitudEvento').trigger("reset");
+    })
+    .fail(function(resp){
+        console.log(resp.responseText);
+    })
+    .always(function(){
+        console.log("complete");
+    });
+});
+
+//Ajax para el enviar mensaje solicitud de cuenta
+jQuery(document).on('submit','#frmSolicitudCuenta',function(event){
+    event.preventDefault();
+
+    jQuery.ajax({
+        url: '../solicitarCuenta.php',
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        beforeSend: function(){           
+        }
+    })
+    .done(function(respuesta){
+        console.log(respuesta);
+        if(!respuesta.mensaje){
+            $("#mensaje").text("Solicitud de cuenta enviada");
+            $('.mensaje').css('background-color', '#2F5EB7');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
+        }else{
+            $("#mensaje").text("Error de la solicitud");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
+        }
+        $('#frmSolicitudEvento').trigger("reset");
+    })
+    .fail(function(resp){
+        console.log(resp.responseText);
+    })
+    .always(function(){
+        console.log("complete");
+    });
+});
+
 function session() {
     var t;
     window.onload = resetTimer;
@@ -451,6 +529,14 @@ function listarEventoGestion(array) {
         document.getElementById("fechaInfoEvento").value = fecha;
         document.getElementById("descripcionInfoEvento").value = descripcion;
         document.getElementById("estado").innerHTML = estado;
+    }
+
+    if(estado == "Finalizado"){
+        document.getElementById('btnGuardar').style.display = 'none';
+        document.getElementById('btnEditar').style.display = 'none';
+    }else{
+        document.getElementById('btnGuardar').style.display = 'inline';
+        document.getElementById('btnEditar').style.display = 'inline';
     }
 }
 function listarStaff() {
