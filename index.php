@@ -28,7 +28,7 @@ $Encabezado->generarHTML();
             <h2><strong>Inicia sesión en SITVEE</strong></h2>
                 <input type="text" id="user" name="usuario" placeholder=" Usuario" pattern="[A-Za-z0-9_-]{1,15}" style="margin-bottom:0%;" required />
                 <input type="password" id="pass" style="margin-bottom:2%; margin-top:2%;"name="clave" placeholder=" Contraseña" pattern="[A-Za-z0-9_-]{1,15}" required/>
-                <input type="checkbox" onclick="myFunction()" style="width:4%;float:left;margin:1%;"></input>
+                <input type="checkbox" onclick="myFunction()" style="width:4%;float:left;margin:1%;"/>
                 <label style="float:left; margin:0%;margin-bottom:2%;">Mostrar Contraseña</label>
                 <input type="submit" id="botonLogin" value="Iniciar Sesion" style="font-weight:bold;width:90%;margin-left:5%;margin-bottom:2%;"/>
                 <a href=""> Olvide mi contraseña </a>

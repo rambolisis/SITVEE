@@ -27,7 +27,7 @@ class Encabezado{
 					}
 			
 					#header {
-						background: #DF5C10;
+						background: #C33838;
 						position: relative;
 						width:100%;
 						height:18%;
