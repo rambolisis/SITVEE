@@ -151,7 +151,7 @@ $Encabezado->generarHTML();
                     <input type="text" name="lugarEventoNuevo" id="lugarEventoNuevo" required="">
                     <br>
                     Descripcion del Evento:<br>
-                    <textarea name="descripcionEventoNuevo" style="resize:none;" id="descripcionEventoNuevo" rows="5" cols="40"></textarea>
+                    <textarea name="descripcionEventoNuevo" style="resize:none;" id="descripcionEventoNuevo" rows="3" cols="40"></textarea>
                     <br>
                     Fecha del Evento:<br>
                     <input style="width: 13%;" name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" required="" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2025-12-31"/>
