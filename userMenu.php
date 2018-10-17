@@ -163,6 +163,8 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 		</table>
 		</div>
 		<input id="confirmar" style="width: 13%; display: none;" type="button" value="Confirmar" onclick="Enviar();"  />
+		<input type="checkbox" id="select_all" style="width:1%;display:none;"></input>
+		<label id="select" style="display:none;">Seleccionar todos</label>
 		</div>
 		 <div id="gestionEvento" style="height:98%; width:100%;padding-left:5%; text-align:center;display:none;padding-left:25%;padding-top:3%;"> 
 				<table class="table table-hover table-dark" id="tablaEventos" style="width:70%;text-align:center;">

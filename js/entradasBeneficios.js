@@ -32,9 +32,13 @@ $().ready(function () {
                 $("#confirmar").show();
                 $("#divTabla").show();
                 $("#fila").show();
+                $("#select_all").show();
+                $("#select").show();
             } else {
                 $("#confirmar").hide();
                 $("#fila").hide();
+                $("#select_all").hide();
+                $("#select").hide();
             }
             $('#tableMain').append(newrow); // se le agrega una nueva fila a la tabla
         }
@@ -103,7 +107,19 @@ $().ready(function () {
             $("#cantidad").css("border-color", "black");
         }
     });
-
+    $('#select_all').click(function(event) {
+        if(this.checked) {
+            // Iterate each checkbox
+            $(':checkbox').each(function() {
+                this.checked = true;
+            });
+        }
+        else {
+          $(':checkbox').each(function() {
+                this.checked = false;
+            });
+        }
+      });
     $('#ImportarCSV').click(function (evento) {
         var nFilas = $("#tablaEventos tr").length;
         if(nFilas == 1){
