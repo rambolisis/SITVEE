@@ -84,12 +84,12 @@
                 $mail->Subject = 'Te invitamos a '.$nombreEvento.'';
                 $mail->Body    = 'Estimado(a) '.$nombreCompleto.'<br><br>
 
-                Nos complace informarle que la empresa '.$nombreEmpresa.' le ha invitado al evento '.$nombreEvento.' que se reaizará el día '.$fechaEvento.' en '.$lugarEvento.' <br><br>
+                Nos complace informarle que la empresa '.$nombreEmpresa.' le ha invitado al evento "'.$nombreEvento.'" que se reaizará el día '.$fechaEvento.' en '.$lugarEvento.' <br><br>
                 
                 Este evento es para: '.$descripcionEvento.' <br><br>
                 
                 Además hacemos de su conocimiento que en dicho evento usted tendrá incluido el consumo del los siguientes beneficios: <br>
-                '.$beneficios.'<br><br>
+                '.$beneficios.'<br>
                 
                 Le informamos que para hacer el canje de estos beneficios durante el evento necesitará presentar la imagen que contiene su código QR personal,
                 el cual encontrará adjunto a este correo, por lo que es muy importante que porte esta imagen en todo momento durante el evento. <br><br>
