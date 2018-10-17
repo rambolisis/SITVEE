@@ -15,11 +15,12 @@ class Encabezado{
 				<link rel='stylesheet' href='css/bootstrap.min.css'>
 				<link rel='stylesheet' href='css/style.css'>
 				<script src='js/jquery-3.3.1.min.js' type='text/javascript'></script>
+				<script src='js/bootstrap.bundle.min.js' type='text/javascript'></script>
+				<script src='js/bootstrap.min.js' type='text/javascript'></script>
+				<script src='js/bootbox.min.js' type='text/javascript'></script>
 				<script src='js/validar.js' type='text/javascript'></script>
 				<script src='js/menu.js' type='text/javascript'></script>
 				<script src='js/entradasBeneficios.js' type='text/javascript'></script>
-				<script src='js/bootstrap.bundle.min.js' type='text/javascript'></script>
-                <script src='js/bootstrap.min.js' type='text/javascript'></script>
 				<style type='text/css'>
 					body {
 						font-family: 'Montserrat', sans-serif;
@@ -29,9 +30,8 @@ class Encabezado{
 					#header {
 						background: #C33838;
 						position: relative;
-						width:100%;
+						width:102%;
 						height:18%;
-						border-radius:15px 0px 15px 0px;
 						
 						-webkit-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
 						-moz-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
@@ -41,9 +41,8 @@ class Encabezado{
 					#footer {
 						background: #7F7F7F;
 						position: absolute;
-						width:100%;
+						width:102%;
 						height:18%;
-						border-radius:0px 15px 0px 15px;
 
 						-webkit-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
 						-moz-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
@@ -64,7 +63,7 @@ class Encabezado{
 					}
 			
 					.mensaje{
-						float:left;
+						float: right;
 						position: absolute;
 						left: 0px;
 						padding: 10px 0 ;

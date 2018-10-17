@@ -74,38 +74,56 @@ jQuery(document).on('submit','#frmNuevoCliente',function(event){
 //Ajax para el mensaje de actualizar cliente
 jQuery(document).on('submit','#frmActualizaCliente',function(event){
     event.preventDefault();
+    bootbox.confirm({
+        message: "Desea actualizar el cliente definitivamente?",
+        buttons: {
+            confirm: {
+                label: 'Si',
+                className: 'btn-success',
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-danger'
+            }
+        },
+        callback: function (resultado) {
+            if(resultado == true){
+                jQuery.ajax({
+                    url: 'actualizar/actualizaCliente.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $('#frmActualizaCliente').serialize(),
+                    beforeSend: function(){           
+                    }
+                })
+                .done(function(respuesta){
+                    console.log(respuesta);
+                    if(!respuesta.mensaje){
+                        $("#mensaje").text("Cliente actualizado exitosamente");
+                        $('.mensaje').css('background-color', '#388742');
+                        $('.mensaje').slideDown('slow');
+                        setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+                        setTimeout("location.href = 'adminMenu.php'",3000);
+                    }else{
+                        $("#mensaje").text("Porfavor seleccione un cliente");
+                        $('.mensaje').css('background-color', '#E74F4F');
+                        $('.mensaje').slideDown('slow');
+                        setTimeout(function(){
+                            $('.mensaje').slideUp('slow');
+                        },3000);
+                    }
+                    $('#frmActualizaCliente').trigger("reset");
+                })
+                .fail(function(resp){
+                    console.log(resp.responseText);
+                })
+                .always(function(){
+                    console.log("complete");
+                });
+            }else{
 
-    jQuery.ajax({
-        url: 'actualizar/actualizaCliente.php',
-        type: 'POST',
-        dataType: 'json',
-        data: $(this).serialize(),
-        beforeSend: function(){           
+            }
         }
-    })
-    .done(function(respuesta){
-        console.log(respuesta);
-        if(!respuesta.mensaje){
-            $("#mensaje").text("Cliente actualizado exitosamente");
-            $('.mensaje').css('background-color', '#388742');
-            $('.mensaje').slideDown('slow');
-            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
-            setTimeout("location.href = 'adminMenu.php'",3000);
-        }else{
-            $("#mensaje").text("Porfavor seleccione un cliente");
-            $('.mensaje').css('background-color', '#E74F4F');
-            $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
-        }
-        $('#frmActualizaCliente').trigger("reset");
-    })
-    .fail(function(resp){
-        console.log(resp.responseText);
-    })
-    .always(function(){
-        console.log("complete");
     });
 });
 
@@ -183,38 +201,56 @@ jQuery(document).on('submit','#frmNuevoEvento',function(event){
 //Ajax para el mensaje de actualizar evento
 jQuery(document).on('submit','#frmActualizaEvento',function(event){
     event.preventDefault();
+    bootbox.confirm({
+        message: "Desea actualizar el evento definitivamente?",
+        buttons: {
+            confirm: {
+                label: 'Si',
+                className: 'btn-success',
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-danger'
+            }
+        },
+        callback: function (resultado) {
+            if(resultado == true){
+                jQuery.ajax({
+                    url: 'actualizar/actualizaEvento.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $('#frmActualizaEvento').serialize(),
+                    beforeSend: function(){           
+                    }
+                })
+                .done(function(respuesta){
+                    console.log(respuesta);
+                    if(!respuesta.mensaje){
+                        $("#mensaje").text("Evento actualizado exitosamente");
+                        $('.mensaje').css('background-color', '#388742');
+                        $('.mensaje').slideDown('slow');
+                        setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+                        setTimeout("location.href = 'adminMenu.php'",3000);
+                    }else{
+                        $("#mensaje").text("Porfavor seleccione un evento");
+                        $('.mensaje').css('background-color', '#E74F4F');
+                        $('.mensaje').slideDown('slow');
+                        setTimeout(function(){
+                            $('.mensaje').slideUp('slow');
+                        },3000);
+                    }
+                    $('#frmActualizaEvento').trigger("reset");
+                })
+                .fail(function(resp){
+                    console.log(resp.responseText);
+                })
+                .always(function(){
+                    console.log("complete");
+                });
+            }else{
 
-    jQuery.ajax({
-        url: 'actualizar/actualizaEvento.php',
-        type: 'POST',
-        dataType: 'json',
-        data: $(this).serialize(),
-        beforeSend: function(){           
+            }
         }
-    })
-    .done(function(respuesta){
-        console.log(respuesta);
-        if(!respuesta.mensaje){
-            $("#mensaje").text("Evento actualizado exitosamente");
-            $('.mensaje').css('background-color', '#388742');
-            $('.mensaje').slideDown('slow');
-            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
-            setTimeout("location.href = 'adminMenu.php'",3000);
-        }else{
-            $("#mensaje").text("Porfavor seleccione un evento");
-            $('.mensaje').css('background-color', '#E74F4F');
-            $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
-        }
-        $('#frmActualizaEvento').trigger("reset");
-    })
-    .fail(function(resp){
-        console.log(resp.responseText);
-    })
-    .always(function(){
-        console.log("complete");
     });
 });
 
@@ -250,7 +286,51 @@ jQuery(document).on('submit','#frmInfoEvento',function(event){
         $('#nombreInfoEvento').attr("disabled", true);
         $('#fechaInfoEvento').attr("disabled", true);
         $('#descripcionInfoEvento').attr("disabled", true);
+        $('#lugarInfoEvento').attr("disabled", true);
         $('#btnGuardar').attr("disabled", true);
+    })
+    .fail(function(resp){
+        console.log(resp.responseText);
+    })
+    .always(function(){
+        console.log("complete");
+    });
+});
+
+//Ajax para el mensaje de actualizar perfil
+jQuery(document).on('submit','#frmPerfil',function(event){
+    event.preventDefault();
+    var id = $('#idPerfilCliente').text();
+
+    jQuery.ajax({
+        url: 'actualizar/actualizaCliente.php?idPerfilCliente='+id,
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        beforeSend: function(){           
+        }
+    })
+    .done(function(respuesta){
+        console.log(respuesta);
+        if(!respuesta.mensaje){
+            $("#mensaje").text("Perfil actualizado exitosamente");
+            $('.mensaje').css('background-color', '#388742');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+            setTimeout("location.href = 'userMenu.php'",3000);
+        }else{
+            $("#mensaje").text("Error al actualizar el perfil");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
+        }
+        $('#nombreClientePerfil').attr("disabled", true);
+        $('#correoClientePerfil').attr("disabled", true);
+        $('#usuarioClientePerfil').attr("disabled", true);
+        $('#contraseniaClientePerfil').attr("disabled", true);
+        $('#btnGuardarPerfil').attr("disabled", true);
     })
     .fail(function(resp){
         console.log(resp.responseText);
@@ -301,38 +381,56 @@ jQuery(document).on('submit','#frmNuevoStaff',function(event){
 //Ajax para el mensaje de actualizar staff
 jQuery(document).on('submit','#frmActualizaStaff',function(event){
     event.preventDefault();
+    bootbox.confirm({
+        message: "Desea actualizar el staff definitivamente?",
+        buttons: {
+            confirm: {
+                label: 'Si',
+                className: 'btn-success',
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-danger'
+            }
+        },
+        callback: function (resultado) {
+            if(resultado == true){
+                jQuery.ajax({
+                    url: 'actualizar/actualizaStaff.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $('#frmActualizaStaff').serialize(),
+                    beforeSend: function(){           
+                    }
+                })
+                .done(function(respuesta){
+                    console.log(respuesta);
+                    if(!respuesta.mensaje){
+                        $("#mensaje").text("Staff actualizado exitosamente");
+                        $('.mensaje').css('background-color', '#388742');
+                        $('.mensaje').slideDown('slow');
+                        setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+                        setTimeout("location.href = 'adminMenu.php'",3000);
+                    }else{
+                        $("#mensaje").text("Porfavor seleccione un evento");
+                        $('.mensaje').css('background-color', '#E74F4F');
+                        $('.mensaje').slideDown('slow');
+                        setTimeout(function(){
+                            $('.mensaje').slideUp('slow');
+                        },3000);
+                    }
+                    $('#frmActualizaStaff').trigger("reset");
+                })
+                .fail(function(resp){
+                    console.log(resp.responseText);
+                })
+                .always(function(){
+                    console.log("complete");
+                });
+            }else{
 
-    jQuery.ajax({
-        url: 'actualizar/actualizaStaff.php',
-        type: 'POST',
-        dataType: 'json',
-        data: $(this).serialize(),
-        beforeSend: function(){           
+            }
         }
-    })
-    .done(function(respuesta){
-        console.log(respuesta);
-        if(!respuesta.mensaje){
-            $("#mensaje").text("Staff actualizado exitosamente");
-            $('.mensaje').css('background-color', '#388742');
-            $('.mensaje').slideDown('slow');
-            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
-            setTimeout("location.href = 'adminMenu.php'",3000);
-        }else{
-            $("#mensaje").text("Porfavor seleccione un evento");
-            $('.mensaje').css('background-color', '#E74F4F');
-            $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
-        }
-        $('#frmActualizaStaff').trigger("reset");
-    })
-    .fail(function(resp){
-        console.log(resp.responseText);
-    })
-    .always(function(){
-        console.log("complete");
     });
 });
 
@@ -379,28 +477,25 @@ jQuery(document).on('submit','#frmSolicitudEvento',function(event){
     })
     .done(function(respuesta){
         console.log(respuesta);
-        if(!respuesta.mensaje){
-            $("#mensaje").text("Solicitud de evento enviada");
-            $('.mensaje').css('background-color', '#2F5EB7');
-            $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
-        }else{
-            $("#mensaje").text("Error de la solicitud");
-            $('.mensaje').css('background-color', '#E74F4F');
-            $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
-        }
-        $('#frmSolicitudEvento').trigger("reset");
     })
     .fail(function(resp){
         console.log(resp.responseText);
+        $("#mensaje").text("Error de la solicitud");
+        $('.mensaje').css('background-color', '#E74F4F');
+        $('.mensaje').slideDown('slow');
+        setTimeout(function(){
+            $('.mensaje').slideUp('slow');
+        },3000);
+        $('#frmSolicitudEvento').trigger("reset");
     })
     .always(function(){
-        console.log("complete");
+        $("#mensaje").text("Solicitud de evento enviada");
+        $('.mensaje').css('background-color', '#2F5EB7');
+        $('.mensaje').slideDown('slow');
+        setTimeout(function(){
+            $('.mensaje').slideUp('slow');
+        },3000);
+        $('#frmSolicitudEvento').trigger("reset");
     });
 });
 
@@ -418,28 +513,24 @@ jQuery(document).on('submit','#frmSolicitudCuenta',function(event){
     })
     .done(function(respuesta){
         console.log(respuesta);
-        if(!respuesta.mensaje){
-            $("#mensaje").text("Solicitud de cuenta enviada");
-            $('.mensaje').css('background-color', '#2F5EB7');
-            $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
-        }else{
-            $("#mensaje").text("Error de la solicitud");
-            $('.mensaje').css('background-color', '#E74F4F');
-            $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
-        }
-        $('#frmSolicitudEvento').trigger("reset");
     })
     .fail(function(resp){
         console.log(resp.responseText);
+        $("#mensaje").text("Error de la solicitud");
+        $('.mensaje').css('background-color', '#E74F4F');
+        $('.mensaje').slideDown('slow');
+        setTimeout(function(){
+            $('.mensaje').slideUp('slow');
+        },3000);
+        $('#frmSolicitudCuenta').trigger("reset");
     })
     .always(function(){
-        console.log("complete");
+        $("#mensaje").text("Solicitud de cuenta enviada");
+        $('.mensaje').css('background-color', '#2F5EB7');
+        $('.mensaje').slideDown('slow');
+        $('#frmSolicitudCuenta').trigger("reset");
+        setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+        setTimeout("location.href = 'index.php'",3000);
     });
 });
 
@@ -499,16 +590,19 @@ function listarEvento() {
     var nombreEvento = lista[1];
     var fecha = lista[2];
     var descripcion = lista[3];
-    var nombreCliente = lista[4];
+    var lugar = lista[4];
+    var nombreCliente = lista[5];
     if(cadena === "null"){
     document.getElementById("nombreEventoNuevo").value = "";
     document.getElementById("fechaEventoNuevo").value = "";
     document.getElementById("descripcionEventoNuevo").value = "";
+    document.getElementById("lugarEventoNuevo").value = "";
     document.getElementById("clienteEventoNuevo").value = "";
     }else{
     document.getElementById("nombreEventoNuevo").value = nombreEvento;
     document.getElementById("fechaEventoNuevo").value = fecha;
     document.getElementById("descripcionEventoNuevo").value = descripcion;
+    document.getElementById("lugarEventoNuevo").value = lugar;
     document.getElementById("clienteEventoNuevo").value = nombreCliente;
     }
 }
@@ -518,16 +612,19 @@ function listarEventoGestion(array) {
     var nombreEvento = lista[1];
     var fecha = lista[2];
     var descripcion = lista[3];
-    var estado = lista[4];
+    var lugar = lista[4];
+    var estado = lista[5];
     if(array === "null"){
         document.getElementById("nombreInfoEvento").value = "";
         document.getElementById("fechaInfoEvento").value = "";
         document.getElementById("descripcionInfoEvento").value = "";
+        document.getElementById("lugarInfoEvento").value = "";
     }else{
         document.getElementById("idInfoEvento").innerHTML = idEvento;
         document.getElementById("nombreInfoEvento").value = nombreEvento;
         document.getElementById("fechaInfoEvento").value = fecha;
         document.getElementById("descripcionInfoEvento").value = descripcion;
+        document.getElementById("lugarInfoEvento").value = lugar;
         document.getElementById("estado").innerHTML = estado;
     }
 
@@ -538,6 +635,26 @@ function listarEventoGestion(array) {
         document.getElementById('btnGuardar').style.display = 'inline';
         document.getElementById('btnEditar').style.display = 'inline';
     }
+}
+function listarPerfil() {
+    var cadena = document.getElementById("clienteId").value;
+    var lista = cadena.split(",");
+    var nombre = lista[1];
+    var correo = lista[2];
+    var usuario = lista[3];
+    var clave = lista[4];
+    if(cadena === "null"){
+    document.getElementById("nombreNuevo").value = "";
+    document.getElementById("correoNuevo").value = "";
+    document.getElementById("usuarioNuevo").value = "";
+    document.getElementById("contraseniaNueva").value = "";
+    }else{
+    document.getElementById("nombreNuevo").value = nombre;
+    document.getElementById("correoNuevo").value = correo;
+    document.getElementById("usuarioNuevo").value = usuario;
+    document.getElementById("contraseniaNueva").value = clave;
+    }
+    
 }
 function listarStaff() {
     var cadena = document.getElementById("staffId").value;
@@ -556,6 +673,15 @@ function listarStaff() {
 function editarBoton(){
     document.getElementById("btnGuardar").disabled = false;
     document.getElementById("nombreInfoEvento").disabled = false;
+    document.getElementById("lugarInfoEvento").disabled = false;
     document.getElementById("fechaInfoEvento").disabled = false;
     document.getElementById("descripcionInfoEvento").disabled = false;
+}
+
+function editarBotonPerfil(){
+    document.getElementById("btnGuardarPerfil").disabled = false;
+    document.getElementById("nombreClientePerfil").disabled = false;
+    document.getElementById("contraseniaClientePerfil").disabled = false;
+    document.getElementById("usuarioClientePerfil").disabled = false;
+    document.getElementById("correoClientePerfil").disabled = false;
 }

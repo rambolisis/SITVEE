@@ -1,3 +1,8 @@
+html,body{
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 #container, #buttondiv {
     margin: 0 auto;
     width: 80%;
@@ -256,10 +261,22 @@ input[type="submit"]:hover,#viewfile:hover,#confirmar:hover{
   top: 50%;
 }
 
-button{
+textarea{
+    outline: none;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+
     -webkit-box-shadow: 0px 0px 18px -1px rgba(0,0,0,0.36);
     -moz-box-shadow: 0px 0px 18px -1px rgba(0,0,0,0.36);
     box-shadow: 0px 0px 18px -1px rgba(0,0,0,0.36);
+   
+}
+
+table{
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
 }
 
 /*---------------------LOGIN---------------------*/

@@ -47,6 +47,9 @@ $Encabezado->generarHTML();
                 Nombre del Evento:<br>
                 <input type="text" name="nombreEvento" placeholder="Escriba el nombre del evento" required="">
                 <br>
+                Lugar del Evento:<br>
+                <input type="text" name="lugarEvento" placeholder="Escriba el lugar del evento" required="">
+                <br>
                 Descripcion del Evento:<br>
                 <textarea name="descripcionEvento" style="resize:none;" id="descripcionEvento" rows="5" cols="40" placeholder="Escribe una descripcion"></textarea>
                 <br>
@@ -119,7 +122,7 @@ $Encabezado->generarHTML();
             </form>
         </div>
         <div id="ActualizarEvento" style="padding:1%;">
-            <form action="" id="frmActualizaEvento">
+            <form id="frmActualizaEvento">
                 <select onchange="listarEvento();" name="eventoId" id="eventoId" style="width: 250px;">
                             <option value="null">Seleccione un evento</option>
                             <?php
@@ -131,7 +134,7 @@ $Encabezado->generarHTML();
                                     $id = $datosE['id_Cliente'];
                                     $cliente = $mysqli->query("SELECT nombreCliente FROM cliente WHERE id_Cliente = '$id' ");
                                     $datosC = $cliente->fetch_assoc();
-                                    echo "<option value=\"{$datosE['id_Evento']},{$datosE['nombreEvento']},{$datosE['fecha']},{$datosE['descripcion']},{$datosC['nombreCliente']}\">{$datosE['nombreEvento']}</option>";
+                                    echo "<option value=\"{$datosE['id_Evento']},{$datosE['nombreEvento']},{$datosE['fecha']},{$datosE['descripcion']},{$datosE['lugar']},{$datosC['nombreCliente']}\">{$datosE['nombreEvento']}</option>";
 
                                 }
                                 $mysqli->close();
@@ -144,8 +147,11 @@ $Encabezado->generarHTML();
                     Nombre del Evento:<br>
                     <input type="text" name="nombreEventoNuevo" id="nombreEventoNuevo"  required="">
                     <br>
+                    Lugar del Evento:<br>
+                    <input type="text" name="lugarEventoNuevo" id="lugarEventoNuevo" required="">
+                    <br>
                     Descripcion del Evento:<br>
-                    <textarea name="descripcionEventoNuevo" style="resize:none;" id="descripcionEventoNuevo" rows="5" cols="40" placeholder="Escribe una descripcion"></textarea>
+                    <textarea name="descripcionEventoNuevo" style="resize:none;" id="descripcionEventoNuevo" rows="5" cols="40"></textarea>
                     <br>
                     Fecha del Evento:<br>
                     <input style="width: 13%;" name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" required="" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2025-12-31"/>

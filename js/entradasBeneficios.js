@@ -119,9 +119,15 @@ $().ready(function () {
             $("#fila").hide();
             $('#beneficiosUser').hide();
             $('#nombreInfoEvento').attr("disabled", true);
+            $('#lugarInfoEvento').attr("disabled", true);
             $('#fechaInfoEvento').attr("disabled", true);
             $('#descripcionInfoEvento').attr("disabled", true);
+            $('#nombreClientePerfil').attr("disabled", true);
+            $('#correoClientePerfil').attr("disabled", true);
+            $('#usuarioClientePerfil').attr("disabled", true);
+            $('#contraseniaClientePerfil').attr("disabled", true);
             $('#btnGuardar').attr("disabled", true);
+            $('#btnGuardarPerfil').attr("disabled", true);
         }else{
             $('#gestionEvento').show();
             $("#solicitud").hide();
@@ -136,9 +142,15 @@ $().ready(function () {
             $('#beneficiosUser').hide();
             $('#noEventos').hide();
             $('#nombreInfoEvento').attr("disabled", true);
+            $('#lugarInfoEvento').attr("disabled", true);
             $('#fechaInfoEvento').attr("disabled", true);
             $('#descripcionInfoEvento').attr("disabled", true);
+            $('#nombreClientePerfil').attr("disabled", true);
+            $('#correoClientePerfil').attr("disabled", true);
+            $('#usuarioClientePerfil').attr("disabled", true);
+            $('#contraseniaClientePerfil').attr("disabled", true);
             $('#btnGuardar').attr("disabled", true);
+            $('#btnGuardarPerfil').attr("disabled", true);
         }
     });
     $('#cargarCSV').click(function (evento) {
@@ -154,14 +166,20 @@ $().ready(function () {
         $('#beneficiosUser').hide();
         $('#noEventos').hide();
         $('#nombreInfoEvento').attr("disabled", true);
+        $('#lugarInfoEvento').attr("disabled", true);
         $('#fechaInfoEvento').attr("disabled", true);
         $('#descripcionInfoEvento').attr("disabled", true);
+        $('#nombreClientePerfil').attr("disabled", true);
+        $('#correoClientePerfil').attr("disabled", true);
+        $('#usuarioClientePerfil').attr("disabled", true);
+        $('#contraseniaClientePerfil').attr("disabled", true);
         $('#btnGuardar').attr("disabled", true);
+        $('#btnGuardarPerfil').attr("disabled", true);
         $("#Perfil").hide();
     });
 
 
-    $('.btn-primary').click(function (evento) {
+    $('.btn-info').click(function (evento) {
         var estado = document.getElementById("estado").innerHTML;
         if(estado == "Nuevo"){
             $('#cargarCSV').show();
@@ -203,9 +221,15 @@ $().ready(function () {
         $('#beneficiosUser').hide();
         $('#noEventos').hide();
         $('#nombreInfoEvento').attr("disabled", true);
+        $('#lugarInfoEvento').attr("disabled", true);
         $('#fechaInfoEvento').attr("disabled", true);
         $('#descripcionInfoEvento').attr("disabled", true);
+        $('#nombreClientePerfil').attr("disabled", true);
+        $('#correoClientePerfil').attr("disabled", true);
+        $('#usuarioClientePerfil').attr("disabled", true);
+        $('#contraseniaClientePerfil').attr("disabled", true);
         $('#btnGuardar').attr("disabled", true);
+        $('#btnGuardarPerfil').attr("disabled", true);
     });
     $('#MiPerfil').click(function (evento) {
         $('#Perfil').show();
@@ -216,9 +240,15 @@ $().ready(function () {
         $('#beneficiosUser').hide();
         $('#noEventos').hide();
         $('#nombreInfoEvento').attr("disabled", true);
+        $('#lugarInfoEvento').attr("disabled", true);
         $('#fechaInfoEvento').attr("disabled", true);
         $('#descripcionInfoEvento').attr("disabled", true);
+        $('#nombreClientePerfil').attr("disabled", true);
+        $('#correoClientePerfil').attr("disabled", true);
+        $('#usuarioClientePerfil').attr("disabled", true);
+        $('#contraseniaClientePerfil').attr("disabled", true);
         $('#btnGuardar').attr("disabled", true);
+        $('#btnGuardarPerfil').attr("disabled", true);
     });
     
 });

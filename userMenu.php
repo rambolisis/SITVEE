@@ -63,8 +63,8 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 		<div id="solicitud" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
 				<form id="frmSolicitudEvento">
 					<h2><strong>Solicitar Evento</strong></h2>
-						<span id="nombreCliente" style="display:none;"><?php echo $_SESSION['usuario']['nombreCliente']; ?></span>
-						<span id="correoCliente" style="display:none;"><?php echo $_SESSION['usuario']['correo']; ?></span>
+						<input type="text" id="nombreCliente" name="nombreCliente" style="display:none;" value="<?php echo $_SESSION['usuario']['nombreCliente']; ?>"/>
+						<input type="text" id="correoCliente" name="correoCliente" style="display:none;" value="<?php echo $_SESSION['usuario']['correo']; ?>"/>
 						Nombre del Evento:<br>
 						<input type="text" name="nombreEventoNuevo" id="nombreEventoNuevo" placeholder="Escriba el nombre del evento" required="">
 						<br>
@@ -72,27 +72,41 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 						<input style="width: 30%;" name="fechaEventoNuevo" id="fechaEventoNuevo" type="date" required="" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2025-12-31"/>
 						<br>
 						Descripcion del Evento:<br>
-						<textarea name="descripcionEventoNuevo" id="descripcionEventoNuevo" style="resize:none;" rows="5" cols="40" placeholder="Escribe aquí tus comentarios"></textarea>
+						<textarea name="descripcionEventoNuevo" id="descripcionEventoNuevo" style="resize:none;" rows="5" cols="40" placeholder="Escriba la descripción del evento"></textarea>
 						<br><br>
 						<button id="solicitarEventoNuevo" name="solicitarEventoNuevo" type="submit" class="btn btn-success">Solicitar Evento</button>
 				</form>
 		</div>
 		<div id="Perfil" style="text-align:center;padding:2.5%;display:none;">
-			<h1>Mi Perfil</h1>
-            <form action="" id="frmPerfil">
+		<h2><strong>Mi Perfil</strong></h2>
+            <form id="frmPerfil">
+				<?php
+					require 'conexion.php';
+					$idUsuario = $_SESSION['usuario']['id_Usuario'];
+					$InfoPerfil = $mysqli->query("SELECT u.usuario, u.clave, c.nombreCliente, c.correo, c.id_Cliente 
+					FROM usuario AS u INNER JOIN cliente
+					AS c ON u.id_Usuario = c.id_Usuario
+					WHERE u.id_Usuario = '$idUsuario'");
+					if ($datosU = $InfoPerfil->fetch_assoc()) {
+				?>
+				<span  id="idPerfilCliente" style="display:none;"><?php echo $datosU['id_Cliente']?></span>
                 Nombre:<br>
-                <input type="text" name="nombreClientePerfil" placeholder="Escriba el nombre" required="">
+                <input value="<?php echo $datosU['nombreCliente']?>" disabled="disabled" type="text" id="nombreClientePerfil" name="nombreClientePerfil" required="">
                 <br>
-				Contraseña:<br>
-                <input type="password" name="contraseniaClientePerfil" placeholder="Escriba la contraseña" required="">
+				Correo:<br>
+                <input value="<?php echo $datosU['correo']?>" disabled="disabled" type="email" id="correoClientePerfil" name="correoClientePerfil" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de correo invalido" required="">
                 <br>
                 Usuario:<br>
-                <input type="text" name="usuarioClientePerfil" placeholder="Escriba el usuario" required="">
+                <input value="<?php echo $datosU['usuario']?>" disabled="disabled" type="text" id="usuarioClientePerfil" name="usuarioClientePerfil" required="">
                 <br>
-                Correo:<br>
-                <input type="email" name="correoClientePerfil" placeholder="Escriba el correo"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de correo invalido" required="">
+				Contraseña:<br>
+                <input value="<?php echo $datosU['clave']?>" disabled="disabled" type="password" id="contraseniaClientePerfil" name="contraseniaClientePerfil" required="">
+				<?php
+					}
+					$mysqli->close();
+				?>
                 <br><br>
-                <button type="button" id="btnEditarPerfil" name="btnEditarPerfil" class="btn btn-primary" onclick="">Editar</button>
+                <button type="button" id="btnEditarPerfil" name="btnEditarPerfil" class="btn btn-primary" onclick="editarBotonPerfil();">Editar</button>
 				<button disabled="disabled" id="btnGuardarPerfil" name="btnGuardarPerfil" type="submit" class="btn btn-success">Guardar</button>
             </form>
         </div>
@@ -101,16 +115,19 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 				<form id="frmInfoEvento" style="padding:2%; resize:none;">
 					<h2><strong>Informacion Evento</strong></h2>
 						<span id="idInfoEvento" style="display:none;">null</span>
-						<span id="idInfoCliente" style="display:none;"><?php echo $_SESSION['usuario']['id_Cliente']; ?>null</span>
+						<span id="idInfoCliente" style="display:none;"><?php echo $_SESSION['usuario']['id_Cliente']; ?></span>
 						<label>Nombre:</label>
 							<input disabled="disabled" type="text" id="nombreInfoEvento" name="nombreInfoEvento" required="">
+							<br>
+						<label>Lugar:</label>
+							<input disabled="disabled" style="width: 36.5%;" type="text" id="lugarInfoEvento" name="lugarInfoEvento" required="">
 							<br>
 						<label>Fecha:</label>
 							<input disabled="disabled" style="width: 36.5%;" required="" id="fechaInfoEvento" name="fechaInfoEvento" type="date" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> max="2022-12-31"/>
 							<br>
 						<label>Descripción:</label> 
 							<br>
-							<textarea disabled="disabled" style="resize:none;" name="descripcionInfoEvento" id="descripcionInfoEvento" rows="3" max-rows="3" cols="40" placeholder="Escribe aquí tus comentarios"></textarea>
+							<textarea disabled="disabled" style="resize:none;" name="descripcionInfoEvento" id="descripcionInfoEvento" rows="3" max-rows="3" cols="40"></textarea>
 							<br>
 							<button type="button" id="btnEditar" name="btnEditar" class="btn btn-primary" onclick="editarBoton();">Editar</button>
 							<button disabled="disabled" id="btnGuardar" name="btnGuardar" type="submit" class="btn btn-success">Guardar</button>
@@ -164,12 +181,13 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 										$datosE['nombreEvento'].",".
 										$datosE['fecha'].",".
 										$datosE['descripcion'].",".
+										$datosE['lugar'].",".
 										$datosE['estado'];
 						?>
 						<tr>
 							<td><?php echo $datosE['nombreEvento'] ?></td>
 							<td><button type="button" name="eventoIdgestion" id="eventoIdgestion" 
-							class="btn btn-primary" onclick="listarEventoGestion('<?php echo $array ?>');">Ver Evento</button></td>
+							class="btn btn-info" onclick="listarEventoGestion('<?php echo $array ?>');">Ver Evento</button></td>
 							<!-- En este button al hacer click debe mostrar el segundo formulario -->
 						</tr>
 						<?php

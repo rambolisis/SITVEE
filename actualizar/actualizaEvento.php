@@ -7,9 +7,10 @@
         $nombreEvento = $_POST['nombreEventoNuevo'];
         $fechaEvento = $_POST['fechaEventoNuevo'];
         $descripcionEvento = $_POST['descripcionEventoNuevo'];
+        $lugarEvento = $_POST['lugarEventoNuevo'];
         $array = explode(',', $lista);
         $id = $array[0];
-        $evento = $mysqli->query("UPDATE evento SET nombreEvento = '$nombreEvento', fecha = '$fechaEvento', descripcion = '$descripcionEvento'
+        $evento = $mysqli->query("UPDATE evento SET nombreEvento = '$nombreEvento', fecha = '$fechaEvento', lugar = '$lugarEvento', descripcion = '$descripcionEvento'
                              WHERE id_Evento = '$id' ");
         echo json_encode(array('mensaje' => false));
     }else if(isset($_GET['idInfoEvento']) && $_GET['idInfoEvento'] != 'null'){
@@ -17,7 +18,8 @@
         $nombreEventoGestion = $_POST['nombreInfoEvento'];
         $fechaEventoGestion = $_POST['fechaInfoEvento'];
         $descripcionEventoGestion = $_POST['descripcionInfoEvento'];
-        $evento = $mysqli->query("UPDATE evento SET nombreEvento = '$nombreEventoGestion', fecha = '$fechaEventoGestion', descripcion = '$descripcionEventoGestion'
+        $lugarEventoGestion = $_POST['lugarInfoEvento'];
+        $evento = $mysqli->query("UPDATE evento SET nombreEvento = '$nombreEventoGestion', fecha = '$fechaEventoGestion', lugar = '$lugarEventoGestion', descripcion = '$descripcionEventoGestion'
                              WHERE id_Evento = '$eventoIdGestion' ");
         echo json_encode(array('mensaje' => false));
     }else{
