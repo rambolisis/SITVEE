@@ -84,7 +84,7 @@
                 $mail->Subject = 'Te invitamos a '.$nombreEvento.'';
                 $mail->Body    = 'Estimado(a) '.$nombreCompleto.'<br><br>
 
-                Nos complace informarle que la empresa '.$nombreEmpresa.' le ha invitado al evento "'.$nombreEvento.'" que se reaizará el día '.$fechaEvento.' en '.$lugarEvento.' <br><br>
+                Nos complace informarle que la empresa '.$nombreEmpresa.' le ha invitado al evento "'.$nombreEvento.'" que se realizará el día '.$fechaEvento.' en '.$lugarEvento.' <br><br>
                 
                 Este evento es para: '.$descripcionEvento.' <br><br>
                 
