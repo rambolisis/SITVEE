@@ -94,7 +94,7 @@ The database is already created into the host just make sure to change the user 
 
 * [PHP](http://www.php.net/)
 * [Javascript](https://www.javascript.com/)
-* [000webhost](https://www.000webhost.com/cpanel-login) - The hosting for the aplication
+* [Hostinger](https://www.hostinger.com/cpanel-login) - The hosting for the aplication
 
 
 ## Authors
