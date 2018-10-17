@@ -43,12 +43,12 @@
             $mail->addAddress($correo);   // Add a recipient
             $mail->isHTML(true);                                // Set email format to HTML
             $mail->Subject = 'Solicitud de cuenta SITVEE';
-            $mail->Body = 'Estimado(a) '.$nombreCliente.'\n\n
+            $mail->Body = 'Estimado(a) '.$nombreCliente.'<br><br>
 
-            Agradecemos su interés por la plataforma para eventos especiales SITVEE\n\n
+            Agradecemos su interés por la plataforma para eventos especiales SITVEE <br><br> 
             
-            Le indicamos que SITVEE ha recibido su solicitud para una nueva cuenta en nuestra aplicación, por lo cual muy pronto nos estaremos poniendo en\n
-            contacto para brindarle mayor información.\n\n
+            Le indicamos que SITVEE ha recibido su solicitud para una nueva cuenta en nuestra aplicación, por lo cual muy pronto nos estaremos poniendo en <br>
+            contacto para brindarle mayor información. <br><br> 
             
             Gracias';
             $mail->send();

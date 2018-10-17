@@ -45,12 +45,12 @@
             $mail->addAddress($correo);   // Add a recipient
             $mail->isHTML(true);                                // Set email format to HTML
             $mail->Subject = 'Solicitud de nuevo evento';
-            $mail->Body = 'Nos complace saber que desea adquirir el servicio de administración para un nuevo evento de su empresa\n\n
+            $mail->Body = 'Nos complace saber que desea adquirir el servicio de administración para un nuevo evento de su empresa <br><br> 
 
-            Hemos recibido su solicitud para la creación de un nuevo evento llamado '.$nombreEvento.' para la fecha '.$fechaEvento.'\n\n
+            Hemos recibido su solicitud para la creación de un nuevo evento llamado '.$nombreEvento.' para la fecha '.$fechaEvento.'<br><br>
             
-            Muy pronto nos pondremos en contacto para afinar detalles y que pueda tener a disposición su nuevo evento en nuestra plataforma\n\n
-            
+            Muy pronto nos pondremos en contacto para afinar detalles y que pueda tener a disposición su nuevo evento en nuestra plataforma <br><br>
+
             Gracias';
             $mail->send();
             $mail->clearAllRecipients();

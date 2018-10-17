@@ -27,13 +27,16 @@
         var_dump(http_response_code(404));
     }
     $updateEstado = $mysqli->query("UPDATE evento SET estado='Invitacion Enviada' WHERE id_Evento='$idEvento'");
-    $nombreEvento = $mysqli->query("SELECT nombreEvento FROM evento WHERE id_Evento='$idEvento'");
-    $descripcionEvento = $mysqli->query("SELECT descripcion FROM evento WHERE id_Evento='$idEvento'");
-    $lugarEvento = $mysqli->query("SELECT lugar FROM evento WHERE id_Evento='$idEvento'");
-    $fechaEvento = $mysqli->query("SELECT fecha FROM evento WHERE id_Evento='$idEvento'");
-    $idEmpresa = $mysqli->query("SELECT id_Cliente FROM evento WHERE id_Evento='$idEvento'");
-    $nombreEmpresa = $mysqli->query("SELECT nombreCliente FROM cliente WHERE id_Cliente='$idEmpresa'");
-    //$datos = $nombreEvento->fetch_assoc();
+    $informacionEvento = $mysqli->query("SELECT * FROM evento WHERE id_Evento='$idEvento'");
+    $datos = $informacionEvento->fetch_assoc();
+    $nombreEvento = $datos['nombreEvento'];
+    $fechaEvento = $datos['fecha'];
+    $descripcionEvento = $datos['descripcion'];
+    $lugarEvento = $datos['lugar'];
+    $idCliente = $datos['id_Cliente'];
+    $empresa = $mysqli->query("SELECT nombreCliente FROM cliente WHERE id_Cliente='$idCliente'");
+    $datos2 = $empresa->fetch_assoc();
+    $nombreEmpresa = $datos2['nombreCliente'];
     //$filenameZip = 'QR-Invitados-'.$datos["nombreEvento"].'.zip';
     $insertaInvitado = $mysqli->prepare("INSERT INTO invitado(nombreInvitado, correo, telefono, id_Evento, asistencia)
     VALUES (?,?,?,?,?)");
@@ -62,12 +65,13 @@
             $contenido = $idInvitado.",".$idEvento;
             QRcode::png($contenido, $filename, $level, $size, $frameSize);
             //$zip->addFile($filename,$nombreCompleto.'-'.$idInvitado.'.png');
+            $beneficios = "";
             foreach($invitados->{"Beneficios"} as $beneficio){
                 $nombreBeneficio = $beneficio->{"Nombre_Beneficio"};
                 $cantidad = $beneficio->{"Cantidad"};
                 $insertaBeneficio->bind_param("siii",$nombreBeneficio,$cantidad,$idEvento,$idInvitado);
                 $respuesta2 = $insertaBeneficio->execute();
-                $beneficios += '\n'.$nombreBeneficio;
+                $beneficios .= "- ".$nombreBeneficio." | Cantidad total: ".$cantidad."<br>";
             }
             try{
                 //Recipients
@@ -78,33 +82,32 @@
                 //Content
                 $mail->isHTML(true);                                // Set email format to HTML
                 $mail->Subject = 'Te invitamos a '.$nombreEvento.'';
-                $mail->Body    = 'Estimado(a) '.$nombreCompleto.'\n\n
+                $mail->Body    = 'Estimado(a) '.$nombreCompleto.'<br><br>
 
-                Nos complace informarle que la empresa '.$nombreEmpresa.' le ha invidado al evento '.$nombreEvento.' que se reaizará el día\n '.$fechaEvento.' en '.$lugarEvento.'\n\n
+                Nos complace informarle que la empresa '.$nombreEmpresa.' le ha invitado al evento '.$nombreEvento.' que se reaizará el día '.$fechaEvento.' en '.$lugarEvento.' <br><br>
                 
-                Este evento es para '.$descripcionEvento.'\n\n
+                Este evento es para: '.$descripcionEvento.' <br><br>
                 
-                Además hacemos de su conocimiento que en dicho evento usted tendrá incluido el consumo del los siguientes beneficios:\n
-                '.$beneficios.'\n\n
+                Además hacemos de su conocimiento que en dicho evento usted tendrá incluido el consumo del los siguientes beneficios: <br>
+                '.$beneficios.'<br><br>
                 
-                Le informamos que para hacer el canje de estos beneficios durante el evento necesitará presentar la imagen que contiene su código QR personal,\n
-                el cual encontrará adjunto a este correo, por lo que es muy importante que porte esta imagen en todo momento durante el evento.\n\n
+                Le informamos que para hacer el canje de estos beneficios durante el evento necesitará presentar la imagen que contiene su código QR personal,
+                el cual encontrará adjunto a este correo, por lo que es muy importante que porte esta imagen en todo momento durante el evento. <br><br>
                 
                 Que disfrute mucho este evento, SITVEE será parte de este para mejorar su experiecia.';
-                /*$mail->send();*/
+                $mail->send();
                 $mail->clearAttachments();
                 $mail->clearAllRecipients();
                 echo 'Correo enviado exitosamente a: '.$nombreCompleto;
             } catch (Exception $e) {
                 echo 'Correo no enviado. Mailer Error: ', $mail->ErrorInfo;
             }
-            $beneficios = "";
         }
         $beneficioControl = $mysqli->query("INSERT INTO beneficiocontrol (nombreBeneficio, cantidadCanjeada, id_Evento) 
         SELECT DISTINCT beneficio.nombre,0,$idEvento FROM 
         beneficio INNER JOIN evento ON beneficio.id_Evento = evento.id_Evento WHERE evento.id_Evento = $idEvento");
         //$zip->close();
-        unlink('QRimage');
+        //unlink('../QRimage');
         /*
     }else{
         echo "ERROR";
