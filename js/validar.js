@@ -466,6 +466,7 @@ function reporteInformeEventoPDF() {
 //Ajax para el enviar mensaje solicitud evento
 jQuery(document).on('submit','#frmSolicitudEvento',function(event){
     event.preventDefault();
+    $('#loading-screen').fadeIn();
 
     jQuery.ajax({
         url: '../solicitarEvento.php',
@@ -480,6 +481,7 @@ jQuery(document).on('submit','#frmSolicitudEvento',function(event){
     })
     .fail(function(resp){
         console.log(resp.responseText);
+        $('#loading-screen').fadeOut();
         $("#mensaje").text("Error de la solicitud");
         $('.mensaje').css('background-color', '#E74F4F');
         $('.mensaje').slideDown('slow');
@@ -489,6 +491,7 @@ jQuery(document).on('submit','#frmSolicitudEvento',function(event){
         $('#frmSolicitudEvento').trigger("reset");
     })
     .always(function(){
+        $('#loading-screen').fadeOut();
         $("#mensaje").text("Solicitud de evento enviada");
         $('.mensaje').css('background-color', '#2F5EB7');
         $('.mensaje').slideDown('slow');
@@ -502,6 +505,7 @@ jQuery(document).on('submit','#frmSolicitudEvento',function(event){
 //Ajax para el enviar mensaje solicitud de cuenta
 jQuery(document).on('submit','#frmSolicitudCuenta',function(event){
     event.preventDefault();
+    $('#loading-screen').fadeIn();
 
     jQuery.ajax({
         url: '../solicitarCuenta.php',
@@ -516,6 +520,7 @@ jQuery(document).on('submit','#frmSolicitudCuenta',function(event){
     })
     .fail(function(resp){
         console.log(resp.responseText);
+        $('#loading-screen').fadeOut();
         $("#mensaje").text("Error de la solicitud");
         $('.mensaje').css('background-color', '#E74F4F');
         $('.mensaje').slideDown('slow');
@@ -525,6 +530,7 @@ jQuery(document).on('submit','#frmSolicitudCuenta',function(event){
         $('#frmSolicitudCuenta').trigger("reset");
     })
     .always(function(){
+        $('#loading-screen').fadeOut();
         $("#mensaje").text("Solicitud de cuenta enviada");
         $('.mensaje').css('background-color', '#2F5EB7');
         $('.mensaje').slideDown('slow');
