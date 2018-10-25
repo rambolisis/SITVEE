@@ -101,6 +101,8 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
                 <br>
 				Contraseña:<br>
                 <input value="<?php echo $datosU['clave']?>" disabled="disabled" type="password" id="contraseniaClientePerfil" name="contraseniaClientePerfil" required="">
+				<br>
+				<a href="solicitarContraseniaNueva.php"> Olvide mi contraseña </a>
 				<?php
 					}
 					$mysqli->close();
