@@ -7,7 +7,7 @@ $Encabezado->generarHTML();
 <div class="mensaje">
     <span id="mensaje"></span>
 </div>
-    <div class="main" style="height:64%; width:100%; padding:1%; text-align:center">
+    <div class="main" style="height:64%; width:100%; padding:0.5%; text-align:center">
                 <h2><strong>Solicitud de Cuenta</strong></h2>
 				<form action="" id="frmSolicitudCuenta">
 						Nombre:<br>
@@ -22,7 +22,7 @@ $Encabezado->generarHTML();
                         Comentarios:<br>
 						<textarea name="comentariosClienteSolicitud" id="comentariosClienteSolicitud" style="resize:none;" rows="5" cols="60" placeholder="Escribe aquí tus comentarios"></textarea>
 						<br>
-						<input style="width: 30%;" type="submit" class="solicitudCuenta" value="Solicitar Cuenta">
+                        <button id="solicitudCuenta" name="solicitudCuenta" type="submit" class="btn btn-success">Solicitar Cuenta</button>
 				</form>  
     </div>
 <?php $Pie->generarHTML(); ?>
