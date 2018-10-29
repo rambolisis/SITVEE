@@ -17,6 +17,7 @@ $Encabezado->generarHTML();
 						<br>
                         <br>
                         <button id="solicitudContraseniaNueva" name="solicitudContraseniaNueva" type="submit" class="btn btn-success">Solicitar Nueva contraseña</button>
+                        <button type="submit" class="btn btn-primary" onclick="location.href='index.php';">Regresar</button>
 				</form>  
     </div>
 <?php $Pie->generarHTML(); ?>

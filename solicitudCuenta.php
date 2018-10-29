@@ -23,6 +23,7 @@ $Encabezado->generarHTML();
 						<textarea name="comentariosClienteSolicitud" id="comentariosClienteSolicitud" style="resize:none;" rows="5" cols="60" placeholder="Escribe aquí tus comentarios"></textarea>
 						<br>
                         <button id="solicitudCuenta" name="solicitudCuenta" type="submit" class="btn btn-success">Solicitar Cuenta</button>
+                        <button type="submit" class="btn btn-primary" onclick="location.href='index.php';">Regresar</button>
 				</form>  
     </div>
 <?php $Pie->generarHTML(); ?>
