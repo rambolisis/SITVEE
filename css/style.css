@@ -322,9 +322,9 @@ form#formlg{
 }
 
 #formlg input[type="submit"]{
-    background: linear-gradient(#FFDA63, #FFB940);
+    background: linear-gradient(#28a745, #28a745);
     border: 0;
-    color: brown;
+    color: white;
     opacity: 0.8;
     cursor: pointer;
     border-radius: 20px;
