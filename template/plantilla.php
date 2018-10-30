@@ -32,7 +32,7 @@ class Encabezado{
 						position: relative;
 						width:102%;
 						height:18%;
-						
+						padding-right:1%;
 						-webkit-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
 						-moz-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
 						box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.6);
