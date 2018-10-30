@@ -185,7 +185,9 @@ select{
     padding-left: 0;
     width: 15em;
 } 
-
+input,select,textarea{ 
+    padding-left:1%;
+} 
 .Guardar{
     background-color:#707B7C;
     width:20%;
