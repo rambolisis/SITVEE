@@ -21,12 +21,11 @@
         $nombreClientePerfil = $_POST['nombreClientePerfil'];
         $emailClientePerfil = $_POST['correoClientePerfil'];
         $usuarioClientePerfil = $_POST['usuarioClientePerfil'];
-        $passClientePerfil = $_POST['contraseniaClientePerfil'];
         $clientePerfil = $mysqli->query("UPDATE cliente SET nombreCliente = '$nombreClientePerfil', correo = '$emailClientePerfil' WHERE id_Cliente = '$clienteIdPerfil' ");
         $IdUsuarioClientePerfil = $mysqli->query("SELECT id_Usuario FROM cliente WHERE id_Cliente = '$clienteIdPerfil' ");     
         $datosPerfil = $IdUsuarioClientePerfil->fetch_assoc();
         $idUsuarioPerfil = $datosPerfil['id_Usuario'];
-        $usuarioPerfil = $mysqli->query("UPDATE usuario SET usuario = '$usuarioClientePerfil', clave = '$passClientePerfil' WHERE id_Usuario = '$idUsuarioPerfil'");
+        $usuarioPerfil = $mysqli->query("UPDATE usuario SET usuario = '$usuarioClientePerfil' WHERE id_Usuario = '$idUsuarioPerfil'");
         echo json_encode(array('mensaje' => false));
     }else{
         echo json_encode(array('mensaje' => true));

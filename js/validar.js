@@ -340,6 +340,63 @@ jQuery(document).on('submit','#frmPerfil',function(event){
     });
 });
 
+//Ajax para el mensaje de cambiar clave perfil
+jQuery(document).on('submit','#frmCambiarContraseña',function(event){
+    event.preventDefault();
+    var id = $('#idUsuarioCliente').text();
+
+    jQuery.ajax({
+        url: 'actualizar/actualizaClave.php?idUsuarioCliente='+id,
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        beforeSend: function(){           
+        }
+    })
+    .done(function(respuesta){
+        console.log(respuesta);
+        if(respuesta.mensaje == 1){
+            $("#mensaje").text("Contraseña actualizada exitosamente");
+            $('.mensaje').css('background-color', '#388742');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
+            setTimeout("location.href = 'userMenu.php'",3000);
+        }else if(respuesta.mensaje == 2){
+            $("#mensaje").text("La contraseña actual no es correcta");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },5000);
+        }else if(respuesta.mensaje == 3){
+            $("#mensaje").text("Debes ingresar la misma contraseña dos veces para confirmarla");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },5000);
+        }else{
+            $("#mensaje").text("Verifique los datos correctamente");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },5000);
+        }
+        $('#nombreClientePerfil').attr("disabled", true);
+        $('#correoClientePerfil').attr("disabled", true);
+        $('#usuarioClientePerfil').attr("disabled", true);
+        $('#contraseniaClientePerfil').attr("disabled", true);
+        $('#btnGuardarPerfil').attr("disabled", true);
+    })
+    .fail(function(resp){
+        console.log(resp.responseText);
+    })
+    .always(function(respuesta){
+        console.log(respuesta);
+    });
+});
+
 //Ajax para el mensaje de crear staff
 jQuery(document).on('submit','#frmNuevoStaff',function(event){
     event.preventDefault();
@@ -536,7 +593,49 @@ jQuery(document).on('submit','#frmSolicitudCuenta',function(event){
         $('.mensaje').slideDown('slow');
         $('#frmSolicitudCuenta').trigger("reset");
         setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
-        setTimeout("location.href = 'index.php'",3000);
+        //setTimeout("location.href = 'index.php'",3000);
+    });
+});
+
+//Ajax para el enviar mensaje de recuperacion de contraseña
+jQuery(document).on('submit','#frmSolicitudContraseniaNueva',function(event){
+    event.preventDefault();
+    $('#loading-screen').fadeIn();
+
+    jQuery.ajax({
+        url: 'consultar/consultaRecuperacionContrasenia.php',
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        beforeSend: function(){           
+        }
+    })
+    .done(function(respuesta){
+        console.log(respuesta);
+    })
+    .fail(function(resp){
+        console.log(resp.responseText);
+    })
+    .always(function(respuesta){
+        console.log(respuesta);
+        if(!respuesta.mensaje){
+            $('#loading-screen').fadeOut();
+            $("#mensaje").text("Solicitud exitosa, verifique su correo con la nueva contraseña");
+            $('.mensaje').css('background-color', '#2F5EB7');
+            $('.mensaje').slideDown('slow');
+            $('#frmSolicitudContraseniaNueva').trigger("reset");
+            setTimeout(function(){$('.mensaje').slideUp('slow');},4000);
+            setTimeout("location.href = 'index.php'",5000);
+        }else{
+            $('#loading-screen').fadeOut();
+            $("#mensaje").text("El correo ingresado no está registrado");
+            $('.mensaje').css('background-color', '#E74F4F');
+            $('.mensaje').slideDown('slow');
+            setTimeout(function(){
+                $('.mensaje').slideUp('slow');
+            },3000);
+            $('#frmSolicitudContraseniaNueva').trigger("reset");
+        }
     });
 });
 
@@ -687,7 +786,6 @@ function editarBoton(){
 function editarBotonPerfil(){
     document.getElementById("btnGuardarPerfil").disabled = false;
     document.getElementById("nombreClientePerfil").disabled = false;
-    document.getElementById("contraseniaClientePerfil").disabled = false;
     document.getElementById("usuarioClientePerfil").disabled = false;
     document.getElementById("correoClientePerfil").disabled = false;
 }

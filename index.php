@@ -31,8 +31,8 @@ $Encabezado->generarHTML();
                 <input type="checkbox" onclick="myFunction()" style="width:4%;float:left;margin:1%;"/>
                 <label style="float:left; margin:0%;margin-bottom:2%;">Mostrar Contraseña</label>
                 <input type="submit" id="botonLogin" value="Iniciar Sesion" style="font-weight:bold;width:90%;margin-left:5%;margin-bottom:2%;"/>
-                <a href="solicitarContraseniaNueva.php"> Olvide mi contraseña </a>
-                <a href="solicitudCuenta.php" style="float:right;"> Solicitar Cuenta </a>
+                <a href="solicitarContraseniaNueva.php"> ¿Olvidaste tu contraseña? </a>
+                <a href="solicitudCuenta.php" style="float:right;"> Solicitar cuenta </a>
         </form>         
     </div>
 <?php $Pie->generarHTML(); ?>

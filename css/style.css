@@ -99,6 +99,11 @@ a {
   text-align: center;
 }
 
+#cambiarClave:hover {
+    text-decoration:underline; 
+    cursor:pointer;
+}
+
 #NuevoEvento, #NuevoCliente, #ActualizarEvento, #ActualizaraCliente, #Administrador, #Inicio, #NuevoStaff, #ActualizarStaff, #CerrarSesion{
     width: 85%; /* Set a width if you like */
     height: 100%;

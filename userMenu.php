@@ -83,7 +83,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 				<?php
 					require 'conexion.php';
 					$idUsuario = $_SESSION['usuario']['id_Usuario'];
-					$InfoPerfil = $mysqli->query("SELECT u.usuario, u.clave, c.nombreCliente, c.correo, c.id_Cliente 
+					$InfoPerfil = $mysqli->query("SELECT u.usuario, c.nombreCliente, c.correo, c.id_Cliente 
 					FROM usuario AS u INNER JOIN cliente
 					AS c ON u.id_Usuario = c.id_Usuario
 					WHERE u.id_Usuario = '$idUsuario'");
@@ -99,18 +99,35 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
                 Usuario:<br>
                 <input value="<?php echo $datosU['usuario']?>" disabled="disabled" type="text" id="usuarioClientePerfil" name="usuarioClientePerfil" required="">
                 <br>
-				Contraseña:<br>
-                <input value="<?php echo $datosU['clave']?>" disabled="disabled" type="password" id="contraseniaClientePerfil" name="contraseniaClientePerfil" required="">
 				<br>
-				<a href="solicitarContraseniaNueva.php"> Olvide mi contraseña </a>
+				<a id="cambiarClave" style="color:#297AD0;" > Cambiar contraseña </a>
 				<?php
 					}
 					$mysqli->close();
 				?>
-                <br><br>
+                <br>
                 <button type="button" id="btnEditarPerfil" name="btnEditarPerfil" class="btn btn-primary" onclick="editarBotonPerfil();">Editar</button>
 				<button disabled="disabled" id="btnGuardarPerfil" name="btnGuardarPerfil" type="submit" class="btn btn-success">Guardar</button>
             </form>
+        </div>
+		<div id="PerfilCambiarContraseña" style="text-align:center;padding:2.5%;display:none;">
+		<h2><strong>Cambiar Contraseña</strong></h2>
+            <form id="frmCambiarContraseña">
+				<span id="idUsuarioCliente" style="display:none;"><?php echo $_SESSION['usuario']['id_Usuario']; ?></span>
+                Contraseña Actual:<br>
+                <input type="password" id="claveActualUsuarioCliente" name="claveActualUsuarioCliente" required="">
+                <br>
+				Contraseña Nueva:<br>
+                <input type="password" id="claveNuevaUsuarioCliente" name="claveNuevaUsuarioCliente" required="">
+                <br>
+                Repetir contraseña nueva:<br>
+                <input type="password" id="repetirClaveUsuarioCliente" name="repetirClaveUsuarioCliente" required="">
+                <br>
+                <br>
+				<a href="solicitarContraseniaNueva.php"> ¿Olvidaste tu contraseña? </a>
+				<br>
+				<button id="btnGuardarClaveNueva" name="btnGuardarClaveNueva" type="submit" class="btn btn-success">Guardar cambios</button>
+			</form>
         </div>
 		 <div id="actualizacionEventoUser" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
 			<div class="info" style="height:64%; padding:1%; text-align:center"> 
