@@ -99,6 +99,11 @@ a {
   text-align: center;
 }
 
+#cambiarClave:hover {
+    text-decoration:underline; 
+    cursor:pointer;
+}
+
 #NuevoEvento, #NuevoCliente, #ActualizarEvento, #ActualizaraCliente, #Administrador, #Inicio, #NuevoStaff, #ActualizarStaff, #CerrarSesion{
     width: 85%; /* Set a width if you like */
     height: 100%;
@@ -185,7 +190,9 @@ select{
     padding-left: 0;
     width: 15em;
 } 
-
+input,select,textarea{ 
+    padding-left:1%;
+} 
 .Guardar{
     background-color:#707B7C;
     width:20%;
@@ -322,9 +329,9 @@ form#formlg{
 }
 
 #formlg input[type="submit"]{
-    background: linear-gradient(#FFDA63, #FFB940);
+    background: linear-gradient(#28a745, #28a745);
     border: 0;
-    color: brown;
+    color: white;
     opacity: 0.8;
     cursor: pointer;
     border-radius: 20px;

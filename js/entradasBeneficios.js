@@ -127,6 +127,7 @@ $().ready(function () {
             $("#solicitud").hide();
             $('#busqueda').hide();
             $("#Perfil").hide();
+            $("#PerfilCambiarContraseña").hide();
             $("#actualizacionEventoUser").hide();
             $('#table-data').empty();
             $('#divTabla').hide();
@@ -148,6 +149,7 @@ $().ready(function () {
             $('#gestionEvento').show();
             $("#solicitud").hide();
             $("#Perfil").hide();
+            $("#PerfilCambiarContraseña").hide();
             $('#busqueda').hide();
             $("#actualizacionEventoUser").hide();
             $('#table-data').empty();
@@ -192,6 +194,7 @@ $().ready(function () {
         $('#btnGuardar').attr("disabled", true);
         $('#btnGuardarPerfil').attr("disabled", true);
         $("#Perfil").hide();
+        $("#PerfilCambiarContraseña").hide();
     });
 
 
@@ -226,11 +229,13 @@ $().ready(function () {
         $('#beneficiosUser').hide();
         $('#noEventos').hide();
         $("#Perfil").hide();
+        $("#PerfilCambiarContraseña").hide();
     });
 
     $('#SolicitarEvento').click(function (evento) {
         $('#solicitud').show();
         $("#Perfil").hide();
+        $("#PerfilCambiarContraseña").hide();
         $("#busqueda").hide();
         $('#gestionEvento').hide();
         $("#actualizacionEventoUser").hide();
@@ -249,6 +254,7 @@ $().ready(function () {
     });
     $('#MiPerfil').click(function (evento) {
         $('#Perfil').show();
+        $("#PerfilCambiarContraseña").hide();
         $("#solicitud").hide();
         $("#busqueda").hide();
         $('#gestionEvento').hide();
@@ -266,7 +272,26 @@ $().ready(function () {
         $('#btnGuardar').attr("disabled", true);
         $('#btnGuardarPerfil').attr("disabled", true);
     });
-    
+    $('#cambiarClave').click(function (evento) {
+        $('#Perfil').hide();
+        $("#PerfilCambiarContraseña").show();
+        $("#solicitud").hide();
+        $("#busqueda").hide();
+        $('#gestionEvento').hide();
+        $("#actualizacionEventoUser").hide();
+        $('#beneficiosUser').hide();
+        $('#noEventos').hide();
+        $('#nombreInfoEvento').attr("disabled", true);
+        $('#lugarInfoEvento').attr("disabled", true);
+        $('#fechaInfoEvento').attr("disabled", true);
+        $('#descripcionInfoEvento').attr("disabled", true);
+        $('#nombreClientePerfil').attr("disabled", true);
+        $('#correoClientePerfil').attr("disabled", true);
+        $('#usuarioClientePerfil').attr("disabled", true);
+        $('#contraseniaClientePerfil').attr("disabled", true);
+        $('#btnGuardar').attr("disabled", true);
+        $('#btnGuardarPerfil').attr("disabled", true);
+    });
 });
 
 function hideRow() {
