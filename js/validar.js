@@ -789,3 +789,80 @@ function editarBotonPerfil(){
     document.getElementById("usuarioClientePerfil").disabled = false;
     document.getElementById("correoClientePerfil").disabled = false;
 }
+
+function newRowTable()
+{
+	var nombreInvitado = document.getElementById("nombreInvitado").value;
+	var primerApellido = document.getElementById("primerApellido").value;
+	var segundoApellido =document.getElementById("segundoApellido").value;
+	var correoInvitado = document.getElementById("correoInvitado").value;
+	var telefonoInvitado = document.getElementById("telefonoInvitado").value;
+
+	var name_table = document.getElementById("tablaInvitados");
+
+    var row = name_table.insertRow(0+1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    var cell6 = row.insertCell(5);
+
+    cell1.innerHTML = nombreInvitado;
+    cell2.innerHTML = primerApellido;
+    cell3.innerHTML = segundoApellido;
+    cell4.innerHTML = correoInvitado;
+    cell5.innerHTML = telefonoInvitado;
+    cell6.innerHTML = '<input type="button" id="eliminar" class="btn btn-danger" value="Eliminar" />';
+    
+
+}
+
+function downloadCSV(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV file
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Hide download link
+    downloadLink.style.display = "none";
+
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+
+    // Click download link
+    downloadLink.click();
+}
+
+function exportTableToCSV() {
+    var csv = [];
+    var select = document.querySelector('div.generarCSV');
+    var rows = select.querySelectorAll("table tr");
+    
+    for (var i = 1; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+        
+        for (var j = 0; j < cols.length - 1; j++) 
+            row.push(cols[j].innerText);
+        
+        csv.push(row.join(";"));        
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\r\n").trim()+"\r\n", 'invitados.csv');
+}
+
+$(document).on('click', '#eliminar', function (event) {
+    event.preventDefault();
+    $(this).closest('tr').remove();
+});

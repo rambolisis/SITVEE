@@ -1,12 +1,13 @@
 var ListaEntradas = new ListaEntradas();
+var ListaEntradasTemp = ListaEntradas.getJson();
 var ListaBeneficios = new ListaBeneficios();
 
-$().ready(function () {
-    $('#viewfile').click(function () { // en esta parte lo que haremos es que el boton de importar lea el archivo y lo pase a la tabla
+$().ready(function() {
+    $('#viewfile').click(function() { // en esta parte lo que haremos es que el boton de importar lea el archivo y lo pase a la tabla
         var input = $("#inputfile").val();
         $(".custom-file-label").text(input);
         var rdr = new FileReader();
-        rdr.onload = function (e) {
+        rdr.onload = function(e) {
             var therows = e.target.result.split("\n");
             var newrow = "";
             var mostrar;
@@ -44,22 +45,21 @@ $().ready(function () {
         }
         try {
             rdr.readAsText($("#inputfile")[0].files[0]);
-        }
-        catch(err) {
+        } catch (err) {
             $("#mensaje").text("Porfavor inserte un documento csv");
             $('.mensaje').css('background-color', '#E74F4F');
             $('.mensaje').slideDown('slow');
-            setTimeout(function(){
+            setTimeout(function() {
                 $('.mensaje').slideUp('slow');
-            },3000);// si el texto no tiene nada vuelve a pedir que inserte el documuento
+            }, 3000); // si el texto no tiene nada vuelve a pedir que inserte el documuento
         }
-        
+
     });
 
 
     //obtenemos el valor de los input
 
-    $('#adicionar').click(function () {
+    $('#adicionar').click(function() {
         var beneficio = document.getElementById("beneficio").value;
         var cantidad = document.getElementById("cantidad").value;
         if (beneficio != "" && cantidad >= 1 && cantidad < 101 && cantidad != "") {
@@ -77,7 +77,7 @@ $().ready(function () {
             document.getElementById("beneficio").value = "";
             document.getElementById("beneficio").focus();
         } else {
-            if(0>=cantidad || 100<cantidad){
+            if (0 >= cantidad || 100 < cantidad) {
                 alert("Digite un numero entre 0 y 100");
             }
             if (beneficio == "" && cantidad == "") {
@@ -98,7 +98,7 @@ $().ready(function () {
                 $("#cantidad").attr("placeholder", "Campo Vacio, Ingrese la Cantidad");
                 $("#cantidad").css("border-color", "red");
             }
-    
+
         }
         if (cantidad != "" && beneficio != "") {
             $("#beneficio").attr("placeholder", "Beneficio...");
@@ -108,22 +108,22 @@ $().ready(function () {
         }
     });
     $('#select_all').click(function(event) {
-        if(this.checked) {
+        if (this.checked) {
             // Iterate each checkbox
             $(':checkbox').each(function() {
                 this.checked = true;
             });
-        }
-        else {
-          $(':checkbox').each(function() {
+        } else {
+            $(':checkbox').each(function() {
                 this.checked = false;
             });
         }
-      });
+    });
     $('#ImportarCSV').click(function (evento) {
         var nFilas = $("#tablaEventos tr").length;
         if(nFilas == 1){
             $('#noEventos').show();
+            $('#generarCSV').hide();
             $("#solicitud").hide();
             $('#busqueda').hide();
             $("#Perfil").hide();
@@ -147,6 +147,7 @@ $().ready(function () {
             $('#btnGuardarPerfil').attr("disabled", true);
         }else{
             $('#gestionEvento').show();
+            $('#generarCSV').hide();
             $("#solicitud").hide();
             $("#Perfil").hide();
             $("#PerfilCambiarContraseña").hide();
@@ -174,6 +175,34 @@ $().ready(function () {
     $('#cargarCSV').click(function (evento) {
         $('#busqueda').show();
         $("#gestionEvento").hide();
+        $('#generarCSV').hide();
+        $("#solicitud").hide();
+        $("#actualizacionEventoUser").hide();
+        $('#table-data').empty();
+        $('#divTabla').hide();
+        ListaEntradas.Clear();
+        $("#confirmar").hide();
+        $("#fila").hide();
+        $('#beneficiosUser').hide();
+        $('#noEventos').hide();
+        $('#nombreInfoEvento').attr("disabled", true);
+        $('#lugarInfoEvento').attr("disabled", true);
+        $('#fechaInfoEvento').attr("disabled", true);
+        $('#descripcionInfoEvento').attr("disabled", true);
+        $('#nombreClientePerfil').attr("disabled", true);
+        $('#correoClientePerfil').attr("disabled", true);
+        $('#usuarioClientePerfil').attr("disabled", true);
+        $('#contraseniaClientePerfil').attr("disabled", true);
+        $('#btnGuardar').attr("disabled", true);
+        $('#btnGuardarPerfil').attr("disabled", true);
+        $("#Perfil").hide();
+        $("#PerfilCambiarContraseña").hide();
+    });
+
+    $('#GenerarCSV').click(function (evento) {
+        $('#busqueda').hide();
+        $("#gestionEvento").hide();
+        $('#generarCSV').show();
         $("#solicitud").hide();
         $("#actualizacionEventoUser").hide();
         $('#table-data').empty();
@@ -221,6 +250,7 @@ $().ready(function () {
         $("#solicitud").hide();
         $('#busqueda').hide();
         $("#gestionEvento").hide();
+        $('#generarCSV').hide();
         $('#table-data').empty();
         $('#divTabla').hide();
         ListaEntradas.Clear();
@@ -238,6 +268,7 @@ $().ready(function () {
         $("#PerfilCambiarContraseña").hide();
         $("#busqueda").hide();
         $('#gestionEvento').hide();
+        $('#generarCSV').hide();
         $("#actualizacionEventoUser").hide();
         $('#beneficiosUser').hide();
         $('#noEventos').hide();
@@ -258,6 +289,7 @@ $().ready(function () {
         $("#solicitud").hide();
         $("#busqueda").hide();
         $('#gestionEvento').hide();
+        $('#generarCSV').hide();
         $("#actualizacionEventoUser").hide();
         $('#beneficiosUser').hide();
         $('#noEventos').hide();
@@ -278,6 +310,7 @@ $().ready(function () {
         $("#solicitud").hide();
         $("#busqueda").hide();
         $('#gestionEvento').hide();
+        $('#generarCSV').hide();
         $("#actualizacionEventoUser").hide();
         $('#beneficiosUser').hide();
         $('#noEventos').hide();
@@ -315,23 +348,24 @@ function GuardarEntrada(columns) {
 }
 
 function Enviar() {
+    ListaEntradasTemp = ListaEntradas.getJson();
     var estado = hideRow();
     var eventoId = document.getElementById("idInfoEvento").innerText;
     if (!estado) {
         $("#mensaje").text("Porfavor seleccione al menos un invitado");
         $('.mensaje').css('background-color', '#E74F4F');
         $('.mensaje').slideDown('slow');
-        setTimeout(function(){
+        setTimeout(function() {
             $('.mensaje').slideUp('slow');
-        },3000);
-    }else if(eventoId == "null"){
+        }, 3000);
+    } else if (eventoId == "null") {
         $("#mensaje").text("Debe seleccionar un evento");
         $('.mensaje').css('background-color', '#E74F4F');
         $('.mensaje').slideDown('slow');
-        setTimeout(function(){
+        setTimeout(function() {
             $('.mensaje').slideUp('slow');
-        },3000);
-    }else{
+        }, 3000);
+    } else {
         $('#busqueda').hide();
         $('#beneficiosUser').show();
     }
@@ -341,22 +375,22 @@ function ListaEntradas() {
     var instances = [];
     if (!('prototypemethodsset' in ListaEntradas)) {
         var proto = ListaEntradas.prototype;
-        proto.get = function () {
+        proto.get = function() {
             return instances;
         };
-        proto.getJson = function () {
+        proto.getJson = function() {
             return JSON.stringify(instances);;
         };
-        proto.add = function (datos) {
+        proto.add = function(datos) {
             instances.push(datos);
         };
-        proto.setEntradas = function (datos) {
+        proto.setEntradas = function(datos) {
             instances = datos;
         };
-        proto.remove = function (index) {
+        proto.remove = function(index) {
             instances.splice(index, 1);
         };
-        proto.Clear = function () {
+        proto.Clear = function() {
             instances = [];
         };
         proto.prototypemethodsset = true;
@@ -383,24 +417,25 @@ function hideRow2(event) {
 }
 
 function Enviar2() {
-        if(ListaBeneficios.getJson()=="[]"){
-            $("#mensaje").text("Porfavor agregue al menos un beneficio");
-            $('.mensaje').css('background-color', '#E74F4F');
-            $('.mensaje').slideDown('slow');
-            setTimeout(function(){
-                $('.mensaje').slideUp('slow');
-            },3000);
-        }else{
+    if (ListaBeneficios.getJson() == "[]") {
+        $("#mensaje").text("Porfavor agregue al menos un beneficio");
+        $('.mensaje').css('background-color', '#E74F4F');
+        $('.mensaje').slideDown('slow');
+        setTimeout(function() {
+            $('.mensaje').slideUp('slow');
+        }, 3000);
+    } else {
         $('#loading-screen').fadeIn();
         ListaEntradas.get().forEach(element => {
             element.Beneficios = ListaBeneficios.get();
         });
         'use strict';
 
-        const READY_STATE_COMPLETE = 4, STATUS_OK = 200;
+        const READY_STATE_COMPLETE = 4,
+            STATUS_OK = 200;
 
         var myNavigator = () => {
-            let nav = (window.XMLHttpRequest) ? new XMLHttpRequest() :  new ActiveXObject('Microsft.XMLHTTP');
+            let nav = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsft.XMLHTTP');
             return nav;
         }
 
@@ -410,15 +445,15 @@ function Enviar2() {
 
             req.onreadystatechange = callback;
             req.open('POST', route, true);
-            req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             req.send('data=' + data);
         }
 
         var eventoId = document.getElementById("idInfoEvento").innerText;
-        let route = 'insertar/InsertarUserMenu.php?idEvento='+eventoId,
-        data = ListaEntradas.getJson();
+        let route = 'insertar/InsertarUserMenu.php?idEvento=' + eventoId,
+            data = ListaEntradas.getJson();
 
-        setRequest(function(){
+        setRequest(function() {
 
             if (this.readyState == READY_STATE_COMPLETE) {
 
@@ -429,17 +464,17 @@ function Enviar2() {
                     $("#mensaje").text("Invitación enviada exitosamente");
                     $('.mensaje').css('background-color', '#388742');
                     $('.mensaje').slideDown('slow');
-                    setTimeout(function(){$('.mensaje').slideUp('slow');},2000);
-                    setTimeout("location.reload();",3000);
-                }else{
+                    setTimeout(function() { $('.mensaje').slideUp('slow'); }, 2000);
+                    setTimeout("location.reload();", 3000);
+                } else {
                     $('#loading-screen').fadeOut();
                     $('#enviar2').attr("disabled", false);
                     $("#mensaje").text("Error de conexion");
                     $('.mensaje').css('background-color', '#E74F4F');
                     $('.mensaje').slideDown('slow');
-                    setTimeout(function(){
+                    setTimeout(function() {
                         $('.mensaje').slideUp('slow');
-                    },3000);
+                    }, 3000);
                 }
             }
         }, route, data);
@@ -458,26 +493,27 @@ function ListaBeneficios() {
     var instances = [];
     if (!('prototypemethodsset' in ListaBeneficios)) {
         var proto = ListaBeneficios.prototype;
-        proto.get = function () {
+        proto.get = function() {
             return instances;
         };
-        proto.add = function (datos) {
+        proto.add = function(datos) {
             instances.push(datos);
         };
-        proto.remove = function (index) {
+        proto.remove = function(index) {
             instances.splice(index, 1);
         };
-        proto.Clear = function () {
+        proto.Clear = function() {
             instances = [];
         };
-        proto.getJson = function () {
-            return JSON.stringify(instances);;
+        proto.getJson = function() {
+            return JSON.stringify(instances);
         };
         proto.prototypemethodsset = true;
     }
 }
 
-function Ocultar(){
+function Ocultar() {
+    ListaEntradas.setEntradas(JSON.parse(ListaEntradasTemp));
     $('#beneficiosUser').hide();
     $('#busqueda').show();
 }

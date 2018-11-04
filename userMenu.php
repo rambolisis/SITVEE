@@ -52,11 +52,12 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 </div>
 <div class="vertical-menu" style="padding:0px;  height:64%;">
 				<ul class="menu" style="margin-top:0px; width:100%;">
-				  <li style="height: 19%; padding: 5%;" id="MiPerfil"><a>Mi Perfil</a></li>	
-				  <li style="height: 19%; padding: 5%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>
-				  <li style="height: 19%; padding: 5%;" id="ImportarCSV"><a>Eventos</a></li>
-				  <li style="height: 19%; padding: 5%;" id="SolicitarEvento"><a>Solicitar Evento</a></li>
-				  <li style="height: 19%; padding: 5%;" onclick="salir();"><a>Cerrar Sesion</a></li>
+				  <li style="height: 15.8%;" id="MiPerfil"><a>Mi Perfil</a></li>	
+				  <li style="height: 15.8%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>
+				  <li style="height: 15.8%;" id="GenerarCSV"><a>Generar CSV</a></li>
+				  <li style="height: 15.8%;" id="ImportarCSV"><a>Eventos</a></li>
+				  <li style="height: 15.8%;" id="SolicitarEvento"><a>Solicitar Evento</a></li>
+				  <li style="height: 15.8%;" onclick="salir();"><a>Cerrar Sesion</a></li>
 				</ul>
 			</div>
 		<div class="container" id="container" style="width:85%; height:64%; padding:1%;">
@@ -84,7 +85,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 					require 'conexion.php';
 					$idUsuario = $_SESSION['usuario']['id_Usuario'];
 					$InfoPerfil = $mysqli->query("SELECT u.usuario, c.nombreCliente, c.correo, c.id_Cliente 
-					FROM usuario AS u INNER JOIN cliente
+					FROM usuario AS u INNER JOIN cliente 
 					AS c ON u.id_Usuario = c.id_Usuario
 					WHERE u.id_Usuario = '$idUsuario'");
 					if ($datosU = $InfoPerfil->fetch_assoc()) {
@@ -182,7 +183,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 		</table>
 		</div>
 		<input id="confirmar" style="width: 13%; display: none;" type="button" value="Confirmar" onclick="Enviar();"  />
-		<input type="checkbox" id="select_all" style="width:1%;display:none;"></input>
+		<input type="checkbox" id="select_all" style="width:1%;display:none;"/>
 		<label id="select" style="display:none;">Seleccionar todos</label>
 		</div>
 		 <div id="gestionEvento" style="height:98%; width:100%;padding-left:5%; text-align:center;display:none;padding-left:25%;padding-top:3%;"> 
@@ -222,6 +223,44 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 			<div id="noEventos" style="display: none;"> 
 				<h3><strong>No tiene eventos disponibles en este momento</strong></h2>
 				<h3><strong>Vaya a la sección de solicitar evento</strong></h2>
+			</div>
+			<div class="generarCSV" id="generarCSV" style="height:98%; width:100%;padding-left:5%; text-align:center;display:none;padding-left:25%;padding-top:3%;">
+			<form class="invitados" method="post" action="#">
+				<div class="form-group">
+					<p style="float:left;width:40%;">
+						<label>Nombre:<input id="nombreInvitado" class="form-control" type="text" placeholder="Escriba el nombre" style="width: 50%;float:right" required="" /></label>
+					</p>
+					<br>
+					<p style="float:left;width:40%; ">
+						<label>Primer Apellido:<input id="primerApellido" class="form-control" type="text" placeholder="Escriba el primer apellido" style="width: 50%;float:right" required="" /></label>
+					</p>
+					<br>
+					<p style="float:left;width:40%;">
+						<label>Segundo Apellido:<input id="segundoApellido" class="form-control" type="text" placeholder="Escriba el segundo apellido" style="width: 50%;float:right" required="" /></label>
+					</p>
+					<br>
+					<p style="float:left;width:40%; ">
+						<label>Correo:<input id="correoInvitado" class="form-control" type="text" placeholder="Escriba el correo" style="width: 50%;float:right" required="" /></label>
+					</p>
+					<br>
+					<p style="float:left;width:40%;">
+						<label>Telefono:<input type="text" id="telefonoInvitado" class="form-control" type="text" placeholder="Escriba el telefono" style="width: 35%;float:right"/></label>
+					</p>
+					<br>
+					<button style="width: 13%;" id="agregar" class="btn btn-success" type="button" onclick="newRowTable();" >Agregar</button>
+				</div>
+				<table class="table table-hover table-dark" id="tablaInvitados" style="width:70%;text-align:center;">
+						<tr>
+							<th>Nombre</th>
+							<th>Primer Apellido</th>
+							<th>Segundo Apellido</th>
+							<th>Correo Electronico</th>
+							<th>Telefono</th>
+							<th>Accion</th>
+						</tr>
+				</table>
+				<button style="width: 13%;" id="exportarCSV" class="btn btn-success" type="button" onclick="exportTableToCSV()">Generar CSV</button>
+			</form>
 			</div>
 			<div id="beneficiosUser" style="display: none;">
 		<form>
