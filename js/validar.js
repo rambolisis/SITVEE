@@ -814,8 +814,7 @@ function newRowTable()
     cell4.innerHTML = correoInvitado;
     cell5.innerHTML = telefonoInvitado;
     cell6.innerHTML = '<input type="button" id="eliminar" class="btn btn-danger" value="Eliminar" />';
-    
-
+    $('#frmInvitados').trigger("reset");
 }
 
 function downloadCSV(csv, filename) {
@@ -859,7 +858,24 @@ function exportTableToCSV() {
     }
 
     // Download CSV file
-    downloadCSV(csv.join("\r\n").trim()+"\r\n", 'invitados.csv');
+    if(rows.length != 1){
+        downloadCSV(csv.join("\r\n").trim()+"\r\n", 'invitados.csv');
+        $("#mensaje").text("CSV generado correctamente");
+        $('.mensaje').css('background-color', '#388742');
+        $('.mensaje').slideDown('slow');
+        setTimeout(function(){
+            $('.mensaje').slideUp('slow');
+        },3000);
+        $('#frmInvitados').trigger("reset");
+    }else{
+        $("#mensaje").text("Porfavor inserte al menos un invitado");
+        $('.mensaje').css('background-color', '#E74F4F');
+        $('.mensaje').slideDown('slow');
+        setTimeout(function(){
+            $('.mensaje').slideUp('slow');
+        },3000);
+        $('#frmInvitados').trigger("reset");
+    }  
 }
 
 $(document).on('click', '#eliminar', function (event) {

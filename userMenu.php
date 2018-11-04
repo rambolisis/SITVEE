@@ -225,7 +225,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 				<h3><strong>Vaya a la sección de solicitar evento</strong></h2>
 			</div>
 			<div class="generarCSV" id="generarCSV" style="height:98%; width:100%;padding-left:5%; text-align:center;display:none;padding-left:25%;padding-top:3%;">
-			<form class="invitados" method="post" action="#">
+			<form id="frmInvitados" class="invitados" method="post" action="#">
 				<div class="form-group">
 					<p style="float:left;width:40%;">
 						<label>Nombre:<input id="nombreInvitado" class="form-control" type="text" placeholder="Escriba el nombre" style="width: 50%;float:right" required="" /></label>
