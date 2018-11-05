@@ -224,32 +224,29 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 				<h3><strong>No tiene eventos disponibles en este momento</strong></h2>
 				<h3><strong>Vaya a la sección de solicitar evento</strong></h2>
 			</div>
-			<div class="generarCSV" id="generarCSV" style="height:98%; width:100%;padding-left:5%; text-align:center;display:none;padding-left:25%;padding-top:3%;">
+			<div class="generarCSV" id="generarCSV" style="height:98%; width:100%;text-align:center;display:none;padding-left:4%;padding-top:3%;">
 			<form id="frmInvitados" class="invitados" method="post" action="#">
 				<div class="form-group">
 					<p style="float:left;width:40%;">
-						<label>Nombre:<input id="nombreInvitado" class="form-control" type="text" placeholder="Escriba el nombre" style="width: 50%;float:right" required="" /></label>
+						<label>Nombre:<input id="nombreInvitado" class="form-control" type="text" placeholder="Escriba el nombre" style="width: 50%;float:right;" required="" /></label>
+					</p>
+					<p style="float:left;width:40%; ">
+						<label style="width:100%;">Correo:<input id="correoInvitado" class="form-control" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de Correo Invalido" placeholder="Escriba el correo" style="width: 60%;float:right;" required="" /></label>
 					</p>
 					<br>
 					<p style="float:left;width:40%; ">
-						<label>Primer Apellido:<input id="primerApellido" class="form-control" type="text" placeholder="Escriba el primer apellido" style="width: 50%;float:right" required="" /></label>
+						<label>Primer Apellido:<input id="primerApellido" class="form-control" type="text" placeholder="Escriba el primer apellido" style="width: 50%;float:right;" required="" /></label>
+					</p>
+					<p style="float:left;width:40%;">
+						<label style="width:100%;">Telefono:<input type="text" id="telefonoInvitado" class="form-control" type="text" placeholder="Escriba el telefono" style="width: 60%;float:right;" required=""/></label>
 					</p>
 					<br>
 					<p style="float:left;width:40%;">
-						<label>Segundo Apellido:<input id="segundoApellido" class="form-control" type="text" placeholder="Escriba el segundo apellido" style="width: 50%;float:right" required="" /></label>
+						<label>Segundo Apellido:<input id="segundoApellido" class="form-control" type="text" placeholder="Escriba el segundo apellido" style="width: 50%;float:right;" required="" /></label>
 					</p>
-					<br>
-					<p style="float:left;width:40%; ">
-						<label>Correo:<input id="correoInvitado" class="form-control" type="text" placeholder="Escriba el correo" style="width: 50%;float:right" required="" /></label>
-					</p>
-					<br>
-					<p style="float:left;width:40%;">
-						<label>Telefono:<input type="text" id="telefonoInvitado" class="form-control" type="text" placeholder="Escriba el telefono" style="width: 35%;float:right"/></label>
-					</p>
-					<br>
-					<button style="width: 13%;" id="agregar" class="btn btn-success" type="button" onclick="newRowTable();" >Agregar</button>
+					<button style="width: 13%;float:left; margin-left:16%;" id="agregar" class="btn btn-success" type="button" onclick="newRowTable();" >Agregar</button>
 				</div>
-				<table class="table table-hover table-dark" id="tablaInvitados" style="width:70%;text-align:center;">
+				<table class="table table-hover table-dark" id="tablaInvitados" style="width:70%;text-align:center;margin-left:15%;margin-right:15%;">
 						<tr>
 							<th>Nombre</th>
 							<th>Primer Apellido</th>

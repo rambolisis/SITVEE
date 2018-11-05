@@ -813,7 +813,7 @@ function newRowTable()
     cell3.innerHTML = segundoApellido;
     cell4.innerHTML = correoInvitado;
     cell5.innerHTML = telefonoInvitado;
-    cell6.innerHTML = '<input type="button" id="eliminar" class="btn btn-danger" value="Eliminar" />';
+    cell6.innerHTML = '<input type="button" id="eliminar" style="width:100%;" class="btn btn-danger" value="Eliminar" />';
     $('#frmInvitados').trigger("reset");
 }
 
