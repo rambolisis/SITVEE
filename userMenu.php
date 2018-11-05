@@ -228,21 +228,21 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 			<form id="frmInvitados" class="invitados" method="post" action="#">
 				<div class="form-group">
 					<p style="float:left;width:40%;">
-						<label>Nombre:<input id="nombreInvitado" class="form-control" type="text" placeholder="Escriba el nombre" style="width: 50%;float:right;" required="" /></label>
+						<label>Nombre:   <input id="nombreInvitado" class="form-control" type="text" placeholder="Escriba el nombre" style="width: 60%;float:right;margin-right:0%;" required="" /></label>
 					</p>
 					<p style="float:left;width:40%; ">
 						<label style="width:100%;">Correo:<input id="correoInvitado" class="form-control" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de Correo Invalido" placeholder="Escriba el correo" style="width: 60%;float:right;" required="" /></label>
 					</p>
 					<br>
 					<p style="float:left;width:40%; ">
-						<label>Primer Apellido:<input id="primerApellido" class="form-control" type="text" placeholder="Escriba el primer apellido" style="width: 50%;float:right;" required="" /></label>
+						<label>Primer Apellido:<input id="primerApellido" class="form-control" type="text" placeholder="Escriba el primer apellido" style="width: 58%;float:right;" required="" /></label>
 					</p>
 					<p style="float:left;width:40%;">
 						<label style="width:100%;">Telefono:<input type="text" id="telefonoInvitado" class="form-control" type="text" placeholder="Escriba el telefono" style="width: 60%;float:right;" required=""/></label>
 					</p>
 					<br>
 					<p style="float:left;width:40%;">
-						<label>Segundo Apellido:<input id="segundoApellido" class="form-control" type="text" placeholder="Escriba el segundo apellido" style="width: 50%;float:right;" required="" /></label>
+						<label>Segundo Apellido:<input id="segundoApellido" class="form-control" type="text" placeholder="Escriba el segundo apellido" style="width: 58%;float:right;" required="" /></label>
 					</p>
 					<button style="width: 13%;float:left; margin-left:16%;" id="agregar" class="btn btn-success" type="button" onclick="newRowTable();" >Agregar</button>
 				</div>
