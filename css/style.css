@@ -259,6 +259,9 @@ table{
     -webkit-border-radius: 10px 10px 10px 10px;
 }
 
+li{
+    cursor:pointer;
+}
 /*---------------------LOGIN---------------------*/
 form#formlg{
     margin: auto;

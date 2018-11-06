@@ -857,11 +857,10 @@ function exportTableToCSV() {
         var row = [], cols = rows[i].querySelectorAll("td, th");
         
         for (var j = 0; j < cols.length - 1; j++) 
-            row.push(cols[j].innerText);
+            row.push(cols[j].textContent);
         
         csv.push(row.join(";"));        
     }
-
     // Download CSV file
     if(rows.length != 1){
         downloadCSV(csv.join("\r\n").trim()+"\r\n", 'invitados.csv');
