@@ -623,7 +623,7 @@ jQuery(document).on('submit','#frmSolicitudContraseniaNueva',function(event){
             $("#mensaje").text("Solicitud exitosa, verifique su correo con la nueva contraseña");
             $('.mensaje').css('background-color', '#2F5EB7');
             $('.mensaje').slideDown('slow');
-            $('#frmSolicitudContraseniaNueva').trigger("reset");
+            $('#correoClienteSolicitudContrasenia').val('');
             setTimeout(function(){$('.mensaje').slideUp('slow');},4000);
             setTimeout("location.href = 'index.php'",5000);
         }else{
@@ -790,9 +790,10 @@ function editarBotonPerfil(){
     document.getElementById("correoClientePerfil").disabled = false;
 }
 
-function newRowTable()
-{
-	var nombreInvitado = document.getElementById("nombreInvitado").value;
+//Generar CSV
+jQuery(document).on('submit','#frmInvitados',function(event){
+    event.preventDefault();
+    var nombreInvitado = document.getElementById("nombreInvitado").value;
 	var primerApellido = document.getElementById("primerApellido").value;
 	var segundoApellido =document.getElementById("segundoApellido").value;
 	var correoInvitado = document.getElementById("correoInvitado").value;
@@ -814,8 +815,12 @@ function newRowTable()
     cell4.innerHTML = correoInvitado;
     cell5.innerHTML = telefonoInvitado;
     cell6.innerHTML = '<input type="button" id="eliminar" style="width:100%;" class="btn btn-danger" value="Eliminar" />';
-    $('#frmInvitados').trigger("reset");
-}
+    $('#nombreInvitado').val('');
+    $('#primerApellido').val('');
+    $('#segundoApellido').val('');
+    $('#correoInvitado').val('');
+    $('#telefonoInvitado').val('');
+});
 
 function downloadCSV(csv, filename) {
     var csvFile;

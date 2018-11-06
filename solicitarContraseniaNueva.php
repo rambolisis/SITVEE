@@ -13,7 +13,7 @@ $Encabezado->generarHTML();
                 <label>cuenta para proceder a recuperar su contraseña</label>
 				<form id="frmSolicitudContraseniaNueva">
 						<br>
-						<input type="email" name="correoClienteSolicitudContrasenia" placeholder="Digite su correo electronico"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de correo invalido" required="">
+						<input type="email" id="correoClienteSolicitudContrasenia" name="correoClienteSolicitudContrasenia" placeholder="Digite su correo electronico"  pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de correo invalido" required="">
 						<br>
                         <br>
                         <button id="solicitudContraseniaNueva" name="solicitudContraseniaNueva" type="submit" class="btn btn-success">Solicitar Nueva contraseña</button>

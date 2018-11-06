@@ -260,7 +260,7 @@ $().ready(function() {
 
     $('#agregar').click(function (evento) {
         var nFilas = $("#tablaInvitados tr").length;
-        if(nFilas == 1){
+        if(nFilas == 0){
             $('#tablaInvitados').hide();
             $('#exportarCSV').hide();
             $('#noEventos').hide();

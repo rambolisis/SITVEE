@@ -115,10 +115,10 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 		<h2><strong>Cambiar Contraseña</strong></h2>
             <form id="frmCambiarContraseña">
 				<span id="idUsuarioCliente" style="display:none;"><?php echo $_SESSION['usuario']['id_Usuario']; ?></span>
-                Contraseña Actual:<br>
+                Contraseña actual:<br>
                 <input type="password" id="claveActualUsuarioCliente" name="claveActualUsuarioCliente" required="">
                 <br>
-				Contraseña Nueva:<br>
+				Contraseña nueva:<br>
                 <input type="password" id="claveNuevaUsuarioCliente" name="claveNuevaUsuarioCliente" required="">
                 <br>
                 Repetir contraseña nueva:<br>
@@ -167,7 +167,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 				<input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;" name="Buscar">
 				<button class="btn btn-outline-secondary" type="button" id="viewfile">Cargar</button>
 		</div>
-	<div class="input-group mt-2 mb-2" id="divTabla" style="height:180px; width:100%; display: none;overflow-y:scroll; ">
+	<div class="input-group mt-2 mb-2" id="divTabla" style="height:180px; width:100%; display: none;overflow-y:scroll;">
 		<table class="table table-hover table-dark" id="tableMain" style="width:100%;">
 			<thead>
 				<tr style="display: none;" id="fila">
@@ -225,28 +225,19 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 				<h3><strong>Vaya a la sección de solicitar evento</strong></h2>
 			</div>
 			<div class="generarCSV" id="generarCSV" style="height:98%; width:100%;text-align:center;display:none;padding-left:4%;padding-top:3%;">
-			<form id="frmInvitados" class="invitados" method="post" action="#">
-				<div class="form-group">
-					<p style="float:left;width:40%;">
-						<label>Nombre:   <input id="nombreInvitado" class="form-control" type="text" placeholder="Escriba el nombre" style="width: 60%;float:right;margin-right:0%;" required="" /></label>
-					</p>
-					<p style="float:left;width:40%; ">
-						<label style="width:100%;">Correo:<input id="correoInvitado" class="form-control" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Formato de Correo Invalido" placeholder="Escriba el correo" style="width: 60%;float:right;" required="" /></label>
-					</p>
-					<br>
-					<p style="float:left;width:40%; ">
-						<label>Primer Apellido:<input id="primerApellido" class="form-control" type="text" placeholder="Escriba el primer apellido" style="width: 58%;float:right;" required="" /></label>
-					</p>
-					<p style="float:left;width:40%;">
-						<label style="width:100%;">Telefono:<input type="text" id="telefonoInvitado" class="form-control" type="text" placeholder="Escriba el telefono" style="width: 60%;float:right;" required=""/></label>
-					</p>
-					<br>
-					<p style="float:left;width:40%;">
-						<label>Segundo Apellido:<input id="segundoApellido" class="form-control" type="text" placeholder="Escriba el segundo apellido" style="width: 58%;float:right;" required="" /></label>
-					</p>
-					<button style="width: 13%;float:left; margin-left:16%;" id="agregar" class="btn btn-success" type="button" onclick="newRowTable();" >Agregar</button>
-				</div>
-				<table class="table table-hover table-dark" id="tablaInvitados" style="width:70%;text-align:center;margin-left:15%;margin-right:15%;">
+			<form id="frmInvitados" class="invitados">
+			<h2><strong>Datos Invitado</strong></h2>
+				<label style="float:left; width:40%; margin-left:5.8%;">Nombre:<input id="nombreInvitado" class="form-control" type="text" placeholder="Escriba el nombre" style="width:60%; float:right; margin-right:14%;" required="" /></label>
+				<label style="float:left; width:40%;">Correo: <input id="correoInvitado" class="form-control" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" placeholder="Escriba el correo" style="width: 65%; float:right; margin-right:14%;" required="" /></label>
+				<br>
+				<label style="float:left; width:40%; margin-left:1.3%;">Primer Apellido:<input id="primerApellido" class="form-control" type="text" placeholder="Escriba el primer apellido" style="width: 60%; float:right; margin-right:3%;" required="" /></label>
+				<label style="float:left; width:40%; margin-left:3.6%;">Telefono:<input type="text" pattern="[0-9]*" id="telefonoInvitado" class="form-control" type="text" placeholder="Escriba el telefono" style="width: 65%; float:right; margin-right:12%;" required=""/></label>
+				<br>
+				<label style="float:left; width:40%;">Segundo Apellido:<input id="segundoApellido" class="form-control" type="text" placeholder="Escriba el segundo apellido" style="width: 60%; float:right;" required="" /></label>
+				<button style="width: 13%;float:left; margin-left:14%;" id="agregar" class="btn btn-success" type="submit" >Agregar</button>
+			</form>
+				<div>
+					<table class="table table-hover table-dark" id="tablaInvitados" style="width:70%;text-align:center;margin-left:15%;margin-right:15%;">
 						<tr>
 							<th>Nombre</th>
 							<th>Primer Apellido</th>
@@ -255,9 +246,9 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 							<th>Telefono</th>
 							<th>Accion</th>
 						</tr>
-				</table>
+					</table>
+				</div>
 				<button style="width: 13%;" id="exportarCSV" class="btn btn-success" type="button" onclick="exportTableToCSV()">Generar CSV</button>
-			</form>
 			</div>
 			<div id="beneficiosUser" style="display: none;">
 		<form>
