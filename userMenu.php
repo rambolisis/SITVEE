@@ -224,7 +224,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 				<h3><strong>No tiene eventos disponibles en este momento</strong></h2>
 				<h3><strong>Vaya a la sección de solicitar evento</strong></h2>
 			</div>
-			<div class="generarCSV" id="generarCSV" style="height:98%; width:100%;text-align:center;display:none;padding-left:4%;padding-top:3%;">
+			<div class="generarCSV" id="generarCSV" style="height:98%; width:100%;text-align:center;display:none;padding-left:4%;padding-top:0.5%;">
 			<form id="frmInvitados" class="invitados">
 			<h2><strong>Datos Invitado</strong></h2>
 				<label style="float:left; width:40%; margin-left:5.8%;">Nombre:<input id="nombreInvitado" class="form-control" type="text" placeholder="Escriba el nombre" style="width:60%; float:right; margin-right:14%;" required="" /></label>
@@ -236,8 +236,8 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 				<label style="float:left; width:40%;">Segundo Apellido:<input id="segundoApellido" class="form-control" type="text" placeholder="Escriba el segundo apellido" style="width: 60%; float:right;" required="" /></label>
 				<button style="width: 13%;float:left; margin-left:14%;" id="agregar" class="btn btn-success" type="submit" >Agregar</button>
 			</form>
-				<div>
-					<table class="table table-hover table-dark" id="tablaInvitados" style="width:70%;text-align:center;margin-left:15%;margin-right:15%;">
+				<div style="height:36%;padding-top:0%;overflow-y:scroll;width:100%;">
+					<table class="table table-hover table-dark" id="tablaInvitados" style="width:100%;text-align:center;">
 						<tr>
 							<th>Nombre</th>
 							<th>Primer Apellido</th>
@@ -248,6 +248,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 						</tr>
 					</table>
 				</div>
+				<br>
 				<button style="width: 13%;" id="exportarCSV" class="btn btn-success" type="button" onclick="exportTableToCSV()">Generar CSV</button>
 			</div>
 			<div id="beneficiosUser" style="display: none;">
