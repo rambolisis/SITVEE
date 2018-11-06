@@ -220,33 +220,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     background: url(https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/calendar-16.png) center/80% no-repeat;
     opacity: 0.8
 }
-input[type="submit"],#viewfile,#confirmar{
-    background-color: #388742;
-    border-radius:20px 0px 20px 0px;
-    border-color: #388742;
-    display: inline-block;
-        font-weight: 400;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        border: 1px solid transparent;
-        padding: .375rem .75rem;
-        font-size: 1rem;
-        line-height: 1.5;
-        opacity:0.9;
-        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    }
-input[type="submit"]:hover,#viewfile:hover,#confirmar:hover{
-    opacity:1;
-    }
-#viewfile,#confirmar{
-    color: white;
-    
-} 
+
 
 #loading-screen {
   background-color: rgba(25,25,25,0.7);

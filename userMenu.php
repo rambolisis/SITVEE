@@ -165,7 +165,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 		<br>
 		<div class="custom-file">
 				<input type="file" class="btn btn-outline-secondary" id="inputfile" style="padding: 3px;" name="Buscar">
-				<button class="btn btn-outline-secondary" type="button" id="viewfile">Cargar</button>
+				<button class="btn btn-success" type="button" id="viewfile">Cargar</button>
 		</div>
 	<div class="input-group mt-2 mb-2" id="divTabla" style="height:300px; width:100%; display: none;overflow-y:scroll;">
 		<table class="table table-hover table-dark" id="tableMain" style="width:100%;">
@@ -182,7 +182,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 			<tbody id="table-data"></tbody>
 		</table>
 		</div>
-		<input id="confirmar" style="width: 13%; display: none;" type="button" value="Confirmar" onclick="Enviar();"  />
+		<button class="btn btn-success" id="confirmar" type="button" onclick="Enviar();">Confirmar</button>
 		<input type="checkbox" id="select_all" style="width:1%;display:none;"/>
 		<label id="select" style="display:none;">Seleccionar todos</label>
 		</div>
