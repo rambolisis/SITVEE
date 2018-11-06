@@ -20,7 +20,7 @@
     $mensaje .= "Fecha Evento: " . $fechaEvento . " \r\n";
     $mensaje .= "Descripcion Evento: " . $descripcionEvento . " \r\n";
     
-    $sitvee = 'invitacion@sitvee.com';
+    $sitvee = 'info@sitvee.com';
     $asunto = 'Solicitud de Evento';
     
     
@@ -31,7 +31,7 @@
             $mail->isSMTP();                                      // Set mailer to use SMTP
             $mail->Host = 'mx1.hostinger.com';  // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
-            $mail->Username = 'invitacion@sitvee.com';                 // SMTP username
+            $mail->Username = 'info@sitvee.com';                 // SMTP username
             $mail->Password = 'sitvee123Admin';                           // SMTP password
             $mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 587;
@@ -41,7 +41,7 @@
         }
         try{
             //Recipients
-            $mail->setFrom('invitacion@sitvee.com', 'SITVEE');
+            $mail->setFrom('info@sitvee.com', 'SITVEE');
             $mail->addAddress($correo);   // Add a recipient
             $mail->isHTML(true);                                // Set email format to HTML
             $mail->Subject = 'Solicitud de nuevo evento';

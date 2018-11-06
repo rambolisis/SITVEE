@@ -34,7 +34,7 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
             $mail->isSMTP();                                      // Set mailer to use SMTP
             $mail->Host = 'mx1.hostinger.com';  // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
-            $mail->Username = 'invitacion@sitvee.com';                 // SMTP username
+            $mail->Username = 'info@sitvee.com';                 // SMTP username
             $mail->Password = 'sitvee123Admin';                           // SMTP password
             $mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 587;
@@ -44,7 +44,7 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
         }
         try{
             //Recipients
-            $mail->setFrom('invitacion@sitvee.com', 'SITVEE');
+            $mail->setFrom('info@sitvee.com', 'SITVEE');
             $mail->addAddress($emailConsulta);   // Add a recipient
             $mail->isHTML(true);
             $mail->CharSet = 'UTF-8';
