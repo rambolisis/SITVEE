@@ -228,7 +228,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 			<form id="frmInvitados" class="invitados">
 			<h2><strong>Datos Invitado</strong></h2>
 				<label style="float:left; width:40%; margin-left:5.8%;">Nombre:<input id="nombreInvitado" class="form-control" type="text" placeholder="Escriba el nombre" style="width:60%; float:right; margin-right:14%;" required="" /></label>
-				<label style="float:left; width:40%;">Correo: <input id="correoInvitado" class="form-control" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" placeholder="Escriba el correo" style="width: 65%; float:right; margin-right:14%;" required="" /></label>
+				<label style="float:left; width:40%;">Correo:<input id="correoInvitado" class="form-control" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" placeholder="Escriba el correo" style="width: 65%; float:right; margin-right:14%;" required="" /></label>
 				<br>
 				<label style="float:left; width:40%; margin-left:1.3%;">Primer Apellido:<input id="primerApellido" class="form-control" type="text" placeholder="Escriba el primer apellido" style="width: 60%; float:right; margin-right:3%;" required="" /></label>
 				<label style="float:left; width:40%; margin-left:3.6%;">Telefono:<input type="text" pattern="[0-9]*" id="telefonoInvitado" class="form-control" type="text" placeholder="Escriba el telefono" style="width: 65%; float:right; margin-right:12%;" required=""/></label>
