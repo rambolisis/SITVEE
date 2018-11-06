@@ -236,7 +236,7 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 				<label style="float:left; width:40%;">Segundo Apellido:<input id="segundoApellido" class="form-control" type="text" placeholder="Escriba el segundo apellido" style="width: 60%; float:right;" required="" /></label>
 				<button style="width: 13%;float:left; margin-left:14%;" id="agregar" class="btn btn-success" type="submit" >Agregar</button>
 			</form>
-				<div style="height:36%;padding-top:0%;overflow-y:scroll;width:100%;">
+				<div id="divTablaInvitados" style="display:none;height:36%;padding-top:0%;overflow-y:scroll;width:100%;">
 					<table class="table table-hover table-dark" id="tablaInvitados" style="width:100%;text-align:center;">
 						<tr>
 							<th>Nombre</th>

@@ -202,6 +202,7 @@ $().ready(function() {
     $('#GenerarCSV').click(function (evento) {
         var nFilas = $("#tablaInvitados tr").length;
         if(nFilas == 1){
+            $('#divTablaInvitados').hide();
             $('#tablaInvitados').hide();
             $('#exportarCSV').hide();
             $('#noEventos').hide();
@@ -229,6 +230,7 @@ $().ready(function() {
             $('#btnGuardar').attr("disabled", true);
             $('#btnGuardarPerfil').attr("disabled", true);
         }else{
+            $('#divTablaInvitados').show();
             $('#tablaInvitados').show();
             $('#exportarCSV').show();
             $('#gestionEvento').hide();
@@ -261,6 +263,7 @@ $().ready(function() {
     $('#agregar').click(function (evento) {
         var nFilas = $("#tablaInvitados tr").length;
         if(nFilas == 0){
+            $('#divTablaInvitados').hide();
             $('#tablaInvitados').hide();
             $('#exportarCSV').hide();
             $('#noEventos').hide();
@@ -288,6 +291,7 @@ $().ready(function() {
             $('#btnGuardar').attr("disabled", true);
             $('#btnGuardarPerfil').attr("disabled", true);
         }else{
+            $('#divTablaInvitados').show();
             $('#tablaInvitados').show();
             $('#exportarCSV').show();
             $('#gestionEvento').hide();
