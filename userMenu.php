@@ -54,13 +54,17 @@ $files = glob('QRimage/*'); //obtenemos todos los nombres de los ficheros
 				<ul class="menu" style="margin-top:0px; width:100%;">
 				  <li style="height: 15.8%;" id="MiPerfil"><a>Mi Perfil</a></li>	
 				  <li style="height: 15.8%;" id="TutorialSitvee"><a>Tutorial SITVEE</a></li>
-				  <li style="height: 15.8%;" id="GenerarCSV"><a>Generar CSV</a></li>
+				  <li style="height: 15.8%;" id="GenerarCSV"><a>Crear CSV</a></li>
 				  <li style="height: 15.8%;" id="ImportarCSV"><a>Eventos</a></li>
 				  <li style="height: 15.8%;" id="SolicitarEvento"><a>Solicitar Evento</a></li>
 				  <li style="height: 15.8%;" onclick="salir();"><a>Cerrar Sesion</a></li>
 				</ul>
 			</div>
 		<div class="container" id="container" style="width:85%; height:64%; padding:1%;">
+		<div id="tutorial" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
+			<h2><strong>Bienvenidos a la plataforma de SITVEE</strong></h2>
+			<iframe width="860" height="415" src="https://www.youtube.com/embed/v8K8td5Xx34" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
 		<div id="solicitud" style="height:98%; width:100%;padding-left:5%; display:none; text-align:center"> 
 				<form id="frmSolicitudEvento">
 					<h2><strong>Solicitar Evento</strong></h2>

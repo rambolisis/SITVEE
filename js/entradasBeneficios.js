@@ -123,6 +123,7 @@ $().ready(function() {
         var nFilas = $("#tablaEventos tr").length;
         if(nFilas == 1){
             $('#noEventos').show();
+            $('#tutorial').hide();
             $('#generarCSV').hide();
             $("#solicitud").hide();
             $('#busqueda').hide();
@@ -147,6 +148,7 @@ $().ready(function() {
             $('#btnGuardarPerfil').attr("disabled", true);
         }else{
             $('#gestionEvento').show();
+            $('#tutorial').hide();
             $('#generarCSV').hide();
             $("#solicitud").hide();
             $("#Perfil").hide();
@@ -174,6 +176,35 @@ $().ready(function() {
     });
     $('#cargarCSV').click(function (evento) {
         $('#busqueda').show();
+        $('#tutorial').hide();
+        $("#gestionEvento").hide();
+        $('#generarCSV').hide();
+        $("#solicitud").hide();
+        $("#actualizacionEventoUser").hide();
+        $('#table-data').empty();
+        $('#divTabla').hide();
+        ListaEntradas.Clear();
+        $("#confirmar").hide();
+        $("#fila").hide();
+        $('#beneficiosUser').hide();
+        $('#noEventos').hide();
+        $('#nombreInfoEvento').attr("disabled", true);
+        $('#lugarInfoEvento').attr("disabled", true);
+        $('#fechaInfoEvento').attr("disabled", true);
+        $('#descripcionInfoEvento').attr("disabled", true);
+        $('#nombreClientePerfil').attr("disabled", true);
+        $('#correoClientePerfil').attr("disabled", true);
+        $('#usuarioClientePerfil').attr("disabled", true);
+        $('#contraseniaClientePerfil').attr("disabled", true);
+        $('#btnGuardar').attr("disabled", true);
+        $('#btnGuardarPerfil').attr("disabled", true);
+        $("#Perfil").hide();
+        $("#PerfilCambiarContraseña").hide();
+    });
+
+    $('#TutorialSitvee').click(function (evento) {
+        $('#tutorial').show();
+        $('#busqueda').hide();
         $("#gestionEvento").hide();
         $('#generarCSV').hide();
         $("#solicitud").hide();
@@ -203,6 +234,7 @@ $().ready(function() {
         var nFilas = $("#tablaInvitados tr").length;
         if(nFilas == 1){
             $('#divTablaInvitados').hide();
+            $('#tutorial').hide();
             $('#tablaInvitados').hide();
             $('#exportarCSV').hide();
             $('#noEventos').hide();
@@ -233,6 +265,7 @@ $().ready(function() {
             $('#divTablaInvitados').show();
             $('#tablaInvitados').show();
             $('#exportarCSV').show();
+            $('#tutorial').hide();
             $('#gestionEvento').hide();
             $('#generarCSV').show();
             $("#solicitud").hide();
@@ -264,6 +297,7 @@ $().ready(function() {
         var nFilas = $("#tablaInvitados tr").length;
         if(nFilas == 0){
             $('#divTablaInvitados').hide();
+            $('#tutorial').hide();
             $('#tablaInvitados').hide();
             $('#exportarCSV').hide();
             $('#noEventos').hide();
@@ -294,6 +328,7 @@ $().ready(function() {
             $('#divTablaInvitados').show();
             $('#tablaInvitados').show();
             $('#exportarCSV').show();
+            $('#tutorial').hide();
             $('#gestionEvento').hide();
             $('#generarCSV').show();
             $("#solicitud").hide();
@@ -341,6 +376,7 @@ $().ready(function() {
             $('#informeEvento').hide();
         }
         $('#actualizacionEventoUser').show();
+        $('#tutorial').hide();
         $("#solicitud").hide();
         $('#busqueda').hide();
         $("#gestionEvento").hide();
@@ -358,6 +394,7 @@ $().ready(function() {
 
     $('#SolicitarEvento').click(function (evento) {
         $('#solicitud').show();
+        $('#tutorial').hide();
         $("#Perfil").hide();
         $("#PerfilCambiarContraseña").hide();
         $("#busqueda").hide();
@@ -379,6 +416,7 @@ $().ready(function() {
     });
     $('#MiPerfil').click(function (evento) {
         $('#Perfil').show();
+        $('#tutorial').hide();
         $("#PerfilCambiarContraseña").hide();
         $("#solicitud").hide();
         $("#busqueda").hide();
@@ -400,6 +438,7 @@ $().ready(function() {
     });
     $('#cambiarClave').click(function (evento) {
         $('#Perfil').hide();
+        $('#tutorial').hide();
         $("#PerfilCambiarContraseña").show();
         $("#solicitud").hide();
         $("#busqueda").hide();
